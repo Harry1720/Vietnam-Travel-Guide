@@ -70,6 +70,7 @@
                         <th>Tên Khách Hàng</th>
                         <th>Email</th>
                         <th>Giới Tính</th>
+                        <th>Địa Chỉ</th>
                         <th>Vai Trò</th>
                         <th>Lựa Chọn</th>
                     </tr>
@@ -138,6 +139,12 @@
                 </div>
 
                 <div class="field input">
+                    <label for="address">Tỉnh/Thành Phố</label>
+                    <select id="address" name="address">
+                    </select>
+                </div>
+
+                <div class="field input">
                     <label for="password">Mật khẩu</label>
                     <div style="position: relative;">
                         <input type="password" id="password" name="password" required>
@@ -146,11 +153,14 @@
                         </span>
                     </div>
                 </div>
-                <div class="field input" style="margin-bottom: 20px;">
+                <div class="field input" style="margin-bottom: 20px; display: flex; padding-top: 10px">
                     <label for="role" >Chức Vụ</label>
                     <select id="role" name="role">
                         <option value="Admin">Admin</option>
                         <option value="Customer">Blogger</option>
+                    </select>
+                    <label for="gender">Giới Tính</label>
+                    <select id="gender" name="gender">
                     </select>
                 </div>
                 <div class="button">
@@ -177,6 +187,12 @@
                 </div>
 
                 <div class="field input">
+                    <label for="address1">Tỉnh/Thành Phố</label>
+                    <select id="address1" name="address1">
+                    </select>
+                </div>
+
+                <div class="field input">
                     <label for="password1">Mật khẩu</label>
                     <div style="position: relative;">
                         <input type="password" id="password1" name="password1"  required>
@@ -185,11 +201,14 @@
                         </span>
                     </div>
                 </div>
-                <div class="field input" style="margin-bottom: 20px;">
+                <div class="field input" style="margin-bottom: 20px; display: flex; padding-top: 10px">
                     <label for="role1" >Chức Vụ</label>
                     <select id="role1" name="role1">
                         <option value="Admin">Admin</option>
-                        <option value="Blogger">Blogger</option>
+                        <option value="Customer">Blogger</option>
+                    </select>
+                    <label for="gender1">Giới Tính</label>
+                    <select id="gender1" name="gender1">
                     </select>
                 </div>
                 <div class="button">

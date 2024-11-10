@@ -41,6 +41,35 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    document.querySelectorAll('.edit-btn').forEach(button => { //để kích hoạt mọi nút edit-btn mỗi dòng
+        button.addEventListener('click', () => {
+            resetFormState();
+            popup2Overlay.style.display = 'flex';
+        });
+    });
+
+
+    document.getElementById('close2').addEventListener('click', () => {
+        if (confirm("Xác Nhận Hủy?")) {
+            popup2Overlay.style.display = 'none';
+        }
+    });
+
+    document.getElementById('cancelButton2').addEventListener('click', () => {
+        if (confirm("Xác Nhận Hủy?")) {
+            popup2Overlay.style.display = 'none';
+        }
+    });
+
+    window.addEventListener('click', (event) => {
+        if (event.target === popup2Overlay) {
+            if (confirm("Xác Nhận Hủy?")) {
+                popup2Overlay.style.display = 'none';
+            }
+        }
+    });
+
+
     function resetFormState() {
         isEditing = false;
         editingDiamondId = null;

@@ -176,5 +176,41 @@
     </div>
 </div>
 
+<div class="popup1-overlay" id="popup2Overlay">
+    <div class="popup1-content">
+        <span class="popup1-close" id="close2">&times;</span>
+        <div class="wrapper" id = "">
+            <form id="destination-form" enctype="multipart/form-data">
+                <div class="field input">
+                    <label for="destinationName">Tên điểm đến</label>
+                    <input type="text" id="destinationName" name="destinationName" placeholder="Hội An" required>
+                </div>
+                <div class="field input" style="margin-bottom: 20px;">
+                    <label for="province" >Tỉnh/Thành Phố</label>
+                    <select id="province" name="province">
+                        <option value="Đà Nẵng">Đà Nẵng</option>
+                        <option value="Hà Nội">Hà Nội</option>
+                    </select>
+                </div>
+
+                <div class="field input">
+                    <label for="description">Mô tả điểm đến</label>
+                    <textarea wrap="soft" id="description" name="description" required></textarea>
+                </div>                
+
+                <div class="field input" style="margin-bottom: 20px;">
+                    <label for="image" >Tải ảnh:</label>
+                    <input type="file" id="image" name="image">
+                </div>
+                <div class="button">
+                    <input type="submit" value="Lưu" class="save" id="saveButton2">
+                    <input type="button" value="Hủy" class="cancel" id="cancelButton2">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
 </body>
 </html>

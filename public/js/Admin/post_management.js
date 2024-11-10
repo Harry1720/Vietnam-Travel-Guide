@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const searchInput = document.querySelector('.search-bar');
     const popup1Overlay = document.getElementById('popup1Overlay');
     const token = localStorage.getItem('authToken');
+    const popup2Overlay = document.getElementById('popup2Overlay');
 
     searchInput.addEventListener('input', () => {
         const searchText = searchInput.value.trim().toLowerCase();
@@ -14,8 +15,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    document.getElementById('openpopup1').addEventListener('click', () => {
+    const resetFormState = () => {
         postForm.reset();
+    };
+
+
+    document.getElementById('openpopup1').addEventListener('click', () => {
+        // postForm.reset();
         popup1Overlay.style.display = 'flex';
         resetFormState();
     });
@@ -39,4 +45,33 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     });
+
+    document.querySelectorAll('.edit').forEach(button => { //để kích hoạt mọi nút edit-btn mỗi dòng
+        button.addEventListener('click', () => {
+            resetFormState();
+            popup2Overlay.style.display = 'flex';
+        });
+    });
+        
+    document.getElementById('closepopup2').addEventListener('click', () => {
+        if(confirm("Xác Nhận Hủy?")){
+            popup2Overlay.style.display = 'none';
+        }
+    });
+    
+    document.getElementById('cancelButton2').addEventListener('click', () => {
+        if(confirm("Xác Nhận Hủy?")){
+            popup2Overlay.style.display = 'none';
+        }
+    });
+        
+    window.addEventListener('click', (event) => {
+        if (event.target === popup2Overlay && confirm("Xác nhận hủy?")) {
+            popup2Overlay.style.display = 'none';
+            removeAdminOption();
+        }
+    });
 });
+
+
+

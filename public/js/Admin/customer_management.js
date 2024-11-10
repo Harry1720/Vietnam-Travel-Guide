@@ -21,11 +21,14 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('openpopup1').addEventListener('click', () => {
         resetFormState();
         popup1Overlay.style.display = 'flex';
+        
     });
 
-    document.getElementById('edit-btn').addEventListener('click', () => {
-        resetFormState();
-        popup2Overlay.style.display = 'flex';
+    document.querySelectorAll('.edit').forEach(button => { //để kích hoạt mọi nút edit-btn mỗi dòng
+        button.addEventListener('click', () => {
+            resetFormState();
+            popup2Overlay.style.display = 'flex';
+        });
     });
 
     document.getElementById('closepopup2').addEventListener('click', () => {
@@ -62,6 +65,14 @@ document.addEventListener('DOMContentLoaded', () => {
             removeAdminOption();
         }
     });
+
+    window.addEventListener('click', (event) => {
+        if (event.target === popup2Overlay && confirm("Xác nhận hủy?")) {
+            popup2Overlay.style.display = 'none';
+            removeAdminOption();
+        }
+    });
+
 
     document.getElementById('togglePassword').addEventListener('click', function () {
         const passwordField = document.getElementById('password');

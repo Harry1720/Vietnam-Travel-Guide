@@ -52,7 +52,7 @@
                         <td>Phở, bún chả, bánh cuốn</td>
                         <td>Lễ hội pháo hoa</td>
                         <td class="action-btn-frame">
-                            <button class="action-btn edit">
+                            <button class="action-btn edit" id="edit-btn">
                                 <ion-icon name="create"></ion-icon>
                             </button>
                             <button class="action-btn delete">
@@ -68,7 +68,7 @@
                         <td>Mì Quảng, bánh tráng cuốn</td>
                         <td>Lễ hội Cầu Rồng</td>
                         <td class="action-btn-frame">
-                            <button class="action-btn edit">
+                            <button class="action-btn edit" id="edit-btn">
                                 <ion-icon name="create"></ion-icon>
                             </button>
                             <button class="action-btn delete">
@@ -84,7 +84,7 @@
                         <td>Bánh mì, hủ tiếu, cơm tấm</td>
                         <td>Lễ hội đường hoa Nguyễn Huệ</td>
                         <td class="action-btn-frame">
-                            <button class="action-btn edit">
+                            <button class="action-btn edit" id="edit-btn">
                                 <ion-icon name="create"></ion-icon>
                             </button>
                             <button class="action-btn delete">
@@ -159,6 +159,64 @@
                 <div class="button">
                     <input type="submit" value="Lưu" class="save" id="saveButton">
                     <input type="button" value="Hủy" class="cancel" id="cancelButton">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="popup1-overlay" id="popup2Overlay">
+    <div class="popup1-content">
+        <span class="popup1-close" id="closepopup2">&times;</span>
+        <div class="wrapper" id = "addUser">
+            <form id="post-form" enctype="multipart/form-data">
+                <div class="field input">
+                    <div>
+                        <label for="province">Tỉnh/Thành Phố</label>
+                        <select id="province" name="province">
+                            <option value="Đà Nẵng">Đà Nẵng</option>
+                            <option value="Hà Nội">Hà Nội</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="image">Tải ảnh:</label>
+                        <input type="file" id="image" name="image">
+                    </div>
+                </div>
+
+                <div class="field-row">
+                    <div class="field">
+                        <label for="transport">Di chuyển</label>
+                        <textarea wrap="soft" id="transport" name="transport" required></textarea>
+                    </div>
+                    <div class="field" style="padding-top: 60px;">
+                        <input type="file" id="image-transport" name="image-transport">
+                    </div>
+                </div>
+            
+                <div class="field-row">
+                    <div class="field">
+                        <label for="food">Ẩm thực</label>
+                        <textarea wrap="soft" id="food" name="food" required></textarea>
+                    </div>
+                    <div class="field" style="padding-top: 60px;">
+                        <input type="file" id="image-food" name="image-food">
+                    </div>
+                </div>
+            
+                <div class="field-row">
+                    <div class="field">
+                        <label for="festival">Lễ hội</label>
+                        <textarea wrap="soft" id="festival" name="festival" required></textarea>
+                    </div>
+                    <div class="field" style="padding-top: 60px;">
+                        <input type="file" id="image-festival" name="image-festival">
+                    </div>
+                </div>
+
+                <div class="button">
+                    <input type="submit" value="Lưu" class="save" id="saveButton2">
+                    <input type="button" value="Hủy" class="cancel" id="cancelButton2">
                 </div>
             </form>
         </div>

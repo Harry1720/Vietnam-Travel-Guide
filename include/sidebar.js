@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
             <img class = "logo" src ="../../../public/image/logo_colored.png"/>
 
             <ul class="main-menu">
-                <li><a href="admin.html"><span class="icon"><ion-icon name="home-outline"></ion-icon></span> Trang chủ</a></li>
+                <li><a href="admin.php"><span class="icon"><ion-icon name="home-outline"></ion-icon></span> Trang chủ</a></li>
                 <li class="submenu">
                     <a href="customer_management.html"><ion-icon name="people-outline"></ion-icon> Quản lý người dùng</a>
                 </li>

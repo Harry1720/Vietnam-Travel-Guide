@@ -190,9 +190,28 @@ td:last-child {
     border-radius: 10px;
     width: 100%;
     max-width: 600px;
+    max-height: 90vh; 
+    overflow-y: auto; 
+    overflow-x: hidden; 
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     position: relative;
 }
+
+.popup1-content::-webkit-scrollbar {
+    width: 8px;
+    border-radius: 10px; 
+}
+
+.popup1-content::-webkit-scrollbar-thumb {
+    background-color: #c2c2c2;
+    border-radius: 10px; 
+}
+
+.popup1-content::-webkit-scrollbar-horizontal {
+    display: none;
+}
+
+
 
 /* Popup Buttons */
 #yes-btn {

@@ -1,9 +1,4 @@
 <?php
-    header('Content-Type: application/json');
-    error_reporting(E_ALL); // Bật error reporting để debug
-    ini_set('display_errors', 1);
-
-
     include_once "../../Controllers/adminController.php";
     include_once "../../Controllers/authController.php";
 

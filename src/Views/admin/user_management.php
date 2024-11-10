@@ -89,7 +89,7 @@
                                     <button class="action-btn edit" id="edit-btn" onclick="editUser(<?php echo $user['userID']?>)">
                                         <ion-icon name="create"></ion-icon>
                                     </button>
-                                    <button class="action-btn delete" id="delete-btn" onclick="<?php echo $user['userID']?>">
+                                    <button class="action-btn delete" id="delete-btn" onclick="<?php ?>">
                                         <ion-icon name="trash"></ion-icon>
                                     </button>
                                 </td>
@@ -119,8 +119,6 @@
         </div>
     </div>
 </div>
-
-
 
 <div class="popup1-overlay" id="popup1Overlay">
     <div class="popup1-content">

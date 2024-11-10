@@ -48,6 +48,13 @@ document.addEventListener('DOMContentLoaded', () => {
             removeAdminOption();
         }
     });
+    document.getElementById('cancelButton2').addEventListener('click', () => {
+        if (confirm("Xác nhận hủy?")) {
+            popup2Overlay.style.display = 'none';
+            removeAdminOption();
+        }
+    });
+
 
     window.addEventListener('click', (event) => {
         if (event.target === popup1Overlay && confirm("Xác nhận hủy?")) {
@@ -63,3 +70,5 @@ document.addEventListener('DOMContentLoaded', () => {
         eyeIcon.name = passwordField.type === 'password' ? 'eye-off-outline' : 'eye-outline';
     });
 });
+
+

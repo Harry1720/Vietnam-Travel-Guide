@@ -36,7 +36,6 @@ CREATE table postDetail(
 	postID INT NOT NULL,
 	sectionTitle TEXT NOT NULL,
 	sectionContent TEXT NOT NULL,
-	category VARCHAR(20) NOT NULL,
 	imgPostDetURL TEXT NOT NULL,
 	FOREIGN KEY (postID) REFERENCES post(postID)
 );

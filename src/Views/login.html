@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Đăng nhập</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="../../public/css/login.css">
 </head>
@@ -16,8 +16,8 @@
         </div>
     
         <div id="login-container">
-            <h1>Welcome To Travel Guilds</h1>
-            <h3>Continue with Google or Sign In <img src="https://user-images.githubusercontent.com/1303154/88677602-1635ba80-d120-11ea-84d8-d263ba5fc3c0.gif" width="26px" alt="hi"></h3>
+            <h1>Chào mừng bạn đến với Travel-Guide</h1>
+            <h3>Tiếp tục với Google hoặc đăng nhập <img src="https://user-images.githubusercontent.com/1303154/88677602-1635ba80-d120-11ea-84d8-d263ba5fc3c0.gif" width="26px" alt="hi"></h3>
 
             <div class="google-btn">
                 <span>Continue with Google</span>
@@ -30,16 +30,18 @@
                     </svg>
                 </span>
             </div>
+            
+            
 
-            <div class="divider">or</div>
+            <div class="divider">Hoặc</div>
 
             <form class="login-form" method="POST" action="../../src/FunctionOfActor/both/login.php">
                 <div class="form-group">
-                    <input type="email" id="email" name="email"  placeholder="Email Address" class="input" required>
+                    <input type="email" id="email" name="email"  placeholder="Tên đăng nhập " class="input" required>
                 </div>
                 
                 <div class="form-group">
-                    <input type="password" id="password" name="password" placeholder="Password" class="input" required>
+                    <input type="password" id="password" name="password" placeholder="Mật khẩu" class="input" required>
                     <span class="eye-icon" onclick="this.previousElementSibling.type = this.previousElementSibling.type === 'password' ? 'text' : 'password'">
                         👁️‍🗨️
                     </span>
@@ -47,19 +49,18 @@
 
                 <div class="form-options">
                     <span>
-                        <input type="checkbox" id="rememberMe"  value="true"> Remember me
+                        <input type="checkbox" id="rememberMe"  value="true"> Ghi nhớ tài khoản
                     </span>
                     <span>
-                        <a href="forgotPassword.html"> Forgot Password?</a>
+                        <a href="forgotPassword.html"> Quên mật khẩu</a>
                     </span>
                 </div>
 
                 <div class="form-group">
-                    <input type="submit" id="submit" class="input" value="Log In">
+                    <input type="submit" id="submit" class="input" value="Đăng nhập">
                 </div>
-                
                 <div class="create-account">
-                    <p id="register">Don't have an account yet? <a href="createAccount.html">Create account</a></p>
+                    <p id="register">Bạn chưa có tài khoản? <a href="createAccount.html">Tạo tài khoản</a></p>
                 </div>
             </form>
             

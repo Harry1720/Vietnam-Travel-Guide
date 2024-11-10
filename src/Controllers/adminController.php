@@ -114,6 +114,22 @@ class AdminController{
         return $get_query;
     }
 
+    public function getUserOfPage($Start, $litmit){
+        //WHERE status_ = 'active'
+        $sql = "SELECT * FROM users  LIMIT $Start, $litmit";
+        $get_query = mysqli_query($this->conn->connect(),$sql);
+
+        return $get_query;
+    }
+
+    public function getUserbyId($userID){
+        //WHERE status_ = 'active'
+        $sql = "SELECT * FROM users  WHERE userId = $userID";
+        $get_query = mysqli_query($this->conn->connect(),$sql);
+
+        return $get_query->fetch_assoc();
+    }
+
     public function getAllBlogs() {
         
         $sql = "SELECT * FROM blogs";

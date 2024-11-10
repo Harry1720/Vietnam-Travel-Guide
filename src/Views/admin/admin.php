@@ -59,14 +59,14 @@
                     <label for="role"><i class="fa fa-building"></i> Chức vụ</label>
                     <input type="text" id="role" name="role" value="<?php echo $role?>" disabled>
                 </div>
-                <!-- <div>
+                <div>
                     <label> <ion-icon name="transgender-outline"></ion-icon> Giới tính</label>
                     <select name="gender" id="genderSelect" disabled>
                         <option value="Nam">Nam</option>
                         <option value="Nữ">Nữ</option>
                         <option value="Khác">Khác</option>
                     </select>
-                </div> -->
+                </div>
                 <div class="button-group">
                     <button type="button" id="unlock_user">CHỈNH SỬA</button>
                     <button type="submit" id="Update_user" style="display: none">CẬP NHẬT</button>

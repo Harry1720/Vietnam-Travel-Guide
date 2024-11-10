@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Đăng ký</title>
     <link rel="stylesheet" href="../../public/css/createAccount.css">
 </head>
 <body>
@@ -11,11 +11,11 @@
     <img src="../../public/image/test1.jpg" alt="Không Hiển Thị" id="left-img">
 
     <div class="create-container">
-        <h1>Hi, Get Started Now  <img src="https://user-images.githubusercontent.com/1303154/88677602-1635ba80-d120-11ea-84d8-d263ba5fc3c0.gif" width="32px" alt="hi"></h1>
-        <h4>Enter to create your Vietnam Travel Blog account</h4>
+        <h1>Xin chào, Bắt đầu đăng ký  <img src="https://user-images.githubusercontent.com/1303154/88677602-1635ba80-d120-11ea-84d8-d263ba5fc3c0.gif" width="32px" alt="hi"></h1>
+        <h4>Tạo tài khoản Vietnam Travel Blog dành cho bạn</h4>
 
         <button class="google-btn">
-            Continue with Google   
+            Tiếp tục với Google   
                 <span style="padding-left: 20px;">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="24" height="24">
                         <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
@@ -26,28 +26,28 @@
                 </span>     
         </button>
 
-        <div class="divider">or</div>
+        <div class="divider">Hoặc</div>
 
         <form class="login-form" method="post" action="../FunctionOfActor/both/createAccount.php">
-            <input type="text" id="name" name="username" placeholder="Full Name" required>
-            <input type="email" id="email" name="email" placeholder="Email Address" required>        
+            <input type="text" id="name" name="username" placeholder="Họ và tên" required>
+            <input type="email" id="email" name="email" placeholder="Địa chỉ email" required>        
             <div class="password-container">
-                <input type="password" id="password" name="password" placeholder="Password" required>
+                <input type="password" id="password" name="password" placeholder="Mật khẩu " required>
                 <span class="eye-icon" onclick="this.previousElementSibling.type = this.previousElementSibling.type === 'password' ? 'text' : 'password'">
                     👁️‍🗨️ 
                 </span>
             </div>            
             <div class="password-container">
-                <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm Password" required>
+                <input type="password" id="confirm-password" name="confirm-password" placeholder="Xác nhận mật khẩu" required>
                 <span class="eye-icon" onclick="this.previousElementSibling.type = this.previousElementSibling.type === 'password' ? 'text' : 'password'">
                     👁️‍🗨️
                 </span>
             </div>
             <div>
-                <input type="submit" id="submit" value="Sign Up">
+                <input type="submit" id="submit" value="Đăng Ký">
             </div>
             <div class="login-account">
-                Already have an account? <a href="login.html">Sign in to account</a>
+                Đã có tài khoản? <a href="login.html">Đăng nhập</a>
             </div>
         </form>
     </div>

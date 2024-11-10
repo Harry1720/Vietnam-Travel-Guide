@@ -109,49 +109,35 @@
 
 <div class="popup1-overlay" id="popup1Overlay">
     <div class="popup1-content">
-        <span class="popup1-close" id="closepopup1">&times;</span>
-        <div class="wrapper" id = "addUser">
+        <ion-icon name="close-outline" class="popup1-close" id="closepopup1"></ion-icon>
+
+        <div class="wrapper" id="addUser">
             <form id="post-form" enctype="multipart/form-data">
-                <div class="field input">
-                    <div>
-                        <label for="province">Tỉnh/Thành Phố</label>
-                        <select id="province" name="province">
-                            <option value="Đà Nẵng">Đà Nẵng</option>
-                            <option value="Hà Nội">Hà Nội</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label for="image">Tải ảnh:</label>
-                        <input type="file" id="image" name="image">
-                    </div>
+
+                <div class="field">
+                    <label for="city">Tỉnh/Thành phố</label>
+                    <input type="text" id="city" name="city" placeholder="Nhập tỉnh/thành phố">
                 </div>
 
                 <div class="field-row">
                     <div class="field">
+                        <label for="destination">Điểm đến</label>
+                        <textarea type="text" id="destination" name="destination" placeholder="Nhập điểm đến"></textarea>
+                        <input type="file" id="image-address" name="image-address">
+                    </div>
+                    <div class="field">
                         <label for="transport">Di chuyển</label>
                         <textarea wrap="soft" id="transport" name="transport" required></textarea>
-                    </div>
-                    <div class="field" style="padding-top: 60px;">
                         <input type="file" id="image-transport" name="image-transport">
                     </div>
-                </div>
-            
-                <div class="field-row">
                     <div class="field">
                         <label for="food">Ẩm thực</label>
                         <textarea wrap="soft" id="food" name="food" required></textarea>
-                    </div>
-                    <div class="field" style="padding-top: 60px;">
                         <input type="file" id="image-food" name="image-food">
                     </div>
-                </div>
-            
-                <div class="field-row">
                     <div class="field">
                         <label for="festival">Lễ hội</label>
                         <textarea wrap="soft" id="festival" name="festival" required></textarea>
-                    </div>
-                    <div class="field" style="padding-top: 60px;">
                         <input type="file" id="image-festival" name="image-festival">
                     </div>
                 </div>
@@ -165,51 +151,39 @@
     </div>
 </div>
 
+
+
+
 <div class="popup1-overlay" id="popup2Overlay">
     <div class="popup1-content">
-        <span class="popup1-close" id="closepopup2">&times;</span>
-        <div class="wrapper" id = "addUser">
-            <form id="post-form" enctype="multipart/form-data">
-                <div class="field input">
-                    <div>
-                        <label for="province">Tỉnh/Thành Phố</label>
-                        <select id="province" name="province">
-                            <option value="Đà Nẵng">Đà Nẵng</option>
-                            <option value="Hà Nội">Hà Nội</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label for="image">Tải ảnh:</label>
-                        <input type="file" id="image" name="image">
-                    </div>
-                </div>
+        <ion-icon name="close-outline" class="popup1-close" id="closepopup2"></ion-icon>
 
+        <div class="wrapper" id="addUser">
+            <form id="post-form" enctype="multipart/form-data">
+                
+                <div class="field">
+                    <label for="province">Tỉnh/Thành phố</label>
+                    <input type="text" id="province" name="province" placeholder="Nhập tỉnh/thành phố">
+                </div>
                 <div class="field-row">
+                    <div class="field">
+                        <label for="destination">Điểm đến</label>
+                        <textarea type="text" id="destination" name="destination" placeholder="Nhập điểm đến"></textarea>
+                        <input type="file" id="image-address" name="image-address">
+                    </div>
                     <div class="field">
                         <label for="transport">Di chuyển</label>
                         <textarea wrap="soft" id="transport" name="transport" required></textarea>
-                    </div>
-                    <div class="field" style="padding-top: 60px;">
                         <input type="file" id="image-transport" name="image-transport">
                     </div>
-                </div>
-            
-                <div class="field-row">
                     <div class="field">
                         <label for="food">Ẩm thực</label>
                         <textarea wrap="soft" id="food" name="food" required></textarea>
-                    </div>
-                    <div class="field" style="padding-top: 60px;">
                         <input type="file" id="image-food" name="image-food">
                     </div>
-                </div>
-            
-                <div class="field-row">
                     <div class="field">
                         <label for="festival">Lễ hội</label>
                         <textarea wrap="soft" id="festival" name="festival" required></textarea>
-                    </div>
-                    <div class="field" style="padding-top: 60px;">
                         <input type="file" id="image-festival" name="image-festival">
                     </div>
                 </div>
@@ -222,6 +196,7 @@
         </div>
     </div>
 </div>
+
 
 </body>
 </html>

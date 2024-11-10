@@ -1,0 +1,109 @@
+* {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+
+.neo ul {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    margin: 50px;
+}
+
+.neo ul li a {
+    padding: 10px 30px;
+    background-color: rgb(0, 136, 255);
+    color: white;
+    text-decoration: none;
+    margin-right: 50px;
+    border-radius: 30px;
+    transition: 0.3s;
+}
+
+.neo ul li a:hover {
+    background-color: white;
+    color: black;
+    border: 2px solid black;
+}
+
+/* Section styles */
+.section-common {
+    padding: 40px;
+    position: relative;
+}
+
+.section-common h2 {
+    font-size: 30px;
+    padding-top: 35px;
+    margin: 0 0 5px 50px;
+}
+
+.section-common > p {
+    font-size: 16px;
+    color: #666;
+    margin: 10px 0 0 50px;
+}
+
+.section-common .btn-page {
+    position: absolute;
+    right: 98px;
+    transform: translateY(-100%);
+    padding: 10px 25px;
+    color: #35679c;
+    border: 2px solid #35679c;
+    border-radius: 50px;
+    font-size: 15px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.section-common .btn-page:hover {
+    background-color: #35679c;
+    color: white;
+}
+
+/* Grid and card layouts */
+.grid-common {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    margin: 50px 80px 0;
+}
+
+.card-common {
+    text-align: center;
+}
+
+.card-common img {
+    width: 600px;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.card-common h4 {
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+.card-common p {
+    margin-top: 10px;
+    color: #666;
+}
+
+/* Blog specific styles */
+.section-common.blog img {
+    width: 500px;
+}
+
+.location_time {
+    display: flex;
+    justify-content: space-between;
+    width: 600px;
+}
+
+.card-content p {
+    color: #999;
+    font-size: 14px;
+}

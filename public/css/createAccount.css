@@ -1,0 +1,84 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    display: flex;
+    height: 100vh;
+}
+
+h1 {
+    margin-bottom: 10px;
+}
+
+.create-container {
+    margin: 12%;
+    margin-top: 10vh;
+    font-size: auto;
+}
+
+.google-btn {
+    font-size: 20px;
+    margin: 20px 0;
+    padding: 15px;
+    border-radius: 25px;
+    width: 100%;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-account {
+    margin: 0 10%;
+}
+
+.divider {
+    font-size: 20px;
+    text-align: center;
+    margin: 10px;
+}
+
+#confirm-password,
+#name,
+#password,
+#email {
+    font-size: large;
+    width: 100%;
+    padding: 15px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 25px;
+}
+
+#submit {
+    font-size: larger;
+    background-color: rgb(69, 69, 204);
+    color: #fff;
+    width: 100%;
+    border-radius: 25px;
+    padding: 15px;
+    margin: 10px 0;
+    border: none;
+    cursor: pointer;
+}
+
+#left-img {
+    width: 50%;
+}
+
+.password-container {
+    position: relative;
+  }
+
+  .eye-icon {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+}

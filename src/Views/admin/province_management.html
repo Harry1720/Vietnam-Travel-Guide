@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý tỉnh thành</title>
+    <link rel="stylesheet" href="../../../public/css/Admin/province_management.css">
+    <link rel="stylesheet" href="../../../public/css/navbar.css">
+    <link rel="stylesheet" href="../../../public/css/sidebar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    
+</head>
+<body>
+    <script src="/public/js/Admin/province_management.js"></script>
+    <script src="../../../include/navbar.js"></script>
+    <script src="../../../include/sidebar.js"></script>
+
+<div class="main-content">
+    <div class="province-management">
+        <button class="add-destination-btn" id="open">
+            Thêm Địa Điểm <ion-icon style="margin-left: 5px;" name="add-circle-outline"></ion-icon>
+        </button>
+
+        <div class="search-container">
+            <input type="text" placeholder="Tìm kiếm tỉnh thành" class="search-bar">
+            <ion-icon name="search-outline" class="search-icon"></ion-icon>
+        </div>
+        <!-- List Province Table -->
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                <tr>
+                    <th>STT</th>
+                    <th>Tên Tỉnh Thành</th>
+                    <th>Mã Vùng</th>
+                    <th>Thao Tác</th>
+                </tr>
+                </thead>
+                <tbody id="province-List">
+                    <!-- Ví dụ một tỉnh thành -->
+                    <tr onclick="toggleDestinations(1)">
+                        <td>1</td>
+                        <td>Hà Nội</td>
+                        <td>01</td>
+                        <td>
+                            <button class="edit-btn">
+                                <ion-icon name="create-outline"></ion-icon> 
+                            </button>
+                            <button class="delete-btn">
+                                <ion-icon name="trash-outline"></ion-icon> 
+                            </button>
+                        </td>
+                    </tr>
+                    <!-- Bảng con ẩn chứa các điểm đến -->
+                    <tr class="destination-row" id="destinations-1" style="display: none;">
+                        <td colspan="4">
+                            <div class="destination-table-wrapper">
+                                <table class="destination-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Điểm Đến</th>
+                                            <th>Mô Tả</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Hồ Hoàn Kiếm</td>
+                                            <td>Biểu tượng của thủ đô Hà Nội</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Văn Miếu - Quốc Tử Giám</td>
+                                            <td>Trường đại học đầu tiên của Việt Nam</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr onclick="toggleDestinations(2)">
+                        <td>2</td>
+                        <td>Đà Nẵng</td>
+                        <td>43</td>
+                        <td>
+                            <button class="edit-btn">
+                                <ion-icon name="create-outline"></ion-icon> 
+                            </button>
+                            <button class="delete-btn">
+                                <ion-icon name="trash-outline"></ion-icon> 
+                            </button>
+                        </td>
+                    </tr>
+                    <!-- Bảng con ẩn chứa các điểm đến cho Đà Nẵng -->
+                    <tr class="destination-row" id="destinations-2" style="display: none;">
+                        <td colspan="4">
+                            <div class="destination-table-wrapper">
+                                <table class="destination-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Điểm Đến</th>
+                                            <th>Mô Tả</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Cầu Rồng</td>
+                                            <td>Cây cầu biểu tượng của Đà Nẵng, có hình dạng con rồng</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Bãi biển Mỹ Khê</td>
+                                            <td>Bãi biển nổi tiếng với cát trắng mịn và nước biển trong xanh</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+
+            </table>
+
+            <!-- Phân trang cho danh sách tỉnh thành -->
+            <div class="pagination">
+                <button class="page-btn" onclick="loadPage(1)">1</button>
+                <button class="page-btn" onclick="loadPage(2)">2</button>
+                <button class="page-btn" onclick="loadPage(3)">3</button>
+                <button class="page-btn" onclick="loadPage(4)">4</button>
+                <button class="page-btn" onclick="loadPage(5)">5</button>
+                <button class="page-btn" onclick="loadPage(6)">6</button>
+                <button class="page-btn" onclick="loadPage(7)">7</button>
+                
+            </div>
+        </div>
+        <div id="popup" class="popup-overlay">
+            <div class="popup-content">
+                <p>Bạn có muốn xóa người dùng này?</p>
+                <button id="yes-btn" class="popup-btn">Có</button>
+                <button id="no-btn" class="popup-btn">Không</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="popup1-overlay" id="popup1Overlay">
+    <div class="popup1-content">
+        <span class="popup1-close" id="close">&times;</span>
+        <div class="wrapper" id = "">
+            <form id="destination-form" enctype="multipart/form-data">
+                <div class="field input">
+                    <label for="destinationName">Tên điểm đến</label>
+                    <input type="text" id="destinationName" name="destinationName" placeholder="Hội An" required>
+                </div>
+                <div class="field input" style="margin-bottom: 20px;">
+                    <label for="province" >Tỉnh/Thành Phố</label>
+                    <select id="province" name="province">
+                        <option value="Đà Nẵng">Đà Nẵng</option>
+                        <option value="Hà Nội">Hà Nội</option>
+                    </select>
+                </div>
+
+                <div class="field input">
+                    <label for="description">Mô tả điểm đến</label>
+                    <textarea wrap="soft" id="description" name="description" required></textarea>
+                </div>                
+
+                <div class="field input" style="margin-bottom: 20px;">
+                    <label for="image" >Tải ảnh:</label>
+                    <input type="file" id="image" name="image">
+                </div>
+                <div class="button">
+                    <input type="submit" value="Lưu" class="save" id="saveButton">
+                    <input type="button" value="Hủy" class="cancel" id="cancelButton">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

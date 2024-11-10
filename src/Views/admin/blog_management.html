@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý blog</title>
+    <link rel="stylesheet" href="../../../public/css/Admin/blog_management.css">
+    <link rel="stylesheet" href="../../../public/css/navbar.css">
+    <link rel="stylesheet" href="../../../public/css/sidebar.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+<body>
+    <script src="../../../public/js/Admin/blog_management.js"></script>
+    <script src="../../../include/navbar.js"></script>
+    <script src="../../../include/sidebar.js"></script>
+
+    <div class="main-content">
+        <div class="blog-management">
+    
+            <div class="search-container">
+                <input type="text" placeholder="Tìm kiếm bài viết" class="search-bar">
+                <ion-icon name="search-outline" class="search-icon"></ion-icon>
+            </div>
+    
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="center-heading">STT</th>
+                            <th class="center-heading">Tên bài viết</th>
+                            <th class="center-heading">Nội dung</th>
+                            <th class="center-heading">Tác giả</th>
+                            <th class="center-heading">Trạng Thái</th>
+                        </tr>
+                    </thead>
+                    <tbody id="blog-list">
+                        <tr>
+                            <td>1</td>
+                            <td>Bài viết mẫu 1</td>
+                            <td>Nội dung mẫu 1</td>
+                            <td>Nguyễn Văn A</td>
+                            <td>
+                                <select>
+                                    <option style="padding: 10px; border-radius: 3px;" value="Chờ duyệt">Chờ duyệt</option>
+                                    <option value="Đã duyệt">Đã duyệt</option>
+                                    <option value="Không được duyệt">Không được duyệt</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Bài viết mẫu 2</td>
+                            <td>Nội dung mẫu 2</td>
+                            <td>Trần Thị B</td>
+                            <td>
+                                <select>
+                                    <option value="Chờ duyệt">Chờ duyệt</option>
+                                    <option value="Đã duyệt">Đã duyệt</option>
+                                    <option value="Không được duyệt">Không được duyệt</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Bài viết mẫu 3</td>
+                            <td>Nội dung mẫu 3</td>
+                            <td>Phạm Văn C</td>
+                            <td>
+                                <select>
+                                    <option value="Chờ duyệt">Chờ duyệt</option>
+                                    <option value="Đã duyệt">Đã duyệt</option>
+                                    <option value="Không được duyệt">Không được duyệt</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+            </div>
+        </section>
+    </div>    
+</body>
+</html>
+    

@@ -1,0 +1,56 @@
+body{
+    bottom: 0;
+    position: sticky;
+}
+footer {
+    display: block;
+    background: hsl(223, 80%, 52%);
+    padding-bottom: 20px;
+    padding: 10px;
+    width: 100%;
+    text-align: center;
+    left: 0;
+}
+
+.footer_name {
+    text-align: center;
+    font-family: helvetica;
+    color: white;
+    padding-bottom: 20px;
+}
+
+.footer_logo {
+    text-align: center;
+    padding: 20px 0px 10px;
+}
+
+.footer_logo_img {
+    width: 100px;
+}
+
+.copyright_text {
+    text-align: center;
+    font-family: helvetica;
+    color: white;
+}
+
+.nav_footer_menu ul {
+    justify-content: center;
+    list-style: none;
+    display: flex;
+}
+
+.nav_footer_menu ul li {
+    padding: 10px 30px 30px;
+}
+
+.nav_footer_menu ul li a {
+    text-decoration: none;
+    font-size: 17px;
+    font-family: helvetica;
+    color: #ffffff;
+}
+
+.nav_footer_menu ul li a:hover {
+    color: burlywood;
+}

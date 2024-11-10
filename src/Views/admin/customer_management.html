@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý khách hàng</title>
+    <link rel="stylesheet" href="../../../public/css/Admin/customer_management.css">
+    <link rel="stylesheet" href="../../../public/css/sidebar.css">
+    <link rel="stylesheet" href="../../../public/css/navbar.css">
+
+</head>
+
+<body>
+<!--JS-->
+<script src="../../../include/sidebar.js"></script>
+<script src="../../../include/navbar.js"></script>
+
+
+<script src="../../../public/js/Admin/customer_management.js"></script>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bcryptjs/2.4.3/bcrypt.min.js"></script>
+
+<div class="main-content">
+    <div class="customer-management">
+        <button class="add-user-btn" id="openpopup1">
+            Thêm Người Dùng <ion-icon style="margin-left: 5px;" name="add-circle-outline"></ion-icon>
+        </button>
+
+        <div class="search-container">
+            <input type="text" placeholder="Nhập họ tên để tìm kiếm..." class="search-bar">
+            <ion-icon name="search-outline" class="search-icon"></ion-icon>
+        </div>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th>Tên Khách Hàng</th>
+                        <th>Email</th>
+                        <th>Giới Tính</th>
+                        <th>Vai Trò</th>
+                        <th>Lựa Chọn</th>
+                    </tr>
+                </thead>
+                <tbody id="customer-table-body">
+                    <!-- Ví dụ về một hàng dữ liệu -->
+                    <tr>
+                        <td>1</td>
+                        <td>Nguyễn Văn A</td>
+                        <td>nguyenvana@email.com</td>
+                        <td>Nam</td>
+                        <td>Khách hàng</td>
+                        <td class="action-btn-frame">
+                            <button class="action-btn edit" id="edit-btn">
+                                <ion-icon name="create"></ion-icon>
+                            </button>
+                            <button class="action-btn delete">
+                                <ion-icon name="trash"></ion-icon>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Popup -->
+        <div id="popup" class="popup-overlay">
+            <div class="popup-content">
+                <p>Bạn có muốn xóa người dùng này?</p>
+                <button id="yes-btn" class="popup-btn">Có</button>
+                <button id="no-btn" class="popup-btn">Không</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="popup1-overlay" id="popup1Overlay">
+    <div class="popup1-content">
+        <span class="popup1-close" id="closepopup1">&times;</span>
+        <div class="wrapper" id = "addUser">
+            <form id="user-form" enctype="multipart/form-data">
+                    <div class="field input">
+                        <label for="userName">Họ và Tên</label>
+                        <input type="text" id="userName" name="userName" placeholder="Nguyễn Văn A" required>
+                    </div>
+
+                <div class="field input">
+                    <label for="email">Email</label>
+                    <input type="tel" id="email" name="email" placeholder="nguyenvana@gmail.com" required>
+                </div>
+
+                <div class="field input">
+                    <label for="password">Mật khẩu</label>
+                    <div style="position: relative;">
+                        <input type="password" id="password" name="password" required>
+                        <span id="togglePassword" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;">
+                            <ion-icon style = "color: #35679C" name="eye-outline"></ion-icon>
+                        </span>
+                    </div>
+                </div>
+                <div class="field input" style="margin-bottom: 20px;">
+                    <label for="role" >Chức Vụ</label>
+                    <select id="role" name="Role">
+                        <option value="Admin">Admin</option>
+                        <option value="Customer">Blogger</option>
+                    </select>
+                </div>
+                <div class="button">
+                    <input type="submit" value="Tạo" class="save" id="saveButton">
+                    <input type="button" value="Hủy" class="cancel" id="cancelButton">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="popup1-overlay" id="popup2Overlay">
+    <div class="popup1-content">
+        <span class="popup1-close" id="closepopup2">&times;</span>
+        <div class="wrapper" id = "updateUser">
+            <form id="user-form" enctype="multipart/form-data">
+                    <div class="field input">
+                        <label for="userName">Họ và Tên</label>
+                        <input type="text" id="userName" name="userName" placeholder="Nguyễn Văn A" required>
+                    </div>
+
+                <div class="field input">
+                    <label for="email">Email</label>
+                    <input type="tel" id="email" name="email" placeholder="nguyenvana@gmail.com" required>
+                </div>
+
+                <div class="field input">
+                    <label for="password">Mật khẩu</label>
+                    <div style="position: relative;">
+                        <input type="password" id="password" name="password" required>
+                        <span id="togglePassword" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;">
+                            <ion-icon style = "color: #35679C" name="eye-outline"></ion-icon>
+                        </span>
+                    </div>
+                </div>
+                <div class="field input" style="margin-bottom: 20px;">
+                    <label for="role" >Chức Vụ</label>
+                    <select id="role" name="Role">
+                        <option value="Admin">Admin</option>
+                        <option value="Customer">Blogger</option>
+                    </select>
+                </div>
+                <div class="button">
+                    <input type="submit" value="Cập nhật" class="save" id="saveButton">
+                    <input type="button" value="Hủy" class="cancel" id="cancelButton">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    // Function to set the form mode
+    function setFormMode(isEditMode) {
+        const passwordField = document.getElementById('password');
+        const togglePasswordCheckbox = document.getElementById('togglePassword');
+
+        if (isEditMode) {
+            // Disable the password field for editing mode
+            passwordField.disabled = true;
+            togglePasswordCheckbox.disabled = true; // Disable the toggle checkbox as well
+        } else {
+            // Enable the password field for adding new user mode
+            passwordField.disabled = false;
+            togglePasswordCheckbox.disabled = false; // Enable the toggle checkbox
+        }
+    }
+
+    const isEditMode = window.location.href.includes('edit');
+
+    // Set the form mode accordingly
+    setFormMode(isEditMode);
+
+    // Toggle Password Visibility
+    document.getElementById('togglePassword').addEventListener('change', function () {
+        const passwordField = document.getElementById('password');
+        passwordField.type = this.checked ? 'text' : 'password';
+    });
+</script>
+</body>
+</html>

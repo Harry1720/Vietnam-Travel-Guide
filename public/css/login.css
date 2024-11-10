@@ -1,0 +1,111 @@
+* {
+    margin: 0;
+    padding: 0; 
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+#img {
+    float: left;
+    width: 54%;
+    height: 100vh; /* Chiều cao 100% của viewport */
+    position: relative; /* Đặt vị trí tương đối cho phần tử cha */
+}
+
+#left-img {
+    width: 91%;
+    height: 100%;
+    position: absolute; /* Đặt vị trí tuyệt đối cho hình ảnh */
+    bottom: 0; /* Gắn hình ảnh vào đáy của phần tử cha */
+}
+
+#login-container {
+    float: left;
+    width: 46%;
+    height: 100vh;/* Chiều cao 100% của viewport */
+    padding: 7% 10% 5% 10%;
+    box-sizing: border-box;
+    overflow-y: auto;
+    margin-left: -50px;
+}
+
+h1, h4 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.google-btn {
+    font-size: 20px;
+    margin: 20px 0;
+    padding: 15px;
+    border-radius: 25px; 
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+.create-account {
+    margin: 20px 0 10px 0;
+    text-align: center;
+}
+
+.form-options {
+    margin: 10px 0;
+}
+
+.form-options a {
+    width: 150px;
+    float: right;
+}
+
+.form-options div {
+    width: 150px;
+    float: left;
+}
+
+.divider {
+    font-size: 20px;
+    text-align: center;
+    margin: 10px 0;
+}
+
+#password,
+#email {
+    font-size: large;
+    width: 100%;
+    padding: 15px;
+    margin: 10px 0;
+    border: 1px solid #ddd; 
+    border-radius: 25px;
+}
+
+#submit {
+    font-size: 100%;
+    background-color: rgb(69, 69, 204);
+    color: #fff; 
+    width: 100%; 
+    border-radius: 25px; 
+    padding: 15px;
+    margin: 10px 0px; 
+    border: none; 
+    cursor: pointer;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 1000px) {
+    #img, #login-container {
+        width: 100%; /* Đặt chiều rộng cho cả hai phần tử là 100% khi màn hình nhỏ hơn 1000px */
+    }
+}
+
+
+.form-group {
+    position: relative;
+  }
+
+.eye-icon {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+}

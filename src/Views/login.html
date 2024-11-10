@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="../../public/css/login.css">
+</head>
+<body>
+
+    <div id="main">
+
+        <div id="img">
+            <img src="../../public/image/test1.jpg" alt="Không Hiển Thị" id="left-img">
+        </div>
+    
+        <div id="login-container">
+            <h1>Welcome To Travel Guilds 👋</h1>
+            <h4>Continue with Google or Enter Login Details</h4>
+
+            <div class="google-btn">
+                <img src="google-icon.png" alt=""> Continue with Google
+            </div>
+
+            <div class="divider">or</div>
+
+            <form class="login-form" method="POST" action="../../src/FunctionOfActor/both/login.php">
+                <div class="form-group">
+                    <input type="email" id="email" name="email"  placeholder="Email Address" class="input" required>
+                </div>
+                
+                
+
+                <div class="form-group">
+                    <input type="password" id="password" name="password" placeholder="Password" class="input" required>
+                    <span class="eye-icon" onclick="this.previousElementSibling.type = this.previousElementSibling.type === 'password' ? 'text' : 'password'">
+                        👁️‍🗨️
+                    </span>
+                </div>
+
+
+
+
+                <div class="form-options">
+                    <div>
+                        <input type="checkbox"> Remember me
+                    </div>
+                    <a href="../../src/Views/blogger/forgotPassword.html">Forgot Password?</a>
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" id="submit" class="input" value="Log In">
+                </div>
+                
+                <div class="create-account">
+                    <p id="register">Don't have an account yet? <a href="../../src/Views/createAccount.html">Create account</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

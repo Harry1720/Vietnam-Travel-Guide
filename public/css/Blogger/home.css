@@ -1,0 +1,131 @@
+.section-common {
+    padding: 40px;
+    position: relative;
+}
+
+.section-common .btn-page {
+    position: absolute;
+    right: 0;
+    transform: translateY(-100%);
+    margin-right: 98px;
+    padding: 10px 25px;
+    color: #35679c;
+    border: 2px solid #35679c;
+    border-radius: 50px;
+    font-size: 15px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.section-common .btn-page:hover {
+    background-color: #35679c;
+    color: white;
+}
+
+.section-common h2 {
+    font-size: 30px;
+    padding-top: 35px;
+    margin: 0px 0px 5px 50px;
+}
+
+.section-common>p {
+    font-size: 16px;
+    color: #666;
+    margin: 10px 0px 0px 50px;
+}
+
+.grid-common {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin: 50px 80px 0px;
+}
+
+.card-common {
+    text-align: center;
+}
+
+.card-common img {
+    width: 395px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.card-common h4 {
+    margin-top: 10px;
+    font-size: 20px;
+}
+
+.card-common p {
+    margin-top: 10px;
+    color: #666;
+}
+
+.section-common.blog {
+    padding: 40px;
+}
+
+.section-common.blog .grid-common {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    /* 2 cột */
+    gap: 50px;
+    /* Khoảng cách giữa các phần tử */
+    margin: 50px 80px 0px;
+}
+
+.section-common.blog img {
+    width: 500px;
+}
+
+.location_time {
+    display: flex;
+    justify-content: space-between;
+    width: 535px;
+    padding-left: 40px;
+}
+
+.card-content p {
+    color: #999;
+    font-size: 14px;
+}
+
+.card-content h4 {
+    font-size: 22px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.card-content span {
+    font-size: 12px;
+    color: #888;
+}
+
+@media (max-width: 900px) {
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    .destinations {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(3, 1fr);
+    }
+    .article {
+        height: calc(100vh / 3);
+    }
+}
+
+@media (max-width: 600px) {
+    .hero h1 {
+        font-size: 2rem;
+    }
+    .nav a,
+    .sub_nav a {
+        font-size: 0.9rem;
+    }
+    .btn-login {
+        font-size: 0.9rem;
+        padding: 8px 16px;
+    }
+}

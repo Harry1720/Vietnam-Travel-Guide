@@ -3,6 +3,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f6f9ff;
+    overflow-x: hidden;
 }
 
 .main-content {
@@ -11,6 +12,7 @@ body {
     background-color: #FAFAFB;
     min-height: 100vh;
     width: calc(100% - 280px);
+    
 }
 
 /* Post Management Card */
@@ -20,6 +22,7 @@ body {
     border-radius: 12px;
     padding: 24px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    
 }
 
 

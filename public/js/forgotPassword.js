@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function (){
-    const Back = document.getElementById('back-btn');
+    const backButton = document.getElementById('back-btn');
 
-    document.addEventListener('click', function() {
+    backButton.addEventListener('click', function() {
         window.location.href = "/src/Views/login.html";
-    })
-})
+    });
+});

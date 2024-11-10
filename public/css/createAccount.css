@@ -8,10 +8,12 @@
 body {
     display: flex;
     height: 100vh;
+    color: #35679C;
 }
 
 h1 {
     margin-bottom: 10px;
+    text-align: center;
 }
 
 .create-container {
@@ -31,16 +33,31 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
+    color: #35679C;
+    text-align: center;
+}
+.google-btn:hover {
+    background-color: #ffffff;
+    border: 1px solid #35679C;
+    cursor: pointer;
+}
+
+.google-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
 }
 
 .login-account {
     margin: 0 10%;
+    text-align: center;
 }
 
 .divider {
     font-size: 20px;
     text-align: center;
     margin: 10px;
+    color: black;
 }
 
 #confirm-password,
@@ -51,21 +68,38 @@ h1 {
     width: 100%;
     padding: 15px;
     margin: 10px 0;
-    border: 1px solid #ddd;
+    border: 2px solid #ddd;
     border-radius: 25px;
+    outline: none;
+}
+
+#confirm-password:focus,
+#name:focus,
+#password:focus,
+#email:focus{
+    border: 2px solid #35679C;
 }
 
 #submit {
     font-size: larger;
-    background-color: rgb(69, 69, 204);
+    background-color: #35679C;
     color: #fff;
-    width: 100%;
+    width: 60%;
     border-radius: 25px;
     padding: 15px;
-    margin: 10px 0;
+    margin-top: 20px;
     border: none;
     cursor: pointer;
+    margin-left: 21%;
+    border: 2px solid #35679C;
+    margin-bottom: 15px;
 }
+#submit:hover{
+    border: 2px solid #35679C;
+    background-color: #fff;
+    color: #35679C;
+}
+
 
 #left-img {
     width: 50%;

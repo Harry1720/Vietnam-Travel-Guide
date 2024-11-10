@@ -3,19 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Verification Page</title>
+    <title>Xác thực</title>
     <link rel="stylesheet" href="../../public/css/VerificationCode.css">
-    <script src="../../public/js/Verification.js"> </script>
+    <script src="../../public/js/Verification.js" defer></script>
 </head>
 <body>
     <div class="verification-container">
         <div class="left-section">
             <img src="../../public/image/test1.jpg" alt="không hiển thị" id="left-img">
-            
         </div>
         <div class="right-section">
-            <h1>Enter Verification Code</h1>
-            <p>We have just sent a verification code to <strong>gmail</strong></p>
+            <h1>Nhập Mã Xác Thực</h1>
+            <p>Mã đã được gửi về <strong>email</strong> của bạn!</p>
             
             <div class="code-inputs">
                 <input type="text" maxlength="1" class="code-box">
@@ -23,10 +22,16 @@
                 <input type="text" maxlength="1" class="code-box">
                 <input type="text" maxlength="1" class="code-box">
             </div>
-            <button class="verify-button">Verify</button>
-            <button class="resend-button">Resend Code</button>
+
+            <button class="verify-button">Xác thực</button>
+
+            <!-- Timer section -->
+            <p id="timer">Vui lòng đợi <span id="countdown">60</span> giây để gửi lại mã</p>
+
+            <!-- Resend Code button (hidden initially) -->
+            <button class="resend-button" id="resendButton" style="display: none;">Gửi lại mã</button>
         </div>
     </div>
-    
+
 </body>
 </html>

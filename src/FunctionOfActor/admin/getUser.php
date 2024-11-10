@@ -18,7 +18,8 @@
                     'email' => $editUser['email'] ?? 'Lỗi Hiển Thị',
                     'role' => $editUser['role_'] ?? 'Lỗi Hiển Thị',
                     'address' => $editUser['address'] ?? 'Lỗi Hiển Thị',
-                    'password' => $editUser['pass_word'] ?? 'Lỗi Hiển Thị'
+                    'password' => $editUser['pass_word'] ?? 'Lỗi Hiển Thị',
+                    'gender' => $editUser['gender'] ?? 'Lỗi Hiển Thị'
                 ];
                 echo json_encode($userData, JSON_UNESCAPED_UNICODE);
             } else {

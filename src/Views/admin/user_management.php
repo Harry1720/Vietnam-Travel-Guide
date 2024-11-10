@@ -51,6 +51,13 @@
     $userOfPage = $adController->getUserOfPage($Start,$limit);
 ?>
 
+<?php
+    include_once "../../Controllers/bothController.php";
+    
+        $bothcontroller = new bothController();
+        $provinces = $bothcontroller->getAllProvinces();
+?>
+
 <div class="main-content">
     <div class="customer-management">
         <button class="add-user-btn" id="openpopup1">
@@ -82,10 +89,11 @@
                             ?>
                             <tr>
                                 <td><?php echo $stt++ ?></td>
-                                <td><?php echo $user['userName']?></td>
-                                <td><?php echo $user['email']?></td>
-                                <td><?php echo $user['email']?></td>
-                                <td><?php echo $user['role_']?></td>
+                                <td><?php echo $user['userName'] ?? 'Lỗi Hiển Thị'?></td>
+                                <td><?php echo $user['email'] ?? 'Lỗi Hiển Thị'?></td>
+                                <td><?php echo $user['gender'] ?? 'Lỗi Hiển Thị'?></td>
+                                <td><?php echo $user['address_'] ?? 'Lỗi Hiển Thị'?></td>
+                                <td><?php echo $user['role_'] ?? 'Lỗi Hiển Thị'?></td>
                                 <td class="action-btn-frame">
                                     <button class="action-btn edit" id="edit-btn" onclick="editUser(<?php echo $user['userID']?>)">
                                         <ion-icon name="create"></ion-icon>
@@ -139,6 +147,11 @@
                 <div class="field input">
                     <label for="address">Tỉnh/Thành Phố</label>
                     <select id="address" name="address">
+                        <?php
+                            foreach ($provinces as $province) {
+                                echo '<option value="' . $province['provinceID'] . '">' . $province['provinceName'] . '</option>';
+                            }
+                        ?>
                     </select>
                 </div>
 
@@ -155,10 +168,12 @@
                     <label for="role" >Chức Vụ</label>
                     <select id="role" name="role">
                         <option value="Admin">Admin</option>
-                        <option value="Customer">Blogger</option>
+                        <option value="Blogger">Blogger</option>
                     </select>
                     <label for="gender">Giới Tính</label>
                     <select id="gender" name="gender">
+                        <option value="Male">Nam</option>
+                        <option value="FeMale">Nữ</option>
                     </select>
                 </div>
                 <div class="button">
@@ -187,6 +202,11 @@
                 <div class="field input">
                     <label for="address1">Tỉnh/Thành Phố</label>
                     <select id="address1" name="address1">
+                        <?php
+                            foreach ($provinces as $province) {
+                                echo '<option value="' . $province['provinceID'] . '">' . $province['provinceName'] . '</option>';
+                            }
+                        ?>
                     </select>
                 </div>
 
@@ -203,7 +223,7 @@
                     <label for="role1" >Chức Vụ</label>
                     <select id="role1" name="role1">
                         <option value="Admin">Admin</option>
-                        <option value="Customer">Blogger</option>
+                        <option value="Blogger">Blogger</option>
                     </select>
                     <label for="gender1">Giới Tính</label>
                     <select id="gender1" name="gender1">

@@ -3,10 +3,9 @@ CREATE TABLE users (
   userID INT AUTO_INCREMENT PRIMARY KEY,
   userName VARCHAR(50) NOT NULL,
   pass_word VARCHAR(20) NOT NULL,
-  address_ VARCHAR(250) NOT NULL,
   role_ VARCHAR(50) NOT NULL,
   email VARCHAR(50) NOT NULL UNIQUE,
-  status BOOLEAN NOT NULL
+  status_ BOOLEAN NOT NULL
 );
 
 CREATE TABLE province (
@@ -83,7 +82,7 @@ CREATE table repComment (
 	FOREIGN KEY (userID) REFERENCES users(userID)
 );
 
-INSERT INTO users (userName, pass_word, role_, email, status) VALUES 
+INSERT INTO users (userName, pass_word, role_, email, status_) VALUES 
 ('Admin', 'adminPassword', 'Admin', 'admin@example.com', true),
 ('Trần Đăng B', 'password3', 'Blogger', 'user3@example.com', true),
 ('Trần Thị C', 'password4', 'Blogger', 'user4@example.com', true),

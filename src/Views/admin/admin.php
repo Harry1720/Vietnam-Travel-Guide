@@ -42,22 +42,22 @@
     <div class="content">
         <div id="account-info" class="section">
             <h2>TÀI KHOẢN CỦA TÔI</h2>
-            <form>
+            <form action = "../../FunctionOfActor/admin/updateAdmin.php" name = "update_admin" method="POST">
                 <div class = "form_user">
                     <label for="name"><i class="fa fa-user"></i> Họ và Tên</label>
-                    <input type="text" id="name" value="<?php echo $name?>" disabled>
+                    <input type="text" id="name" name="name" value="<?php echo $name?>" disabled>
                 </div>
                 <div>
                     <label for="email1"><i class="fa fa-envelope"></i> Email</label>
-                    <input type="email" id="email1" value="<?php echo $email?>" disabled>
+                    <input type="email" id="email1" name="email1" value="<?php echo $email?>" disabled>
                 </div>
                 <div>
                     <label for="address"><i class="fa fa-address-book"></i> Địa chỉ</label>
-                    <input type="text" id="address" value="<?php echo $address ?>" disabled>
+                    <input type="text" id="address" name="address" value="<?php echo $address ?>" disabled>
                 </div>
                 <div>
                     <label for="role"><i class="fa fa-building"></i> Chức vụ</label>
-                    <input type="text" id="role" value="<?php echo $role?>" disabled>
+                    <input type="text" id="role" name="role" value="<?php echo $role?>" disabled>
                 </div>
                 <!-- <div>
                     <label> <ion-icon name="transgender-outline"></ion-icon> Giới tính</label>
@@ -69,7 +69,7 @@
                 </div> -->
                 <div class="button-group">
                     <button type="button" id="unlock_user">CHỈNH SỬA</button>
-                    <button type="button" id="Update_user" onclick="updateUser()" style="display: none">CẬP NHẬT</button>
+                    <button type="submit" id="Update_user" style="display: none">CẬP NHẬT</button>
                     <!-- <button type="button" onclick="openChangePasswordForm()">Đổi Mật Khẩu</button> -->
                 </div>
             </form>

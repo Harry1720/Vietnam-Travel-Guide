@@ -133,11 +133,11 @@ class AdminController{
     public function getAdminById()
     {
         // Lấy ID của người dùng từ session
-        // $userId = $_SESSION['blogger_id'];
-        $userId = 50;
+        // $admin = $_SESSION['blogger_id'];
+        $admin = 50;
 
         // Truy vấn thông tin người dùng từ cơ sở dữ liệu
-        $sql = "SELECT * FROM users WHERE userID = '$userId'";
+        $sql = "SELECT * FROM users WHERE userID = '$admin'";
         $user = mysqli_query($this->conn->connect(), $sql);
 
         if($user){
@@ -157,5 +157,38 @@ class AdminController{
         }
     }
 
+
+    public function updateAdmin(){
+        // $admin = $_SESSION['blogger_id'];
+        $admin = 50;
+        $name = $_POST['name'];
+        $email = $_POST['email1'];
+        $address = $_POST['address'];
+
+        echo  $admin;
+        echo $name;
+        echo $email;
+        echo $address;
+
+        if (!empty($admin) && !empty($name) && !empty($email)) {
+
+            $sql = "UPDATE users
+                    SET userName = '$name', email = '$email'
+                    WHERE userid = '$admin'";
+
+            $update_query = mysqli_query($this->conn->connect(),$sql);
+            
+            if($update_query){
+                header("Location: ../../views/admin/admin.php");
+                exit();
+            }
+            else {
+                // Cập nhật thất bại
+                echo "Cập nhật thông tin thất bại. Vui lòng thử lại.";
+            }
+        } else {
+            echo "Vui lòng điền đầy đủ thông tin.";
+        }
+    }
 }
 ?>

@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
             <ul class="main-menu">
                 <li><a href="admin.php"><span class="icon"><ion-icon name="home-outline"></ion-icon></span> Trang chủ</a></li>
                 <li class="submenu">
-                    <a href="customer_management.html"><ion-icon name="people-outline"></ion-icon> Quản lý người dùng</a>
+                    <a href="user_management.php"><ion-icon name="people-outline"></ion-icon> Quản lý người dùng</a>
                 </li>
                 <li class="submenu">
                     <a href="post_management.html"><ion-icon name="server-outline"></ion-icon> Quản lý post</a>

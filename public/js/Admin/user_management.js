@@ -2,7 +2,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const customerForm = document.getElementById("user-form");
     const searchInput = document.querySelector('.search-bar');
     const popup1Overlay = document.getElementById('popup1Overlay');
-    const token = localStorage.getItem('authToken');
+    const deleteBtns = document.querySelectorAll('.delete-btn');
+    const popup = document.getElementById('popup');
 
     searchInput.addEventListener('input', () => {
         const searchText = searchInput.value.trim().toLowerCase();
@@ -57,6 +58,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    deleteBtns.forEach(button => {
+        button.addEventListener('click', () => {
+            popup.style.display = 'flex';
+        });
+    });
 
     window.addEventListener('click', (event) => {
         if (event.target === popup1Overlay && confirm("Xác nhận hủy?")) {

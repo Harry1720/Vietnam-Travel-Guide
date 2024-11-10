@@ -26,7 +26,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.querySelectorAll('.edit').forEach(button => { //để kích hoạt mọi nút edit-btn mỗi dòng
         button.addEventListener('click', () => {
-            resetFormState();
             popup2Overlay.style.display = 'flex';
         });
     });
@@ -82,4 +81,65 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+async function editUser(userId) {
+    try {
+        console.log('Fetching user data for ID:', userId);
+        
+        const response = await fetch(`../../FunctionOfActor/admin/getUser.php?editId=${userId}`);
+        console.log('Raw response:', response);
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        const rawData = await response.text();
+        
+        let userData;
+        try {
+            userData = JSON.parse(rawData); // Thử parse JSON
+            console.log('Parsed user data:', userData);
+        } catch (parseError) {
+            console.error('JSON parse error:', parseError);
+            console.log('Failed to parse response:', rawData);
+            throw new Error('Invalid JSON response');
+        }
+    
+        
+        // Update form fields
+        document.getElementById('userName1').value = userData.userName;
+        document.getElementById('email1').value = userData.email;
+        document.getElementById('password1').value = userData.password;
+        //document.getElementById('address1').value = userData.address;
+        document.getElementById('role1').value = userData.role;
+        
+    } catch (error) {
+        console.error('Error in editUser function:', error);
+        alert('Error loading user data. Please check console for details.');
+    }
+}
+// Function to set the form mode
+function setFormMode(isEditMode) {
+    const passwordField = document.getElementById('password');
+    const togglePasswordCheckbox = document.getElementById('togglePassword');
 
+    if (isEditMode) {
+        // Disable the password field for editing mode
+        passwordField.disabled = true;
+        togglePasswordCheckbox.disabled = true; // Disable the toggle checkbox as well
+    } else {
+        // Enable the password field for adding new user mode
+        passwordField.disabled = false;
+        togglePasswordCheckbox.disabled = false; // Enable the toggle checkbox
+    }
+}
+
+const isEditMode = window.location.href.includes('edit');
+
+// Set the form mode accordingly
+setFormMode(isEditMode);
+
+// Toggle Password Visibility
+document.getElementById('togglePassword').addEventListener('change', function () {
+    const passwordField = document.getElementById('password');
+    passwordField.type = this.checked ? 'text' : 'password';
+});

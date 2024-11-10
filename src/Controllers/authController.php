@@ -58,15 +58,49 @@ class AuthController{
 
 
     // check Email tồn tại chưa
-    private function checkIssetEmail($email)
+    public function checkIssetEmail($email)
     {
         $sql = mysqli_query($this->conn->connect(), "SELECT * FROM users WHERE email = '{$email}'");
         if(mysqli_num_rows($sql) > 0){
-            echo "$email - Email này đã tồn tại!";
             return true;
         }
         return false;
     }
+    
+    public function checkVerificationEmail($email){
+        // Ensure session is started
+        if (!isset($_SESSION['attempts'])) {
+            $_SESSION['attempts'] = 1;  // Initialize attempts if not already set
+        }
+
+        // Checking the email verification logic
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $email = $_POST['email'];  // Email from form
+
+            // Check if email exists using the class method
+            $isEmailExist = $this->checkIssetEmail($email);  
+
+            // If the email exists in the database, reset attempts and proceed
+            if ($isEmailExist) {
+                $_SESSION['attempts'] = 1;  // Reset attempts if email is correct
+                echo "Email found, proceeding to next step.";
+                header("Location: /Vietnam-Travel-Guide/src/Views/Blogger/home.html");  // Redirect to home or another page
+                exit();  // Stop script execution after redirect
+            } else {
+                // If email is not found, increment the attempt count
+                $_SESSION['attempts']++;
+
+                // Check if attempts have reached the limit (5 attempts)
+                if ($_SESSION['attempts'] >= 5) {
+                    header("Location: /Vietnam-Travel-Guide/src/Views/forgotPassword.html");  // Redirect to forgot password page
+                    exit();  // Stop script execution after redirect
+                } else {
+                    echo "Invalid email. You have " . (5 - $_SESSION['attempts']) . " attempts left.";
+                }
+            }
+        }
+    }
+
 
     public function signUp()
     {
@@ -102,7 +136,7 @@ class AuthController{
         }
 
         if($this->checkIssetEmail($email)){
-            echo "Email đã tồn tại!";
+            echo "$email - Email này đã tồn tại!";
             return;
         }
 
@@ -114,7 +148,7 @@ class AuthController{
         $insert_query = mysqli_query($this->conn->connect(),$sql);
 
         if($insert_query){
-            header("location: /Vietnam-Travel-Guide/src/Views/home.html");
+            header("location: /Vietnam-Travel-Guide/src/Views/blogger/home.html");
         }
     }
 
@@ -163,19 +197,25 @@ class AuthController{
 
     }
 
-    public function logout()
-    {
+    public function logout() {
+        // 1. Start the session if it hasn't already been started
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
         }
-
-        // xóa tất cả mọi thứ trong phiên đăng nhập
+    
+        // 2. Unset all session variables
         session_unset();
-
-        // hủy session
+    
+        // 3. Destroy the session
         session_destroy();
-
-        header("location: login.php");
+    
+        // 4. Prevent caching 
+        header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+        header("Cache-Control: post-check=0, pre-check=0", false);
+        header("Pragma: no-cache");
+    
+        // 5. Redirect to the login page
+        header("Location: login.php"); 
         exit;
     }
-}
+}?>?>

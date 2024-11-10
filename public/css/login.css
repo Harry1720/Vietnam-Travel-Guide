@@ -8,64 +8,89 @@
 #img {
     float: left;
     width: 54%;
-    height: 100vh; /* Chiều cao 100% của viewport */
-    position: relative; /* Đặt vị trí tương đối cho phần tử cha */
+    height: 100vh; 
+    position: relative; 
 }
 
 #left-img {
-    width: 91%;
+    width: 91.25%;
     height: 100%;
-    position: absolute; /* Đặt vị trí tuyệt đối cho hình ảnh */
-    bottom: 0; /* Gắn hình ảnh vào đáy của phần tử cha */
+    position: absolute; 
+    bottom: 0; 
 }
 
 #login-container {
     float: left;
     width: 46%;
-    height: 100vh;/* Chiều cao 100% của viewport */
+    height: 100vh;
     padding: 7% 10% 5% 10%;
     box-sizing: border-box;
     overflow-y: auto;
     margin-left: -50px;
+    overflow: hidden;
 }
 
-h1, h4 {
+h1, h3 {
     text-align: center;
     margin-bottom: 20px;
+    color: #35679C;
 }
 
 .google-btn {
     font-size: 20px;
-    margin: 20px 0;
     padding: 15px;
-    border-radius: 25px; 
+    border-radius: 25px;
+    width: 100%;
     border: 1px solid #ddd;
-    text-align: center;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    text-align: center; /* Ensures text is centered */
 }
+
+.google-btn:hover {
+    background-color: #f1f1f1;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.google-btn span {
+    display: flex;
+    align-items: center;
+}
+
+.google-btn svg {
+    margin-left: 10px; /* Space between text and icon */
+}
+
+.google-btn:hover {
+    background-color: #ffffff;
+    border: 1px solid #35679C;
+    cursor: pointer;
+}
+
+.google-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
 
 .create-account {
     margin: 20px 0 10px 0;
     text-align: center;
-}
-
-.form-options {
-    margin: 10px 0;
-}
-
-.form-options a {
-    width: 150px;
-    float: right;
-}
-
-.form-options div {
-    width: 150px;
-    float: left;
+    color: #35679C;
 }
 
 .divider {
     font-size: 20px;
     text-align: center;
     margin: 10px 0;
+    color: black;
 }
 
 #password,
@@ -74,26 +99,41 @@ h1, h4 {
     width: 100%;
     padding: 15px;
     margin: 10px 0;
-    border: 1px solid #ddd; 
+    border: 2px solid #ddd; 
     border-radius: 25px;
+    outline: none;
+}
+
+#password:focus,
+#email:focus {
+    border: 2px solid #35679C;
 }
 
 #submit {
     font-size: 100%;
-    background-color: rgb(69, 69, 204);
+    background-color: #35679C;
     color: #fff; 
     width: 100%; 
     border-radius: 25px; 
     padding: 15px;
     margin: 10px 0px; 
     border: none; 
+    transition: background-color 0.3s, box-shadow 0.3s;
     cursor: pointer;
+    position: relative;
+    overflow: hidden;  
 }
 
-/* Media queries for responsiveness */
+#submit:hover {
+    background-color: #584fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+
 @media (max-width: 1000px) {
     #img, #login-container {
-        width: 100%; /* Đặt chiều rộng cho cả hai phần tử là 100% khi màn hình nhỏ hơn 1000px */
+        width: 100%; 
     }
 }
 

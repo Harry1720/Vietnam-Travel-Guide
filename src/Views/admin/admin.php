@@ -25,7 +25,17 @@
         $email = isset($user['email']) ? $user['email'] : 'Lỗi Hiển Thị';
         $role = isset($user['role_']) ? $user['role_'] : 'Lỗi Hiển Thị';
         $address = isset($user['address']) ? $user['address'] : 'Lỗi Hiển Thị';
+        $gender = isset($user['gender']) ? $user['gender'] : 'Lỗi Hiển Thị';
 
+        echo $gender; 
+
+    ?>
+
+    <?php
+        include_once "../../Controllers/bothController.php";
+        
+            $bothcontroller = new bothController();
+            $provinces = $bothcontroller->getAllProvinces();
     ?>
 </head>
 <body>
@@ -51,10 +61,19 @@
                     <label for="email1"><i class="fa fa-envelope"></i> Email</label>
                     <input type="email" id="email1" name="email1" value="<?php echo $email?>" disabled>
                 </div>
+
                 <div>
                     <label for="address"><i class="fa fa-address-book"></i> Địa chỉ</label>
-                    <input type="text" id="address" name="address" value="<?php echo $address ?>" disabled>
+                    <select id="address" name="address">
+                        <?php
+                            foreach ($provinces as $province) {
+                                $selected = ($province['provinceID'] == $user['address_']) ? 'selected' : '';
+                                echo '<option value="' . $province['provinceID'] . '" ' . $selected . '>' . $province['provinceName'] . '</option>';
+                            }
+                        ?>
+                    </select>
                 </div>
+
                 <div>
                     <label for="role"><i class="fa fa-building"></i> Chức vụ</label>
                     <input type="text" id="role" name="role" value="<?php echo $role?>" disabled>
@@ -62,9 +81,8 @@
                 <div>
                     <label> <ion-icon name="transgender-outline"></ion-icon> Giới tính</label>
                     <select name="gender" id="genderSelect" disabled>
-                        <option value="Nam">Nam</option>
-                        <option value="Nữ">Nữ</option>
-                        <option value="Khác">Khác</option>
+                        <option value="Male" <?php if($gender == 'Male') echo 'selected'; else echo "nooooo"?>>Male</option>
+                        <option value="Female" <?php if($gender == 'FeMale') echo 'selected'?>>Female</option>
                     </select>
                 </div>
                 <div class="button-group">

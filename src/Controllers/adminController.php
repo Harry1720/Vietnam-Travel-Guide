@@ -106,6 +106,83 @@ class AdminController{
         echo "Cập nhật tỉnh thành công!";
     }
 
+    private function checkIssetEmail($email)
+    {
+        $sql = mysqli_query($this->conn->connect(), "SELECT * FROM users WHERE email = '{$email}'");
+        if(mysqli_num_rows($sql) > 0){
+            echo "$email - Email này đã tồn tại!";
+            return true;
+        }
+        return false;
+    }
+
+    public function addUser(){
+
+        $userName = $_POST["userName"];
+        $email = $_POST["email"];
+        $address = $_POST["address"];
+        $password = $_POST["password"];
+        $role = $_POST["role"];
+        $gender = $_POST["gender"];
+
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            echo "Email không hợp lệ!";
+            return;
+        }
+
+        if (strlen($userName) < 2) {
+            echo "Tên người dùng phải có ít nhất 2 ký tự!";
+            return;
+        }
+
+        if (strlen($password) < 8) {
+            echo "Mật khẩu phải có ít nhất 8 ký tự!";
+            return;
+        }
+
+        if($this->checkIssetEmail($email)){
+            echo "Email đã tồn tại!";
+            return;
+        }
+        
+        $hashedPassword = password_hash($password, PASSWORD_ARGON2I);
+        
+        // Thêm người dùng mới
+        $sql = "INSERT INTO users (userName, email, pass_word, role_, gender, address_) 
+                VALUES ('$userName','$email','$hashedPassword','$role','$gender','$address')";
+        $insert_query = mysqli_query($this->conn->connect(),$sql);
+        
+        if ($insert_query) {
+            echo "Người dùng đã được thêm thành công!";
+            header("location: ../../../Views/admin/user_management.php");
+        } else {
+            echo "Có lỗi xảy ra khi thêm người dùng!";
+        }
+    }
+
+    public function updateUser() {
+        $userID = $_POST["userID"];
+        $userName = $_POST["userName1"];
+        $address = $_POST["address1"];
+        $gender = $_POST["gender1"];
+
+        if (strlen($userName) < 2) {
+            echo "Tên người dùng phải có ít nhất 2 ký tự!";
+            return;
+        }
+
+        // Cập nhật thông tin người dùng
+        $sql = "UPDATE users SET userName = '$userName', address_ = '$address', gender = '$gender' WHERE userID = '$userID'";
+        $update_query = mysqli_query($this->conn->connect(), $sql);
+    
+        if ($update_query) {
+            echo "Người dùng đã được cập nhật thành công!";
+        } else {
+            echo "Có lỗi xảy ra khi cập nhật người dùng!";
+        }
+    }
+    
+
     public function getAllUsers(){
 
         $sql = "SELECT * FROM users";
@@ -149,9 +226,14 @@ class AdminController{
     public function getAdminById()
     {
         // Lấy ID của người dùng từ session
-        // $admin = $_SESSION['blogger_id'];
-        $admin = 50;
+        // if($_SESSION['blogger_id']){
+        //     $admin = $_SESSION['blogger_id'];
+        // }
+        // else{
+        //      $admin = 0;
+        // }
 
+        $admin = 2;
         // Truy vấn thông tin người dùng từ cơ sở dữ liệu
         $sql = "SELECT * FROM users WHERE userID = '$admin'";
         $user = mysqli_query($this->conn->connect(), $sql);
@@ -176,10 +258,11 @@ class AdminController{
 
     public function updateAdmin(){
         // $admin = $_SESSION['blogger_id'];
-        $admin = 50;
+        $admin = 2;
         $name = $_POST['name'];
         $email = $_POST['email1'];
         $address = $_POST['address'];
+        $gender = $_POST['gender'];
 
         echo  $admin;
         echo $name;
@@ -189,7 +272,7 @@ class AdminController{
         if (!empty($admin) && !empty($name) && !empty($email)) {
 
             $sql = "UPDATE users
-                    SET userName = '$name', email = '$email'
+                    SET userName = '$name', email = '$email', gender = '$gender', address_ = '$address'
                     WHERE userid = '$admin'";
 
             $update_query = mysqli_query($this->conn->connect(),$sql);

@@ -133,7 +133,7 @@
     <div class="popup1-content">
         <span class="popup1-close" id="closepopup1">&times;</span>
         <div class="wrapper" id = "addUser">
-            <form id="user-form" enctype="multipart/form-data">
+            <form id="user-form" name="add" method="POST"  enctype="multipart/form-data" action = "../../FunctionOfActor/admin/addUser.php">
                     <div class="field input">
                         <label for="userName">Họ và Tên</label>
                         <input type="text" id="userName" name="userName" placeholder="Nguyễn Văn A" required>
@@ -188,7 +188,8 @@
     <div class="popup1-content">
         <span class="popup1-close" id="closepopup2">&times;</span>
         <div class="wrapper" id = "updateUser">
-            <form id="user-form" name="update" method="POST" enctype="multipart/form-data">
+            <form id="user-form" name="update" method="POST" enctype="multipart/form-data" action="../../FunctionOfActor/admin/updateUser.php">
+                <input type="hidden" name="userID" id="userID" value="">
                     <div class="field input">
                         <label for="userName1">Họ và Tên</label>
                         <input type="text" id="userName1" name="userName1" required>
@@ -196,7 +197,7 @@
 
                 <div class="field input">
                     <label for="email1">Email</label>
-                    <input type="tel" id="email1" name="email1" required>
+                    <input type="tel" id="email1" name="email1" required disabled>
                 </div>
 
                 <div class="field input">
@@ -221,12 +222,14 @@
                 </div>
                 <div class="field input" style="margin-bottom: 20px; display: flex; padding-top: 10px">
                     <label for="role1" >Chức Vụ</label>
-                    <select id="role1" name="role1">
+                    <select id="role1" name="role1" disabled>
                         <option value="Admin">Admin</option>
                         <option value="Blogger">Blogger</option>
                     </select>
                     <label for="gender1">Giới Tính</label>
                     <select id="gender1" name="gender1">
+                        <option value="Male">Nam</option>
+                        <option value="FeMale">Nữ</option>
                     </select>
                 </div>
                 <div class="button">

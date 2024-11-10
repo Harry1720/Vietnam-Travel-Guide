@@ -14,10 +14,11 @@
             
             if ($editUser) {
                 $userData = [
+                    'userID' => $editUser['userID'] ?? 0,
                     'userName' => $editUser['userName'] ?? 'Lỗi Hiển Thị',
                     'email' => $editUser['email'] ?? 'Lỗi Hiển Thị',
                     'role' => $editUser['role_'] ?? 'Lỗi Hiển Thị',
-                    'address' => $editUser['address'] ?? 'Lỗi Hiển Thị',
+                    'address' => $editUser['address_'] ?? 'Lỗi Hiển Thị',
                     'password' => $editUser['pass_word'] ?? 'Lỗi Hiển Thị',
                     'gender' => $editUser['gender'] ?? 'Lỗi Hiển Thị'
                 ];

@@ -1,3 +1,4 @@
+/* Global Styles */
 * {
     margin: 0;
     padding: 0;
@@ -9,25 +10,49 @@ body {
     background-color: #f5f5f5;
     width: 100%;
     z-index: 10;
-    top: 0;
-    left: 0;
+    position: relative;
 }
 
+/* Header Styles */
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px 30px;
     background-color: transparent;
-    position: absolute;
+    position: fixed;
     width: 100%;
-    z-index: 10;
+    transition: background-color 0.3s ease;
+    z-index: 1000;
+}
+
+.header.scrolled {
+    padding: 5px;
+    background-color: #f8f9fa;
+}
+
+.header.scrolled .nav a,
+.header.scrolled .sub_nav a {
+    color: #384a98;
+}
+
+.header.scrolled .btn-login {
+    background-color: white;
+    color: #333;
+    border: 2px solid #384a98;
+}
+
+.header.scrolled .btn-login:hover {
+    background-color: transparent;
+    color: #618ebf;
+    border-color: #618ebf;
 }
 
 .logo img {
     max-width: 120px;
 }
 
+/* Navigation Styles */
 .nav,
 .sub_nav {
     display: flex;
@@ -39,25 +64,44 @@ body {
 }
 
 .nav a {
-    padding: 0px 30px;
+    position: relative;
+    color: white;
+    text-decoration: none;
+    padding: 5px 30px;
+    font-weight: bold;
+    font-size: 19px;
+}
+
+.nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 98%;
+    height: 2px;
+    background-color: white;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+.nav a:hover::after {
+    transform: scaleX(1);
 }
 
 .sub_nav a {
     padding: 10px 20px;
-}
-
-a {
     font-weight: bold;
-    color: white;
-    text-decoration: none;
     font-size: 19px;
+    text-decoration: none;
 }
 
+/* Button Styles */
 .btn-login {
     background-color: white;
     color: #333;
     border-radius: 20px;
-    border: 2px solid white;
+    border: 2px solid transparent;
     transition: 0.3s;
 }
 
@@ -66,6 +110,11 @@ a {
     color: white;
 }
 
+.btn-register {
+    color: #f8f9fa;
+}
+
+/* Hero Section */
 .hero {
     position: relative;
     height: 100vh;
@@ -85,9 +134,8 @@ a {
     transform: translateY(-50%);
 }
 
+/* Destinations Section */
 .destinations {
-    /* display: grid; */
-    /* grid-template-columns: repeat(3, 1fr); */
     width: 100%;
     position: absolute;
     top: 0;
@@ -105,9 +153,6 @@ a {
 }
 
 .article img {
-    /* width: 100%;
-    height: 100%;
-    object-fit: cover; */
     transition: transform 0.5s ease;
 }
 
@@ -115,6 +160,7 @@ a {
     transform: scale(1.1);
 }
 
+/* Responsive Styles */
 @media (max-width: 900px) {
     .hero h1 {
         font-size: 2.5rem;

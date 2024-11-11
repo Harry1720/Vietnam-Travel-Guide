@@ -10,20 +10,6 @@ body {
     background-color: #f7f7f7;
     color: #333;
     height: 100vh;
-    overflow: hidden;
-}
-
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 20px;
-    background-color: #fff;
-    border-bottom: 1px solid #eaeaea;
-}
-
-.logo img {
-    height: 40px;
 }
 
 nav ul {
@@ -73,121 +59,103 @@ nav ul li a {
 }
 
 .main-section {
-    padding: 10px;
-    height: calc(100vh - 100px);
+    width: 100%;
+    max-width: 800px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 2em;
+    margin: 20px 400px 20px;
 }
 
-.main-section h1 {
-    
-    text-align: center;
+h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 8px;
 }
 
-.search-bar {
-    width: 50%;
-    padding: 15px;
-    margin-bottom: 50px;
-    border: 1px solid #ccc;
-    border-radius: 20px;
-    display: block;
-    margin: 20px auto;
+p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 16px;
 }
 
+/* Flex container for layout */
 .flex-container {
     display: flex;
-    justify-content: space-between;
-    
+    flex-direction: column;
+    gap: 1.5em;
 }
 
-.top-places {
-    display:flexbox;
-    text-align: center;
-    width: 50%;
-    margin-right: 20px;
-    margin-left: 50px;
-    background-color: #fff;
-    padding: 20px;
-    border: 1px solid #eaeaea;
-    border-radius: 8px;
-    margin-top: 20px;
-    
-}
-
-
-
-.review-placeholder {
-    width: 94%;
-    height: 78%;
-    background-color: #f0f0f0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 40px;
-    margin-left: 20px;
-    
-}
-
-.review-placeholder img {
-    max-width: 100px;
-}
-
+/* Form styling */
 form {
-    display: flexbox;
-    width: 50%;
-    margin: 0 auto;
-    background-color: #fff;
-    padding: 20px;
-    border: 1px solid #eaeaea;
-    border-radius: 8px;
-    margin-left: 200px;
-    margin-right: 50px;
-    max-width: 100vh;
-    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
 }
 
-form label {
-    display: block;
-    margin-top: 5px;
-    margin-bottom: 5px;
+label {
+    font-weight: bold;
+    margin-bottom: 6px;
+    color: #555;
 }
 
-form input, form textarea, form select {
+input[type="text"],
+textarea,
+select {
     width: 100%;
     padding: 10px;
-    margin-bottom: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    font-size: 16px;
 }
 
 textarea {
     height: 100px;
+    resize: vertical;
 }
 
+input[type="file"] {
+    display: none;
+}
 
-
-.submit-btn {
-    display: flex;
-    background-color: #007bff;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 20px;
+.review-placeholder {
+    border: 2px dashed #ddd;
+    padding: 10px;
+    text-align: center;
+    color: #888;
     cursor: pointer;
-    margin:10px auto;
-    align-items: center;
-    justify-content: space-between;
-    
+    border-radius: 5px;
+}
+
+.photo-preview {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.photo-preview img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+/* Submit button */
+.submit-btn {
+    background-color: #35679C;
+    color: #fff;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 .submit-btn:hover {
-    background-color: #0056b3;
-}
-
-footer {
-    display: flexbox;
-   
-    text-align: center;
-    padding: 20px;
-    background-color: #fff;
-    border-top: 1px solid #eaeaea;
-   
+    background-color: #2a507a;
 }

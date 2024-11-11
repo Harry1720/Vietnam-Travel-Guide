@@ -5,10 +5,10 @@ document.addEventListener('DOMContentLoaded', function () {
             <img src="../../../public/image/logo.png" alt="Logo">
         </div>
         <nav class="nav">
-            <a href = "home.html">Home</a>
-            <a href="">Provinces</a>
+            <a href = "home.html">Trang chủ</a>
+            <a href="">Tỉnh Thành</a>
             <a href="storiesList.html">Blogs</a>
-            <a href="WriteReview.php">Write Blog</a>
+            <a href="WriteReview.php">Viết Blog</a>
         </nav>
         <nav class="sub_nav">
             <a href="../createAccount.html">Sign Up</a>

@@ -5,8 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Write New Review</title>
     <link rel="stylesheet" href="../../../public/css/Blogger/WriteReview.css">
+    <link rel="stylesheet" href="../../../public/css/Blogger/header2.css">
+    <link rel="stylesheet" href="../../../public/css/Blogger/footer.css">
 </head>
 <body>
+    <script src = "../../../include/header2.js"></script>
+    <script src = "../../../include/footer.js"></script>
+
+
     <?php   
         include_once "../../Controllers/bothController.php";
         include_once "../../Controllers/authController.php";
@@ -14,8 +20,8 @@
         $controller = new bothController();
         $provinces = $controller->getAllProvinces();
         
-        $auth = new AuthController();
-        $auth->checkAuth();
+        // $auth = new AuthController();
+        // $auth->checkAuth();
     ?>
     <section class="main-section">            
             <div class="flex-container">

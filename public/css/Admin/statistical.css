@@ -12,7 +12,7 @@ body {
     gap: 15px;
     align-items: center;
     margin-bottom: 20px;
-    margin-left: 291px;
+    margin-left: 300px;
     padding: 10px;
 }
 
@@ -65,16 +65,15 @@ body {
     padding: 20px;
     width: max-content;
     max-width: 98%;
+    margin-left: 10px;
 }
 
 #today-sales {
     display: flex;
     justify-content: space-between;
-    gap: 40px;
-    grid-column: span 2;
+    gap: 15px;
     height: fit-content;
-
-}
+    height: 150px; width: 800px}
 
 #customer-gender {
     grid-column: span 1;
@@ -96,7 +95,18 @@ body {
     box-shadow: 0 7px 25px rgba(0, 0, 0, 0.1);
     flex: 1;
     min-width: 100px;
-    height: fit-content;
+    /* height: fit-content; */
+    margin-top: 12px; 
+    height: 80px
+}
+
+.card-small h3 {
+    margin-top: 10px;
+}
+
+.card-small p{
+    margin: 0;
+    font-weight: 100;
 }
 
 .card-1 {

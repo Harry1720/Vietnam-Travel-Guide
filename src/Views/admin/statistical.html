@@ -13,7 +13,7 @@
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </head>
 <body>
-    <script src="../../../public/js/Admin/admin.js"></script>
+    <script src="../../../public/js/Admin/statistical.js"></script>
     <script src="../../../include/navbar.js"></script>
     <script src="../../../include/sidebar.js"></script>
 
@@ -58,27 +58,26 @@
     <!-- Bố cục Dashboard -->
     <div class="dashboard-grid">
         <!-- Khối Today's Sales -->
-        <section style="height: 250px; width: 100%" id="today-sales" class="big-box">
-            <h2>Total Sale</h2>
-            <div style="margin-top: 100px; margin-left: -100px; height: 100px" class="card-small card-1">
+        <section id="today-sales" class="big-box">
+            <!-- <h2>Total Sale</h2> -->
+            <div class="card-small card-1">
                 <i class="fa-solid fa-money-bill-transfer"></i>
-                <h3 style="margin-top: 5px" id="total-sales-value">$1k</h3>
-                <p>Total Sales</p>
+                <h3 id="total-sales-value">100</h3>
+                <p>Tổng số người dùng</p>
                 <p id="total-sales-change"></p>
             </div>
-            <div style="margin-top: 100px" class="card-small card-2">
+            <div class="card-small card-2">
                 <h3 id="total-order-value">300</h3>
-                <p>Total Order</p>
-                <p id="total-order-change"></p>
+                <p>Tổng số blog</p>
             </div>
-            <div style="margin-top: 100px" class="card-small card-3">
-                <h3 id="products-sold-value">5</h3>
-                <p>Product Sold</p>
+            <div class="card-small card-3">
+                <h3 id="products-sold-value">63</h3>
+                <p>Tổng số post</p>
                 <p id="products-sold-change"></p>
             </div>
-            <div style="margin-top: 100px" class="card-small card-4">
-                <h3 id="new-customers-value">8</h3>
-                <p>Customers</p>
+            <div class="card-small card-4">
+                <h3 id="new-customers-value">50</h3>
+                <p>Tổng số bình luận</p>
                 <p id="new-customers-change"></p>
             </div>
         </section>

@@ -88,7 +88,7 @@
                                     </tr>
                                 <?php
                                 $destinations = $bothcontroller->getAllDestinationByProvinceID($province['provinceID']);
-                                if(mysqli_num_rows($destinations)>0){
+                                if(mysqli_num_rows(result: $destinations)>0){
                                         ?>
                                             <!-- Bảng con ẩn chứa các điểm đến -->
                                             <tr class="destination-row" id="destinations-<?php echo $stt-1 ?>" style="display: none;">

@@ -40,7 +40,7 @@ CREATE TABLE postDetail (
   postID INT NOT NULL,
   sectionTitle TEXT NOT NULL,
   sectionContent TEXT NOT NULL,
-  imgPostDetURL TEXT NOT NULL,
+  imgPostDetURL TEXT,
   FOREIGN KEY (postID) REFERENCES post(postID)
 );
 
@@ -85,33 +85,6 @@ CREATE TABLE repComment (
   FOREIGN KEY (userID) REFERENCES users(userID)
 );
 
-
-
--- Dữ liệu cho bảng province
-  INSERT INTO province (provinceName, provinceRegion, status)
-VALUES
-('Hanoi', 'North', TRUE),
-('Ho Chi Minh City', 'South', TRUE),
-('Da Nang', 'Central', TRUE),
-('Hai Phong', 'North', TRUE),
-('Hue', 'Central', TRUE),
-('Can Tho', 'South', TRUE),
-('Quang Ninh', 'North', TRUE),
-('Binh Duong', 'South', TRUE),
-('Nghe An', 'North', TRUE),
-('Khanh Hoa', 'Central', TRUE),
-('Bac Ninh', 'North', TRUE),
-('Tay Ninh', 'South', TRUE),
-('Quang Nam', 'Central', TRUE),
-('Thanh Hoa', 'North', TRUE),
-('Dak Lak', 'Central', TRUE),
-('Gia Lai', 'Central', TRUE),
-('Long An', 'South', TRUE),
-('Vinh Phuc', 'North', TRUE),
-('Lam Dong', 'South', TRUE),
-('Bac Giang', 'North', TRUE);
-
--- Dữ liệu cho bảng users với provinceID thay vì address_
 INSERT INTO users (userName, pass_word, address_, role_, email, gender, status)
 VALUES
 ('Nguyen An', 'password1', 1, 'Admin', 'nguyenan@example.com', 'Male', TRUE),
@@ -135,6 +108,33 @@ VALUES
 ('Lai Lan', 'password19', 1, 'Blogger', 'lailan@example.com', 'FeMale', TRUE),
 ('Pham Minh', 'password20', 2, 'Blogger', 'phamminh@example.com', 'Male', TRUE);
 
+
+-- Dữ liệu cho bảng province
+  INSERT INTO province (provinceName, provinceRegion, status)
+VALUES
+('Hanoi', 'North', TRUE),
+('Ho Chi Minh City', 'South', TRUE),
+('Da Nang', 'Central', TRUE),
+('Hai Phong', 'North', TRUE),
+('Hue', 'Central', TRUE),
+('Can Tho', 'South', TRUE),
+('Quang Ninh', 'North', TRUE),
+('Binh Duong', 'South', TRUE),
+('Nghe An', 'North', TRUE),
+('Khanh Hoa', 'Central', TRUE),
+('Bac Ninh', 'North', TRUE),
+('Tay Ninh', 'South', TRUE),
+('Quang Nam', 'Central', TRUE),
+('Thanh Hoa', 'North', TRUE),
+('Dak Lak', 'Central', TRUE),
+('Gia Lai', 'Central', TRUE),
+('Binh Thuan', 'Central', TRUE),
+('Vinh Phuc', 'North', TRUE),
+('Lam Dong', 'South', TRUE),
+('Bac Giang', 'North', TRUE);
+
+
+
 -- Dữ liệu cho bảng destination
 INSERT INTO destination (provinceID, destinationName, destinationContent, imgDesURL)
 VALUES
@@ -154,7 +154,7 @@ VALUES
 (14, 'Pu Luong Nature Reserve', 'Nature reserve in Thanh Hoa.', 'pulong.jpg'),
 (15, 'Buon Ma Thuot', 'Coffee capital of Vietnam in Dak Lak.', 'buonmathuot.jpg'),
 (16, 'Mount Ba Na', 'Popular mountain in Da Nang.', 'banamoutain.jpg'),
-(17, 'Mui Ne Beach', 'Beautiful beach in Binh Thuan.', 'muine.jpg'),
+(17, 'Mui Ne Beach', 'Beautiful beach in Binh Thuan.', ''),
 (18, 'Con Dao Islands', 'Island group in Ba Ria-Vung Tau.', 'condao.jpg'),
 (19, 'Phong Nha Cave', 'Famous cave in Quang Binh.', 'phongnha.jpg'),
 (20, 'Long Son Pagoda', 'Famous pagoda in Ba Ria-Vung Tau.', 'longson.jpg');
@@ -162,7 +162,7 @@ VALUES
 -- Dữ liệu cho bảng post
 INSERT INTO post (provinceID, postCreateDate, imgPostURL, status)
 VALUES
-(1, '2023-11-01', 'hanoi_post.jpg', TRUE),
+(1, '2023-11-01', 'https://res.cloudinary.com/dt5xizv10/image/upload/post/hanoi.jpg', TRUE),
 (2, '2023-11-02', 'hcm_post.jpg', TRUE),
 (3, '2023-11-03', 'danang_post.jpg', TRUE),
 (4, '2023-11-04', 'haiphong_post.jpg', TRUE),
@@ -178,10 +178,21 @@ VALUES
 (14, '2023-11-14', 'thanhhoa_post.jpg', TRUE),
 (15, '2023-11-15', 'daklak_post.jpg', TRUE),
 (16, '2023-11-16', 'gialai_post.jpg', TRUE),
-(17, '2023-11-17', 'longan_post.jpg', TRUE),
+(17, '2023-11-17', 'Binhthuan_post.jpg', TRUE),
 (18, '2023-11-18', 'vinhphuc_post.jpg', TRUE),
 (19, '2023-11-19', 'lamdong_post.jpg', TRUE),
 (20, '2023-11-20', 'bacgiang_post.jpg', TRUE);
+
+INSERT INTO postDetail  (postID, sectionTitle, sectionContent, imgPostDetURL)
+VALUES
+(1, 'Hà Nội - Thủ đô văn hiến', 'Những công trình từ thời Pháp thuộc, hàng quán vỉa hè bày bán đặc sản địa phương, xe máy luồn lách trên đường đông đúc... là những ấn tượng đầu tiên của du khách về Hà Nội. Với nhiều người, Hà Nội có tất cả những thứ thú vị để khám phá nơi đây theo cách riêng của mình.', 'https://res.cloudinary.com/dt5xizv10/image/upload/postDetail/hanoi.jpg'),
+(1, 'Di Chuyển', 'Hà Nội được ví như trái tim của Việt Nam, do đó du khách có thể di chuyển thuận lợi đến thủ đô bằng máy bay, tàu hỏa, xe khách, ôtô riêng hay xe máy từ các tỉnh thành khác.', ''),
+(1, 'Lưu trú', 'Hà Nội có nhiều lựa chọn lưu trú cho du khách như nhà nghỉ bình dân, homestay, khách sạn, resort... Một số khách sạn đặc biệt phải kể đến như Sofitel Legend Metropole Hà Nội mang nét kiến trúc thời thuộc địa Pháp, chỉ cách Nhà hát Lớn vài bước chân là Hilton Hanoi Opera, Apricot Hotel ngay bên bờ hồ Hoàn Kiếm, khách sạn nổi tiếng với view ngắm hồ Tây là Sheraton Hà Nội và InterContinental Hanoi Westlake.', 'https://res.cloudinary.com/dt5xizv10/image/upload/postDetail/luutru.jpg'),
+(1, 'Tham quan', 'Đối với người Việt, đây là một trong những điểm tham quan quan trọng nhất trong nước. Du khách tới để bày tỏ lòng thành kính với Chủ tịch Hồ Chí Minh. Khách tham quan cần giữ im lặng, mặc quần áo phù hợp và không chụp ảnh tại những khu vực cấm.', 'https://res.cloudinary.com/dt5xizv10/image/upload/postDetail/langBac.jpg'),
+(1, 'Ẩm thực', 'Đến Hà Nội không thể bỏ qua phở, đặc biệt là phở bò, thường có hai loại chính: chín và tái. Một số địa chỉ tham khảo là phở Thìn, Bát Đàn, Tư Lùn, Phở Lâm phố Hàng Vải, Phở Trâm phố Yên Ninh.', 'https://res.cloudinary.com/dt5xizv10/image/upload/postDetail/pho');
+
+
+
 
 -- Dữ liệu cho bảng blog
 INSERT INTO blog (provinceID, userID, blogContent, blogCreateDate, status, approvalStatus) VALUES

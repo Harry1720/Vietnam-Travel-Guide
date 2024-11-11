@@ -310,5 +310,28 @@ class AdminController{
         $update_query = mysqli_query($this->conn->connect(),$sql);
         echo "Thêm địa danh thành công!";
     }
+
+    public function getAllPostDetail($postID){
+        //WHERE status_ = 'active'
+        $sql = "SELECT * FROM postDetail WHERE postID = $postID";
+        $get_query = mysqli_query($this->conn->connect(),$sql);
+
+        //return array JSON 
+        return $get_query ? mysqli_fetch_all($get_query, MYSQLI_ASSOC) : [];
+    }
+    
+    public function getPostProvince($postID){
+        //WHERE status_ = 'active'
+        $sql = "SELECT p.provinceName, po.imgPostURL, po.postCreateDate
+        FROM post po
+        JOIN province p ON po.provinceID = p.provinceID
+        WHERE po.postID = $postID;";
+        
+        $get_query = mysqli_query($this->conn->connect(),$sql);
+
+        //return array JSON 
+        return $get_query->fetch_assoc();
+    }
+
 }
 ?>

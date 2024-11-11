@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const footer = `
     <footer>
         <div class="footer_logo">
-        <img class="footer_logo_img" src = "../../../public/image/logo.png" alt="Logo"/>
+        <img class="footer_logo_img" src = "../../public/image/logo.png" alt="Logo"/>
 
         </div>
         <h1 class="footer_name">Cẩm nang du lịch Việt Nam</h1>

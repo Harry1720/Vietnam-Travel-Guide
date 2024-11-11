@@ -1,9 +1,4 @@
 <?php
-    header('Content-Type: application/json');
-    error_reporting(E_ALL); // Bật error reporting để debug
-    ini_set('display_errors', 1);
-
-
     include_once "../../Controllers/adminController.php";
     include_once "../../Controllers/authController.php";
 
@@ -19,11 +14,13 @@
             
             if ($editUser) {
                 $userData = [
+                    'userID' => $editUser['userID'] ?? 0,
                     'userName' => $editUser['userName'] ?? 'Lỗi Hiển Thị',
                     'email' => $editUser['email'] ?? 'Lỗi Hiển Thị',
                     'role' => $editUser['role_'] ?? 'Lỗi Hiển Thị',
-                    'address' => $editUser['address'] ?? 'Lỗi Hiển Thị',
-                    'password' => $editUser['pass_word'] ?? 'Lỗi Hiển Thị'
+                    'address' => $editUser['address_'] ?? 'Lỗi Hiển Thị',
+                    'password' => $editUser['pass_word'] ?? 'Lỗi Hiển Thị',
+                    'gender' => $editUser['gender'] ?? 'Lỗi Hiển Thị'
                 ];
                 echo json_encode($userData, JSON_UNESCAPED_UNICODE);
             } else {

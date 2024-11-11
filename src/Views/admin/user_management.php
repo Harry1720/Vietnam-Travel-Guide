@@ -51,6 +51,13 @@
     $userOfPage = $adController->getUserOfPage($Start,$limit);
 ?>
 
+<?php
+    include_once "../../Controllers/bothController.php";
+    
+        $bothcontroller = new bothController();
+        $provinces = $bothcontroller->getAllProvinces();
+?>
+
 <div class="main-content">
     <div class="customer-management">
         <button class="add-user-btn" id="openpopup1">
@@ -82,15 +89,16 @@
                             ?>
                             <tr>
                                 <td><?php echo $stt++ ?></td>
-                                <td><?php echo $user['userName']?></td>
-                                <td><?php echo $user['email']?></td>
-                                <td><?php echo $user['email']?></td>
-                                <td><?php echo $user['role_']?></td>
+                                <td><?php echo $user['userName'] ?? 'Lỗi Hiển Thị'?></td>
+                                <td><?php echo $user['email'] ?? 'Lỗi Hiển Thị'?></td>
+                                <td><?php echo $user['gender'] ?? 'Lỗi Hiển Thị'?></td>
+                                <td><?php echo $user['address_'] ?? 'Lỗi Hiển Thị'?></td>
+                                <td><?php echo $user['role_'] ?? 'Lỗi Hiển Thị'?></td>
                                 <td class="action-btn-frame">
                                     <button class="action-btn edit" id="edit-btn" onclick="editUser(<?php echo $user['userID']?>)">
                                         <ion-icon name="create"></ion-icon>
                                     </button>
-                                    <button class="action-btn delete" id="delete-btn" onclick="<?php echo $user['userID']?>">
+                                    <button class="action-btn delete" id="delete-btn" onclick="<?php ?>">
                                         <ion-icon name="trash"></ion-icon>
                                     </button>
                                 </td>
@@ -121,13 +129,11 @@
     </div>
 </div>
 
-
-
 <div class="popup1-overlay" id="popup1Overlay">
     <div class="popup1-content">
         <span class="popup1-close" id="closepopup1">&times;</span>
         <div class="wrapper" id = "addUser">
-            <form id="user-form" enctype="multipart/form-data">
+            <form id="user-form" name="add" method="POST"  enctype="multipart/form-data" action = "../../FunctionOfActor/admin/addUser.php">
                     <div class="field input">
                         <label for="userName">Họ và Tên</label>
                         <input type="text" id="userName" name="userName" placeholder="Nguyễn Văn A" required>
@@ -141,6 +147,11 @@
                 <div class="field input">
                     <label for="address">Tỉnh/Thành Phố</label>
                     <select id="address" name="address">
+                        <?php
+                            foreach ($provinces as $province) {
+                                echo '<option value="' . $province['provinceID'] . '">' . $province['provinceName'] . '</option>';
+                            }
+                        ?>
                     </select>
                 </div>
 
@@ -157,10 +168,12 @@
                     <label for="role" >Chức Vụ</label>
                     <select id="role" name="role">
                         <option value="Admin">Admin</option>
-                        <option value="Customer">Blogger</option>
+                        <option value="Blogger">Blogger</option>
                     </select>
                     <label for="gender">Giới Tính</label>
                     <select id="gender" name="gender">
+                        <option value="Male">Nam</option>
+                        <option value="FeMale">Nữ</option>
                     </select>
                 </div>
                 <div class="button">
@@ -175,7 +188,8 @@
     <div class="popup1-content">
         <span class="popup1-close" id="closepopup2">&times;</span>
         <div class="wrapper" id = "updateUser">
-            <form id="user-form" name="update" method="POST" enctype="multipart/form-data">
+            <form id="user-form" name="update" method="POST" enctype="multipart/form-data" action="../../FunctionOfActor/admin/updateUser.php">
+                <input type="hidden" name="userID" id="userID" value="">
                     <div class="field input">
                         <label for="userName1">Họ và Tên</label>
                         <input type="text" id="userName1" name="userName1" required>
@@ -183,12 +197,17 @@
 
                 <div class="field input">
                     <label for="email1">Email</label>
-                    <input type="tel" id="email1" name="email1" required>
+                    <input type="tel" id="email1" name="email1" required disabled>
                 </div>
 
                 <div class="field input">
                     <label for="address1">Tỉnh/Thành Phố</label>
                     <select id="address1" name="address1">
+                        <?php
+                            foreach ($provinces as $province) {
+                                echo '<option value="' . $province['provinceID'] . '">' . $province['provinceName'] . '</option>';
+                            }
+                        ?>
                     </select>
                 </div>
 
@@ -203,12 +222,14 @@
                 </div>
                 <div class="field input" style="margin-bottom: 20px; display: flex; padding-top: 10px">
                     <label for="role1" >Chức Vụ</label>
-                    <select id="role1" name="role1">
+                    <select id="role1" name="role1" disabled>
                         <option value="Admin">Admin</option>
-                        <option value="Customer">Blogger</option>
+                        <option value="Blogger">Blogger</option>
                     </select>
                     <label for="gender1">Giới Tính</label>
                     <select id="gender1" name="gender1">
+                        <option value="Male">Nam</option>
+                        <option value="FeMale">Nữ</option>
                     </select>
                 </div>
                 <div class="button">

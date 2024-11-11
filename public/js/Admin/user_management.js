@@ -115,8 +115,10 @@ async function editUser(userId) {
         document.getElementById('userName1').value = userData.userName;
         document.getElementById('email1').value = userData.email;
         document.getElementById('password1').value = userData.password;
-        //document.getElementById('address1').value = userData.address;
+        document.getElementById('address1').value = userData.address;
         document.getElementById('role1').value = userData.role;
+        document.getElementById('gender1').value = userData.gender;
+        document.getElementById('userID').value = userData.userID;
         
     } catch (error) {
         console.error('Error in editUser function:', error);

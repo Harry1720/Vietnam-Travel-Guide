@@ -75,3 +75,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+function toggleDestinations(id) {
+    // Lấy tất cả các hàng điểm đến
+    const allDestinationRows = document.querySelectorAll('.destination-row');
+
+    // Đóng tất cả các bảng con khác
+    allDestinationRows.forEach(row => {
+        if (row.id !== `destinations-${id}`) {
+            row.style.display = 'none';
+        }
+    });
+
+    // Lấy hàng điểm đến của tỉnh thành được chọn
+    const destinationRow = document.getElementById(`destinations-${id}`);
+
+    // Chuyển đổi hiển thị của hàng điểm đến được chọn
+    if (destinationRow.style.display === 'none' || destinationRow.style.display === '') {
+        destinationRow.style.display = 'table-row';
+    } else {
+        destinationRow.style.display = 'none';
+    }
+}

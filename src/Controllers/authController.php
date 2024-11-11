@@ -218,4 +218,4 @@ class AuthController{
         header("Location: login.php"); 
         exit;
     }
-}?>?>
+}?>

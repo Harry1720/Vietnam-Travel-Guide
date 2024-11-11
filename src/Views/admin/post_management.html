@@ -21,7 +21,7 @@
 <div class="main-content">
     <div class="post-management">
         <button class="add-post-btn" id="openpopup1">
-            Thêm Địa Điểm <ion-icon style="margin-left: 5px;" name="add-circle-outline"></ion-icon>
+            Thêm Bài Đăng <ion-icon style="margin-left: 5px;" name="add-circle-outline"></ion-icon>
         </button>
 
         <div class="search-container">
@@ -33,24 +33,20 @@
             <table style="width: 100%; border-collapse: collapse;">
                 <thead>
                     <tr>
-                        <th>STT</th>
+                        <th>PostID</th>
                         <th>Tỉnh thành</th>
-                        <th>Điểm đến</th>
-                        <th>Di chuyển</th>
-                        <th>Ẩm thực</th>
-                        <th>Lễ hội</th>
+                        <th>Ngày tạo</th>
+                        <th>Đường dẫn ảnh</th>
                         <th>Lựa Chọn</th>
                     </tr>
                 </thead>
                 <tbody id="post-table-body">
                     <!-- Dữ liệu mẫu -->
-                    <tr>
-                        <td>1</td>
+                    <tr onclick="toggleDestinations(1)">
+                        <td>P001</td>
                         <td>Hà Nội</td>
-                        <td>Văn Miếu Quốc Tử Giám</td>
-                        <td>Xe máy, taxi, xe buýt</td>
-                        <td>Phở, bún chả, bánh cuốn</td>
-                        <td>Lễ hội pháo hoa</td>
+                        <td>11/11/2024</td>
+                        <td>https://icloud.com/pic1.png</td>
                         <td class="action-btn-frame">
                             <button class="action-btn edit" id="edit-btn">
                                 <ion-icon name="create"></ion-icon>
@@ -60,13 +56,62 @@
                             </button>
                         </td>
                     </tr>
-                    <tr>
+                    <!-- Bảng con ẩn chứa các điểm đến -->
+                    <tr class="destination-row" id="destinations-1" style="display: none;">
+                        <td colspan="5">
+                            <div class="destination-table-wrapper">
+                                <table class="destination-table">
+                                    <thead>
+                                        <tr>
+                                            <th>PostDetailID</th>
+                                            <th>Tiêu đề tiểu mục</th>
+                                            <th>Nội dung</th>
+                                            <th>Đường dẫn ảnh</th>
+                                            <th>Lựa Chọn</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>PD001</td>
+                                            <td>Hồ Hoàn Kiếm</td>
+                                            <td>Biểu tượng của thủ đô Hà Nội</td>
+                                            <td>https://icloud.com/pic1.png</td>
+                                            <td class="action-btn-frame">
+                                                <button class="action-btn edit" id="edit-btn">
+                                                    <ion-icon name="create"></ion-icon>
+                                                </button>
+                                                <button class="action-btn delete">
+                                                    <ion-icon name="trash"></ion-icon>
+                                                </button>
+                                            </td>
+                    
+                                        </tr>
+                                        <tr>
+                                            <td>PD002</td>
+                                            <td>Hồ Hoàn Kiếm</td>
+                                            <td>Biểu tượng của thủ đô Hà Nội</td>
+                                            <td>https://icloud.com/pic1.png</td>
+                                            <td class="action-btn-frame">
+                                                <button class="action-btn edit" id="edit-btn">
+                                                    <ion-icon name="create"></ion-icon>
+                                                </button>
+                                                <button class="action-btn delete">
+                                                    <ion-icon name="trash"></ion-icon>
+                                                </button>
+                                            </td>
+                    
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr onclick="toggleDestinations(2)">
                         <td>2</td>
                         <td>Đà Nẵng</td>
                         <td>Cầu Rồng</td>
                         <td>Xe buýt, xe máy</td>
-                        <td>Mì Quảng, bánh tráng cuốn</td>
-                        <td>Lễ hội Cầu Rồng</td>
                         <td class="action-btn-frame">
                             <button class="action-btn edit" id="edit-btn">
                                 <ion-icon name="create"></ion-icon>
@@ -76,22 +121,59 @@
                             </button>
                         </td>
                     </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Hồ Chí Minh</td>
-                        <td>Chợ Bến Thành</td>
-                        <td>Taxi, xe máy</td>
-                        <td>Bánh mì, hủ tiếu, cơm tấm</td>
-                        <td>Lễ hội đường hoa Nguyễn Huệ</td>
-                        <td class="action-btn-frame">
-                            <button class="action-btn edit" id="edit-btn">
-                                <ion-icon name="create"></ion-icon>
-                            </button>
-                            <button class="action-btn delete">
-                                <ion-icon name="trash"></ion-icon>
-                            </button>
-                        </td>
-                    </tr>
+
+                <!-- Bảng con ẩn chứa các điểm đến -->
+                <tr class="destination-row" id="destinations-2" style="display: none;">
+                    <td colspan="5">
+                        <div class="destination-table-wrapper">
+                            <table class="destination-table">
+                                <thead>
+                                    <tr>
+                                        <th>PostDetailID</th>
+                                        <th>Tiêu đề tiểu mục</th>
+                                        <th>Nội dung</th>
+                                        <th>Đường dẫn ảnh</th>
+                                        <th>Lựa Chọn</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>PD001</td>
+                                        <td>Hồ Hoàn Kiếm</td>
+                                        <td>Biểu tượng của thủ đô Hà Nội</td>
+                                        <td>https://icloud.com/pic1.png</td>
+                                        <td class="action-btn-frame">
+                                            <button class="action-btn edit" id="edit-btn">
+                                                <ion-icon name="create"></ion-icon>
+                                            </button>
+                                            <button class="action-btn delete">
+                                                <ion-icon name="trash"></ion-icon>
+                                            </button>
+                                        </td>
+                
+                                    </tr>
+                                    <tr>
+                                        <td>PD002</td>
+                                        <td>Hồ Hoàn Kiếm</td>
+                                        <td>Biểu tượng của thủ đô Hà Nội</td>
+                                        <td>https://icloud.com/pic1.png</td>
+                                        <td class="action-btn-frame">
+                                            <button class="action-btn edit" id="edit-btn">
+                                                <ion-icon name="create"></ion-icon>
+                                            </button>
+                                            <button class="action-btn delete">
+                                                <ion-icon name="trash"></ion-icon>
+                                            </button>
+                                        </td>
+                
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+                    
+
                 </tbody>
             </table>
             
@@ -116,29 +198,40 @@
 
                 <div class="field">
                     <label for="city">Tỉnh/Thành phố</label>
-                    <input type="text" id="city" name="city" placeholder="Nhập tỉnh/thành phố">
+                    <select name="province" id="province">
+                        <option value="">Hà Nội</option>
+                        <option value="">Huế</option>
+                        <option value="">Đà Nẵng</option>
+                        <option value="">Quảng Trị</option>
+                        <option value="">Quảng Ngãi</option>
+                        <option value="">Quảng Nam</option>
+                        <option value="">Thanh Hóa</option>
+                        <option value="">Bà Rịa</option>
+                        <option value="">Thành phố Hồ Chí Minh</option>
+                    </select>
                 </div>
-
-                <div class="field-row">
-                    <div class="field">
-                        <label for="destination">Điểm đến</label>
-                        <textarea type="text" id="destination" name="destination" placeholder="Nhập điểm đến"></textarea>
-                        <input type="file" id="image-address" name="image-address">
-                    </div>
-                    <div class="field">
-                        <label for="transport">Di chuyển</label>
-                        <textarea wrap="soft" id="transport" name="transport" required></textarea>
-                        <input type="file" id="image-transport" name="image-transport">
-                    </div>
-                    <div class="field">
-                        <label for="food">Ẩm thực</label>
-                        <textarea wrap="soft" id="food" name="food" required></textarea>
-                        <input type="file" id="image-food" name="image-food">
-                    </div>
-                    <div class="field">
-                        <label for="festival">Lễ hội</label>
-                        <textarea wrap="soft" id="festival" name="festival" required></textarea>
-                        <input type="file" id="image-festival" name="image-festival">
+                <div class="field">
+                    <label for="postImage">Ảnh cho bài post</label>
+                    <input type="file" id="image-address" name="image-address">
+                </div>
+                <div class="field-row" id = "field-row">
+                    <div class="button-add">
+                        <button class="add-postDT-btn"type="button" onclick="addSmallForm()">Thêm tiểu mục <ion-icon style="margin-left: 5px;" name="add-circle-outline"></ion-icon></button>
+                    </div>    
+                    <div id="small-forms-container">
+                        <div class="field">
+                            <label for="transport">Tiêu đề của tiểu mục 1</label>
+                            <textarea wrap="soft" id="transport" name="transport" required></textarea>
+                        </div>
+    
+                        <div class="field">
+                            <label for="transport">Nội dung của tiểu mục 1</label>
+                            <textarea wrap="soft" id="transport" name="transport" required></textarea>
+                        </div>
+                        <div class="field">
+                            <label for="food">Ảnh cho tiểu mục 1</label>
+                            <input type="file" id="image-food" name="image-food">
+                        </div>    
                     </div>
                 </div>
 
@@ -150,9 +243,6 @@
         </div>
     </div>
 </div>
-
-
-
 
 <div class="popup1-overlay" id="popup2Overlay">
     <div class="popup1-content">
@@ -197,6 +287,46 @@
     </div>
 </div>
 
+<script>
+    let formIndex = 1;
+
+    function addSmallForm() {
+        formIndex++;
+
+        const smallForm = document.createElement("div");
+        smallForm.className = "small-form";
+        smallForm.id = `small-form-${formIndex}`;
+
+        smallForm.innerHTML = `
+            <div id = "small-forms-container">
+                <div class="field">
+                    <label for="transport-title-${formIndex}">Tiêu đề của tiểu mục ${formIndex}</label>
+                    <textarea wrap="soft" id="transport-title-${formIndex}" name="transport-title-${formIndex}" required></textarea>
+                </div>
+                <div class="field">
+                    <label for="transport-content-${formIndex}">Nội dung của tiểu mục ${formIndex}</label>
+                    <textarea wrap="soft" id="transport-content-${formIndex}" name="transport-content-${formIndex}" required></textarea>
+                </div>
+                <div class="field">
+                    <label for="food-${formIndex}">Ảnh cho tiểu mục ${formIndex}</label>
+                    <input type="file" id="image-food-${formIndex}" name="image-food-${formIndex}">
+                    <button class = "delete-postDT-btn" type="button" onclick="removeSmallForm(${formIndex})">Xóa tiểu mục <ion-icon name="close-outline" class="create-post-close"></ion-icon></button>
+                </div>
+            </div>
+        `;
+
+        document.getElementById("field-row").appendChild(smallForm);
+    }
+
+    function removeSmallForm(index) {
+        const confirmation = confirm("Bạn có chắc chắn muốn xóa tiểu mục này?");
+        if (confirmation) {
+            const formToRemove = document.getElementById(`small-form-${index}`);
+            if (formToRemove) {
+                formToRemove.remove();
+            }
+        }    }
+</script>
 
 </body>
 </html>

@@ -71,6 +71,35 @@ document.addEventListener('DOMContentLoaded', () => {
             removeAdminOption();
         }
     });
+
+
+    document.querySelectorAll('.edit-post-detail').forEach(button => { //để kích hoạt mọi nút edit-btn mỗi dòng
+        button.addEventListener('click', () => {
+            resetFormState();
+            popup3Overlay.style.display = 'flex';
+        });
+    });
+
+    document.getElementById('closepopup3').addEventListener('click', () => {
+        if(confirm("Xác Nhận Hủy?")){
+            popup3Overlay.style.display = 'none';
+        }
+    });
+
+    document.getElementById('cancelButton3').addEventListener('click', () => {
+        if(confirm("Xác Nhận Hủy?")){
+            popup3Overlay.style.display = 'none';
+        }
+    });
+
+    window.addEventListener('click', (event) => {
+        if (event.target === popup3Overlay) {
+            if(confirm("Xác Nhận Hủy?")){
+                popup3Overlay.style.display = 'none';
+            }
+        }
+    });
+
 });
 
 
@@ -94,5 +123,16 @@ function toggleDestinations(id) {
         destinationRow.style.display = 'table-row';
     } else {
         destinationRow.style.display = 'none';
+    }
+}
+
+function toggleIcon() {
+    const searchInput = document.querySelector('.search-bar');
+    const searchIcon = document.querySelector('.search-icon');
+    
+    if (searchInput.value.trim() !== '') {
+        searchIcon.classList.add('hidden');
+    } else {
+        searchIcon.classList.remove('hidden');
     }
 }

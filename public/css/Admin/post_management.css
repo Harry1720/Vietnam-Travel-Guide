@@ -3,7 +3,6 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f6f9ff;
-    overflow-x: hidden;
 }
 
 .main-content {
@@ -12,7 +11,6 @@ body {
     background-color: #FAFAFB;
     min-height: 100vh;
     width: calc(100% - 280px);
-    
 }
 
 /* Post Management Card */
@@ -22,14 +20,13 @@ body {
     border-radius: 12px;
     padding: 24px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-    
 }
 
 
 /* Buttons */
-.add-post-btn, .add-postDT-btn, .delete-postDT-btn {
+.add-post-btn {
     padding: 10px 20px;
-    border: 2px solid #35679C;;
+    border: 2px solid #35679C;
     border-radius: 20px;
     cursor: pointer;
     font-size: 16px;
@@ -37,23 +34,13 @@ body {
     align-items: center;
     background-color: #35679C;
     color: #fff;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
+
 .add-post-btn:hover{
     background:none;
     border: 2px solid #35679C;
     color: #35679C;
-}
-.add-postDT-btn{
-    margin-top: 20px;
-    float: right;
-    background-color: rgb(10, 162, 10);
-}
-
-.delete-postDT-btn{
-    margin-top: 10px;
-    float: right;
-    background-color: #d92e3e;
 }
 
 /* Search Bar */
@@ -61,12 +48,8 @@ body {
     position: relative;
     width: 100%;
     max-width: 300px;
-    margin-left: 67.5%;
+    margin-left: 67%;
     margin-bottom: 20px;
-}
-
-.search-bar:focus{
-    border: 2px solid #35679C;
 }
 
 .search-bar {
@@ -77,7 +60,9 @@ body {
     font-size: 1rem;
     outline: none;
 }
-
+.search-bar:focus{
+    border: 2px solid #35679C;
+}
 .search-icon {
     position: absolute;
     top: 50%;
@@ -85,7 +70,11 @@ body {
     transform: translateY(-50%);
     color: #888;
     font-size: 1.2rem;
-    /* pointer-events: none; */
+    pointer-events: none;
+}
+/* Thêm class này để ẩn icon */
+.search-icon.hidden {
+    opacity: 0;
 }
 
 /* Table */
@@ -109,7 +98,7 @@ th, td {
     padding: 16px;
     text-align: center;
     border-bottom: 1px solid #EBECF2;
-    color: #61697e;
+    color: #8F9BBA;
 }
 
 tbody tr {
@@ -209,9 +198,8 @@ td:last-child {
 }
 
 .popup1-content {
-    background-color: #fff;
+    background-color: #FEFCFB;
     border-radius: 10px;
-    width: 100%;
     max-width: 940px;
     max-height: 90vh; 
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -257,13 +245,12 @@ td:last-child {
     padding: 20px;
     border: none;
     border-radius: 10px;
-    background-color: #FEFCFB;
     box-shadow: none;
     margin-bottom: 0;
 }
 
 #post-form {
-    max-width: 820px;
+    max-width: 800px;
     margin: 0 auto;
     padding: 10px;
 }
@@ -273,14 +260,33 @@ td:last-child {
     margin-bottom: 10px;
 }
 
-.field label {
+.field label{
     display: block;
     margin-bottom: 6px; 
     font-weight: 600;
     color: #35679C;
-    font-size: 15px;
+    font-size: 16px;
 }
 
+
+#province{
+    width: 39%;
+    margin-left: 20px;
+    margin-right: 20px;
+    float: left;
+}
+#province-edit{
+    width: 39%;
+    margin-left: 20px;
+    margin-right: 20px;
+    float: left;
+}
+
+#destination{
+    width: 39%;
+    margin-left: 65px;
+    margin-right: 20px;
+}
 .field input,
 .field select,
 .field textarea {
@@ -288,19 +294,19 @@ td:last-child {
     padding: 12px;
     border: 1px solid #e0e0e0;
     border-radius: 8px;
-    font-size: 14px;
+    font-size: 15px;
     background-color: #fff;
     transition: all 0.3s ease;
     box-sizing: border-box;
 }
-/* 
+
 .field select {
     appearance: none;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%2335679C' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: calc(100% - 12px) center;
     padding-right: 35px;
-} */
+}
 
 .field textarea {
     min-height: 120px;
@@ -324,15 +330,12 @@ td:last-child {
 }
 
 .field input[type="file"] {
-    /* margin-top: 8px; */
-    padding: 8px;
+    margin-top: 8px;
+    padding: 4px;
     background-color: #f8f9fa;
     cursor: pointer;
 }
-.field-row input[type="file"]{
-    min-height: 150px;
 
-}
 .field input[type="file"]::file-selector-button {
     padding: 8px 16px;
     border: none;
@@ -348,16 +351,12 @@ td:last-child {
     background-color: #2a5280;
 }
 
-#small-forms-container{
+.field-row {
     display: grid;
     width: 800px;
     gap: 20px; 
     grid-template-columns: repeat(3, 1fr);
     align-items: start;
-    background-color: #fff0e8;
-    padding: 10px;
-    border-radius: 10px;
-    margin-bottom: 18px;
 }
 .field input:focus,
 .field select:focus,
@@ -406,10 +405,6 @@ td:last-child {
     .button input {
         width: 100%;
     }
-}
-
-.create-post-close{
-    margin-left: 10px;
 }
 
 

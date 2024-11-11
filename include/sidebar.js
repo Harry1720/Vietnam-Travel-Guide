@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     <a href="blog_management.html"><ion-icon name="newspaper-outline"></ion-icon> Quản lý blog</a>
                 </li>
                 <li class="submenu">
-                    <a href="province_management.html"><ion-icon name="diamond-outline"></ion-icon> Quản lý Tỉnh/Thành phố</a>
+                    <a href="province_management.php"><ion-icon name="diamond-outline"></ion-icon> Quản lý Tỉnh/Thành phố</a>
                 </li>
                 <li><a href="statistical.html"><span class="icon"><ion-icon name="analytics"></ion-icon></span> Thống kê</a></li>               
                 <li class="submenu">

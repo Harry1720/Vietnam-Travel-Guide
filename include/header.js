@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
         </div>
         <nav class="nav">
             <a href = "home.html">Trang chủ</a>
-            <a href="">Tỉnh thành</a>
+            <a href="">Tỉnh Thành</a>
             <a href="storiesList.html">Blogs</a>
             <a href="WriteReview.php">Viết Blog</a>
         </nav>

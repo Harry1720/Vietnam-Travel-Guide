@@ -3,6 +3,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f6f9ff;
+    overflow-x: hidden;
 }
 
 .main-content {
@@ -34,7 +35,7 @@ body {
     align-items: center;
     background-color: #35679C;
     color: #fff;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .add-post-btn:hover{

@@ -22,3 +22,14 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 });
+
+function toggleIcon() {
+    const searchInput = document.querySelector('.search-bar');
+    const searchIcon = document.querySelector('.search-icon');
+    
+    if (searchInput.value.trim() !== '') {
+        searchIcon.classList.add('hidden');
+    } else {
+        searchIcon.classList.remove('hidden');
+    }
+}

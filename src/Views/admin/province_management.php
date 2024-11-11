@@ -30,6 +30,7 @@
         }
 
         $Start = ($page - 1) * $limit;
+        $stt1 = $Start+1;
 
         $provinceOfPage = $bothcontroller->getprovinceOfPage($Start,$limit);
     ?>
@@ -53,7 +54,7 @@
         </button>
 
         <div class="search-container">
-            <input type="text" placeholder="Tìm kiếm tỉnh thành" class="search-bar">
+            <input type="text" placeholder="Tìm kiếm tỉnh thành" class="search-bar" oninput="toggleIcon()">
             <ion-icon name="search-outline" class="search-icon"></ion-icon>
         </div>
         <!-- List Province Table -->
@@ -63,8 +64,7 @@
                 <tr>
                     <th>STT</th>
                     <th>Tên Tỉnh Thành</th>
-                    <th>Mã Vùng</th>
-                    <th>Thao Tác</th>
+                    <th>Miền</th>
                 </tr>
                 </thead>
                 <tbody id="province-List">
@@ -74,17 +74,9 @@
                                 ?>
                                         <!-- Ví dụ một tỉnh thành -->
                                     <tr onclick="toggleDestinations(<?php echo $stt?>)">
-                                        <td><?php echo $stt++ ?></td>
+                                        <td><?php echo $stt1++ ?></td>
                                         <td><?php echo $province['provinceName'] ?? 'Lỗi Hiển Thị'?></td>
                                         <td><?php echo $province['provinceRegion'] ?? 'Lỗi Hiển Thị'?></td>
-                                        <td>
-                                            <button class="edit-btn">
-                                                <ion-icon name="create-outline"></ion-icon> 
-                                            </button>
-                                            <button class="delete-btn">
-                                                <ion-icon name="trash-outline"></ion-icon> 
-                                            </button>
-                                        </td>
                                     </tr>
                                 <?php
                                 $destinations = $bothcontroller->getAllDestinationByProvinceID($province['provinceID']);
@@ -99,6 +91,8 @@
                                                                 <tr>
                                                                     <th>Điểm Đến</th>
                                                                     <th>Mô Tả</th>
+                                                                    <th>Đường dẫn ảnh</th>
+                                                                    <th>Lựa chọn</th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
@@ -108,6 +102,15 @@
                                                                 <tr>
                                                                     <td><?php echo $destination['destinationName'] ?? 'Lỗi Hiển Thị'?></td>
                                                                     <td><?php echo $destination['destinationContent'] ?? 'Lỗi Hiển Thị'?></td>
+                                                                    <td><?php echo $destination['imgDesURL'] ?? 'Lỗi Hiển Thị'?></td>
+                                                                    <td>
+                                                                        <button class="edit-btn">
+                                                                            <ion-icon name="create-outline"></ion-icon> 
+                                                                        </button>
+                                                                        <button class="delete-btn">
+                                                                            <ion-icon name="trash-outline"></ion-icon> 
+                                                                        </button>
+                                                                    </td>
                                                                 </tr>
                                                                 <?php
                                                                 }
@@ -130,7 +133,8 @@
             <div class="pagination">
                 <?php
                     for ($i = 1; $i <= $countPage; $i++) {
-                        echo "<a class='page-btn' href='?page=$i'>$i</a>";
+                        $activeClass = ($i == $page) ? 'active' : '';
+                        echo "<a class='page-btn $activeClass' href='?page=$i'>$i</a>";
                     }
                 ?>
             </div>
@@ -191,17 +195,6 @@
                     <label for="destinationName1">Tên điểm đến</label>
                     <input type="text" id="destinationName1" name="destinationName1" placeholder="Hội An" required>
                 </div>
-                <div class="field input" style="margin-bottom: 20px;">
-                    <label for="province1">Tỉnh/Thành Phố</label>
-                    <select id="province1" name="province1">
-                        <?php
-                            foreach ($provinces as $province) {
-                                echo '<option value="' . $province['provinceID'] . '">' . $province['provinceName'] . '</option>';
-                            }
-                        ?>
-                    </select>
-                </div>
-
                 <div class="field input">
                     <label for="description1">Mô tả điểm đến</label>
                     <textarea wrap="soft" id="description1" name="description1" required></textarea>

@@ -50,8 +50,8 @@ CREATE TABLE blog (
   userID INT NOT NULL,
   blogContent TEXT NOT NULL,
   blogCreateDate DATE NOT NULL,
-  approve BOOLEAN NOT NULL,
-    status BOOLEAN NOT NULL DEFAULT TRUE, 
+  status BOOLEAN NOT NULL DEFAULT TRUE,
+  approvalStatus VARCHAR(20) NOT NULL DEFAULT 'Chưa Duyệt',
   FOREIGN KEY (userID) REFERENCES users(userID),
   FOREIGN KEY (provinceID) REFERENCES province(provinceID)
 );
@@ -184,28 +184,27 @@ VALUES
 (20, '2023-11-20', 'bacgiang_post.jpg', TRUE);
 
 -- Dữ liệu cho bảng blog
-INSERT INTO blog (provinceID, userID, blogContent, blogCreateDate, approve, status)
-VALUES
-(1, 1, 'Hanoi is the capital of Vietnam with rich culture and history.', '2023-11-01', TRUE, TRUE),
-(2, 2, 'Ho Chi Minh City is the largest city in Vietnam, full of life and energy.', '2023-11-02', TRUE, TRUE),
-(3, 3, 'Da Nang offers beautiful beaches and mountains, a perfect vacation spot.', '2023-11-03', TRUE, TRUE),
-(4, 4, 'Hai Phong has a great mix of culture and industrial growth.', '2023-11-04', TRUE, TRUE),
-(5, 5, 'Hue is the ancient capital, full of history and beautiful architecture.', '2023-11-05', TRUE, TRUE),
-(6, 6, 'Can Tho is famous for its floating markets and southern cuisine.', '2023-11-06', TRUE, TRUE),
-(7, 7, 'Quang Ninh is home to the UNESCO World Heritage Site, Ha Long Bay.', '2023-11-07', TRUE, TRUE),
-(8, 8, 'Binh Duong is a rapidly growing province with modern infrastructure.', '2023-11-08', TRUE, TRUE),
-(9, 9, 'Nghe An has beautiful nature and cultural sites to explore.', '2023-11-09', TRUE, TRUE),
-(10, 10, 'Khanh Hoa is famous for its coastal beauty and resort towns.', '2023-11-10', TRUE, TRUE),
-(11, 11, 'Bac Ninh is known for its rich folk culture and historical sites.', '2023-11-11', TRUE, TRUE),
-(12, 12, 'Tay Ninh is famous for its Cao Dai religion and Ba Den Mountain.', '2023-11-12', TRUE, TRUE),
-(13, 13, 'Quang Nam offers beautiful beaches and traditional villages.', '2023-11-13', TRUE, TRUE),
-(14, 14, 'Thanh Hoa has a rich history and scenic landscapes to explore.', '2023-11-14', TRUE, TRUE),
-(15, 15, 'Dak Lak is famous for its coffee plantations and nature reserves.', '2023-11-15', TRUE, TRUE),
-(16, 16, 'Gia Lai is known for its beautiful mountains and waterfalls.', '2023-11-16', TRUE, TRUE),
-(17, 17, 'Long An is known for its rivers and rich agricultural land.', '2023-11-17', TRUE, TRUE),
-(18, 18, 'Vinh Phuc offers beautiful landscapes and cultural heritage.', '2023-11-18', TRUE, TRUE),
-(19, 19, 'Lam Dong is home to Da Lat, a famous tourist destination in the mountains.', '2023-11-19', TRUE, TRUE),
-(20, 20, 'Bac Giang is known for its agricultural production and scenic beauty.', '2023-11-20', TRUE, TRUE);
+INSERT INTO blog (provinceID, userID, blogContent, blogCreateDate, status, approvalStatus) VALUES
+(1, 1, 'Nội dung bài viết 1', '2024-11-01', TRUE, 'Chờ Duyệt'),
+(2, 2, 'Nội dung bài viết 2', '2024-11-02', TRUE, 'Đã Duyệt'),
+(3, 3, 'Nội dung bài viết 3', '2024-11-03', TRUE, 'Chờ Duyệt'),
+(1, 4, 'Nội dung bài viết 4', '2024-11-04', TRUE, 'Không Được Duyệt'),
+(2, 5, 'Nội dung bài viết 5', '2024-11-05', TRUE, 'Chờ Duyệt'),
+(3, 6, 'Nội dung bài viết 6', '2024-11-06', TRUE, 'Đã Duyệt'),
+(1, 7, 'Nội dung bài viết 7', '2024-11-07', TRUE, 'Chờ Duyệt'),
+(2, 8, 'Nội dung bài viết 8', '2024-11-08', TRUE, 'Không Được Duyệt'),
+(3, 9, 'Nội dung bài viết 9', '2024-11-09', TRUE, 'Chờ Duyệt'),
+(1, 10, 'Nội dung bài viết 10', '2024-11-10', TRUE, 'Đã Duyệt'),
+(2, 11, 'Nội dung bài viết 11', '2024-11-11', TRUE, 'Chờ Duyệt'),
+(3, 12, 'Nội dung bài viết 12', '2024-11-12', TRUE, 'Không Được Duyệt'),
+(1, 13, 'Nội dung bài viết 13', '2024-11-13', TRUE, 'Chờ Duyệt'),
+(2, 14, 'Nội dung bài viết 14', '2024-11-14', TRUE, 'Đã Duyệt'),
+(3, 15, 'Nội dung bài viết 15', '2024-11-15', TRUE, 'Chờ Duyệt'),
+(1, 16, 'Nội dung bài viết 16', '2024-11-16', TRUE, 'Không Được Duyệt'),
+(2, 17, 'Nội dung bài viết 17', '2024-11-17', TRUE, 'Chờ Duyệt'),
+(3, 18, 'Nội dung bài viết 18', '2024-11-18', TRUE, 'Đã Duyệt'),
+(1, 19, 'Nội dung bài viết 19', '2024-11-19', TRUE, 'Chờ Duyệt'),
+(2, 20, 'Nội dung bài viết 20', '2024-11-20', TRUE, 'Không Được Duyệt');
 
 -- Dữ liệu cho bảng imgBlog
 INSERT INTO imgBlog (blogID, imgBlogURL)

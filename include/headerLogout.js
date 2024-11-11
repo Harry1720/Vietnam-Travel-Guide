@@ -11,24 +11,23 @@ document.addEventListener('DOMContentLoaded', function () {
             <a href="WriteReview.php">Viết Blog</a>
         </nav>
         <nav class="sub_nav">
-            <a href="../createAccount.html">Đăng ký</a>
-            <a href="../login.html" class="btn-login">Đăng nhập</a>
+            <a href="../login.html" class="btn-login">Đăng xuất</a>
         </nav>
     </header>
     <section class="hero">
-        <h1>Khám phá những danh lam thắng cảnh tuyệt đẹp</h1>
+        <h1>Discover New Places and Create Unforgettable Memories</h1>
         <section class="destinations">
             <a href="#" class="article">
                 <img src="../../../public/image/NinhBinh.jpeg" alt="provinces">
-                <h3 style= "text-align: center">Tràng An - Di sản văn hóa UNESCO đậm giá trị văn hóa và lịch sử dân tộc.</h3>
+                <h3>Why you should reconsider The Inca Trail, Peru Trip</h3>
             </a>
             <a href="#" class="article">
                 <img src="../../../public/image/Hue.jpeg" alt="provinces">
-                <h3 style= "text-align: center">Lăng Khải Định Huế - đỉnh cao kiến trúc lăng tẩm thời Nguyễn.</h3>
+                <h3>The Hidden Powers of The Northern Lights, Iceland</h3>
             </a>
             <a href="#" class="article">
                 <img src="../../../public/image/QB.jpg" alt="provinces">
-                <h3 style= "text-align: center">Sơn Đoòng - Hành trình thám hiểm hang động lớn nhất thế giới</h3>
+                <h3>10 Facts you didn't know about The Blue Hole, Belize</h3>
             </a>
         </section>
     </section>

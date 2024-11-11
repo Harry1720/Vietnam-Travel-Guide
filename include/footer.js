@@ -8,10 +8,10 @@ document.addEventListener('DOMContentLoaded', function () {
         <h1 class="footer_name">Cẩm nang du lịch Việt Nam</h1>
         <div class="nav_footer_menu">
             <ul>
-                <li><a href="home.html">Home</a></li>
-                <li><a href="">Provinces</a></li>
+                <li><a href="home.html">Trang chủ</a></li>
+                <li><a href="">Tỉnh thành</a></li>
                 <li><a href="storiesList.html">Blogs</a></li>
-                <li><a href="WriteReview.php">Write Blog</a></li>
+                <li><a href="WriteReview.php">Viết Blog</a></li>
             </ul>
         </div>
         <div class="bottom_text">

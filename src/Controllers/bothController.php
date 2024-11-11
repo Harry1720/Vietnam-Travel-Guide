@@ -71,6 +71,13 @@ class bothController{
         return $get_query;
     }
 
+    public function getProvinceOfPage($Start, $litmit){
+        $sql = "SELECT * FROM province  LIMIT $Start, $litmit";
+        $get_query = mysqli_query($this->conn->connect(),$sql);
+
+        return $get_query;
+    }
+
     public function getAllDestinationByProvinceID($provinceID) {
         
         $sql = "SELECT * FROM destination WHERE provinceID = $provinceID";

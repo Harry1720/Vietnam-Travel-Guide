@@ -82,40 +82,23 @@ class AdminController{
         }
     }
 
-    //các hàm province của admin
-    public function addProvince(){
+    public function getAllBlogs() {
+        
+        $sql = "SELECT * FROM blogs";
+        $get_query = mysqli_query($this->conn->connect(),$sql);
 
-        $provinceName = $_POST['provinceName'];
-        $provinceRegion = $_POST['provinceRegion'];
-
-        $sql =  "INSERT INTO provinces (provinceName, provinceRegion) 
-                VALUES ('$provinceName', '$provinceRegion')";
-
-        $insert_query = mysqli_query($this->conn->connect(),$sql);
+        return $get_query;
     }
 
-    public function updateProvince($provinceID) {
-        $provinceName = $_POST['provinceName'];
-        $provinceRegion = $_POST['provinceRegion'];
+    public function getAllPost() {
+
+        $sql = "SELECT * FROM posts";
+        $get_query = mysqli_query($this->conn->connect(),$sql);
     
-        $sql = "UPDATE provinces 
-                SET provinceName = '$provinceName', provinceRegion = '$provinceRegion' 
-                WHERE provinceID = $provinceID";
-    
-        $update_query = mysqli_query($this->conn->connect(),$sql);
-        echo "Cập nhật tỉnh thành công!";
+        return $get_query;
     }
 
-    private function checkIssetEmail($email)
-    {
-        $sql = mysqli_query($this->conn->connect(), "SELECT * FROM users WHERE email = '{$email}'");
-        if(mysqli_num_rows($sql) > 0){
-            echo "$email - Email này đã tồn tại!";
-            return true;
-        }
-        return false;
-    }
-
+    //table User
     public function addUser(){
 
         $userName = $_POST["userName"];
@@ -182,7 +165,6 @@ class AdminController{
         }
     }
     
-
     public function getAllUsers(){
 
         $sql = "SELECT * FROM users";
@@ -207,24 +189,7 @@ class AdminController{
         return $get_query->fetch_assoc();
     }
 
-    public function getAllBlogs() {
-        
-        $sql = "SELECT * FROM blogs";
-        $get_query = mysqli_query($this->conn->connect(),$sql);
-
-        return $get_query;
-    }
-
-    public function getAllPost() {
-
-        $sql = "SELECT * FROM posts";
-        $get_query = mysqli_query($this->conn->connect(),$sql);
-    
-        return $get_query;
-    }
-
-    public function getAdminById()
-    {
+    public function getAdminById(){
         // Lấy ID của người dùng từ session
         // if($_SESSION['blogger_id']){
         //     $admin = $_SESSION['blogger_id'];
@@ -254,7 +219,6 @@ class AdminController{
             return null;
         }
     }
-
 
     public function updateAdmin(){
         // $admin = $_SESSION['blogger_id'];
@@ -288,6 +252,63 @@ class AdminController{
         } else {
             echo "Vui lòng điền đầy đủ thông tin.";
         }
+    }
+
+    private function checkIssetEmail($email){
+        $sql = mysqli_query($this->conn->connect(), "SELECT * FROM users WHERE email = '{$email}'");
+        if(mysqli_num_rows($sql) > 0){
+            echo "$email - Email này đã tồn tại!";
+            return true;
+        }
+        return false;
+    }
+
+    //các hàm province của admin
+    public function addProvince(){
+
+        $provinceName = $_POST['provinceName'];
+        $provinceRegion = $_POST['provinceRegion'];
+
+        $sql =  "INSERT INTO provinces (provinceName, provinceRegion) 
+                VALUES ('$provinceName', '$provinceRegion')";
+
+        $insert_query = mysqli_query($this->conn->connect(),$sql);
+    }
+
+    public function updateProvince($provinceID) {
+        $provinceName = $_POST['provinceName'];
+        $provinceRegion = $_POST['destinationName'];
+        $destinationContent = $_POST['destinationName'];
+        $imgDesURL = $_POST['destinationName'];
+    
+        $sql = "UPDATE province
+                SET provinceName = '$provinceName', provinceRegion = '$provinceRegion' 
+                WHERE provinceID = $provinceID";
+    
+        $update_query = mysqli_query($this->conn->connect(),$sql);
+        echo "Cập nhật tỉnh thành công!";
+    }
+
+    public function addDestination() {
+   
+        $fileTmpPath = $_FILES['image']['tmp_name'];
+        $result = $this->uploadImage($fileTmpPath);
+
+        if ($result) {
+            echo "File uploaded successfully";
+        } else {
+            echo "File upload failed.";
+        }
+
+        $provinceID = $_POST['province'];
+        $destinationName = $_POST['destinationName'];
+        $description = $_POST['description'];
+    
+        $sql = "INSERT INTO destination (provinceID, destinationName,destinationContent,imgDesURL) 
+                VALUES ('$provinceID', '$destinationName','$description','$result')";
+    
+        $update_query = mysqli_query($this->conn->connect(),$sql);
+        echo "Thêm địa danh thành công!";
     }
 }
 ?>

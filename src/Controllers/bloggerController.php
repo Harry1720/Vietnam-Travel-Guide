@@ -192,5 +192,57 @@ class bloggerController{
         }
     }
 
+    public function getBloggerById(){
+        
+        //set default - hard code --> admin 4  
+        $blogger = 9;
+        // Truy vấn thông tin người dùng từ cơ sở dữ liệu
+        $sql = "SELECT * FROM users WHERE userID = '$blogger'";
+        $user = mysqli_query($this->conn->connect(), $sql);
+
+        if($user){
+            return $user->fetch_assoc();
+        }
+        else{
+            echo "Ngươi Dùng Không Tồn Tại";
+            return null;
+        }
+    }
+    public function updateBlogger(){
+        // $admin = $_SESSION['blogger_id'];
+        $blogger = 9;
+        $name = $_POST['name'];
+        $email = $_POST['email'];
+        $address = $_POST['address'];
+        $gender = $_POST['gender'];
+
+        echo $blogger;
+        echo $name;
+        echo $email;
+        echo $address;
+
+        if (!empty($blogger) && !empty($name) && !empty($email)) {
+
+            $sql = "UPDATE users
+                    SET userName = '$name', email = '$email', gender = '$gender', address_ = '$address'
+                    WHERE userid = '$blogger'";
+
+            $update_query = mysqli_query($this->conn->connect(),$sql);
+            
+            if($update_query){
+                header("Location: ../../views/blogger/profile.php");
+                exit();
+            }
+            else {
+                // Cập nhật thất bại
+                echo "Cập nhật thông tin thất bại. Vui lòng thử lại.";
+            }
+        } else {
+            echo "Vui lòng điền đầy đủ thông tin.";
+        }
+    }
+
+
+
 }
 ?>

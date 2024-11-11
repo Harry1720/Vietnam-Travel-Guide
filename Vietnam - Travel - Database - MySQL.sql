@@ -51,7 +51,7 @@ CREATE TABLE blog (
   blogContent TEXT NOT NULL,
   blogCreateDate DATE NOT NULL,
   approve BOOLEAN NOT NULL,
-  status BOOLEAN NOT NULL DEFAULT TRUE, 
+    status BOOLEAN NOT NULL DEFAULT TRUE, 
   FOREIGN KEY (userID) REFERENCES users(userID),
   FOREIGN KEY (provinceID) REFERENCES province(provinceID)
 );
@@ -88,7 +88,7 @@ CREATE TABLE repComment (
 
 
 -- Dữ liệu cho bảng province
-INSERT INTO province (provinceName, provinceRegion, status)
+  INSERT INTO province (provinceName, provinceRegion, status)
 VALUES
 ('Hanoi', 'North', TRUE),
 ('Ho Chi Minh City', 'South', TRUE),
@@ -268,7 +268,7 @@ VALUES
 (8, 9, 'Binh Duong is indeed growing rapidly.', '2023-11-08', TRUE),
 (9, 10, 'Nghe An is so beautiful, nature is its charm.', '2023-11-09', TRUE),
 (10, 11, 'Yes, Khanh Hoa is very relaxing.', '2023-11-10', TRUE),
-(11, 12, 'Bac Ninh's culture is unique and rich.', '2023-11-11', TRUE),
+(11, 12, 'Bac Ninh"s culture is unique and rich.', '2023-11-11', TRUE),
 (12, 13, 'Tay Ninh is very special with its Cao Dai religion.', '2023-11-12', TRUE),
 (13, 14, 'Yes, Quang Nam has so much to explore.', '2023-11-13', TRUE),
 (14, 15, 'Thanh Hoa is definitely worth exploring.', '2023-11-14', TRUE),

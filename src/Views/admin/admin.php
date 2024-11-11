@@ -57,6 +57,7 @@
                     <label for="name"><i class="fa fa-user"></i> Họ và Tên</label>
                     <input type="text" id="name" name="name" value="<?php echo $name?>" disabled>
                 </div>
+
                 <div>
                     <label for="email1"><i class="fa fa-envelope"></i> Email</label>
                     <input type="email" id="email1" name="email1" value="<?php echo $email?>" disabled>
@@ -64,7 +65,7 @@
 
                 <div>
                     <label for="address"><i class="fa fa-address-book"></i> Địa chỉ</label>
-                    <select id="address" name="address">
+                    <select id="address" name="address" disabled>
                         <?php
                             foreach ($provinces as $province) {
                                 $selected = ($province['provinceID'] == $user['address_']) ? 'selected' : '';
@@ -78,6 +79,7 @@
                     <label for="role"><i class="fa fa-building"></i> Chức vụ</label>
                     <input type="text" id="role" name="role" value="<?php echo $role?>" disabled>
                 </div>
+
                 <div>
                     <label> <ion-icon name="transgender-outline"></ion-icon> Giới tính</label>
                     <select name="gender" id="genderSelect" disabled>
@@ -85,6 +87,7 @@
                         <option value="Female" <?php if($gender == 'FeMale') echo 'selected'?>>Female</option>
                     </select>
                 </div>
+
                 <div class="button-group">
                     <button type="button" id="unlock_user">CHỈNH SỬA</button>
                     <button type="submit" id="Update_user" style="display: none">CẬP NHẬT</button>

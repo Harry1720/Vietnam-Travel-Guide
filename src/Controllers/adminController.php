@@ -362,8 +362,29 @@ class AdminController{
         return $get_query->fetch_assoc();
     }
 
+    public function getTotalPostsCount() {
+        $sql = "SELECT COUNT(*) AS total FROM post";
+        $result = mysqli_query($this->conn->connect(), $sql);
+        $row = $result->fetch_assoc();
+        return $row['total'];
+    }
+    
+    public function getPostsByPage($limit, $offset) {
+        $sql = "SELECT po.postID, p.provinceName, po.imgPostURL, po.postCreateDate, p.provinceRegion
+                FROM post po
+                JOIN province p ON po.provinceID = p.provinceID
+                LIMIT $limit OFFSET $offset";
+        $get_query = mysqli_query($this->conn->connect(), $sql);
+        $posts = [];
+        while ($row = $get_query->fetch_assoc()) {
+            $posts[] = $row;
+        }
+        return $posts;
+    }
 
-        public function getAllBlogs() {
+
+
+    public function getAllBlogs() {
         
         $sql = "SELECT * FROM blogs";
         $get_query = mysqli_query($this->conn->connect(),$sql);

@@ -2,16 +2,16 @@ document.addEventListener('DOMContentLoaded', function () {
     const footer = `
     <footer>
         <div class="footer_logo">
-        <img class="footer_logo_img" src = "../../public/image/logo.png" alt="Logo"/>
+        <img class="footer_logo_img" src="../../../public/image/logo.png" alt="Logo"/>
 
         </div>
         <h1 class="footer_name">Cẩm nang du lịch Việt Nam</h1>
         <div class="nav_footer_menu">
             <ul>
-                <li><a href="home.html">Trang chủ</a></li>
-                <li><a href="">Tỉnh thành</a></li>
-                <li><a href="storiesList.html">Blogs</a></li>
-                <li><a href="WriteReview.php">Viết Blog</a></li>
+                <li><a href="../blogger/home.html">Trang chủ</a></li>
+                <li><a href="../admin/province.php">Tỉnh Thành</a></li>
+                <li><a href="../blogger/storiesList.html">Blogs</a></li>
+                <li><a href="../blogger/WriteReview.php">Viết Blog</a></li>
             </ul>
         </div>
         <div class="bottom_text">

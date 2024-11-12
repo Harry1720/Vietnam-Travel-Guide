@@ -17,7 +17,11 @@
 <?php
     include_once "../../src/Controllers/adminController.php";
     $controller = new AdminController();
-    $postID = 1;
+
+    //$_GET['postID']: Lay tu story sang day postID (e.g., post.php?postID=1).
+    //intval(): dam bao la int value tu ben kia lay sang : 1 (co nghia la, mac dinh se lay trang Hanoi )
+    $postID = isset($_GET['postID']) ? intval($_GET['postID']) : 1;
+
     $header = $controller->getPostProvince($postID);  //get for header picture each post
     $data = $controller->getAllPostDetail($postID); //get picture for post content
 ?>
@@ -37,8 +41,8 @@
                     <img src="../../public/image/logo.png" alt="Logo">
                 </div>
                 <nav class="nav">
-                    <a href = "blogger/home.html" ">Trang chủ</a>
-                    <a href="" ">Tỉnh Thành</a>
+                    <a href = "blogger/home.php" ">Trang chủ</a>
+                    <a href="admin/province.php" ">Tỉnh Thành</a>
                     <a href="blogger/storiesList.html" ">Blogs</a>
                     <a href="blogger/WriteReview.php" ">Viết Blog</a>
                 </nav>

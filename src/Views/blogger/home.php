@@ -15,30 +15,33 @@
     <!-- <iframe class="header" src="../../../include/header2.html"></iframe> -->
 <script src = "../../../include/header.js"></script>
 <script src = "../../../include/footer.js"></script>
-<php>   </php>
     
-
-
-
-
     <section class="provinces section-common">
         <h2>Tỉnh thành</h2>
         <p>Tổng hợp các tỉnh thành của Việt Nam</p>
-        <a href="#" class="btn-page">Xem tất cả</a>
+        <a href="../admin/province.php" class="btn-page">Xem tất cả</a>
         <div class="grid-common">
-            <div class="card-common">
-                <img src="../../../public/image/NinhBinh.jpeg" alt="province">
-                <h4>Ninh Bình</h4>
+                <?php
+                    include_once "../../Controllers/adminController.php";
+                    $controller = new AdminController();
+                
+                    // Get current page number from URL, default to 1 if not set
+                    $page = isset($_GET['page']) && is_numeric($_GET['page']) ? (int)$_GET['page'] : 1;
+                    $limitPost= 3;
+                    $firstPost = 0; //lấy post 1 
+                    // Get posts for the current page
+                    $posts = $controller->getPostsByPage($limitPost, $firstPost);
+
+                    foreach ($posts as $post):
+                ?>
+                    <a href="../post.php?postID=<?php echo $post['postID']; ?> " class="card-common">
+                        <img src="<?php echo htmlspecialchars($post['imgPostURL']); ?>" alt="province">
+                        <div class="card-common">
+                            <h4 style="color: #333"><?php echo htmlspecialchars($post['provinceName']); ?></h4>
+                        </div>
+                    </a>
+                <?php endforeach; ?>
             </div>
-            <div class="card-common">
-                <img src="../../../public/image/Hue.jpeg" alt="province">
-                <h4>Huế</h4>
-            </div>
-            <div class="card-common">
-                <img src="../../../public/image/QB.jpg" alt="province">
-                <h4>Quảng Bình</h4>
-            </div>
-        </div>
     </section>
 
     <section class="location section-common">
@@ -77,12 +80,12 @@
                         <p class="location">Barcelona, Spain</p>
                         <p class="time">Feb 27, 2023 • 5 min read</p>
                     </div>
-                    <h4>A Wonderful Journey to India</h4>
+                         Wonderful Journey to India</h4>
                     <span>I had always been interested in spirituality...</span>
                 </div>
             </div>
             <div class="card-common">
-                <img src="../../..//public/image/Hue.jpeg" alt="Barcelona, Spain">
+                <img src="../../../public/image/Hue.jpeg" alt="Barcelona, Spain">
                 <div class="card-content">
                     <div class="location_time">
                         <p class="location">Barcelona, Spain</p>
@@ -116,7 +119,6 @@
             </div>
         </div>
     </section>
-
 
 </body>
 

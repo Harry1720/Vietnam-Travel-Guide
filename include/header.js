@@ -5,8 +5,8 @@ document.addEventListener('DOMContentLoaded', function () {
             <img src="../../../public/image/logo.png" alt="Logo">
         </div>
         <nav class="nav">
-            <a href = "home.html">Trang chủ</a>
-            <a href="">Tỉnh Thành</a>
+            <a href = "home.php">Trang chủ</a>
+            <a href="../admin/province.php">Tỉnh Thành</a>
             <a href="storiesList.html">Blogs</a>
             <a href="WriteReview.php">Viết Blog</a>
         </nav>

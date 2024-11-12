@@ -15,9 +15,9 @@ class AdminController{
         $this->conn = new Config();
     }
 
-    private function uploadImage($fileTmpPath) {
+    private function uploadImage($fileTmpPath,$folder) {
         $uploader = new CloudinaryUploader();
-        return $uploader->upload($fileTmpPath);
+        return $uploader->upload($fileTmpPath,$folder);
     }
 
     private function savePost($provinceID, $postCreateDate, $imageUrl) {
@@ -41,7 +41,7 @@ class AdminController{
         $fileTmpPath = $_FILES['postIMG']['tmp_name'];
 
         // ảnh
-        $imageUrl = $this->uploadImage($fileTmpPath);
+        $imageUrl = $this->uploadImage($fileTmpPath,'post');
 
         if ($imageUrl !== false) {
             
@@ -56,7 +56,7 @@ class AdminController{
                     $postCategory = $postDetail['category'];
                     $fileTmpPathDetail = $_FILES['postDetailIMG']['tmp_name'];
 
-                    $imageDetailUrl = $this->uploadImage($fileTmpPathDetail);
+                    $imageDetailUrl = $this->uploadImage($fileTmpPathDetail,'postDetail');
 
                     $this->addPostDetail($postId, $postSectionTitle, $postSectionContent, $postCategory, $imageDetailUrl);
                 }
@@ -275,24 +275,34 @@ class AdminController{
         $insert_query = mysqli_query($this->conn->connect(),$sql);
     }
 
-    public function updateProvince($provinceID) {
-        $provinceName = $_POST['provinceName'];
-        $provinceRegion = $_POST['destinationName'];
-        $destinationContent = $_POST['destinationName'];
-        $imgDesURL = $_POST['destinationName'];
+    public function updateDestination() {
+
+        if (isset($_FILES['image1']) && $_FILES['image1']['error'] == 0){
+            $fileTmpPath = $_FILES['image1']['tmp_name'];
+            $imgDesURL = $this->uploadImage($fileTmpPath,'postDetail');
+            echo "Ảnh thêm thành công";
+        }
+        else{
+            $imgDesURL = $_POST['imgdesURL'];
+            echo "Ảnh cũ";
+        }
+
+        $destinationID = $_POST['destinationID'];
+        $destinationName = $_POST['destinationName1'];
+        $destinationContent = $_POST['description1'];
     
-        $sql = "UPDATE province
-                SET provinceName = '$provinceName', provinceRegion = '$provinceRegion' 
-                WHERE provinceID = $provinceID";
+        $sql = "UPDATE destination
+                SET destinationName = '$destinationName', destinationContent = '$destinationContent', imgDesURL = '$imgDesURL'
+                WHERE destinationID = $destinationID";
     
         $update_query = mysqli_query($this->conn->connect(),$sql);
-        echo "Cập nhật tỉnh thành công!";
+        echo "Cập nhật điểm đến thành công!";
     }
 
     public function addDestination() {
    
         $fileTmpPath = $_FILES['image']['tmp_name'];
-        $result = $this->uploadImage($fileTmpPath);
+        $result = $this->uploadImage($fileTmpPath,'postDetail');
 
         if ($result) {
             echo "File uploaded successfully";
@@ -309,6 +319,14 @@ class AdminController{
     
         $update_query = mysqli_query($this->conn->connect(),$sql);
         echo "Thêm địa danh thành công!";
+    }
+
+    public function getDestination($destinationID){
+        $sql = "SELECT destinationID,destinationName,destinationContent,imgDesURL
+                FROM destination WHERE destinationID = $destinationID";
+        $destination = mysqli_query($this->conn->connect(),$sql);
+
+        return $destination->fetch_assoc();
     }
 
     public function getAllPostDetail($postID){

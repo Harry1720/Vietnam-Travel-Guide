@@ -110,3 +110,41 @@ function toggleIcon() {
         searchIcon.classList.remove('hidden');
     }
 }
+
+
+async function editDestination(destinationID) {
+    try {
+        console.log('Fetching user data for ID:', destinationID);
+        
+        const response = await fetch(`../../FunctionOfActor/admin/getDestination.php?editDestinationID=${destinationID}`);
+        console.log('Raw response:', response);
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        const rawData = await response.text();
+        
+        let destinationData;
+        try {
+            destinationData = JSON.parse(rawData); // Thử parse JSON
+            console.log('Parsed user data:', destinationData);
+        } catch (parseError) {
+            console.error('JSON parse error:', parseError);
+            console.log('Failed to parse response:', rawData);
+            throw new Error('Invalid JSON response');
+        }
+    
+        
+        // Update form fields
+        document.getElementById('destinationID').value = destinationData.destinationID;
+        document.getElementById('destinationName1').value = destinationData.destinationName;
+        document.getElementById('description1').value = destinationData.destinationContent;
+        document.getElementById('imgdes').src = destinationData.imgDesURL;
+        document.getElementById('imgdesURL').value = destinationData.imgDesURL;
+        
+    } catch (error) {
+        console.error('Error in editUser function:', error);
+        alert('Error loading user data. Please check console for details.');
+    }
+}

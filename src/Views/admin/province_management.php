@@ -74,7 +74,7 @@
                                 ?>
                                         <!-- Ví dụ một tỉnh thành -->
                                     <tr onclick="toggleDestinations(<?php echo $stt?>)">
-                                        <td><?php echo $stt1++ ?></td>
+                                        <td><?php echo $stt1++; $stt++?></td>
                                         <td><?php echo $province['provinceName'] ?? 'Lỗi Hiển Thị'?></td>
                                         <td><?php echo $province['provinceRegion'] ?? 'Lỗi Hiển Thị'?></td>
                                     </tr>
@@ -104,7 +104,7 @@
                                                                     <td><?php echo $destination['destinationContent'] ?? 'Lỗi Hiển Thị'?></td>
                                                                     <td><?php echo $destination['imgDesURL'] ?? 'Lỗi Hiển Thị'?></td>
                                                                     <td>
-                                                                        <button class="edit-btn">
+                                                                        <button class="edit-btn" onclick="editDestination(<?php echo $destination['destinationID'] ?>)">
                                                                             <ion-icon name="create-outline"></ion-icon> 
                                                                         </button>
                                                                         <button class="delete-btn">
@@ -190,7 +190,8 @@
     <div class="popup1-content">
         <span class="popup1-close" id="close2">&times;</span>
         <div class="wrapper" id = "">
-            <form id="destination-form2" enctype="multipart/form-data" method="POST" action="your_php_handler.php">
+            <form id="destination-form2" enctype="multipart/form-data" method="POST" action="../../FunctionOfActor/admin/updateDestination.php">
+                <input type="hidden" name="destinationID" id="destinationID" value="">
                 <div class="field input">
                     <label for="destinationName1">Tên điểm đến</label>
                     <input type="text" id="destinationName1" name="destinationName1" placeholder="Hội An" required>
@@ -203,6 +204,9 @@
                 <div class="field input" style="margin-bottom: 20px;">
                     <label for="image1">Tải ảnh:</label>
                     <input type="file" id="image1" name="image1">
+
+                    <img src="" alt="Ảnh Không Khả Dụng" id = "imgdes" name = "imgdes">
+                    <input type="hidden"id = "imgdesURL" name = "imgdesURL">
                 </div>
                 <div class="button">
                     <input type="submit" value="Lưu" class="save" id="saveButton1">

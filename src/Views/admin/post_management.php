@@ -116,7 +116,7 @@
                                                         <td><?php echo $postDetail['sectionContent'] ?? 'Lỗi Hiển Thị' ?></td>
                                                         <td><?php echo $postDetail['imgPostDetURL'] ?? 'Lỗi Hiển Thị' ?></td>
                                                         <td class="action-btn-frame">
-                                                            <button class="action-btn edit-post-detail" id="edit-post-detail-btn> " onclick="editPostDetail(<?php echo $postDetail['postID']; ?>)">
+                                                            <button class="action-btn edit-post-detail" id="edit-post-detail-btn> " onclick="editpostdetail(<?php echo $postDetail['postDetailID']; ?>)">
                                                                 <ion-icon name="create"></ion-icon>
                                                             </button>
                                                             <button class="action-btn delete">
@@ -226,7 +226,8 @@
             <div class="wrapper">
                 <form id="post-form" enctype="multipart/form-data" name="editPost" method="POST" action="../../FunctionOfActor/admin/updatePost.php">
                     <div class="field">                           
-                         <input type="hidden" id="postID" name="postID">
+                        <input type="hidden" id="postID" name="postID">
+                        <input type="hidden" id="imageposted" name="imageposted">
                         <label style="float: left; margin-top: 10px;" for="province">Tỉnh/Thành phố</label>
                         <select name="province" id="province-edit">
                         <?php
@@ -235,7 +236,8 @@
                             }
                         ?>
                         </select>
-                        <input style="width: 40%; margin:0;" type="file" id="image-post" name="image-post">
+                        <img src="" alt="Lỗi hiển thị ảnh" id = "image-posted">
+                        <input style="width: 40%; margin:0;" type="file" id="new-image-post" name="new-image-post">
                     </div>
                     <div class="button">
                         <input type="submit" value="Lưu" class="save" id="saveButton2">
@@ -254,11 +256,12 @@
                     <div class="field-row">
                         <div class="field">
                             <label for="title" id="displayTitle"></label>
+                            <input type="hidden" id ="imgposted" name = "imgposted">
                             <input type="hidden" id="title" name="title">
                             <input type="hidden" id="postDetailID" name="postDetailID">
-                            <textarea wrap="soft" id="content" name="transport" required></textarea>
+                            <textarea wrap="soft" id="content" name="content" required></textarea>
                             <img src="" alt="Lỗi Hiển Thị Ảnh" id = "data_img">
-                            <input type="file" id="image-transport" name="image-transport">
+                            <input type="file" id="imagenew" name="imagenew">
                         </div>
                     </div>
                 </div>

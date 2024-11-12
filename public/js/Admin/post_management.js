@@ -164,18 +164,19 @@ async function editpost(postID) {
         }
     
         
-        // Update form fields
+        // // Update form fields
         document.getElementById('province-edit').value = PostData.province;
-        document.getElementById('image-post').value = PostData.image-post;
+        document.getElementById('image-posted').src = PostData.imagepost;
         document.getElementById('postID').value = PostData.postID;
+        document.getElementById('imageposted').value = PostData.imagepost;
 
     } catch (error) {
-        console.error('Error in editUser function:', error);
-        alert('Error loading user data. Please check console for details.');
+        console.error('Error in editPost function:', error);
+        alert('Error loading post data. Please check console for details.');
     }
 }
 
-async function editPostDetail(postDetailID) {
+async function editpostdetail(postDetailID) {
     try {
         console.log('Fetching user data for ID:', postDetailID);
         
@@ -191,7 +192,7 @@ async function editPostDetail(postDetailID) {
         let postDetailData;
         try {
             postDetailData = JSON.parse(rawData); // Thử parse JSON
-            console.log('Parsed user data:', postDetailData);
+            console.log('Parsed postDetail data:', postDetailData);
         } catch (parseError) {
             console.error('JSON parse error:', parseError);
             console.log('Failed to parse response:', rawData);
@@ -199,11 +200,12 @@ async function editPostDetail(postDetailID) {
         }
 
         // Update form fields
-        document.getElementById('displayTitle').textContent = postDetailData.displayTitle;
-        document.getElementById('title').value = postDetailData.title;
+        document.getElementById('displayTitle').textContent = postDetailData.sectionTitle;
+        document.getElementById('title').value = postDetailData.sectionTitle;
         document.getElementById('postDetailID').value = postDetailData.postDetailID;
-        document.getElementById('content').src = postDetailData.content;
-        document.getElementById('data_img').value = postDetailData.data_img;
+        document.getElementById('content').value = postDetailData.sectionContent;
+        document.getElementById('data_img').src = postDetailData.imgPostDetURL;
+        document.getElementById('imgposted').value = postDetailData.imgPostDetURL;
         
     } catch (error) {
         console.error('Error in editUser function:', error);

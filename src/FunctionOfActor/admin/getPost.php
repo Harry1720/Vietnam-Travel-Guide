@@ -15,13 +15,13 @@
             if ($editPost) {
                 $postData = [
                     'postID' => $editPost['postID'] ?? 0,
-                    'image-post' => $editPost['imgPostURL'] ?? 'Lỗi Hiển Thị',
+                    'imagepost' => $editPost['imgPostURL'] ?? 'Lỗi Hiển Thị',
                     'province' => $editPost['provinceID'] ?? 'Lỗi Hiển Thị'
                 ];
                 echo json_encode($postData, JSON_UNESCAPED_UNICODE);
             } else {
                 http_response_code(404);
-                echo json_encode(['error' => 'Người dùng không tồn tại.'], JSON_UNESCAPED_UNICODE);
+                echo json_encode(['error' => 'Bài Post không tồn tại.'], JSON_UNESCAPED_UNICODE);
             }
         } else {
             http_response_code(400);

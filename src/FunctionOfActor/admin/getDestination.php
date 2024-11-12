@@ -22,7 +22,7 @@
                 echo json_encode($destinationData, JSON_UNESCAPED_UNICODE);  // Corrected the variable name here too
             } else {
                 http_response_code(404);
-                echo json_encode(['error' => 'Người dùng không tồn tại.'], JSON_UNESCAPED_UNICODE);
+                echo json_encode(['error' => 'Địa danh không tồn tại.'], JSON_UNESCAPED_UNICODE);
             }
         } else {
             http_response_code(400);

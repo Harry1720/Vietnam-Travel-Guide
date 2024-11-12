@@ -99,6 +99,27 @@ class AdminController{
 
         return $get_query;
     }
+    
+    public function updatePost(){
+
+        $postID = $_POST['postID'];
+        $provinceID = $_POST['province'];
+
+        if (isset($_FILES['image-post']) && $_FILES['image-post']['error'] == 0){
+            $fileTmpPath = $_FILES['image-post']['tmp_name'];
+            $imgPostURL = $this->uploadImage($fileTmpPath,'post');
+            echo "Ảnh thêm thành công";
+        }
+        else{
+            $imgPostURL = $_POST['imageposted'];
+            echo "Ảnh cũ";
+        }
+
+        $sql = "UPDATE post
+                SET provinceID = '$provinceID',imgPostURL = '$imgPostURL'
+                WHERE postID = $postID";
+        $get_query = mysqli_query($this->conn->connect(),$sql);
+    }
 
     //cac Ham PostDetail
     public function getAllPostDetailByPostID($postID){
@@ -107,6 +128,36 @@ class AdminController{
         $get_query = mysqli_query($this->conn->connect(),$sql);
 
         return $get_query;
+    }
+
+    public function getPostDetailByID($postDetailID){
+        $sql = "SELECT * FROM postdetail  WHERE postDetailID = $postDetailID";
+        $get_query = mysqli_query($this->conn->connect(),$sql);
+
+        return $get_query->fetch_assoc();
+    }
+
+    public function updatePostDetal(){
+
+        $postDetailID = $_POST['postDetailID'];
+        $sectionTitle = $_POST['title'];
+        $sectionContent = $_POST['content'];
+        
+
+        if (isset($_FILES['imagenew']) && $_FILES['imagenew']['error'] == 0){
+            $fileTmpPath = $_FILES['imagenew']['tmp_name'];
+            $imgPostDetURL = $this->uploadImage($fileTmpPath,'postDetaill');
+            echo "Ảnh thêm thành công";
+        }
+        else{
+            $imgPostDetURL = $_POST['imgposted'];
+            echo "Ảnh cũ";
+        }
+
+        $sql = "UPDATE postdetail
+                SET sectionTitle = '$sectionTitle',sectionContent = '$sectionContent', imgPostDetURL = '$imgPostDetURL'
+                WHERE postDetailID = $postDetailID";
+        $get_query = mysqli_query($this->conn->connect(),$sql);
     }
 
     //các hàm User của
@@ -381,8 +432,6 @@ class AdminController{
         }
         return $posts;
     }
-
-
 
     public function getAllBlogs() {
         

@@ -7,7 +7,7 @@ include_once "../../Controllers/authController.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
     $adController = new AdminController();
-    $adController->updatePost();
+    $adController->updatePostDetal();
 }
 else{
     echo "Không có sự kiện submit nào";

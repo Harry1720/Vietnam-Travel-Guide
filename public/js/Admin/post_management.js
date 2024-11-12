@@ -102,8 +102,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
-
-
 function toggleDestinations(id) {
     // Lấy tất cả các hàng điểm đến
     const allDestinationRows = document.querySelectorAll('.destination-row');
@@ -118,13 +116,19 @@ function toggleDestinations(id) {
     // Lấy hàng điểm đến của tỉnh thành được chọn
     const destinationRow = document.getElementById(`destinations-${id}`);
 
-    // Chuyển đổi hiển thị của hàng điểm đến được chọn
-    if (destinationRow.style.display === 'none' || destinationRow.style.display === '') {
-        destinationRow.style.display = 'table-row';
+    // Kiểm tra xem có hàng điểm đến tồn tại không trước khi chuyển đổi hiển thị
+    if (destinationRow) {
+        // Chuyển đổi hiển thị của hàng điểm đến được chọn
+        if (destinationRow.style.display === 'none' || destinationRow.style.display === '') {
+            destinationRow.style.display = 'table-row';
+        } else {
+            destinationRow.style.display = 'none';
+        }
     } else {
-        destinationRow.style.display = 'none';
+        console.error(`Không tìm thấy hàng điểm đến với ID: destinations-${id}`);
     }
 }
+
 
 function toggleIcon() {
     const searchInput = document.querySelector('.search-bar');
@@ -134,5 +138,76 @@ function toggleIcon() {
         searchIcon.classList.add('hidden');
     } else {
         searchIcon.classList.remove('hidden');
+    }
+}
+
+async function editPost(postID) {
+    try {
+        console.log('Fetching user data for ID:', postID);
+        
+        const response = await fetch(`../../FunctionOfActor/admin/getPost.php?editPostID=${postID}`);
+        console.log('Raw response:', response);
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        const rawData = await response.text();
+        
+        let PostData;
+        try {
+            PostData = JSON.parse(rawData); // Thử parse JSON
+            console.log('Parsed user data:', PostData);
+        } catch (parseError) {
+            console.error('JSON parse error:', parseError);
+            console.log('Failed to parse response:', rawData);
+            throw new Error('Invalid JSON response');
+        }
+    
+        
+        // Update form fields
+        document.getElementById('province-edit').value = PostData.province;
+        document.getElementById('image-post').value = PostData.image-post;
+        document.getElementById('postID').value = PostData.postID;
+
+    } catch (error) {
+        console.error('Error in editUser function:', error);
+        alert('Error loading user data. Please check console for details.');
+    }
+}
+
+async function editPostDetail(postDetailID) {
+    try {
+        console.log('Fetching user data for ID:', postDetailID);
+        
+        const response = await fetch(`../../FunctionOfActor/admin/getPostDetail.php?editPostDetailID=${postDetailID}`);
+        console.log('Raw response:', response);
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        const rawData = await response.text();
+        
+        let postDetailData;
+        try {
+            postDetailData = JSON.parse(rawData); // Thử parse JSON
+            console.log('Parsed user data:', postDetailData);
+        } catch (parseError) {
+            console.error('JSON parse error:', parseError);
+            console.log('Failed to parse response:', rawData);
+            throw new Error('Invalid JSON response');
+        }
+
+        // Update form fields
+        document.getElementById('displayTitle').textContent = postDetailData.displayTitle;
+        document.getElementById('title').value = postDetailData.title;
+        document.getElementById('postDetailID').value = postDetailData.postDetailID;
+        document.getElementById('content').src = postDetailData.content;
+        document.getElementById('data_img').value = postDetailData.data_img;
+        
+    } catch (error) {
+        console.error('Error in editUser function:', error);
+        alert('Error loading user data. Please check console for details.');
     }
 }

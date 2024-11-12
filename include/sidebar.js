@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     <a href="user_management.php"><ion-icon name="people-outline"></ion-icon> Quản lý người dùng</a>
                 </li>
                 <li class="submenu">
-                    <a href="post_management.html"><ion-icon name="server-outline"></ion-icon> Quản lý post</a>
+                    <a href="post_management.php"><ion-icon name="server-outline"></ion-icon> Quản lý post</a>
                 </li>
                 <li class="submenu">
                     <a href="blog_management.html"><ion-icon name="newspaper-outline"></ion-icon> Quản lý blog</a>

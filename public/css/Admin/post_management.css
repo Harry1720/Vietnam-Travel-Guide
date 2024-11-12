@@ -398,6 +398,42 @@ td:last-child {
     background-color: #797d97;
 }
 
+/* Kiểu dáng phân trang */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.page-btn {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    padding: 12px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    color: #35679C;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-size: 16px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-decoration-line: none;
+}
+
+.page-btn:hover {
+    border-color: #35679C;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.page-btn.active {
+    background-color: #35679C;
+    color: white;
+    border-color: #35679C;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+
 @media (max-width: 768px) {
     .field-row {
         grid-template-columns: 1fr;

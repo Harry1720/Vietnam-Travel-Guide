@@ -45,9 +45,6 @@
     ?>
 </head>
 <body>
-    <script src="../../../public/js/Admin/post_management.js"></script>
-    <script src="../../../include/navbar.js"></script>
-    <script src="../../../include/sidebar.js"></script>
 
 
     <div class="main-content">
@@ -83,7 +80,7 @@
                             <td><?php echo $post['postCreateDate'] ?? 'Lỗi Hiển Thị' ?></td>
                             <td><?php echo $post['imgPostURL'] ?? 'Lỗi Hiển Thị' ?></td>
                             <td class="action-btn-frame">
-                                <button onclick="editPost(<?php echo $post['postID'] ?>)" class="action-btn edit">
+                            <button onclick="editpost(<?php echo $post['postID'] ?>)" class="action-btn edit">
                                     <ion-icon name="create"></ion-icon>
                                 </button>
                                 <button class="action-btn delete" id="delete-btn-<?php echo $post['postID']; ?>">
@@ -274,6 +271,8 @@
             </div>
         </div>
     </div>
-    
+    <script src="../../../public/js/Admin/post_management.js"></script>
+    <script src="../../../include/navbar.js"></script>
+    <script src="../../../include/sidebar.js"></script>
 </body>
 </html>

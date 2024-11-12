@@ -48,7 +48,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.querySelectorAll('.edit').forEach(button => { //để kích hoạt mọi nút edit-btn mỗi dòng
         button.addEventListener('click', () => {
-            resetFormState();
             popup2Overlay.style.display = 'flex';
         });
     });
@@ -141,7 +140,7 @@ function toggleIcon() {
     }
 }
 
-async function editPost(postID) {
+async function editpost(postID) {
     try {
         console.log('Fetching user data for ID:', postID);
         

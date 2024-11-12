@@ -10,7 +10,7 @@
         $uploader = new CloudinaryUploader();
 
         // Upload the file and get the response (URL or false)
-        $result = $uploader->upload($fileTmpPath);
+        $result = $uploader->upload($fileTmpPath,'post');
 
         if ($result) {
             echo "File uploaded successfully: " . $result;
@@ -20,4 +20,6 @@
     } else {
         echo "No file uploaded or there was an error.";
     }
+
+    
 ?>

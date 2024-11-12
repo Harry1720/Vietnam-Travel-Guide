@@ -7,59 +7,54 @@ class AdminController{
     private Config $conn;
 
     // hàm tạo
-    public function __construct()
-    {
+    public function __construct(){
         if(!isset($_SESSION)){
             session_start();
         }
         $this->conn = new Config();
     }
 
-    private function uploadImage($fileTmpPath) {
+    //hàm up ảnh
+    private function uploadImage($fileTmpPath,$folder) {
         $uploader = new CloudinaryUploader();
-        return $uploader->upload($fileTmpPath);
+        return $uploader->upload($fileTmpPath,$folder);
     }
 
     private function savePost($provinceID, $postCreateDate, $imageUrl) {
-        $sql = "INSERT INTO posts (provinceID, postCreateDate, imageUrl) 
+        $sql = "INSERT INTO post (provinceID, postCreateDate, imgPostURL) 
                 VALUES ('$provinceID', '$postCreateDate', '$imageUrl')";
         $insert_query = mysqli_query($this->conn->connect(),$sql);
-        return $insert_query['userID'];
+        $postID = $this->conn->getInsertId();
+        return $postID;
     }
 
-    private function addPostDetail($postId, $sectionTitle, $sectionContent, $category, $imageDetailUrl) {
-        $sql = "INSERT INTO postdetails (postID, sectionTitle, sectionContent, category, imgURL) 
-                VALUES ($postId, '$sectionTitle', '$sectionContent', '$category', '$imageDetailUrl')";
+    private function addPostDetail($postId, $sectionTitle, $sectionContent, $imageDetailUrl) {
+        $sql = "INSERT INTO postdetail (postID, sectionTitle, sectionContent, imgPostDetURL	) 
+                VALUES ($postId, '$sectionTitle', '$sectionContent', '$imageDetailUrl')";
         $insert_query = mysqli_query($this->conn->connect(),$sql);
     }
 
     // các hàm post của admin
-    public function addPost() {
-        // lấy form
-        $provinceID = $_POST['provinceID'];
-        $postCreateDate = date('Y-m-d H:i:s');
-        $fileTmpPath = $_FILES['postIMG']['tmp_name'];
+    public function addPost($formPost, $formPostDetail) {
 
-        // ảnh
-        $imageUrl = $this->uploadImage($fileTmpPath);
+        $provinceID = $formPost['province'];
+        $postCreateDate = $formPost['postCreateDate'];
+        $fileTmpPath = $formPost['image_post'];
+
+        $imageUrl = $this->uploadImage($fileTmpPath,'post');
 
         if ($imageUrl !== false) {
-            
             $postId = $this->savePost($provinceID, $postCreateDate, $imageUrl);
             echo "Bài viết đã được thêm thành công!";
 
-            // lưu postDetail
-            if (isset($_POST['postDetails']) && is_array($_POST['postDetails'])) {
-                foreach ($_POST['postDetails'] as $postDetail) {
-                    $postSectionTitle = $postDetail['sectionTitle'];
-                    $postSectionContent = $postDetail['sectionContent'];
-                    $postCategory = $postDetail['category'];
-                    $fileTmpPathDetail = $_FILES['postDetailIMG']['tmp_name'];
-
-                    $imageDetailUrl = $this->uploadImage($fileTmpPathDetail);
-
-                    $this->addPostDetail($postId, $postSectionTitle, $postSectionContent, $postCategory, $imageDetailUrl);
-                }
+            foreach ($formPostDetail as $postDetail) {
+                $sectionTitle = $postDetail['sectionTitle'];
+                $sectionContent = $postDetail['sectionContent'];
+                $fileTmpPathDetail = $postDetail['image'];
+        
+                $imageDetailUrl = $this->uploadImage($fileTmpPathDetail, 'postDetail');
+        
+                $this->addPostDetail($postId, $sectionTitle, $sectionContent, $imageDetailUrl);
             }
         } else {
             echo "Lỗi khi upload ảnh.";
@@ -82,23 +77,39 @@ class AdminController{
         }
     }
 
-    public function getAllBlogs() {
-        
-        $sql = "SELECT * FROM blogs";
-        $get_query = mysqli_query($this->conn->connect(),$sql);
-
-        return $get_query;
-    }
-
     public function getAllPost() {
 
-        $sql = "SELECT * FROM posts";
+        $sql = "SELECT * FROM post";
         $get_query = mysqli_query($this->conn->connect(),$sql);
     
         return $get_query;
     }
 
-    //table User
+    public function getPostbyID($postID){
+        $sql = "SELECT * FROM post  WHERE postID = $postID";
+        $get_query = mysqli_query($this->conn->connect(),$sql);
+
+        return $get_query->fetch_assoc();
+    }
+
+    public function getPostOfPage($Start, $litmit){
+        //WHERE status_ = 'active'
+        $sql = "SELECT * FROM post LIMIT $Start, $litmit";
+        $get_query = mysqli_query($this->conn->connect(),$sql);
+
+        return $get_query;
+    }
+
+    //cac Ham PostDetail
+    public function getAllPostDetailByPostID($postID){
+        //WHERE status_ = 'active'
+        $sql = "SELECT * FROM postDetail WHERE postID = $postID";
+        $get_query = mysqli_query($this->conn->connect(),$sql);
+
+        return $get_query;
+    }
+
+    //các hàm User của
     public function addUser(){
 
         $userName = $_POST["userName"];
@@ -275,24 +286,34 @@ class AdminController{
         $insert_query = mysqli_query($this->conn->connect(),$sql);
     }
 
-    public function updateProvince($provinceID) {
-        $provinceName = $_POST['provinceName'];
-        $provinceRegion = $_POST['destinationName'];
-        $destinationContent = $_POST['destinationName'];
-        $imgDesURL = $_POST['destinationName'];
+    public function updateDestination() {
+
+        if (isset($_FILES['image1']) && $_FILES['image1']['error'] == 0){
+            $fileTmpPath = $_FILES['image1']['tmp_name'];
+            $imgDesURL = $this->uploadImage($fileTmpPath,'postDetail');
+            echo "Ảnh thêm thành công";
+        }
+        else{
+            $imgDesURL = $_POST['imgdesURL'];
+            echo "Ảnh cũ";
+        }
+
+        $destinationID = $_POST['destinationID'];
+        $destinationName = $_POST['destinationName1'];
+        $destinationContent = $_POST['description1'];
     
-        $sql = "UPDATE province
-                SET provinceName = '$provinceName', provinceRegion = '$provinceRegion' 
-                WHERE provinceID = $provinceID";
+        $sql = "UPDATE destination
+                SET destinationName = '$destinationName', destinationContent = '$destinationContent', imgDesURL = '$imgDesURL'
+                WHERE destinationID = $destinationID";
     
         $update_query = mysqli_query($this->conn->connect(),$sql);
-        echo "Cập nhật tỉnh thành công!";
+        echo "Cập nhật điểm đến thành công!";
     }
 
     public function addDestination() {
    
         $fileTmpPath = $_FILES['image']['tmp_name'];
-        $result = $this->uploadImage($fileTmpPath);
+        $result = $this->uploadImage($fileTmpPath,'postDetail');
 
         if ($result) {
             echo "File uploaded successfully";
@@ -309,6 +330,14 @@ class AdminController{
     
         $update_query = mysqli_query($this->conn->connect(),$sql);
         echo "Thêm địa danh thành công!";
+    }
+
+    public function getDestination($destinationID){
+        $sql = "SELECT destinationID,destinationName,destinationContent,imgDesURL
+                FROM destination WHERE destinationID = $destinationID";
+        $destination = mysqli_query($this->conn->connect(),$sql);
+
+        return $destination->fetch_assoc();
     }
 
     public function getAllPostDetail($postID){
@@ -354,5 +383,13 @@ class AdminController{
     }
 
 
+
+    public function getAllBlogs() {
+        
+        $sql = "SELECT * FROM blogs";
+        $get_query = mysqli_query($this->conn->connect(),$sql);
+
+        return $get_query;
+    }
 }
 ?>

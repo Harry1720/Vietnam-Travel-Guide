@@ -10,9 +10,10 @@ class CloudinaryUploader
      * Upload file to Cloudinary
      *
      * @param string $fileTmpPath Temporary file path from the form
+     * @param string $folder The folder to upload the file to
      * @return bool|string Returns URL if successful, or false if failed
      */
-    public function upload($fileTmpPath)
+    public function upload($fileTmpPath, $folder)
     {
         if (empty($fileTmpPath) || !file_exists($fileTmpPath)) {
             return false; // Return false if the file path is invalid
@@ -20,7 +21,14 @@ class CloudinaryUploader
 
         $url = "https://api.cloudinary.com/v1_1/{$this->cloudName}/image/upload";
         $timestamp = time();
-        $signature = sha1("timestamp={$timestamp}{$this->apiSecret}");
+        $signatureString = "timestamp={$timestamp}{$this->apiSecret}";
+        
+        // Include folder in signature if provided
+        if (!empty($folder)) {
+            $signatureString = "folder={$folder}&" . $signatureString;
+        }
+        
+        $signature = sha1($signatureString);
 
         // File data for upload
         $fileData = curl_file_create($fileTmpPath, mime_content_type($fileTmpPath), basename($fileTmpPath));
@@ -32,6 +40,11 @@ class CloudinaryUploader
             'timestamp' => $timestamp,
             'signature' => $signature
         ];
+
+        // Add folder to data if provided
+        if (!empty($folder)) {
+            $data['folder'] = $folder;
+        }
 
         // Initialize cURL
         $ch = curl_init();

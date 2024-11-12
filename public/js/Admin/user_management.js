@@ -151,3 +151,14 @@ document.getElementById('togglePassword').addEventListener('change', function ()
     const passwordField = document.getElementById('password');
     passwordField.type = this.checked ? 'text' : 'password';
 });
+
+function toggleIcon() {
+    const searchInput = document.querySelector('.search-bar');
+    const searchIcon = document.querySelector('.search-icon');
+    
+    if (searchInput.value.trim() !== '') {
+        searchIcon.classList.add('hidden');
+    } else {
+        searchIcon.classList.remove('hidden');
+    }
+}

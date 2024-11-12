@@ -35,7 +35,6 @@
     $listUser = $adController->getAllUsers();
 
     $limit= 10;
-    $stt = 1;
     $CountData = mysqli_num_rows($listUser);
 
     $countPage = ceil($CountData/$limit);
@@ -49,6 +48,8 @@
     $Start = ($page - 1) * $limit;
 
     $userOfPage = $adController->getUserOfPage($Start,$limit);
+
+    $stt = $Start+1;
 ?>
 
 <?php
@@ -65,7 +66,7 @@
         </button>
 
         <div class="search-container">
-            <input type="text" placeholder="Nhập họ tên để tìm kiếm..." class="search-bar">
+            <input type="text" placeholder="Nhập họ tên để tìm kiếm..." class="search-bar" oninput="toggleIcon()">
             <ion-icon name="search-outline" class="search-icon"></ion-icon>
         </div>
 
@@ -112,7 +113,8 @@
             <div class="pagination">
                 <?php
                     for ($i = 1; $i <= $countPage; $i++) {
-                        echo "<a class='page-btn' href='?page=$i'>$i</a>";
+                        $activeClass = ($i == $page) ? 'active' : '';
+                        echo "<a class='page-btn $activeClass' href='?page=$i'>$i</a>";
                     }
                 ?>
             </div>
@@ -165,12 +167,12 @@
                     </div>
                 </div>
                 <div class="field input" style="margin-bottom: 20px; display: flex; padding-top: 10px">
-                    <label for="role" >Chức Vụ</label>
+                    <label id="label-role" for="role" >Chức Vụ</label>
                     <select id="role" name="role">
                         <option value="Admin">Admin</option>
                         <option value="Blogger">Blogger</option>
                     </select>
-                    <label for="gender">Giới Tính</label>
+                    <label id="label-gender" for="gender">Giới Tính</label>
                     <select id="gender" name="gender">
                         <option value="Male">Nam</option>
                         <option value="FeMale">Nữ</option>

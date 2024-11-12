@@ -15,7 +15,7 @@ body {
 
 .add-destination-btn {
     padding: 10px 20px;
-    border: none;
+    border: 2px solid #35679C;
     border-radius: 20px;
     cursor: pointer;
     font-size: 16px;
@@ -23,7 +23,12 @@ body {
     align-items: center;
     background-color: #35679C;
     color: #fff;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+}
+.add-destination-btn:hover{
+    background:none;
+    border: 2px solid #35679C;
+    color: #35679C;
 }
 
 
@@ -47,11 +52,14 @@ body {
 .search-bar {
     width: 100%;
     padding: 10px 40px;
-    border: 1px solid #ccc;
+    border: 2px solid #ccc;
     border-radius: 20px;
     font-size: 1rem;
+    outline: none;
 }
-
+.search-bar:focus{
+    border: 2px solid #35679C;
+}
 .search-icon {
     position: absolute;
     top: 50%;
@@ -61,7 +69,9 @@ body {
     font-size: 1.2rem;
     pointer-events: none;
 }
-
+.search-icon.hidden {
+    opacity: 0;
+}
 /* Kiểu dáng cho bảng */
 .table-wrapper {
     background: white;
@@ -156,24 +166,36 @@ td:last-child {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 8px;
-    margin-top: 10px;
+    gap: 12px;
+    margin-top: 20px;
 }
 
 .page-btn {
-    background-color: #f0f0f0;
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    padding: 12px 20px;
+    border-radius: 25px;
     cursor: pointer;
     font-weight: bold;
-    color: #304067;
+    color: #35679C;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-size: 16px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-decoration-line: none;
 }
 
 .page-btn:hover {
-    background-color: #ddd;
-    color: #222849;
+    border-color: #35679C;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
+
+.page-btn.active {
+    background-color: #35679C;
+    color: white;
+    border-color: #35679C;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
 
 /* Popup Overlay */
 .popup-overlay {
@@ -312,16 +334,17 @@ td:last-child {
 
 
 textarea {
-    width: 100% !important;
-    height: 150px !important;
+    width: 575px;
+    height: 150px;
     border: 1px solid #ccc;
     border-radius: 10px;
     background-color: #fff;
-    font-size: 14px;
+    font-size: 16px;
     color: #333;
-    padding: 10px;
-    resize: vertical;
+    /* padding: 10px; */
+    resize: none;
     overflow-y: auto;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 

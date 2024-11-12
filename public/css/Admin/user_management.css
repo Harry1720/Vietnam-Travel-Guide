@@ -27,7 +27,7 @@ body {
 /* Buttons */
 .add-user-btn {
     padding: 10px 20px;
-    border: none;
+    border: 2px solid #35679C;
     border-radius: 20px;
     cursor: pointer;
     font-size: 16px;
@@ -35,8 +35,15 @@ body {
     align-items: center;
     background-color: #35679C;
     color: #fff;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
+
+.add-user-btn:hover{
+    background:none;
+    border: 2px solid #35679C;
+    color: #35679C;
+}
+
 
 /* Search Bar */
 .search-container {
@@ -50,11 +57,14 @@ body {
 .search-bar {
     width: 100%;
     padding: 10px 40px;
-    border: 1px solid #ccc;
+    border: 2px solid #ccc;
     border-radius: 20px;
     font-size: 1rem;
+    outline: none;
 }
-
+.search-bar:focus{
+    border: 2px solid #35679C;
+}
 .search-icon {
     position: absolute;
     top: 50%;
@@ -63,6 +73,10 @@ body {
     color: #888;
     font-size: 1.2rem;
     pointer-events: none;
+}
+/* Thêm class này để ẩn icon */
+.search-icon.hidden {
+    opacity: 0;
 }
 
 /* Table */
@@ -236,7 +250,12 @@ td:last-child {
     font-size: 14px;
     color: #333;
 }
-
+#role, #gender{
+    width: 200px;
+}
+#label-role, #label-gender{
+    margin-top: 10px;
+}
 .field input:focus {
     border-color: #000;
     outline: none;
@@ -244,7 +263,6 @@ td:last-child {
 /* Buttons */
 .button {
     display: flex;
-    justify-content: center;
     justify-content: center;
     margin: 30px 10px;
 }
@@ -260,12 +278,10 @@ td:last-child {
 
 .button input.save  {
     background-color: #35679C;
-    background-color: #35679C;
     color: #fff;
 }
 
 .button input.cancel  {
-    background-color: #c2c2c2;
     background-color: #c2c2c2;
     color: #fff;
 }
@@ -301,32 +317,31 @@ td:last-child {
     border-radius: 25px;
     cursor: pointer;
     font-weight: bold;
-    color: #304067;
+    color: #35679C;
     transition: background-color 0.3s ease, color 0.3s ease;
-    font-size: 14px;
+    font-size: 16px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     text-decoration-line: none;
 }
 
 .page-btn:hover {
-    background-color: #2d3a54;
-    color: #ffffff;
-    border-color: #2d3a54;
+    border-color: #35679C;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .page-btn.active {
-    background-color: #2d3a54;
+    background-color: #35679C;
     color: white;
-    border-color: #2d3a54;
+    border-color: #35679C;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
 }
 
-.page-btn.disabled {
+/* .page-btn.disabled {
     background-color: #f5f5f5;
     color: #bbb;
     cursor: not-allowed;
     border-color: #ddd;
-}
+} */
 
 .page-btn:focus {
     outline: none;

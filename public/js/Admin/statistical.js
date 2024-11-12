@@ -27,375 +27,188 @@ function updateData() {
     fetchTotalRevenueChart()
 }
 
-// Fetch Top Selling Products
-async function fetchTopSellingProducts() {
-    try {
-        const response = await fetch(`${window.base_url}/dashboard/product-topSelling`, {
-            headers: {
-                'Authorization': `Bearer ${localStorage.getItem('authToken')}`
-            }
-        });
 
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
 
-        const data = await response.json();
-        const topProductsList = document.getElementById('top-products-list');
-        topProductsList.innerHTML = ''; // Clear existing list
-
-        // Insert headers again after clearing
-        const headerHTML = `
-            <li class="product-header">
-                <span class="product-index-header">#</span>
-                <span class="product-name-header">Name</span>
-                <span class="product-sales-header">Sales</span>
-            </li>`;
-        topProductsList.insertAdjacentHTML('afterbegin', headerHTML);
-
-        data.data.forEach((product, index) => {
-            const productName = product[0];
-            const productSales = product[1]; // Number of items sold
-            const colorClass = `color-${(index % 5) + 1}`; // Cycle through 5 colors
-
-            let listItem = `
-                        <li>
-                            <span class="product-index">${index + 1}</span>
-                            <span class="product-name ${colorClass}">${productName}</span>
-                            <span class="product-sales">${productSales} items sold</span>
-                        </li>`;
-            topProductsList.insertAdjacentHTML('beforeend', listItem);
-        });
-    } catch (error) {
-        console.error('Error fetching top-selling products:', error);
+// Dữ liệu giả lập
+const data = {
+    day: {
+        views: [10, 20, 30, 40, 50, 60, 70],
+        comments: [5, 15, 25, 35, 45, 55, 65],
+        posts: [2, 4, 6, 8, 10, 12, 14],
+        labels: ['Thứ 2', 'Thứ 3', 'Thứ 4', 'Thứ 5', 'Thứ 6', 'Thứ 7', 'Chủ Nhật']
+    },
+    month: {
+        views: [300, 400, 500, 600, 700, 800, 900],
+        comments: [100, 150, 200, 250, 300, 350, 400],
+        posts: [20, 25, 30, 35, 40, 45, 50],
+        labels: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7']
+    },
+    year: {
+        views: [5000, 6000, 7000, 8000, 9000, 10000, 11000],
+        comments: [1500, 2000, 2500, 3000, 3500, 4000, 4500],
+        posts: [100, 150, 200, 250, 300, 350, 400],
+        labels: ['2018', '2019', '2020', '2021', '2022', '2023', '2024']
     }
-}
+};
 
+// Lấy context của canvas
+document.addEventListener("DOMContentLoaded", () => {
+    const canvas = document.getElementById('customer-gender-chart');
+    if (!canvas) {
+        console.error("Không tìm thấy phần tử canvas với ID 'customer-gender-chart'.");
+        return;
+    }
 
-// Fetch Total Products Sold
-function fetchTotalProductsSold() {
-    fetch(`${window.base_url}/dashboard/products/totalSold`, {
-        headers: {
-            'Authorization': 'Bearer ' + localStorage.getItem('authToken') // Add your token if needed
+    const ctx = canvas.getContext('2d');
+    let chart;
+
+    // Hàm cập nhật biểu đồ
+    function updateChart(xAxis = 'month', yAxis = 'views') {
+        if (!data[xAxis] || !data[xAxis][yAxis]) {
+            console.error("Dữ liệu không hợp lệ cho xAxis:", xAxis, "yAxis:", yAxis);
+            return;
         }
-    })
-        .then(response => response.json())
-        .then(data => {
-            document.getElementById('products-sold-value').innerText = data.data;
-        })
-        .catch(error => console.error('Error fetching total products sold:', error));
-}
 
-// Fetch Total Orders Today
-function fetchTotalOrdersToday() {
-    fetch(`${window.base_url}/dashboard/order-date`, {
-        headers: {
-            'Authorization': 'Bearer ' + localStorage.getItem('authToken') // Add your token if needed
-        }
-    })
-        .then(response => response.json())
-        .then(data => {
-            console.log(data);
-            document.getElementById('order-today-value').innerText = data.data;
-        })
-        .catch(error => console.error('Error fetching total orders today:', error));
-}
+        const chartData = data[xAxis][yAxis];
+        const chartLabels = data[xAxis].labels;
 
-// Fetch Revenue by Month and Year
-function fetchRevenueByMonthAndYear() {
-    const month = document.getElementById('select-month').value;
-    const year = document.getElementById('select-year').value;
-
-    const url = `${window.base_url}/dashboard/revenue-month?month=${month}&year=${year}`;
-
-    fetch(url, {
-        headers: {
-            'Authorization': 'Bearer ' + localStorage.getItem('authToken')
-        }
-    })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
-        .then(data => {
-            if (data && data.data !== null) {
-                const revenue = data.data;
-                const revenueElement = document.getElementById('total-sales-value');
-                revenueElement.textContent = revenue.toLocaleString();
-            } else {
-                console.error('No data found');
-                document.getElementById('total-sales-value').textContent = '0'; // Handle case with no data
-            }
-        })
-        .catch(error => console.error('Error fetching revenue by month and year:', error));
-}
-
-
-// Fetch Total Orders by Year
-function fetchTotalOrdersByYear() {
-    const year = document.getElementById('select-year').value;
-
-    fetch(`${window.base_url}/dashboard/order-year?year=${year}`, {
-        headers: {
-            'Authorization': 'Bearer ' + localStorage.getItem('authToken')
-        }
-    })
-        .then(response => response.json())
-        .then(result => {
-            const data = result.data;
-
-            const ordersByMonth = Array(12).fill(0);
-
-            data.forEach(item => {
-                const month = item[0] - 1;
-                ordersByMonth[month] = item[1];
-            });
-
-            const ctx = document.getElementById('order-by-year-chart').getContext('2d');
-
-            // Tạo gradient
-            const gradient = ctx.createLinearGradient(0, 0, 0, 200);  // Tạo gradient từ trên xuống dưới
-            gradient.addColorStop(0, 'rgba(75, 192, 192, 1)');
-            gradient.addColorStop(1, 'rgba(75, 192, 192, 0.02)');
-
-
-            new Chart(ctx, {
+        // Nếu biểu đồ đã tồn tại, cập nhật dữ liệu
+        if (chart) {
+            chart.data.labels = chartLabels;
+            chart.data.datasets[0].data = chartData;
+            chart.data.datasets[0].label = yAxis.charAt(0).toUpperCase() + yAxis.slice(1);
+            chart.update();
+        } else {
+            // Tạo biểu đồ mới nếu chưa có
+            chart = new Chart(ctx, {
                 type: 'line',
                 data: {
-                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],  // Nhãn cho 12 tháng
+                    labels: chartLabels,
                     datasets: [{
-                        label: 'Số lượng đơn đặt hàng',
-                        data: ordersByMonth,  // Số lượng đơn đặt hàng theo tháng
-                        backgroundColor: gradient,
-                        borderColor: 'rgba(75, 192, 192, 0.5)',  // Màu viền
-                        borderWidth: 2.5,
-                        fill: true
-                    }]
-                },
-                options: {
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            grid: {
-                                display: false
-                            }
-                        },
-                        x: {
-                            grid: {
-                                display: false
-                            }
-                        }
-                    }
-                }
-            });
-        })
-        .catch(error => console.error('Error fetching order data:', error));
-}
-
-// Fetch Customer Data by Gender
-function fetchCustomerDataByGender() {
-    fetch(`${window.base_url}/dashboard/customer/gender`, {
-        headers: {
-            'Authorization': 'Bearer ' + localStorage.getItem('authToken')
-        }
-    })
-        .then(response => response.json())
-        .then(result => {
-            const data = result.data;
-
-            const genderLabels = data.map(item => item[0]); // Lấy nhãn (Giới tính)
-            const genderCounts = data.map(item => item[1]); // Lấy số lượng khách hàng
-
-            const genderChart = document.getElementById('customer-gender-chart').getContext('2d');
-
-            new Chart(genderChart, {
-                type: 'bar',  // Biểu đồ cột
-                data: {
-                    labels: genderLabels,
-                    datasets: [{
-                        label: 'Số lượng khách hàng',
-                        data: genderCounts,
-                        backgroundColor: [
-                            'rgba(54, 162, 235, 0.5)',
-                            'rgba(255, 99, 132, 0.5)'
-                        ],
-                        borderColor: [
-                            'rgba(54, 162, 235, 0.5)',
-                            'rgba(255, 99, 132, 0.5)'
-                        ],
-                        borderWidth: 1,
-                        borderRadius: 10
-                    }]
-                },
-                options: {
-                    scales: {
-                        y: {
-                            beginAtZero: true,  // Bắt đầu trục Y từ 0
-                            grid: {
-                                display: false  // Bỏ đường lưới trên trục Y
-                            }
-                        },
-                        x: {
-                            grid: {
-                                display: false  // Bỏ đường lưới trên trục X
-                            }
-                        }
-                    }
-                }
-            });
-        })
-        .catch(error => console.error('Error fetching customer data by gender:', error));
-}
-
-
-// Fetch Total Customers
-function fetchTotalCustomers() {
-    fetch(`${window.base_url}/dashboard/customer`, {
-        headers: {
-            'Authorization': 'Bearer ' + localStorage.getItem('authToken') // Add your token if needed
-        }
-    })
-        .then(response => response.json())
-        .then(data => {
-            document.getElementById('new-customers-value').innerText = data.data;
-        })
-        .catch(error => console.error('Error fetching total customers:', error));
-}
-
-function fetchTotalOrder() {
-    fetch(`${window.base_url}/dashboard/order`, {
-        headers: {
-            'Authorization': 'Bearer ' + localStorage.getItem('authToken') // Add your token if needed
-        }
-    })
-        .then(response => response.json())
-        .then(data => {
-            document.getElementById('total-order-value').innerText = data.data;
-        })
-        .catch(error => console.error('Error fetching total orders:', error));
-}
-
-function fetchTotalRevenueChart() {
-
-    const year = document.getElementById('select-year').value;
-
-    fetch(`${window.base_url}/dashboard/revenue?year=${year}`, {
-        headers: {
-            'Authorization': 'Bearer ' + localStorage.getItem('authToken')
-        }
-    })
-        .then(response => response.json())
-        .then(result => {
-            const data = result.data;
-
-            const revenueByMonth = Array(12).fill(0);
-
-            data.forEach(item => {
-                const month = item[0] - 1;
-                revenueByMonth[month] = item[1];
-            });
-
-            const ctx = document.getElementById('total-revenue-chart').getContext('2d');
-
-
-            new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],  // Nhãn cho 12 tháng
-                    datasets: [{
-                        label: 'Số lượng đơn đặt hàng',
-                        data: revenueByMonth,  // Số lượng đơn đặt hàng theo tháng
-                        backgroundColor: 'rgba(221,50,112,0.5)',
-                        borderColor: 'rgba(221,50,112,1)',  // Màu viền
-                        borderWidth: 2.5,
-                        fill: false,
-                        tension: 0.4  // Tăng độ mềm cho đường biểu đồ
-                    }]
-                },
-                options: {
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            grid: {
-                                display: false
-                            }
-                        },
-                        x: {
-                            grid: {
-                                display: false
-                            }
-                        }
-                    }
-                }
-            });
-        })
-        .catch(error => console.error('Error fetching order data:', error));
-}
-
-function fetchTopCustomerSelling() {
-
-    fetch(`${window.base_url}/dashboard/user-list`, {
-        headers: {
-            'Authorization': 'Bearer ' + localStorage.getItem('authToken')
-        }
-    })
-        .then(response => response.json())
-        .then(result => {
-            const data = result.data;
-
-            const customerNames = data.map(item => item[0]);  // Tên khách hàng
-            const orderCounts = data.map(item => item[1]);    // Số lượng đơn đặt hàng
-
-            const ctx = document.getElementById('sales-customer-chart').getContext('2d');
-
-            new Chart(ctx, {
-                type: 'pie',
-                data: {
-                    labels: customerNames,
-                    datasets: [{
-                        label: 'Số lượng đơn đặt hàng',
-                        data: orderCounts,
-                        backgroundColor: [
-                            'rgba(75,192,192,0.8)',
-                            'rgba(54, 162, 235, 0.8)',
-                            'rgba(255, 206, 86, 0.8)',
-                            'rgba(231, 74, 59, 0.8)',
-                            'rgba(153, 102, 255, 0.8)',
-                            'rgba(255, 159, 64, 0.8)'
-                        ],
-                        borderColor: [
-                            'rgba(75, 192, 192, 1)',
-                            'rgba(54, 162, 235, 1)',
-                            'rgba(255, 206, 86, 1)',
-                            'rgba(231, 74, 59, 1)',
-                            'rgba(153, 102, 255, 1)',
-                            'rgba(255, 159, 64, 1)'
-                        ],
-                        borderWidth: 1
+                        label: yAxis.charAt(0).toUpperCase() + yAxis.slice(1),
+                        data: chartData,
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                        borderWidth: 2,
                     }]
                 },
                 options: {
                     responsive: true,
-                    maintainAspectRatio: false,  // Tắt tỷ lệ khung hình để biểu đồ phù hợp với container
                     plugins: {
                         legend: {
-                            position: 'right',
-                            align: 'center',
-                            labels: {
-                                boxWidth: 10,
-                                padding: 20
-                            }
+                            display: true,
+                            position: 'top'
                         }
                     },
-                    layout: {
-                        padding: {
-                            left: 10, right: 10, top: 10, bottom: 10
+                    scales: {
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Thời gian'
+                            }
+                        },
+                        y: {
+                            title: {
+                                display: true,
+                                text: yAxis
+                            },
+                            beginAtZero: true
                         }
                     }
                 }
             });
-        })
-        .catch(error => console.error('Error fetching user data:', error));
+        }
+    }
+
+    // Lắng nghe sự kiện thay đổi từ các ô chọn
+    const xAxisSelect = document.getElementById('x-axis-select');
+    const yAxisSelect = document.getElementById('y-axis-select');
+
+    if (xAxisSelect && yAxisSelect) {
+        xAxisSelect.addEventListener('change', () => {
+            const xAxis = xAxisSelect.value;
+            const yAxis = yAxisSelect.value;
+            updateChart(xAxis, yAxis);
+        });
+
+        yAxisSelect.addEventListener('change', () => {
+            const xAxis = xAxisSelect.value;
+            const yAxis = yAxisSelect.value;
+            updateChart(xAxis, yAxis);
+        });
+    } else {
+        console.error("Không tìm thấy phần tử select với ID 'x-axis-select' hoặc 'y-axis-select'.");
+    }
+
+    // Khởi tạo biểu đồ mặc định
+    updateChart();
+});
+
+
+// Dữ liệu mẫu cho bảng "Bài đăng hàng đầu"
+const topPostsData = [
+    { index: 1, name: 'Hướng dẫn lập trình JavaScript', views: 1500, comments: 120 },
+    { index: 2, name: 'Cách học Python hiệu quả', views: 1300, comments: 95 },
+    { index: 3, name: 'Những mẹo viết HTML hay', views: 1100, comments: 80 },
+    { index: 4, name: 'Hướng dẫn CSS Flexbox', views: 900, comments: 70 },
+    { index: 5, name: 'Phân tích dữ liệu với SQL', views: 850, comments: 60 }
+];
+
+// Hàm hiển thị dữ liệu vào bảng
+function renderTopPosts() {
+    const list = document.getElementById('top-products-list');
+    
+    if (!list) {
+        console.error('Không tìm thấy phần tử với id "top-products-list"');
+        return;
+    }
+
+    // Xóa các mục hiện tại (nếu có)
+    list.innerHTML = `
+        <li class="product-header">
+            <div class="product-index">#</div>
+            <div class="product-name">Tên bài đăng</div>
+            <div class="product-views">Lượt xem</div>
+            <div class="product-comments">Bình luận</div>
+        </li>
+    `;
+
+    // Thêm dữ liệu vào bảng
+    topPostsData.forEach(post => {
+        const item = document.createElement('li');
+        item.classList.add('product-item');
+        item.innerHTML = `
+            <div class="product-index">${post.index}</div>
+            <div class="product-name">${post.name}</div>
+            <div class="product-views">${post.views}</div>
+            <div class="product-comments">${post.comments}</div>
+        `;
+        list.appendChild(item);
+    });
 }
+
+// Đảm bảo DOM đã được tải xong trước khi gọi hàm renderTopPosts
+document.addEventListener('DOMContentLoaded', function() {
+    renderTopPosts();
+});
+
+// Hàm giả lập fetch API để kiểm tra dữ liệu
+function fetchData(url) {
+    return fetch(url)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Lỗi khi tải dữ liệu từ: ${url}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Dữ liệu trả về:', data);
+        })
+        .catch(error => {
+            console.error('Lỗi khi fetch dữ liệu:', error);
+        });
+}
+
+// Ví dụ gọi API giả lập
+fetchData('api/top-selling-products');
+fetchData('api/total-products-sold');

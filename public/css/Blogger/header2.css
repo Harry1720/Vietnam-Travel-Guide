@@ -27,15 +27,20 @@ body {
 }
 
 .header.scrolled {
-    padding: 5px;
+    padding: 20px 30px;
     background-color: #f8f9fa;
 }
 
 .header.scrolled .nav a,
-.header.scrolled .sub_nav a {
+.header.scrolled .btn-register{
     color: #384a98;
+    border-bottom: 1px solid transparent;
 }
 
+.header.scrolled .nav a:hover, .header.scrolled .btn-register:hover{
+    border-bottom: 1px solid #384a98;
+    transition: border-bottom 0.5s ease;
+}
 .header.scrolled .btn-login {
     background-color: white;
     color: #333;
@@ -43,7 +48,7 @@ body {
 }
 
 .header.scrolled .btn-login:hover {
-    background-color: transparent;
+    /* background-color: transparent; */
     color: #618ebf;
     border-color: #618ebf;
 }

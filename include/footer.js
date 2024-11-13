@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
         <div class="nav_footer_menu">
             <ul>
                 <li><a href="../blogger/home.html">Trang chủ</a></li>
-                <li><a href="../admin/province.php">Tỉnh Thành</a></li>
+                <li><a href="../blogger/province.php">Tỉnh Thành</a></li>
                 <li><a href="../blogger/storiesList.html">Blogs</a></li>
                 <li><a href="../blogger/WriteReview.php">Viết Blog</a></li>
             </ul>

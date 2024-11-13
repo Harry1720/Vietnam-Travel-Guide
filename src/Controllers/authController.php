@@ -147,8 +147,10 @@ class AuthController{
         VALUES ('$username','$email','$hashedPassword','Blogger')";
         $insert_query = mysqli_query($this->conn->connect(),$sql);
 
+        //add session: để kiểm tra login - mặc định User signup là blogger
+        $_SESSION['role_'] = 'Blogger';
         if($insert_query){
-            header("location: /Vietnam-Travel-Guide/src/Views/blogger/home.html");
+            header("location: /Vietnam-Travel-Guide/src/Views/blogger/home.php");
         }
     }
 
@@ -185,10 +187,10 @@ class AuthController{
             $_SESSION['role'] = $user['role_'];
             
             if($user['role_'] == "Admin"){
-                header("location: /Vietnam-Travel-Guide/src/Views/admin.html");
+                header("location: /Vietnam-Travel-Guide/src/Views/admin/admin.php");
             }
             else{
-                header("location: /Vietnam-Travel-Guide/src/Views/home.html");
+                header( "location: /Vietnam-Travel-Guide/src/Views/blogger/home.php");
             }
             exit;
         } else {

@@ -49,18 +49,24 @@ a {
     font-size: 19px;
 }
 
-.btn-login {
+/* Kiểu chung cho các nút */
+.btn-login, .btn-logout {
     background-color: white;
     color: #333;
     border-radius: 20px;
     border: 2px solid white;
+    padding: 8px 16px;
+    text-decoration: none;
+    font-weight: bold;
     transition: 0.3s;
 }
 
-.btn-login:hover {
+.btn-login:hover, .btn-signup:hover, .btn-logout:hover {
     background-color: transparent;
     color: white;
+    border-color: white;
 }
+
 
 .hero {
     position: relative;

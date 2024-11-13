@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         }
 
         const data = await response.json();
+        console.log(data);
 
         const header = `
         <header class="header">
@@ -21,10 +22,9 @@ document.addEventListener('DOMContentLoaded', async function () {
             </nav>
             <nav class="sub_nav">
                 ${data.loggedIn ? 
-                    `<span>Xin chào, ${data.username}</span>
-                     <a href="../src/FunctionOfActor/logout.php">Đăng xuất</a>` : 
-                    `<a href="../createAccount.html">Đăng ký</a>
-                     <a href="../login.html" class="btn-login">Đăng nhập</a>`}
+                    `<a href="../../FunctionOfActor/both/logout.php" class="btn-logout">Đăng xuất</a>` : 
+                    `<a href="../createAccount.html" class="btn-signup">Đăng ký</a>
+                    <a href="../login.html" class="btn-login">Đăng nhập</a>`}
             </nav>
         </header>
         <section class="hero">

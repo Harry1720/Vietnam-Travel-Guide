@@ -190,15 +190,18 @@ VALUES
 (7, '2023-11-07', 'https://res.cloudinary.com/dt5xizv10/image/upload/post/ntrang.jpg', TRUE),
 (8, '2023-11-08', 'https://res.cloudinary.com/dt5xizv10/image/upload/post/qn.jpg', TRUE),
 (9, '2023-11-09', 'https://res.cloudinary.com/dt5xizv10/image/upload/post/hue.jpg', TRUE),
-(10, '2023-11-10', 'https://res.cloudinary.com/dt5xizv10/image/upload/post/nb.jpg', TRUE),
-(11, '2023-11-11', 'bacninh_post.jpg', TRUE),
-(12, '2023-11-12', 'tayninh_post.jpg', TRUE),
-(13, '2023-11-13', 'quangnam_post.jpg', TRUE),
-(14, '2023-11-14', 'thanhhoa_post.jpg', TRUE),
-(15, '2023-11-15', 'daklak_post.jpg', TRUE),
-(16, '2023-11-16', 'gialai_post.jpg', TRUE),
-(17, '2023-11-17', 'Binhthuan_post.jpg', TRUE),
-(18, '2023-11-18', 'vinhphuc_post.jpg', TRUE);
+(10, '2023-11-09', 'https://res.cloudinary.com/dt5xizv10/image/upload/post/nb.jpg', TRUE),
+
+(11, '2023-11-10', 'https://res.cloudinary.com/dt5xizv10/image/upload/post/thoa.jpg', TRUE),
+(12, '2023-11-11', 'https://res.cloudinary.com/dt5xizv10/image/upload/post/bninh.jpg', TRUE),
+(13, '2023-11-12', 'https://res.cloudinary.com/dt5xizv10/image/upload/post/nghean.jpg', TRUE),
+(14, '2023-11-13', 'https://res.cloudinary.com/dt5xizv10/image/upload/post/qtri.jpg', TRUE),
+(15, '2023-11-14', 'https://res.cloudinary.com/dt5xizv10/image/upload/post/qngai.jpg', TRUE),
+(16, '2023-11-15', 'https://res.cloudinary.com/dt5xizv10/image/upload/post/bdinh.jpg', TRUE),
+(17, '2023-11-16', 'https://res.cloudinary.com/dt5xizv10/image/upload/post/dlak.jpg', TRUE),
+(18, '2023-11-17', 'https://res.cloudinary.com/dt5xizv10/image/upload/post/dlat.jpg', TRUE),
+(19, '2023-11-18', 'https://res.cloudinary.com/dt5xizv10/image/upload/post/hphong.jpg', TRUE),
+(20, '2023-11-18', 'https://res.cloudinary.com/dt5xizv10/image/upload/post/hgiang.jpg', TRUE);
 
 
 INSERT INTO postDetail  (postID, sectionTitle, sectionContent, imgPostDetURL)
@@ -358,15 +361,37 @@ LỊCH TRÌNH MỘT BUỔI SÁNG MÙA THU CHO NGƯỜI U MÊ HÀ NỘI  ĐÂY NH
 📌 11h - 12h: Ghé thăm nhà sách Mão, bưu điện thành phố và ngắm hồ Gươm
 Nếu không phải là con người “ngủ nướng” thì hãy mau ra đường và tận hưởng không khí Hà Nội những ngày thu đi thôi 🍃🍃
 📷  Cảm ơn chia sẻ của Nguyễn Minh Đức', '2024-11-01', TRUE, 'Đã Duyệt'),
-(2, 2,'title', 'Nội dung bài viết 2', '2024-11-02', TRUE, 'Đã Duyệt'),
+
+(2, 2,'Bạn đã đến Hội An - Đà Nẵng chưa?', '
+Một thành phố có biển siêu đẹp và sạch sẽ 
+Một thành phố có những cây cầu quá đặc sắc 
+Một thành phố có quá nhiều đặc sản ngon bổ rẻ
+Một thành phố có núi trong lòng phố 
+Và một thành phố, có thêm một phố cổ cực cổ kính. Nơi mà biết bao du khách gần xa trong và ngoài nước đều muốn về nơi đây
+Một chuyến đi quá tuyệt vời mn ạ ❤️ 
+📸Hoàng Rin 
+#vietnamoi
+#hoian #danang', '2024-11-02', TRUE, 'Đã Duyệt'),
+
+(1, 10,'KHÁM PHÁ MŨI NGHÊ, SƠN TRÀ ĐÀ NẴNG🌊🌿', 'Sở dĩ có tên Mũi Nghê vì ở đó có 1 tảng đá khổng lồ, được thiên nhiên trạm trổ thành hình con nghê có mặt hướng vào núi và lưng hướng ra biển.
+Vị trí cách thành phố khoảng 10km, nằm ở phía Đông Sơn Trà. Nơi này còn khá hoang sơ, được mệnh danh là điểm đón bình minh đẹp nhất Đà Nẵng.
+Nếu đến đây để chụp hình check-in thì các bạn nên đi vào buổi sáng, thời tiết, ánh sáng sẽ dễ chịu hơn.
+Ngoài ra cũng có thể trải nghiệm các hoạt động bơi lội xung quành hồ nước xanh ngắt chill xĩu ở đây. Đặc biệt cũng có nhiều bãi đá và đất trống có thể cắm trại qua đêm, dã ngoại cùng bạn bè nữa nha!',
+'2024-11-10', TRUE, 'Đã Duyệt'),
+
+(3, 6,'Dinh Độc Lập - Điểm đến không thể bỏ qua tại TPHCM', 
+'Gọi em là Sài Gòn năm 1975
+Vì nụ cười em đẹp như ngày Giải Phóng
+_________
+📍 Dinh Độc Lập - Tphcm 
+40k/ng tham quan bên ngoài mình vẫn có hình sống ảo luôn mn ạ. Hihi 😝', '2024-11-06', TRUE, 'Đã Duyệt'),
+
 (3, 3, 'title','Nội dung bài viết 3', '2024-11-03', TRUE, 'Chờ Duyệt'),
 (1, 4, 'title','Nội dung bài viết 4', '2024-11-04', TRUE, 'Không Được Duyệt'),
 (2, 5, 'title','Nội dung bài viết 5', '2024-11-05', TRUE, 'Chờ Duyệt'),
-(3, 6,'title', 'Nội dung bài viết 6', '2024-11-06', TRUE, 'Đã Duyệt'),
 (1, 7,'title', 'Nội dung bài viết 7', '2024-11-07', TRUE, 'Chờ Duyệt'),
 (2, 8, 'title','Nội dung bài viết 8', '2024-11-08', TRUE, 'Không Được Duyệt'),
 (3, 9,'title', 'Nội dung bài viết 9', '2024-11-09', TRUE, 'Chờ Duyệt'),
-(1, 10,'title', 'Nội dung bài viết 10', '2024-11-10', TRUE, 'Đã Duyệt'),
 (2, 11,'title', 'Nội dung bài viết 11', '2024-11-11', TRUE, 'Chờ Duyệt'),
 (3, 12, 'title','Nội dung bài viết 12', '2024-11-12', TRUE, 'Không Được Duyệt');
 
@@ -379,17 +404,19 @@ VALUES
 (1, 'https://res.cloudinary.com/dt5xizv10/image/upload/blog/blog1d'),
 (1, 'https://res.cloudinary.com/dt5xizv10/image/upload/blog/blog1e'),
 
-(2, 'hcm_blog.jpg'),
-(3, 'danang_blog.jpg'),
-(4, 'haiphong_blog.jpg'),
-(5, 'hue_blog.jpg'),
-(6, 'cantho_blog.jpg'),
-(7, 'quangninh_blog.jpg'),
-(8, 'binhduong_blog.jpg'),
-(9, 'nghean_blog.jpg'),
-(10, 'khanhhoa_blog.jpg'),
-(11, 'bacninh_blog.jpg'),
-(12, 'tayninh_blog.jpg');
+(2, 'https://res.cloudinary.com/dt5xizv10/image/upload/blog/blog2a'),
+(2, 'https://res.cloudinary.com/dt5xizv10/image/upload/blog/blog2b'),
+(2, 'https://res.cloudinary.com/dt5xizv10/image/upload/blog/blog2c'),
+(2, 'https://res.cloudinary.com/dt5xizv10/image/upload/blog/blog2d'),
+
+(3, 'https://res.cloudinary.com/dt5xizv10/image/upload/blog/blog3a'),
+(3, 'https://res.cloudinary.com/dt5xizv10/image/upload/blog/blog3b'),
+(3, 'https://res.cloudinary.com/dt5xizv10/image/upload/blog/blog3c'),
+
+(4, 'https://res.cloudinary.com/dt5xizv10/image/upload/blog/blog4a'),
+(4, 'https://res.cloudinary.com/dt5xizv10/image/upload/blog/blog4b'),
+(4, 'https://res.cloudinary.com/dt5xizv10/image/upload/blog/blog4c'); 
+
 
 -- Dữ liệu cho bảng userComment
 INSERT INTO userComment (blogID, userID, cmtContent, createDate, status)

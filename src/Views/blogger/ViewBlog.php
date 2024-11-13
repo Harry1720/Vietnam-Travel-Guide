@@ -13,13 +13,12 @@
 
     <!-- Lấy DL từ BE -->
     <?php 
-        include_once("../../Controllers/adminController.php");
-        $controller = new AdminController();
+        include_once("../../Controllers/bothController.php");
+        $controller = new bothController();
 
         //$_GET['postID']: Lay tu story sang day blogID (e.g., blog.php?postID=1).
         //intval(): dam bao la int value tu ben kia lay sang : 1 (co nghia la, mac dinh se lay trang Hanoi )
-        $blogID = isset($_GET['blogID']) ? intval($_GET['postID']) : 1;
-    
+        $blogID = isset($_GET['blogID']) ? intval($_GET['blogID']) : 1;
         $content = $controller->getBlogbyID($blogID);  //get đầu mục cho header
         $imgArray = $controller->getPictureBlogbyID( $blogID); //Lầy hình hiển thị nội dung cho trang 
     ?>

@@ -27,6 +27,7 @@
 ?>
 
     <script src = "../../include/footer.js"></script>
+    <!-- <script src = "../../include/header2.js"></script> -->
     <!--Get picture for each post, header-->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
@@ -52,7 +53,7 @@
                 </nav>
             </header>
             <section class="hero">
-                <h1 style="font-family: Cursive; font-size: 100px; color: #F5F5DC">${provinceName}</h1>
+                <h1 style="font-size: 100px; color: #F5F5DC;text-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);">${provinceName}</h1>
                 <section class="destinations">
                     <a href="#" class="article">
                         <img src="${imgPostURL}" alt="provinces">

@@ -26,13 +26,12 @@
                     include_once "../../Controllers/adminController.php";
                     $controller = new AdminController();
                 
-                    // Get current page number from URL, default to 1 if not set
+                    // Get current page number from URL, default là 1
                     $page = isset($_GET['page']) && is_numeric($_GET['page']) ? (int)$_GET['page'] : 1;
                     $postsPerPage = 10;
-                    $offset = ($page - 1) * $postsPerPage;
+                    $offset = ($page - 1) * $postsPerPage; //offset là lấy từ vị trí hàng nào trong db
 
-                    // Get total number of posts
-                    $totalPosts = $controller->getTotalPostsCount(); // Method to get the total post count
+                    $totalPosts = $controller->getTotalPostsCount(); // lấy total số post
                     $totalPages = ceil($totalPosts / $postsPerPage);
 
                     // Get posts for the current page

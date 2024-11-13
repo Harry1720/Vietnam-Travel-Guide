@@ -396,19 +396,25 @@ class AdminController{
         return $destination->fetch_assoc();
     }
 
+    //Lấy tất cả nội dung kéo lên cho trang Post.php
     public function getAllPostDetail($postID){
-        $sql = "SELECT * FROM postDetail WHERE postID = $postID";
+        $sql = " 
+        SELECT pd.postDetailID, pd.postID, pd.sectionTitle, pd.sectionContent, pd.imgPostDetURL, p.status 
+        FROM postDetail pd 
+        JOIN post p ON p.postID = pd.postID 
+        WHERE pd.postID = $postID AND p.status = 1;";
         $get_query = mysqli_query($this->conn->connect(),$sql);
-
+        
         //return array JSON 
         return $get_query ? mysqli_fetch_all($get_query, MYSQLI_ASSOC) : [];
     }
     
+    //Lấy thông tin Province để hiển thị bài bằng cho trang Province
     public function getPostProvince($postID){
         $sql = "SELECT p.provinceName, po.imgPostURL, po.postCreateDate
         FROM post po
         JOIN province p ON po.provinceID = p.provinceID
-        WHERE po.postID = $postID;";
+        WHERE po.postID = $postID AND po.status = 1 AND p.status = 1;";
         
         $get_query = mysqli_query($this->conn->connect(),$sql);
 
@@ -416,17 +422,20 @@ class AdminController{
         return $get_query->fetch_assoc();
     }
 
+    //Tính tổng số post dùng cho phân trang Province.php
     public function getTotalPostsCount() {
-        $sql = "SELECT COUNT(*) AS total FROM post";
+        $sql = "SELECT COUNT(*) AS total FROM post WHERE status = 1 ";
         $result = mysqli_query($this->conn->connect(), $sql);
         $row = $result->fetch_assoc();
         return $row['total'];
     }
     
+    //Lấy số lượng dựa vào phân trang Province.php
     public function getPostsByPage($limit, $offset) {
         $sql = "SELECT po.postID, p.provinceName, po.imgPostURL, po.postCreateDate, p.provinceRegion
                 FROM post po
                 JOIN province p ON po.provinceID = p.provinceID
+                WHERE po.status = 1
                 LIMIT $limit OFFSET $offset";
         $get_query = mysqli_query($this->conn->connect(), $sql);
         $posts = [];
@@ -434,6 +443,7 @@ class AdminController{
             $posts[] = $row;
         }
         return $posts;
+        //status = 1: check xem ràng buộc còn trong db không 
     }
 
     public function getAllBlogByBlogStatus($approvalStatus) {
@@ -455,6 +465,33 @@ class AdminController{
         $get_query = mysqli_query($this->conn->connect(), $sql);
     
         return $get_query;
+    }
+
+    //Lấy 1 content của Blog bằng BlogID -> hiển thị bài đăng 
+    public function getBlogbyID($blogID){
+        $sql = "SELECT bl.blogID, bl.provinceID, bl.userID, bl.blogTitle, bl.blogContent, bl.blogCreateDate 
+        FROM blog bl 
+        WHERE bl.blogID = $blogID AND bl.status = 1 AND bl.approvalStatus = 'Đã Duyệt';";
+        $get_query = mysqli_query($this->conn->connect(),$sql);
+
+        //return array JSON 
+        return $get_query->fetch_assoc();
+    }
+
+    // Lấy mảng các hình của Blog bằng BlogID -> để hiển thị blog
+    public function getPictureBlogbyID($blogID){
+        $sql = "SELECT ib.imgBlogURL 
+        FROM imgblog ib
+        JOIN blog bl ON ib.blogID = bl.blogID
+        WHERE bl.status = 1 AND bl.approvalStatus = 'Đã Duyệt' AND bl.blogID = $blogID";
+        
+        $get_query = mysqli_query($this->conn->connect(),$sql);
+
+        $picBlog = [];
+        while ($row = $get_query->fetch_assoc()) {
+            $picBlog[] = $row;
+        }
+        return $picBlog;
     }
 
     public function updateStatusBlog(){

@@ -48,6 +48,7 @@ CREATE TABLE blog (
   blogID INT AUTO_INCREMENT PRIMARY KEY,
   provinceID INT NOT NULL,
   userID INT NOT NULL,
+  blogTitle TEXT NOT NULL,
   blogContent TEXT NOT NULL,
   blogCreateDate DATE NOT NULL,
   status BOOLEAN NOT NULL DEFAULT TRUE,
@@ -344,8 +345,8 @@ VALUES
 
 
 -- Dữ liệu cho bảng blog
-INSERT INTO blog (provinceID, userID, blogContent, blogCreateDate, status, approvalStatus) VALUES
-(1, 1, 'Nếu được đến Hà Nội 1 ngày thu mát dịu, bạn sẽ làm gì?
+INSERT INTO blog (provinceID, userID, blogTitle, blogContent, blogCreateDate, status, approvalStatus) VALUES
+(1, 1, 'Mùa thu Hà Nội tuyệt vời', 'Nếu được đến Hà Nội 1 ngày thu mát dịu, bạn sẽ làm gì?
 LỊCH TRÌNH MỘT BUỔI SÁNG MÙA THU CHO NGƯỜI U MÊ HÀ NỘI  ĐÂY NHÉ 🌥️
 📌 6h - 6h30: Xem thượng cờ ở Lăng Bác
 📌 6h30 - 7h30: Ăn sáng đá bát phở gà
@@ -357,17 +358,17 @@ LỊCH TRÌNH MỘT BUỔI SÁNG MÙA THU CHO NGƯỜI U MÊ HÀ NỘI  ĐÂY NH
 📌 11h - 12h: Ghé thăm nhà sách Mão, bưu điện thành phố và ngắm hồ Gươm
 Nếu không phải là con người “ngủ nướng” thì hãy mau ra đường và tận hưởng không khí Hà Nội những ngày thu đi thôi 🍃🍃
 📷  Cảm ơn chia sẻ của Nguyễn Minh Đức', '2024-11-01', TRUE, 'Đã Duyệt'),
-(2, 2, 'Nội dung bài viết 2', '2024-11-02', TRUE, 'Đã Duyệt'),
-(3, 3, 'Nội dung bài viết 3', '2024-11-03', TRUE, 'Chờ Duyệt'),
-(1, 4, 'Nội dung bài viết 4', '2024-11-04', TRUE, 'Không Được Duyệt'),
-(2, 5, 'Nội dung bài viết 5', '2024-11-05', TRUE, 'Chờ Duyệt'),
-(3, 6, 'Nội dung bài viết 6', '2024-11-06', TRUE, 'Đã Duyệt'),
-(1, 7, 'Nội dung bài viết 7', '2024-11-07', TRUE, 'Chờ Duyệt'),
-(2, 8, 'Nội dung bài viết 8', '2024-11-08', TRUE, 'Không Được Duyệt'),
-(3, 9, 'Nội dung bài viết 9', '2024-11-09', TRUE, 'Chờ Duyệt'),
-(1, 10, 'Nội dung bài viết 10', '2024-11-10', TRUE, 'Đã Duyệt'),
-(2, 11, 'Nội dung bài viết 11', '2024-11-11', TRUE, 'Chờ Duyệt'),
-(3, 12, 'Nội dung bài viết 12', '2024-11-12', TRUE, 'Không Được Duyệt');
+(2, 2,'title', 'Nội dung bài viết 2', '2024-11-02', TRUE, 'Đã Duyệt'),
+(3, 3, 'title','Nội dung bài viết 3', '2024-11-03', TRUE, 'Chờ Duyệt'),
+(1, 4, 'title','Nội dung bài viết 4', '2024-11-04', TRUE, 'Không Được Duyệt'),
+(2, 5, 'title','Nội dung bài viết 5', '2024-11-05', TRUE, 'Chờ Duyệt'),
+(3, 6,'title', 'Nội dung bài viết 6', '2024-11-06', TRUE, 'Đã Duyệt'),
+(1, 7,'title', 'Nội dung bài viết 7', '2024-11-07', TRUE, 'Chờ Duyệt'),
+(2, 8, 'title','Nội dung bài viết 8', '2024-11-08', TRUE, 'Không Được Duyệt'),
+(3, 9,'title', 'Nội dung bài viết 9', '2024-11-09', TRUE, 'Chờ Duyệt'),
+(1, 10,'title', 'Nội dung bài viết 10', '2024-11-10', TRUE, 'Đã Duyệt'),
+(2, 11,'title', 'Nội dung bài viết 11', '2024-11-11', TRUE, 'Chờ Duyệt'),
+(3, 12, 'title','Nội dung bài viết 12', '2024-11-12', TRUE, 'Không Được Duyệt');
 
 -- Dữ liệu cho bảng imgBlog
 INSERT INTO imgBlog (blogID, imgBlogURL)
@@ -388,15 +389,7 @@ VALUES
 (9, 'nghean_blog.jpg'),
 (10, 'khanhhoa_blog.jpg'),
 (11, 'bacninh_blog.jpg'),
-(12, 'tayninh_blog.jpg'),
-(13, 'quangnam_blog.jpg'),
-(14, 'thanhhoa_blog.jpg'),
-(15, 'daklak_blog.jpg'),
-(16, 'gialai_blog.jpg'),
-(17, 'longan_blog.jpg'),
-(18, 'vinhphuc_blog.jpg'),
-(19, 'lamdong_blog.jpg'),
-(20, 'bacgiang_blog.jpg');
+(12, 'tayninh_blog.jpg');
 
 -- Dữ liệu cho bảng userComment
 INSERT INTO userComment (blogID, userID, cmtContent, createDate, status)

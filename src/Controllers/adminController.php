@@ -444,17 +444,29 @@ class AdminController{
         return $get_query;
     }
 
-    public function getBlogOfPage($Start, $limit){
+    public function getBlogOfPage($Start, $limit,$filter){
         $sql = "SELECT blog.blogID, blog.blogContent, blog.blogCreateDate, blog.approvalStatus, users.userName, province.provinceName
                 FROM blog
                 JOIN users ON blog.userID = users.userID
                 JOIN province ON blog.provinceID = province.provinceID
-                WHERE blog.status = 1 AND approvalStatus = 'Chờ Duyệt'
+                WHERE blog.status = 1 AND approvalStatus = '$filter'
                 LIMIT $Start, $limit";
         
         $get_query = mysqli_query($this->conn->connect(), $sql);
     
         return $get_query;
+    }
+
+    public function updateStatusBlog(){
+        $blogID = $_POST['blogID'];
+        $approvalStatus = $_POST['update'];
+
+        $sql = "UPDATE blog 
+                SET approvalStatus = '$approvalStatus'
+                WHERE blogID = $blogID";
+        $update_query = mysqli_query($this->conn->connect(),$sql);
+
+        echo "Update Thành Công";
     }
 }
 ?>

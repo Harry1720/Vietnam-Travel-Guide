@@ -5,13 +5,14 @@ class AuthController{
     private Config $conn;
 
     // hàm tạo
-    public function __construct()
-    {
-        if(!isset($_SESSION)){
-            session_start();
+        public function __construct()
+        {
+            //bắt đầu phiên - session
+            if(!isset($_SESSION)){
+                session_start();        
+            }
+            $this->conn = new Config();
         }
-        $this->conn = new Config();
-    }
 
     public function checkAuth()
     {

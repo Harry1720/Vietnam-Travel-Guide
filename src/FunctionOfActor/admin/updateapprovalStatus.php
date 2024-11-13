@@ -8,9 +8,6 @@ $admin = new AdminController();
 // $auth->checkAdmin();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $admin->updateAdmin();
-}
-else{
-    echo "fail";
+    $admin->updateStatusBlog();
 }
 ?>

@@ -14,7 +14,16 @@
         include_once "../../Controllers/bothController.php";
 
         $bothcontroller = new bothController();
-        $provinces = $bothcontroller->getAllProvinces();
+
+        $filter = isset($_GET['filter']) ? $_GET['filter'] : '';
+
+        if ($filter) {
+            // Lọc theo miền
+            $provinces = $bothcontroller->getProvincesByRegion($filter);
+        } else {
+            // Không có lọc, lấy tất cả
+            $provinces = $bothcontroller->getAllProvinces();
+        }
 
         //Phan Trang
         $limit= 10;
@@ -32,7 +41,13 @@
         $Start = ($page - 1) * $limit;
         $stt1 = $Start+1;
 
-        $provinceOfPage = $bothcontroller->getprovinceOfPage($Start,$limit);
+        if ($filter) {
+            // Lọc dữ liệu của từng trang với miền
+            $provinceOfPage = $bothcontroller->getProvinceByRegionAndPage($filter, $Start, $limit);
+        } else {
+            // Không lọc, chỉ phân trang bình thường
+            $provinceOfPage = $bothcontroller->getprovinceOfPage($Start, $limit);
+        }
     ?>
 
     <?php
@@ -56,12 +71,15 @@
 
         <div class="filter-search-container">
             <div class="field filter-container">
+                <form action="" id="form_loc" name="form_loc" method="get">
                 <label for="filter">Chọn miền: </label>
-                <select name="filter" id="filter">
-                    <option value="Bắc">Bắc</option>
-                    <option value="Trung">Trung</option>
-                    <option value="Nam">Nam</option>
-                </select>
+                    <select name="filter" id="filter" onchange="form_loc.submit()">
+                        <option value="">Tất Cả</option>
+                        <option value="North" <?php if(isset($_GET['filter']) && $_GET['filter'] == 'North')  echo 'selected="selected"';?>>Bắc</option>
+                        <option value="Central" <?php if(isset($_GET['filter']) && $_GET['filter'] == 'Central')  echo 'selected="selected"';?>>Trung</option>
+                        <option value="South" <?php if(isset($_GET['filter']) && $_GET['filter'] == 'South')  echo 'selected="selected"';?>>Nam</option>
+                    </select>
+                </form>
             </div>
 
             <div class="search-container">

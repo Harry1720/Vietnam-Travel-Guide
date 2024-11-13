@@ -17,7 +17,10 @@
         include_once "../../Controllers/adminController.php";
 
         $adcontroller = new AdminController();
-        $blogs = $adcontroller->getAllBlogByBlogStatus('Chờ Duyệt');
+
+        $filter = isset($_GET['filter']) ? $_GET['filter'] : 'Chờ Duyệt';
+
+        $blogs = $adcontroller->getAllBlogByBlogStatus($filter);
 
         //Phan Trang
         $limit= 10;
@@ -35,7 +38,7 @@
         $Start = ($page - 1) * $limit;
         $stt1 = $Start+1;
 
-        $blogOfPage = $adcontroller->getBlogOfPage($Start,$limit);
+        $blogOfPage = $adcontroller->getBlogOfPage($Start,$limit,$filter);
     ?>
 
     <?php
@@ -55,11 +58,14 @@
         <div class="blog-management">
         <div class="filter-search-container">
             <div class="filter-container">
-                <select name="filter" id="filter">
-                    <option value="Chờ Duyệt">Chờ Duyệt</option>
-                    <option value="Đã Duyệt">Đã Duyệt</option>
-                    <option value="Không Được Duyệt">Không Được Duyệt</option>
-                </select>
+            <form id="form_loc" name="form_loc" method="get">
+                    <!-- <label for="filter">Trạng Thái: </label> -->
+                    <select name="filter" id="filter" onchange="form_loc.submit()">
+                        <option value="Chờ Duyệt" <?php if(isset($_GET['filter']) && $_GET['filter'] == 'Chờ Duyệt')  echo 'selected="selected"';?>>Chờ Duyệt</option>
+                        <option value="Không Được Duyệt" <?php if(isset($_GET['filter']) && $_GET['filter'] == 'Không Được Duyệt')  echo 'selected="selected"';?>>Không Được Duyệt</option>
+                        <option value="Đã Duyệt" <?php if(isset($_GET['filter']) && $_GET['filter'] == 'Đã Duyệt')  echo 'selected="selected"';?>>Đã Duyệt</option>
+                    </select>
+                </form>
             </div>
 
             <div class="search-container">
@@ -93,12 +99,14 @@
                             <td><?php echo $blog['userName'] ?? 'Lỗi Hiển Thị' ?></td>
                             <td><?php echo $blog['blogCreateDate'] ?? 'Lỗi Hiển Thị' ?></td>
                             <td>
-                                <select>
-                                    <option style="padding: 10px; border-radius: 3px;" value="Chờ duyệt" 
-                                    >Chờ duyệt</option>
-                                    <option value="Đã duyệt" <?php if($blog['approvalStatus'] == 'Chờ duyệt') echo 'selected';?>>Đã duyệt</option>
-                                    <option value="Không được duyệt">Không được duyệt</option>
+                            <form action="../../FunctionOfActor/admin/updateapprovalStatus.php" method="POST" name="updateBlog_<?php echo $blog['blogID'] ?>" id="updateBlog_<?php echo $blog['blogID'] ?>">
+                                <input type="hidden" id="blogID" name="blogID" value="<?php echo $blog['blogID'] ?>">
+                                <select name="update" id="update" onchange="document.getElementById('updateBlog_<?php echo $blog['blogID'] ?>').submit()">
+                                    <option style="padding: 10px; border-radius: 3px;" value="Chờ Duyệt" <?php if($blog['approvalStatus'] == 'Chờ Duyệt')  echo 'selected="selected"';?>>Chờ Duyệt</option>
+                                    <option value="Không Được Duyệt" <?php if($blog['approvalStatus'] == 'Không Được Duyệt')  echo 'selected="selected"';?>>Không Được Duyệt</option>
+                                    <option value="Đã Duyệt" <?php if($blog['approvalStatus'] == 'Đã Duyệt') echo 'selected="selected"';?>>Đã Duyệt</option>
                                 </select>
+                            </form>
                             </td>
                         </tr>
                         <?php

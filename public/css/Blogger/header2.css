@@ -32,26 +32,33 @@ body {
 }
 
 .header.scrolled .nav a,
-.header.scrolled .btn-register{
+.header.scrolled .btn-login,
+.header.scrolled .btn-register,
+.header.scrolled .btn-logout {
     color: #384a98;
     border-bottom: 1px solid transparent;
 }
 
-.header.scrolled .nav a:hover, .header.scrolled .btn-register:hover{
+.header.scrolled .nav a:hover,
+.header.scrolled .btn-register:hover {
     border-bottom: 1px solid #384a98;
     transition: border-bottom 0.5s ease;
 }
-.header.scrolled .btn-login {
+
+.header.scrolled .btn-login,
+.header.scrolled .btn-logout {
     background-color: white;
-    color: #333;
     border: 2px solid #384a98;
+    transition: color 0.3s ease, border-color 0.3s ease;
 }
 
-.header.scrolled .btn-login:hover {
-    /* background-color: transparent; */
+.header.scrolled .btn-login:hover,
+.header.scrolled .btn-logout:hover {
     color: #618ebf;
     border-color: #618ebf;
 }
+
+
 
 .logo img {
     max-width: 120px;
@@ -102,17 +109,22 @@ body {
 }
 
 /* Button Styles */
-.btn-login {
+/* Kiểu chung cho các nút */
+.btn-login, .btn-logout {
     background-color: white;
     color: #333;
     border-radius: 20px;
-    border: 2px solid transparent;
+    border: 2px solid white;
+    padding: 8px 16px;
+    text-decoration: none;
+    font-weight: bold;
     transition: 0.3s;
 }
 
-.btn-login:hover {
+.btn-login:hover, .btn-signup:hover, .btn-logout:hover {
     background-color: transparent;
     color: white;
+    border-color: white;
 }
 
 .btn-register {

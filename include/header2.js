@@ -1,4 +1,13 @@
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', async function () {
+    try {
+        const response = await fetch('../../FunctionOfActor/blogger/checkAuth.php');
+
+        if (!response.ok) {
+            throw new Error('Failed to fetch session data. Status: ' + response.status);
+        }
+
+        const data = await response.json();
+
     const header2 = `
     <header class="header">
         <div class="logo">
@@ -11,8 +20,10 @@ document.addEventListener('DOMContentLoaded', function () {
             <a href="../blogger/WriteReview.php">Viết Blog</a>
         </nav>
         <nav class="sub_nav">
-            <a href="../createAccount.html" class="btn-register">Đăng ký</a>
-            <a href="../login.html" class="btn-login">Đăng nhập</a>
+            ${data.loggedIn ? 
+                `<a href="../src/FunctionOfActor/logout.php" class="btn-logout">Đăng xuất</a>` : 
+                `<a href="../createAccount.html" class="btn-register">Đăng ký</a>
+                <a href="../login.html" class="btn-login">Đăng nhập</a>`}
         </nav>
     </header>
     <section class="hero">
@@ -24,7 +35,13 @@ document.addEventListener('DOMContentLoaded', function () {
         </section>
     </section>
     `;
+
+    // Thêm header vào trang
     document.body.insertAdjacentHTML('afterbegin', header2);
+    } catch (error) {
+        console.error('Error fetching session data:', error);
+        alert('Không thể tải trạng thái đăng nhập. Vui lòng thử lại sau.');
+    }
 
     const header = document.querySelector('.header');
     const heroImage = document.querySelector('.hero img');

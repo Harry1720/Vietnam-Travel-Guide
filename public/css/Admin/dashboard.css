@@ -1,0 +1,305 @@
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f6f9ff;
+    /* overflow-x: hidden; */
+}
+
+.main-content {
+    margin-left: 280px;
+    padding: 20px;
+    background-color: #FAFAFB;
+    min-height: 100vh;
+    width: calc(100% - 320px);
+}
+
+/* Date Picker Styles */
+.date-picker {
+    margin-bottom: 20px;
+    width: 300px;
+}
+
+.date-picker-button {
+    width: 100%;
+    padding: 12px 15px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: #333;
+}
+
+.date-picker-button:hover {
+    background: #f5f5f5;
+}
+
+.popup {
+    display: none;
+    position: absolute;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    padding: 15px;
+    z-index: 1000;
+}
+
+.popup.show {
+    display: block;
+}
+
+.date-inputs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.date-input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+/* Stats Cards */
+.stats-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.stat-card {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.stat-title {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.stat-value {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.stat-change {
+    font-size: 14px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+.change-positive {
+    background: #e6f4ea;
+    color: #137333;
+}
+
+.change-negative {
+    background: #fce8e6;
+    color: #c5221f;
+}
+
+/* Graph Section (Make charts side by side) */
+.graph-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* 2 charts side by side on large screens */
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+/* Stats Cards */
+.stats-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Cards will fit 1 or 2 per row based on screen width */
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.stat-card {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: scale(1.05); /* Hover effect to enlarge the cards */
+}
+
+/* Graph Card */
+.graph-card {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    margin-bottom: 20px;
+}
+
+.graph-title {
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+.graph-subtitle {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.graph-container {
+    width: 100%;
+    height: 300px;
+    position: relative;
+}
+
+/* Responsive Design for smaller screens */
+@media (max-width: 768px) {
+    .graph-section {
+        grid-template-columns: 1fr; /* Stack charts vertically on smaller screens */
+    }
+
+    .stats-container {
+        grid-template-columns: 1fr; /* Stack cards vertically on smaller screens */
+    }
+
+    .search-container {
+        width: 100%;
+    }
+
+    .search-input {
+        flex: 1;
+    }
+}
+
+/* Top Followers Section */
+.followers-card {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.followers-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.search-container {
+    display: flex;
+    gap: 10px;
+}
+
+.search-input {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 200px;
+}
+
+.view-all-btn {
+    padding: 8px 16px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.followers-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.followers-table th {
+    text-align: left;
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    color: #666;
+}
+
+.followers-table td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+.platform-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    background: #ddd;
+}
+
+.btn {
+    padding: 8px 16px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.btn-group {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+.btn-cancel {
+    background: #f5f5f5;
+    color: #333;
+}
+
+.btn-apply {
+    background: #0066ff;
+    color: white;
+}
+
+.card-1 {
+    background: linear-gradient(to right, rgb(230, 239, 255), rgb(170, 200, 255)); 
+}
+
+.card-2 {
+    background: linear-gradient(to right, rgb(236, 233, 255), rgb(186, 186, 247)); 
+}
+
+.card-3 {
+    background: linear-gradient(to right, rgb(215, 236, 255), rgb(243, 248, 195)); 
+}
+
+.card-4 {
+    background: linear-gradient(to right, #ffeee9, rgb(255, 210, 160)); 
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .stats-container {
+        grid-template-columns: 1fr;
+    }
+
+    .followers-header {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .search-container {
+        width: 100%;
+    }
+
+    .search-input {
+        flex: 1;
+    }
+}

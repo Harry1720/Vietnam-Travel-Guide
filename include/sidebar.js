@@ -9,13 +9,13 @@ document.addEventListener('DOMContentLoaded', function () {
                     <a href="user_management.php"><ion-icon name="people-outline"></ion-icon> Quản lý người dùng</a>
                 </li>
                 <li class="submenu">
-                    <a href="post_management.php"><ion-icon name="server-outline"></ion-icon> Quản lý post</a>
+                    <a href="post_management.php"><ion-icon name="reader-outline"></ion-icon> Quản lý post</a>
                 </li>
                 <li class="submenu">
                     <a href="blog_management.php"><ion-icon name="newspaper-outline"></ion-icon> Quản lý blog</a>
                 </li>
                 <li class="submenu">
-                    <a href="province_management.php"><ion-icon name="diamond-outline"></ion-icon> Quản lý Tỉnh/Thành phố</a>
+                    <a href="province_management.php"><i class="fa-solid fa-city"></i> Quản lý Tỉnh/Thành phố</a>
                 </li>
                 <li><a href="statistical.html"><span class="icon"><ion-icon name="analytics"></ion-icon></span> Thống kê</a></li>               
                 <li class="submenu">

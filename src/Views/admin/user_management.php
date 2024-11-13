@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../../../public/css/Admin/user_management.css">
     <link rel="stylesheet" href="../../../public/css/sidebar.css">
     <link rel="stylesheet" href="../../../public/css/navbar.css">
-
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
 </head>
 
 <body>

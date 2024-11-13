@@ -11,7 +11,7 @@ body {
     color: #35679C;
 }
 
-h1 {
+h1, h4 {
     margin-bottom: 10px;
     text-align: center;
 }
@@ -24,7 +24,6 @@ h1 {
 
 .google-btn {
     font-size: 20px;
-    margin: 20px 0;
     padding: 15px;
     border-radius: 25px;
     width: 100%;
@@ -37,6 +36,9 @@ h1 {
     cursor: pointer;
     position: relative;
     overflow: hidden;
+    text-align: center; /* Ensures text is centered */
+    color: #35679C;
+    font-weight: 500;
 }
 
 .google-btn:hover {
@@ -44,16 +46,32 @@ h1 {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.login-account {
-    margin: 0 10%;
-    text-align: center;
+.google-btn span {
+    display: flex;
+    align-items: center;
 }
 
+.google-btn svg {
+    margin-left: 10px; /* Space between text and icon */
+}
+
+.google-btn:hover {
+    background-color: #ffffff;
+    border: 1px solid #35679C;
+    cursor: pointer;
+}
+
+.login-account {
+    margin-top: 15px;
+    text-align: center;
+}
+.login-account a{
+    color: #35679C;
+}
 .divider {
     font-size: 20px;
     text-align: center;
     margin: 10px;
-    color: black;
 }
 
 #confirm-password,
@@ -77,14 +95,14 @@ h1 {
 }
 
 #submit {
-    font-size: larger;
+    font-size: 18px;
     background-color: #35679C;
-    color: #fff;
-    width: 60%;
-    border-radius: 25px;
+    color: #fff; 
+    width: 60%; 
+    border-radius: 25px; 
     padding: 15px;
-    margin-top: 20px;
-    border: none;
+    margin: 15px 0px 10px 11vh; 
+    border: none; 
     transition: background-color 0.3s, box-shadow 0.3s;
     cursor: pointer;
     position: relative;
@@ -92,13 +110,9 @@ h1 {
 }
 
 #submit:hover {
-    background-color: #584fff;
+    background-color: #3d7cc1;
+    transition: background-color 0.3s ;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-#submit:hover{
-    border: 2px solid #35679C;
-    background-color: #fff;
-    color: #35679C;
 }
 
 
@@ -112,8 +126,8 @@ h1 {
 
 .eye-icon {
     position: absolute;
-    top: 50%;
-    right: 10px;
+    top: 46%;
+    right: 12px;
     transform: translateY(-50%);
     cursor: pointer;
 }

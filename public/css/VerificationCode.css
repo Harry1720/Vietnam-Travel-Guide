@@ -102,16 +102,19 @@ body {
     background-color: #35679C;
     color: white;
     margin-bottom: 15px;
+    transition: background-color 0.3s, box-shadow 0.3s;
 }
 
 .verify-button:hover {
-    background-color: #9dd1ff
+    background-color: #3882d2;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .resend-button {
     background-color: transparent;
     color: #35679C;
     border: 1px solid #35679C;
+    transition: background-color 0.3s;
 }
 
 .resend-button:hover {

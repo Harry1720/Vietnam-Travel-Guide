@@ -41,37 +41,74 @@ body {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
+/* Container cho Filter và Search */
+.filter-search-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1050px;
+    margin: 0 10px 20px;
+    padding: 0 20px;
+}
+
+/* Filter */
+.filter-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.filter-container label {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    display: inline-block;
+}
+
+.filter-container select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    font-size: 1rem;
+    outline: none;
+    width: 150px;
+}
+
+.filter-container select:focus {
+    border: 2px solid #35679C;
+}
+
+/* Search */
 .search-container {
     position: relative;
-    width: 100%;
-    max-width: 300px;
-    margin-left: 67.5%;
-    margin-bottom: 20px;
+    width: 300px;
 }
 
 .search-bar {
     width: 100%;
     padding: 10px 40px;
-    border: 2px solid #ccc;
-    border-radius: 20px;
+    border: 1px solid #ccc;
+    border-radius: 25px;
     font-size: 1rem;
     outline: none;
 }
-.search-bar:focus{
+
+.search-bar:focus {
     border: 2px solid #35679C;
 }
+
 .search-icon {
     position: absolute;
     top: 50%;
-    right: 0px;
+    right: 10px;
     transform: translateY(-50%);
     color: #888;
     font-size: 1.2rem;
     pointer-events: none;
 }
-.search-icon.hidden {
-    opacity: 0;
-}
+
+
 /* Kiểu dáng cho bảng */
 .table-wrapper {
     background: white;
@@ -301,16 +338,12 @@ td:last-child {
     font-weight: bold;
     color: #35679C;
     font-size: 17px;
-    color: #35679C;
-    font-size: 17px;
 }
 
 .field input {
     width: 100%;
     padding: 12px;
     border: 1px solid #ccc;
-    border-radius: 10px;
-    font-size: 15px;
     border-radius: 10px;
     font-size: 15px;
     box-sizing: border-box;

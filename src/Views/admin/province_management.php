@@ -54,10 +54,22 @@
             Thêm Địa Điểm <ion-icon style="margin-left: 5px;" name="add-circle-outline"></ion-icon>
         </button>
 
-        <div class="search-container">
-            <input type="text" placeholder="Tìm kiếm tỉnh thành" class="search-bar" oninput="toggleIcon()">
-            <ion-icon name="search-outline" class="search-icon"></ion-icon>
+        <div class="filter-search-container">
+            <div class="field filter-container">
+                <label for="filter">Filter: </label>
+                <select name="filter" id="filter">
+                    <option value="Bắc">Bắc</option>
+                    <option value="Trung">Trung</option>
+                    <option value="Nam">Nam</option>
+                </select>
+            </div>
+
+            <div class="search-container">
+                <input type="text" placeholder="Tìm kiếm tỉnh thành" class="search-bar" oninput="toggleIcon()">
+                <ion-icon name="search-outline" class="search-icon"></ion-icon>
+            </div>
         </div>
+
         <!-- List Province Table -->
         <div class="table-wrapper">
             <table>

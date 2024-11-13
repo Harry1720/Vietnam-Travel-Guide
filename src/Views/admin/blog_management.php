@@ -52,11 +52,21 @@
 
     <div class="main-content">
         <div class="blog-management">
-    
+        <div class="filter-search-container">
+            <div class="filter-container">
+                <select name="filter" id="filter">
+                    <option value="Chờ Duyệt">Chờ Duyệt</option>
+                    <option value="Đã Duyệt">Đã Duyệt</option>
+                    <option value="Không Được Duyệt">Không Được Duyệt</option>
+                </select>
+            </div>
+
             <div class="search-container">
                 <input type="text" placeholder="Tìm kiếm bài viết" class="search-bar" oninput="toggleIcon()">
                 <ion-icon name="search-outline" class="search-icon"></ion-icon>
             </div>
+        </div>
+
     
             <div class="table-wrapper">
                 <table>

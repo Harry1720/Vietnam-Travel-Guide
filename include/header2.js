@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
         const data = await response.json();
 
-    const header2 = `,
+    const header2 = `
     <header class="header">
         <div class="logo">
             <img src="../../../public/image/logo_colored.png" alt="Logo">

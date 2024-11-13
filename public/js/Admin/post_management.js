@@ -98,7 +98,25 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     });
+    //Cho form thùng rác
+    document.querySelectorAll('.delete').forEach(button => {
+        button.addEventListener('click', () => {
+            popup.style.display = 'flex';
+        });
+    });
+    window.addEventListener('click', (event) => {
+        if (event.target === popup && confirm("Xác nhận hủy?")) {
+            popup.style.display = 'none';
+            removeAdminOption();
+        }
+    });
 
+    document.getElementById('no-btn').addEventListener('click', () => {
+        if (confirm("Xác nhận hủy?")) {
+            popup.style.display = 'none';
+            removeAdminOption();
+        }
+    });
 });
 
 function toggleDestinations(id) {

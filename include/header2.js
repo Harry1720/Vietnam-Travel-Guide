@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
         </div>
         <nav class="nav">
             <a href="../blogger/home.php">Trang chủ</a>
-            <a href="../admin/province.php">Tỉnh Thành</a>
+            <a href="../blogger/province.php">Tỉnh Thành</a>
             <a href="../blogger/storiesList.html">Blogs</a>
             <a href="../blogger/WriteReview.php">Viết Blog</a>
         </nav>
@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
         </nav>
     </header>
     <section class="hero">
-        <h1>Khám phá những vùng đất mới và tạo những kỉ niệm đáng nhớ</h1>
+        <h1>Khám phá những vùng đất mới và cùng nhau <br/>tạo nên những kỉ niệm đáng nhớ</h1>
         <section class="destinations">
             <a href="#" class="article">
                 <img src="../../../public/image/lung-cu-ha-giang.jpg" alt="provinces">

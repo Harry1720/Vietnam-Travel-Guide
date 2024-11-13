@@ -39,7 +39,7 @@
     margin: 0 0 5px 50px;
 }
 
-.section-common > p {
+.section-common p {
     font-size: 16px;
     color: #666;
     margin: 10px 0 0 50px;
@@ -83,8 +83,10 @@
 }
 
 .card-common h4 {
-    margin-top: 20px;
+    margin-top: 10px;
     font-size: 20px;
+    margin-left: 10px;
+    color:#35679c
 }
 
 .card-common p {
@@ -106,4 +108,8 @@
 .card-content p {
     color: #999;
     font-size: 14px;
+}
+
+a {
+  text-decoration: none;  
 }

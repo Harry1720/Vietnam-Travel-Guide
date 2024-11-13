@@ -1,4 +1,4 @@
-    <!DOCTYPE html>
+<!DOCTYPE html>
     <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -8,7 +8,7 @@
         <link rel="stylesheet" href="../../../public/css/Blogger/footer.css">
         <link rel="stylesheet" href="../../../public/css/Blogger/paging.css">
 
-        <title>Posts</title>
+        <title>Tỉnh thành Việt Nam</title>
         <style>
         </style>
     </head>
@@ -19,7 +19,7 @@
 
     <section class="provinces section-common">
             <h2>Tỉnh thành</h2>
-            <p>Khám phá các vùng đất tại Việt Nam xinh đẹp</p>
+            <p>Khám phá các vùng đất tại đất nước Việt Nam xinh đẹp</p>
 
             <div class="grid-common">
                 <?php

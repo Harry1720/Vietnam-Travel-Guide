@@ -22,8 +22,8 @@
     //intval(): dam bao la int value tu ben kia lay sang : 1 (co nghia la, mac dinh se lay trang Hanoi )
     $postID = isset($_GET['postID']) ? intval($_GET['postID']) : 1;
 
-    $header = $controller->getPostProvince($postID);  //get for header picture each post
-    $data = $controller->getAllPostDetail($postID); //get picture for post content
+    $header = $controller->getPostProvince($postID);  //get đầu mục cho header
+    $data = $controller->getAllPostDetail($postID); //Lầy hình hiển thị nội dung cho trang 
 ?>
 
     <script src = "../../include/footer.js"></script>

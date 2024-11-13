@@ -100,31 +100,5 @@
     </div>
 </div>
 
-<!-- Form đổi mật khẩu -->
-<!-- <div id="change-password-form" class="overlay">
-    <div class="form-container">
-        <span class="close-btn" onclick="closeChangePasswordForm()">&times;</span>
-        <h2>Đổi Mật Khẩu</h2>
-        <form>
-            <div>
-                <label for="current-password">Mật khẩu hiện tại</label>
-                <input type="password" id="current-password" placeholder="Nhập mật khẩu hiện tại">
-            </div>
-            <div>
-                <label for="new-password">Mật khẩu mới</label>
-                <input type="password" id="new-password" placeholder="Nhập mật khẩu mới">
-            </div>
-            <div>
-                <label for="confirm-password">Xác nhận mật khẩu mới</label>
-                <input type="password" id="confirm-password" placeholder="Xác nhận mật khẩu mới">
-            </div>
-            <div class="button-group">
-                <button type="button" class="btn-confirm" onclick="submitChangePassword()">Xác nhận</button>
-                <button type="button" class="btn-cancel" onclick="closeChangePasswordForm()" style="color: #0c3b5a;">Hủy</button>
-            </div>
-        </form>
-    </div>
-</div> -->
-
 </body>
 </html>

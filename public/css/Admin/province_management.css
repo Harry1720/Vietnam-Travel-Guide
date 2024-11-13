@@ -47,7 +47,7 @@ body {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    max-width: 1050px;
+    max-width: 1020px;
     margin: 0 10px 20px;
     padding: 0 20px;
 }
@@ -365,6 +365,27 @@ td:last-child {
     outline: none;
 }
 
+.field input[type="file"] {
+    margin-top: 8px;
+    padding: 4px;
+    background-color: #f8f9fa;
+    cursor: pointer;
+}
+
+.field input[type="file"]::file-selector-button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    background-color: #35679C;
+    color: white;
+    cursor: pointer;
+    margin-right: 12px;
+    transition: background-color 0.3s;
+}
+
+.field input[type="file"]::file-selector-button:hover {
+    background-color: #2a5280;
+}
 
 textarea {
     width: 575px;

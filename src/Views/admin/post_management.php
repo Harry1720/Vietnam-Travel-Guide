@@ -194,21 +194,21 @@
                         </div>
                         <div class="field">
                             <label for="food">Ẩm thực</label>
-                            <textarea wrap="soft" id="food" name="food" placeholder="Món ăn về đặc sản" required></textarea>
+                            <textarea wrap="soft" id="food" name="food" placeholder="Món ăn đặc sản" required></textarea>
                             <input type="file" id="image-food" name="image-food">
                         </div>
                         <div class="field">
                             <label for="festival">Lễ hội</label>
-                            <textarea wrap="soft" id="festival" name="festival" placeholder="Lễ hội đặc trưng,...." required></textarea>
+                            <textarea wrap="soft" id="festival" name="festival" placeholder="Lễ hội đặc trưng,..." required></textarea>
                             <input type="file" id="image-festival" name="image-festival">
                         </div>
                         <div class="field">
-                            <label for="factory_tour">Tham Quan</label>
-                            <textarea wrap="soft" id="factory_tour" name="factory_tour" placeholder="Điểm tham quan,...." required></textarea>
+                            <label style="margin-bottom: 15px; margin-top: 5px" for="factory_tour">Tham Quan</label>
+                            <textarea wrap="soft" id="factory_tour" name="factory_tour" placeholder="Điểm tham quan,..." required></textarea>
                             <input type="file" id="image-factory_tour" name="image-factory_tour">
                         </div>
                         <div class="field">
-                            <input type="text" placeholder="Tiêu đề mới" >
+                            <input style="margin-bottom: 3px" type="text" placeholder="Tiêu đề mới" >
                             <textarea wrap="soft" id="new" name="new" placeholder="Mô tả về tiêu đề mới"></textarea>
                             <input type="file" id="image-new" name="image-new">
                         </div>

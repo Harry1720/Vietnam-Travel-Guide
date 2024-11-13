@@ -76,7 +76,7 @@
                 <thead>
                     <tr>
                         <th>STT</th>
-                        <th>Tên Khách Hàng</th>
+                        <th>Tên Người Dùng</th>
                         <th>Email</th>
                         <th>Giới Tính</th>
                         <th>Địa Chỉ</th>

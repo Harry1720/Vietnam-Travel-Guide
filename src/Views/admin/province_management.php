@@ -56,7 +56,7 @@
 
         <div class="filter-search-container">
             <div class="field filter-container">
-                <label for="filter">Filter: </label>
+                <label for="filter">Chọn miền: </label>
                 <select name="filter" id="filter">
                     <option value="Bắc">Bắc</option>
                     <option value="Trung">Trung</option>

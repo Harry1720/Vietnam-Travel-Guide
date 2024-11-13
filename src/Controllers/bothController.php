@@ -57,7 +57,7 @@ class bothController{
 
     public function getProvincesByRegion($provinceRegion) {
 
-        $sql = "SELECT * FROM provinces WHERE provinceRegion = '$provinceRegion'";
+        $sql = "SELECT * FROM province WHERE provinceRegion = '$provinceRegion'";
         $get_query = mysqli_query($this->conn->connect(),$sql);
     
         return $get_query;
@@ -71,8 +71,15 @@ class bothController{
         return $get_query;
     }
 
-    public function getProvinceOfPage($Start, $litmit){
-        $sql = "SELECT * FROM province  LIMIT $Start, $litmit";
+    public function getProvinceOfPage($Start, $limit){
+        $sql = "SELECT * FROM province  LIMIT $Start, $limit";
+        $get_query = mysqli_query($this->conn->connect(),$sql);
+
+        return $get_query;
+    }
+
+    public function getProvinceByRegionAndPage($filter, $Start, $limit){
+        $sql = "SELECT * FROM province WHERE provinceRegion = '$filter'  LIMIT $Start, $limit";
         $get_query = mysqli_query($this->conn->connect(),$sql);
 
         return $get_query;

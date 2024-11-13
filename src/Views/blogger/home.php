@@ -19,7 +19,7 @@
     <section class="provinces section-common">
         <h2>Tỉnh thành</h2>
         <p>Tổng hợp các tỉnh thành của Việt Nam</p>
-        <a href="../admin/province.php" class="btn-page">Xem tất cả</a>
+        <a href="province.php" class="btn-page">Xem tất cả</a>
         <div class="grid-common">
                 <?php
                     include_once "../../Controllers/adminController.php";

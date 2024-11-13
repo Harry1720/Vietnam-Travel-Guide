@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     <a href="post_management.php"><ion-icon name="server-outline"></ion-icon> Quản lý post</a>
                 </li>
                 <li class="submenu">
-                    <a href="blog_management.html"><ion-icon name="newspaper-outline"></ion-icon> Quản lý blog</a>
+                    <a href="blog_management.php"><ion-icon name="newspaper-outline"></ion-icon> Quản lý blog</a>
                 </li>
                 <li class="submenu">
                     <a href="province_management.php"><ion-icon name="diamond-outline"></ion-icon> Quản lý Tỉnh/Thành phố</a>

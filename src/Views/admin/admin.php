@@ -42,6 +42,7 @@
     <script src="../../../public/js/Admin/admin.js"></script>
     <script src="../../../include/navbar.js"></script>
     <script src="../../../include/sidebar.js"></script>
+    <script src="../../../public/js/Admin/Notifications.js"></script>
 
 <div class="container">
     <div class="sidebar1">

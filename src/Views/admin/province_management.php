@@ -46,6 +46,7 @@
     <script src="../../../public/js/Admin/province_management.js"></script>
     <script src="../../../include/navbar.js"></script>
     <script src="../../../include/sidebar.js"></script>
+    <script src="../../../public/js/Admin/Notifications.js"></script>
 
 <div class="main-content">
     <div class="province-management">

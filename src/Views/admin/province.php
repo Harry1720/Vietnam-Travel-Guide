@@ -15,6 +15,7 @@
     <body>
     <script src = "../../../include/header2.js"></script>
     <script src = "../../../include/footer.js"></script>
+    <script src="../../../public/js/Admin/Notifications.js"></script>
 
     <section class="provinces section-common">
             <h2>Tỉnh thành</h2>

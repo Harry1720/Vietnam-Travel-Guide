@@ -92,9 +92,11 @@ class AdminController{
         return $get_query->fetch_assoc();
     }
 
-    public function getPostOfPage($Start, $litmit){
-        //WHERE status_ = 'active'
-        $sql = "SELECT * FROM post LIMIT $Start, $litmit";
+    public function getPostOfPage($Start, $limit){
+        $sql = "SELECT post.postID, post.postCreateDate, post.imgPostURL, province.provinceName, province.provinceID
+                FROM post
+                JOIN province ON post.provinceID = province.provinceID
+                WHERE post.status = 1";
         $get_query = mysqli_query($this->conn->connect(),$sql);
 
         return $get_query;
@@ -235,9 +237,12 @@ class AdminController{
         return $get_query;
     }
 
-    public function getUserOfPage($Start, $litmit){
+    public function getUserOfPage($Start, $limit){
         //WHERE status_ = 'active'
-        $sql = "SELECT * FROM users  LIMIT $Start, $litmit";
+        $sql = "SELECT users.*, province.provinceName, province.provinceID
+                FROM users
+                JOIN province ON users.address_ = province.provinceID
+                WHERE users.status = 1";
         $get_query = mysqli_query($this->conn->connect(),$sql);
 
         return $get_query;
@@ -392,7 +397,6 @@ class AdminController{
     }
 
     public function getAllPostDetail($postID){
-        //WHERE status_ = 'active'
         $sql = "SELECT * FROM postDetail WHERE postID = $postID";
         $get_query = mysqli_query($this->conn->connect(),$sql);
 
@@ -401,7 +405,6 @@ class AdminController{
     }
     
     public function getPostProvince($postID){
-        //WHERE status_ = 'active'
         $sql = "SELECT p.provinceName, po.imgPostURL, po.postCreateDate
         FROM post po
         JOIN province p ON po.provinceID = p.provinceID
@@ -433,11 +436,24 @@ class AdminController{
         return $posts;
     }
 
-    public function getAllBlogs() {
+    public function getAllBlogByBlogStatus($approvalStatus) {
         
-        $sql = "SELECT * FROM blogs";
+        $sql = "SELECT * FROM blog WHERE approvalStatus = '$approvalStatus' AND status = 1";
         $get_query = mysqli_query($this->conn->connect(),$sql);
 
+        return $get_query;
+    }
+
+    public function getBlogOfPage($Start, $limit){
+        $sql = "SELECT blog.blogID, blog.blogContent, blog.blogCreateDate, blog.approvalStatus, users.userName, province.provinceName
+                FROM blog
+                JOIN users ON blog.userID = users.userID
+                JOIN province ON blog.provinceID = province.provinceID
+                WHERE blog.status = 1 AND approvalStatus = 'Chờ Duyệt'
+                LIMIT $Start, $limit";
+        
+        $get_query = mysqli_query($this->conn->connect(), $sql);
+    
         return $get_query;
     }
 }

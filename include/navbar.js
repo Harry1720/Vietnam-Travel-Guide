@@ -5,7 +5,8 @@ document.addEventListener('DOMContentLoaded', function () {
             </div>
             <div class="navbar__cta">
                 <div class="navbar__hello">
-                    <ion-icon name="notifications-outline"></ion-icon> 5 Notifications
+                    <ion-icon name="notifications-outline"></ion-icon>
+                    <span id="notifications_count">Loading...</span> Notifications
                 </div>
                 <div class="navbar__hello">
                     <ion-icon name="settings-outline"></ion-icon> Settings

@@ -45,7 +45,10 @@
     ?>
 </head>
 <body>
-
+    <script src="../../../public/js/Admin/post_management.js"></script>
+    <script src="../../../include/navbar.js"></script>
+    <script src="../../../include/sidebar.js"></script>
+    <script src="../../../public/js/Admin/Notifications.js"></script>
 
     <div class="main-content">
         <div class="post-management">
@@ -62,7 +65,7 @@
             <table style="width: 100%; border-collapse: collapse;">
             <thead>
                 <tr>
-                    <th>PostID</th>
+                    <th>STT</th>
                     <th>Tỉnh thành</th>
                     <th>Ngày tạo</th>
                     <th>Đường dẫn ảnh</th>
@@ -76,7 +79,7 @@
                         ?>
                         <tr onclick="toggleDestinations(<?php echo $stt ?>)">
                             <td><?php echo $stt1++; $stt++ ?></td>
-                            <td><?php echo $post['provinceID'] ?? 'Lỗi Hiển Thị' ?></td>
+                            <td><?php echo $post['provinceName'] ?? 'Lỗi Hiển Thị' ?></td>
                             <td><?php echo $post['postCreateDate'] ?? 'Lỗi Hiển Thị' ?></td>
                             <td><?php echo $post['imgPostURL'] ?? 'Lỗi Hiển Thị' ?></td>
                             <td class="action-btn-frame">
@@ -274,8 +277,5 @@
             </div>
         </div>
     </div>
-    <script src="../../../public/js/Admin/post_management.js"></script>
-    <script src="../../../include/navbar.js"></script>
-    <script src="../../../include/sidebar.js"></script>
 </body>
 </html>

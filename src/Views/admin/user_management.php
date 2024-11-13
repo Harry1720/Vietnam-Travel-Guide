@@ -14,6 +14,7 @@
 <!--JS-->
 <script src="../../../include/sidebar.js"></script>
 <script src="../../../include/navbar.js"></script>
+<script src="../../../public/js/Admin/Notifications.js"></script>
 
 
 <script src="../../../public/js/Admin/user_management.js"></script>
@@ -93,7 +94,7 @@
                                 <td><?php echo $user['userName'] ?? 'Lỗi Hiển Thị'?></td>
                                 <td><?php echo $user['email'] ?? 'Lỗi Hiển Thị'?></td>
                                 <td><?php echo $user['gender'] ?? 'Lỗi Hiển Thị'?></td>
-                                <td><?php echo $user['address_'] ?? 'Lỗi Hiển Thị'?></td>
+                                <td><?php echo $user['provinceName'] ?? 'Lỗi Hiển Thị'?></td>
                                 <td><?php echo $user['role_'] ?? 'Lỗi Hiển Thị'?></td>
                                 <td class="action-btn-frame">
                                     <button class="action-btn edit" id="edit-btn" onclick="editUser(<?php echo $user['userID']?>)">

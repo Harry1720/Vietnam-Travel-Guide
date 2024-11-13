@@ -51,7 +51,7 @@ CREATE TABLE blog (
   blogContent TEXT NOT NULL,
   blogCreateDate DATE NOT NULL,
   status BOOLEAN NOT NULL DEFAULT TRUE,
-  approvalStatus VARCHAR(20) NOT NULL DEFAULT 'Chưa Duyệt',
+  approvalStatus VARCHAR(20) NOT NULL DEFAULT 'Chờ Duyệt',
   FOREIGN KEY (userID) REFERENCES users(userID),
   FOREIGN KEY (provinceID) REFERENCES province(provinceID)
 );

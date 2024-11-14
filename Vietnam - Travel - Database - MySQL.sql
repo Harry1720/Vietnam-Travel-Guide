@@ -190,15 +190,18 @@ VALUES
 (7, '2023-11-07', 'https://res.cloudinary.com/dt5xizv10/image/upload/post/ntrang.jpg', TRUE),
 (8, '2023-11-08', 'https://res.cloudinary.com/dt5xizv10/image/upload/post/qn.jpg', TRUE),
 (9, '2023-11-09', 'https://res.cloudinary.com/dt5xizv10/image/upload/post/hue.jpg', TRUE),
-(10, '2023-11-10', 'https://res.cloudinary.com/dt5xizv10/image/upload/post/nb.jpg', TRUE),
-(11, '2023-11-11', 'bacninh_post.jpg', TRUE),
-(12, '2023-11-12', 'tayninh_post.jpg', TRUE),
-(13, '2023-11-13', 'quangnam_post.jpg', TRUE),
-(14, '2023-11-14', 'thanhhoa_post.jpg', TRUE),
-(15, '2023-11-15', 'daklak_post.jpg', TRUE),
-(16, '2023-11-16', 'gialai_post.jpg', TRUE),
-(17, '2023-11-17', 'Binhthuan_post.jpg', TRUE),
-(18, '2023-11-18', 'vinhphuc_post.jpg', TRUE);
+(10, '2023-11-09', 'https://res.cloudinary.com/dt5xizv10/image/upload/post/nb.jpg', TRUE),
+
+(11, '2023-11-10', 'https://res.cloudinary.com/dt5xizv10/image/upload/post/thoa.jpg', TRUE),
+(12, '2023-11-11', 'https://res.cloudinary.com/dt5xizv10/image/upload/post/bninh.jpg', TRUE),
+(13, '2023-11-12', 'https://res.cloudinary.com/dt5xizv10/image/upload/post/nghean.jpg', TRUE),
+(14, '2023-11-13', 'https://res.cloudinary.com/dt5xizv10/image/upload/post/qtri.jpg', TRUE),
+(15, '2023-11-14', 'https://res.cloudinary.com/dt5xizv10/image/upload/post/qngai.jpg', TRUE),
+(16, '2023-11-15', 'https://res.cloudinary.com/dt5xizv10/image/upload/post/bdinh.jpg', TRUE),
+(17, '2023-11-16', 'https://res.cloudinary.com/dt5xizv10/image/upload/post/dlak.jpg', TRUE),
+(18, '2023-11-17', 'https://res.cloudinary.com/dt5xizv10/image/upload/post/dlat.jpg', TRUE),
+(19, '2023-11-18', 'https://res.cloudinary.com/dt5xizv10/image/upload/post/hphong.jpg', TRUE),
+(20, '2023-11-18', 'https://res.cloudinary.com/dt5xizv10/image/upload/post/hgiang.jpg', TRUE);
 
 
 INSERT INTO postDetail  (postID, sectionTitle, sectionContent, imgPostDetURL)
@@ -408,17 +411,19 @@ VALUES
 (1, 'https://res.cloudinary.com/dt5xizv10/image/upload/blog/blog1d'),
 (1, 'https://res.cloudinary.com/dt5xizv10/image/upload/blog/blog1e'),
 
-(2, 'hcm_blog.jpg'),
-(3, 'danang_blog.jpg'),
-(4, 'haiphong_blog.jpg'),
-(5, 'hue_blog.jpg'),
-(6, 'cantho_blog.jpg'),
-(7, 'quangninh_blog.jpg'),
-(8, 'binhduong_blog.jpg'),
-(9, 'nghean_blog.jpg'),
-(10, 'khanhhoa_blog.jpg'),
-(11, 'bacninh_blog.jpg'),
-(12, 'tayninh_blog.jpg');
+(2, 'https://res.cloudinary.com/dt5xizv10/image/upload/blog/blog2a'),
+(2, 'https://res.cloudinary.com/dt5xizv10/image/upload/blog/blog2b'),
+(2, 'https://res.cloudinary.com/dt5xizv10/image/upload/blog/blog2c'),
+(2, 'https://res.cloudinary.com/dt5xizv10/image/upload/blog/blog2d'),
+
+(3, 'https://res.cloudinary.com/dt5xizv10/image/upload/blog/blog3a'),
+(3, 'https://res.cloudinary.com/dt5xizv10/image/upload/blog/blog3b'),
+(3, 'https://res.cloudinary.com/dt5xizv10/image/upload/blog/blog3c'),
+
+(4, 'https://res.cloudinary.com/dt5xizv10/image/upload/blog/blog4a'),
+(4, 'https://res.cloudinary.com/dt5xizv10/image/upload/blog/blog4b'),
+(4, 'https://res.cloudinary.com/dt5xizv10/image/upload/blog/blog4c'); 
+
 
 -- Dữ liệu cho bảng userComment
 INSERT INTO userComment (blogID, userID, cmtContent, createDate, status)

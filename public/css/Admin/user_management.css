@@ -287,19 +287,25 @@ td:last-child {
 }
 
 .button input.save:hover,
-.button input.cancel:hover {
+.button input.cancel:hover,
+#yes-btn:hover ,  #no-btn:hover{
     background-color: #797d97;
 }
 
 /* Popup Buttons */
+#no-btn {
+    background-color: #35679C;
+    color: #fff;
+    font-size: 16px;
+}
+
 #yes-btn {
-    background-color: #0d4160;
+    background-color: #c2c2c2;
+    font-size: 16px;
     color: #fff;
 }
 
-#no-btn {
-    background-color: #ddd;
-}
+
 
 /* Kiểu dáng phân trang */
 .pagination {

@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const customerForm = document.getElementById("user-form");
     const searchInput = document.querySelector('.search-bar');
     const popup1Overlay = document.getElementById('popup1Overlay');
-    const deleteBtns = document.querySelectorAll('.delete-btn');
     const popup = document.getElementById('popup');
 
     searchInput.addEventListener('input', () => {
@@ -58,12 +57,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    deleteBtns.forEach(button => {
-        button.addEventListener('click', () => {
-            popup.style.display = 'flex';
-        });
-    });
-
     window.addEventListener('click', (event) => {
         if (event.target === popup1Overlay && confirm("Xác nhận hủy?")) {
             popup1Overlay.style.display = 'none';
@@ -74,6 +67,26 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('click', (event) => {
         if (event.target === popup2Overlay && confirm("Xác nhận hủy?")) {
             popup2Overlay.style.display = 'none';
+            removeAdminOption();
+        }
+    });
+
+    //Cho form thùng rác
+    document.querySelectorAll('.delete').forEach(button => {
+        button.addEventListener('click', () => {
+            popup.style.display = 'flex';
+        });
+    });
+    window.addEventListener('click', (event) => {
+        if (event.target === popup && confirm("Xác nhận hủy?")) {
+            popup.style.display = 'none';
+            removeAdminOption();
+        }
+    });
+
+    document.getElementById('no-btn').addEventListener('click', () => {
+        if (confirm("Xác nhận hủy?")) {
+            popup.style.display = 'none';
             removeAdminOption();
         }
     });

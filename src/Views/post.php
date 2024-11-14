@@ -15,8 +15,8 @@
 
 <!--ĐANG HARD CODE POST ID = 1-->
 <?php
-    include_once "../../src/Controllers/adminController.php";
-    $controller = new AdminController();
+    include_once "../../src/Controllers/bothController.php";
+    $controller = new bothController();
 
     //$_GET['postID']: Lay tu story sang day postID (e.g., post.php?postID=1).
     //intval(): dam bao la int value tu ben kia lay sang : 1 (co nghia la, mac dinh se lay trang Hanoi )

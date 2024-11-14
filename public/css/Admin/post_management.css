@@ -226,16 +226,21 @@ td:last-child {
     display: none;
 }
 
-
-
 /* Popup Buttons */
-#yes-btn {
-    background-color: #0d4160;
-    color: #fff;
+#yes-btn:hover ,  #no-btn:hover{
+    background-color: #797d97;
 }
 
 #no-btn {
-    background-color: #ddd;
+    background-color: #35679C;
+    color: #fff;
+    font-size: 16px;
+}
+
+#yes-btn {
+    background-color: #c2c2c2;
+    font-size: 16px;
+    color: #fff;
 }
 
 /* Form and Fields */
@@ -433,6 +438,9 @@ td:last-child {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
 }
 
+#image-posted, #data_img{
+    width: 800px;
+}
 
 @media (max-width: 768px) {
     .field-row {

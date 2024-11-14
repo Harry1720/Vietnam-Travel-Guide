@@ -27,23 +27,23 @@
             <div class="flex-container">
                 <form action="../../FunctionOfActor/blogger/addBlog.php" method="POST" name = "" enctype="multipart/form-data">
                     <div class="top-places">
-                        <h2>Upload Photos for Review</h2>
+                        <h2>Đăng tải hình ảnh</h2>
                         
-                        <p>Share the best moments from your travel journey.</p>
+                        <p>Hãy chia sẽ những khoảng khắc tuyệt vời trong chuyến đi của bạn.</p>
                         
                         <div class="review-placeholder">
-                            <label for="upload-photos">Upload your photos</label>
+                            <label for="upload-photos">Đăng tải</label>
                             <input type="file" id="upload-photos" name="photos[]" accept="image/*" multiple>
                         </div>
                         <div id="photo-preview" class="photo-preview"></div>
                     </div>
-                    <label for="title">Title of your review</label>
-                    <input type="text" id="title" name="title" placeholder="Summarize your Travel Journey">
+                    <label for="title">Tiêu đề</label>
+                    <input type="text" id="title" name="title" placeholder="Tiêu đề">
                     
-                    <label for="review">Your review</label>
-                    <textarea id="review" name="review" placeholder="A detailed review of your Travel Journey. Travelers will love to know your experience"></textarea>
+                    <label for="review">Trải nghiệm của bạn</label>
+                    <textarea id="review" name="review" placeholder="Đó là một hành trình đáng nhớ tại..."></textarea>
 
-                    <label for="location">Location</label>
+                    <label for="location">Địa điểm</label>
                     <select id="location" name="location" required>
                         <option value="">Chọn tỉnh/thành</option>
                         <?php
@@ -53,24 +53,24 @@
                         ?>
                     </select>
                     
-                    <label for="travel-date">When did you travel?</label>
+                    <label for="travel-date">Bạn đi trải nghiệm khi nào?</label>
                     <select id="travel-date" name="travel-date">
-                        <option>Select One</option>
-                        <option>January</option>
-                        <option>February</option>
-                        <option>March</option>
-                        <option>April</option>
-                        <option>May</option>
-                        <option>June</option>
-                        <option>July</option>
-                        <option>August</option>
-                        <option>September</option>
-                        <option>October</option>
-                        <option>November</option>
-                        <option>December</option>
+                        <option>Chọn một tháng</option>
+                        <option>Tháng 1</option>
+                        <option>Tháng 2</option>
+                        <option>Tháng 3</option>
+                        <option>Tháng 4</option>
+                        <option>Tháng 5</option>
+                        <option>Tháng 6</option>
+                        <option>Tháng 7</option>
+                        <option>Tháng 8</option>
+                        <option>Tháng 9</option>
+                        <option>Tháng 10</option>
+                        <option>Tháng 11</option>
+                        <option>Tháng 12</option>
                     </select>
                     
-                    <button type="submit" class="submit-btn">Submit Review</button>
+                    <button type="submit" class="submit-btn">Gửi đi</button>
                 </form>
             </div>
         </div>

@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         <nav class="nav">
             <a href="../blogger/home.php">Trang chủ</a>
             <a href="../blogger/province.php">Tỉnh Thành</a>
-            <a href="../blogger/storiesList.html">Blogs</a>
+            <a href="../blogger/storiesList.php">Blogs</a>
             <a href="../blogger/WriteReview.php">Viết Blog</a>
         </nav>
         <nav class="sub_nav">

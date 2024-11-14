@@ -158,9 +158,9 @@
                 
                 <div id="popup" class="popup-overlay">
                     <div class="popup-content">
-                        <p>Are you sure you want to delete this post?</p>
-                        <button id="yes-btn" class="popup-btn">Yes</button>
-                        <button id="no-btn" class="popup-btn">No</button>
+                        <p>Bạn có chắc chắn xóa?</p>
+                        <button id="yes-btn" class="popup-btn">Có</button>
+                        <button id="no-btn" class="popup-btn">Không</button>
                     </div>
                 </div>
             </div>

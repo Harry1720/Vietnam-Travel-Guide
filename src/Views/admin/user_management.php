@@ -124,7 +124,7 @@
         <!-- Popup -->
         <div id="popup" class="popup-overlay">
             <div class="popup-content">
-                <p>Bạn có muốn xóa người dùng này?</p>
+                <p>Bạn có chắc chắn xóa người dùng này?</p>
                 <button id="yes-btn" class="popup-btn">Có</button>
                 <button id="no-btn" class="popup-btn">Không</button>
             </div>

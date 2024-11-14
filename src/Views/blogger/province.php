@@ -15,7 +15,7 @@
     <body>
     <script src = "../../../include/header2.js"></script>
     <script src = "../../../include/footer.js"></script>
-    <script src="../../../public/js/Admin/Notifications.js"></script>
+    <!-- <script src="../../../public/js/Admin/Notifications.js"></script> -->
 
     <section class="provinces section-common">
             <h2>Tỉnh thành</h2>
@@ -23,8 +23,8 @@
 
             <div class="grid-common">
                 <?php
-                    include_once "../../Controllers/adminController.php";
-                    $controller = new AdminController();
+                    include_once "../../Controllers/bothController.php";
+                    $controller = new bothController();
                 
                     // Get current page number from URL, default là 1
                     $page = isset($_GET['page']) && is_numeric($_GET['page']) ? (int)$_GET['page'] : 1;
@@ -38,8 +38,8 @@
                     $posts = $controller->getPostsByPage($postsPerPage, $offset);
 
                     foreach ($posts as $post):
+                        if (!empty($post['imgPostURL'])):
                 ?>
-
                     <!--Khong can JS cho nay vi Anchor sang post voi ID-->
                     <a href="../post.php?postID=<?php echo $post['postID']; ?> " class="card-common ">
                         <img src="<?php echo htmlspecialchars($post['imgPostURL']); ?>" alt="province">
@@ -48,7 +48,9 @@
                             <p><?php echo date('M d, Y', strtotime($post['postCreateDate'])); ?></p>
                         </div>
                     </a>
-                <?php endforeach; ?>
+                    <?php                 
+                        endif; // End check for imgPostURL
+                    endforeach; ?>
             </div>
 
 

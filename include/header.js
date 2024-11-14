@@ -12,11 +12,11 @@ document.addEventListener('DOMContentLoaded', async function () {
         const header = `
         <header class="header">
             <div class="logo">
-                <img src="../../../public/image/logo.png" alt="Logo">
+                <img src="../../../public/image/logo_colored.png" alt="Logo">
             </div>
             <nav class="nav">
                 <a href="home.php">Trang chủ</a>
-                <a href="../admin/province.php">Tỉnh Thành</a>
+                <a href="province.php">Tỉnh Thành</a>
                 <a href="storiesList.html">Blogs</a>
                 <a href="WriteReview.php">Viết Blog</a>
             </nav>
@@ -52,4 +52,21 @@ document.addEventListener('DOMContentLoaded', async function () {
         console.error('Error fetching session data:', error);
         alert('Không thể tải trạng thái đăng nhập. Vui lòng thử lại sau.');
     }
+    const header = document.querySelector('.header');
+    const heroSection = document.querySelector('.hero');
+    
+    function toggleHeaderBackground() {
+        // Get the position of the bottom of the hero image
+        const heroBottom = heroSection.getBoundingClientRect().bottom;
+        
+        // Toggle the 'scrolled' class based on scroll position
+        if (window.scrollY >= heroBottom) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    }
+
+    // Attach the scroll event to toggle the header background
+    window.addEventListener('scroll', toggleHeaderBackground);
 });

@@ -2,8 +2,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const destinationForm = document.getElementById("destination-form");
     const popup1Overlay = document.getElementById('popup1Overlay');
     const searchInput = document.querySelector('.search-bar');
-    let isEditing = false;
-    let editingDiamondId = null;
+    const popup = document.getElementById('popup');
+
 
     searchInput.addEventListener('input', () => {
         const searchText = searchInput.value.trim().toLowerCase();
@@ -69,6 +69,28 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    //Cho form thùng rác
+    document.querySelectorAll('.delete-btn').forEach(button => { //để kích hoạt mọi nút edit-btn mỗi dòng
+        button.addEventListener('click', () => {
+            resetFormState();
+            popup.style.display = 'flex';
+        });
+    });
+
+    document.getElementById('no-btn').addEventListener('click', () => {
+        if (confirm("Xác Nhận Hủy?")) {
+            popup.style.display = 'none';
+        }
+    });
+
+    window.addEventListener('click', (event) => {
+        if (event.target === popup) {
+            if (confirm("Xác Nhận Hủy?")) {
+                popup.style.display = 'none';
+            }
+        }
+    });
+    
 
     function resetFormState() {
         isEditing = false;

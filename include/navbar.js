@@ -6,10 +6,10 @@ document.addEventListener('DOMContentLoaded', function () {
             <div class="navbar__cta">
                 <div class="navbar__hello">
                     <ion-icon name="notifications-outline"></ion-icon>
-                    <span id="notifications_count">Loading...</span> Notifications
+                    <span id="notifications_count">Loading...</span> Bài Viết Chưa Được Duyệt
                 </div>
                 <div class="navbar__hello">
-                    <ion-icon name="settings-outline"></ion-icon> Settings
+                    <ion-icon name="settings-outline"></ion-icon> Cài Đặt
                 </div>
                 <div class="navbar__background-icon">
                     <img class="image-user" src="https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-portrait-176256935.jpg" alt="Avatar">

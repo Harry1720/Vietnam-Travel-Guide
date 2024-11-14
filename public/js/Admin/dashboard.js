@@ -2,13 +2,25 @@ document.addEventListener('DOMContentLoaded', function() {
     // Date Picker Logic
     const datePickerButton = document.getElementById('datePickerButton');
     const popup = document.getElementById('popup');
-    const startDateInput = document.getElementById('startDate');
-    const endDateInput = document.getElementById('endDate');
-    const cancelBtn = document.getElementById('cancelBtn');
-    const applyBtn = document.getElementById('applyBtn');
     const dateRangeText = document.getElementById('dateRangeText');
 
-    
+    // Lấy năm hiện tại
+    const currentYear = new Date().getFullYear();
+    const MinYear = 2023;
+    const yearSelect = document.getElementById('yearSelect');
+    // Thêm các option cho năm từ hiện tại đến 2024
+    for (let year = currentYear; year >= MinYear; year--) {
+        let option = document.createElement('option');
+        option.value = year;
+        option.textContent = year;
+        yearSelect.appendChild(option);
+    }
+
+    // Lắng nghe sự kiện thay đổi năm
+    yearSelect.addEventListener('change', () => {
+        const selectedYear = parseInt(yearSelect.value, 10);
+        fetchBlogData(selectedYear);
+    });
 
     function formatDate(date) {
         const options = { year: 'numeric', month: 'short', day: 'numeric' };
@@ -25,28 +37,28 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    cancelBtn.addEventListener('click', () => {
-        popup.classList.remove('show');
-    });
+    // cancelBtn.addEventListener('click', () => {
+    //     popup.classList.remove('show');
+    // });
 
-    applyBtn.addEventListener('click', () => {
-        const startDate = formatDate(startDateInput.value);
-        const endDate = formatDate(endDateInput.value);
-        dateRangeText.textContent = `${startDate} - ${endDate}`;
+    // applyBtn.addEventListener('click', () => {
+    //     const startDate = formatDate(startDateInput.value);
+    //     const endDate = formatDate(endDateInput.value);
+    //     dateRangeText.textContent = `${startDate} - ${endDate}`;
 
-        // Lấy năm từ startDate và gọi lại hàm cập nhật dữ liệu cho biểu đồ
-        const startYear = new Date(startDateInput.value).getFullYear();
-        const endYear = new Date(endDateInput.value).getFullYear();
+    //     // Lấy năm từ startDate và gọi lại hàm cập nhật dữ liệu cho biểu đồ
+    //     const startYear = new Date(startDateInput.value).getFullYear();
+    //     const endYear = new Date(endDateInput.value).getFullYear();
 
-        // Kiểm tra năm được chọn
-        if (startYear === endYear) {
-            fetchBlogData(startYear);
-        } else {
-            alert('Vui lòng chọn cùng một năm cho cả khoảng thời gian.');
-        }
+    //     // Kiểm tra năm được chọn
+    //     if (startYear === endYear) {
+    //         fetchBlogData(startYear);
+    //     } else {
+    //         alert('Vui lòng chọn cùng một năm cho cả khoảng thời gian.');
+    //     }
 
-        popup.classList.remove('show');
-    });
+    //     popup.classList.remove('show');
+    // });
 
 
     // Graph Logic
@@ -56,10 +68,10 @@ document.addEventListener('DOMContentLoaded', function() {
         data: {
             labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
             datasets: [{
-                label: '2024',
+                label: '',
                 data: [],
                 borderColor: 'rgb(75, 192, 192)',
-                tension: 0.1
+                tension: 0.4
             }]
         },
         options: {
@@ -81,26 +93,81 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    function fetchBlogData(year) {
-        console.log(year);
 
-        fetch(`../../../src/FunctionOfActor/admin/BlogInYear.php?year=${year}`)
+    const ctx1 = document.getElementById('engagementChart').getContext('2d');
+    const topProvince = new Chart(ctx1, {
+        type: 'pie',
+        data: {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+            datasets: [{
+                label: '',
+                data: [],
+                backgroundColor: [
+                    'rgba(75,192,192,0.8)', // Màu sắc cho các phân đoạn
+                    'rgba(54, 162, 235, 0.8)',
+                    'rgba(255, 206, 86, 0.8)',
+                    'rgba(231, 74, 59, 0.8)',
+                    'rgba(153, 102, 255, 0.8)',
+                    'rgba(255, 159, 64, 0.8)'
+                ],
+                borderColor: [
+                    'rgba(75, 192, 192, 1)', // Đường viền của các phân đoạn
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(231, 74, 59, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'right',
+                    align: 'center',
+                    labels: {
+                        boxWidth: 10,
+                        padding: 20
+                    }
+                }
+            },
+            layout: {
+                padding: {
+                    left: 10, right: 10, top: 10, bottom: 10
+                }
+            }
+        }
+    });
+    
+
+    function fetchBlogData(selectedYear) {
+        fetch(`../../../src/FunctionOfActor/admin/dataInYear.php?year=${selectedYear}`)
             .then(response => response.json())
             .then(data => {
                 if (data.error) {
                     console.error(data.error);
                     return;
                 }
-                // Cập nhật dữ liệu biểu đồ với dữ liệu lấy từ PHP
-                growthChart.data.datasets[0].data = data;  // Thay thế bằng dữ liệu thực tế
-                growthChart.data.datasets[0].label = `${year}`;
-                growthChart.update();  // Vẽ lại biểu đồ
+                // Update growthChart (blogs by month)
+                growthChart.data.datasets[0].data = data.blogByMonth; 
+                growthChart.data.datasets[0].label = `${selectedYear}`;
+                growthChart.update();
+    
+                 // Update topProvince chart (blogs by province)
+                topProvince.data.labels = data.blogByProvince.map(item => item.provinceName);
+                topProvince.data.datasets[0].data = data.blogByProvince.map(item => item.blogCount);
+                topProvince.data.datasets[0].label = `${selectedYear}`;
+                topProvince.update(); 
             })
             .catch(error => {
                 console.error('Error fetching data:', error);
             });
     }
+    
 
     // Mặc định tải dữ liệu cho năm 2023 khi trang được tải
-    fetchBlogData(2023);
+    fetchBlogData(currentYear);
 });

@@ -11,15 +11,29 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <?php
+        include_once "../../Controllers/adminController.php";
+
+        $adController = new AdminController();
+
+        $view = isset($_GET['view']) ? $_GET['view'] : '5';
+
+        $TotalUsers = $adController->TotalUsers();
+        $TotalBlogs = $adController->TotalBlogs();
+        $TotalComment = $adController->TotalComment();
+        $TotalDestination = $adController->TotalDestination();
+        $TopBlog = $adController->TopBlog($view);
+    ?>
 </head>
 <body>
     <script src="../../../public/js/Admin/dashboard.js"></script>
     <script src="../../../include/navbar.js"></script>
     <script src="../../../include/sidebar.js"></script>
-    <!-- <script src="../../../public/js/Admin/Notifications.js"></script> -->
+    <script src="../../../public/js/Admin/Notifications.js"></script>
 <div class="main-content">
     <!-- Date Range Picker -->
-    <div class="date-picker">
+    <!-- <div class="date-picker">
         <button class="date-picker-button" id="datePickerButton">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
@@ -40,29 +54,39 @@
                 <button class="btn btn-apply" id="applyBtn">Apply</button>
             </div>
         </div>
+    </div> -->
+    <div class="date-picker">
+        <button class="date-picker-button" id="datePickerButton">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+            <div class="year" id="year">
+                <select style="border: none;" name="yearSelect" id="yearSelect">
+                </select>
+            </div>
+        </button>
     </div>
 
     <!-- Stats Cards -->
     <div class="stats-container">
         <div class="stat-card card-1">
             <div class="stat-title">Total users</div>
-            <div class="stat-value">6M</div>
-            <div class="stat-change change-positive">+26%</div>
+            <div class="stat-value"><?php echo $TotalUsers['TotalUsers']; ?></div>
         </div>
         <div class="stat-card card-2">
             <div class="stat-title">Total blogs</div>
-            <div class="stat-value">7M</div>
-            <div class="stat-change change-positive">+69%</div>
+            <div class="stat-value"><?php echo $TotalBlogs['TotalBlogs']; ?></div>
         </div>
         <div class="stat-card card-3">
             <div class="stat-title">Total comments</div>
-            <div class="stat-value">10M</div>
-            <div class="stat-change change-negative">-4%</div>
+            <div class="stat-value"><?php echo $TotalComment['TotalComment']; ?></div>
         </div>
         <div class="stat-card card-4">
             <div class="stat-title">Total destinations</div>
-            <div class="stat-value">10M</div>
-            <div class="stat-change change-negative">-4%</div>
+            <div class="stat-value"><?php echo $TotalDestination['TotalDestination']; ?></div>
         </div>
     </div>
 
@@ -94,8 +118,7 @@
                 <p class="graph-subtitle">Top-Blog with high interactions</p>
             </div>
             <div class="search-container">
-                <input type="text" class="search-input" placeholder="Search">
-                <button class="view-all-btn">View Top 20</button>
+                <button class="view-all-btn"><a href="?view=20">View Top 20</a></button>
             </div>
         </div>
 
@@ -110,19 +133,27 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>
-                        <div>Huỳnh Nguyễn Quốc Bảo</div>
-                        <div style="color: #666; font-size: 14px;">1.5M follower</div>
-                    </td>
-                    <td>TP.HCM, thành phố không ngủ</td>
-                    <td><span class="stat-change change-positive">50 comments</span></td>
-                    <td>
-                        <div class="follower-info">
-                                <div>TP.HCM</div>
-                        </div>
-                    </td>
-                </tr>
+            <?php
+            if (mysqli_num_rows($TopBlog) > 0) {
+                while ($index = mysqli_fetch_array($TopBlog)) {
+                ?>
+                        <tr>
+                            <td>
+                                <div><?php echo $index['userName'] ?? 'Lỗi Hiển Thị' ?></div>
+                                <!-- <div style="color: #666; font-size: 14px;">1.5M follower</div> -->
+                            </td>
+                            <td><?php echo $index['blogTitle'] ?? 'Lỗi Hiển Thị' ?></td>
+                            <td><span class="stat-change change-positive"><?php echo $index['totalComments'] ?? 'Lỗi Hiển Thị' ?> Comment</span></td>
+                            <td>
+                                <div class="follower-info">
+                                        <div><?php echo $index['provinceName'] ?? 'Lỗi Hiển Thị' ?></div>
+                                </div>
+                            </td>
+                        </tr>
+                        <?php 
+                        }
+                    }
+                    ?>
                 <!-- More rows similar to above -->
             </tbody>
         </table>

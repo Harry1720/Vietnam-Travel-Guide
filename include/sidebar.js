@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 <li class="submenu">
                     <a href="province_management.php"><i class="fa-solid fa-city"></i> Quản lý Tỉnh/Thành phố</a>
                 </li>
-                <li><a href="dashboard.html"><span class="icon"><ion-icon name="analytics"></ion-icon></span> Thống kê</a></li>               
+                <li><a href="dashboard.php"><span class="icon"><ion-icon name="analytics"></ion-icon></span> Thống kê</a></li>               
                 <li class="submenu">
                     <a href="#" onclick="logout()"><ion-icon name="log-out-outline"></ion-icon> Đăng xuất</a>
                 </li>

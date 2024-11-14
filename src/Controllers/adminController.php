@@ -430,7 +430,6 @@ class AdminController{
     }
 
     //dashboard
-
     public function getTotalBlogInYear($year){
         
         $sql = "SELECT YEAR(blogCreateDate) AS Year, MONTH(blogCreateDate) AS Month, COUNT(*) AS TotalBlog
@@ -452,39 +451,89 @@ class AdminController{
         
         return $dataInYear;
     }
+
+    public function getTotalBlogInPorvinceAndYear($year){
+        $sql = "SELECT p.provinceName, COUNT(b.blogID) AS blogCount
+                FROM blog b
+                JOIN province p ON b.provinceID = p.provinceID
+                WHERE YEAR(b.blogCreateDate) = '$year' AND b.status = TRUE
+                GROUP BY p.provinceName
+                ORDER BY blogCount DESC";
+
+        $blogOfBlogInYear = mysqli_query($this->conn->connect(),$sql);
+
+        $dataOfProvinceInYear = [];
+        if (mysqli_num_rows($blogOfBlogInYear) > 0 ) {
+            while($row = mysqli_fetch_array($blogOfBlogInYear)) {
+                $dataOfProvinceInYear[] = [
+                    'provinceName' => $row['provinceName'],
+                    'blogCount' => $row['blogCount']
+                ];
+            }
+        }
+
+        return $dataOfProvinceInYear;
+    }
+
+    public function TotalUsers(){
+        $sql = "SELECT COUNT(*) AS TotalUsers
+                FROM users
+                WHERE status = TRUE";
+
+        $CountUser = mysqli_query($this->conn->connect(),$sql);
+
+        return $CountUser->fetch_assoc();
+    }
+
+    public function TotalBlogs(){
+        $sql = "SELECT COUNT(*) AS TotalBlogs
+                FROM blog
+                WHERE status = TRUE";
+
+        $CountUser = mysqli_query($this->conn->connect(),$sql);
+
+        return $CountUser->fetch_assoc();
+    }
+
+    public function TotalComment(){
+        $sql = "SELECT (COUNT(c.commentID) + COUNT(r.repCommentID)) AS TotalComment
+                FROM userComment c
+                LEFT JOIN repComment r ON c.commentID = r.commentID;
+                ";
+
+        $CountUser = mysqli_query($this->conn->connect(),$sql);
+
+        return $CountUser->fetch_assoc();
+    }
+
+    public function TotalDestination(){
+        $sql = "SELECT COUNT(*) AS TotalDestination
+                FROM usercomment
+                WHERE status = TRUE";
+
+        $CountUser = mysqli_query($this->conn->connect(),$sql);
+
+        return $CountUser->fetch_assoc();
+    }
+
+    public function TopBlog($view){
+
+        $sql = "SELECT u.userName,  b.blogTitle, p.provinceName, 
+                COUNT(c.commentID) + COUNT(r.repCommentID) AS totalComments
+                FROM users u
+                JOIN blog b ON u.userID = b.userID
+                JOIN province p ON b.provinceID = p.provinceID
+                LEFT JOIN userComment c ON b.blogID = c.blogID
+                LEFT JOIN repComment r ON c.commentID = r.commentID
+                GROUP BY u.userID, u.userName, b.blogID, b.blogTitle, p.provinceName
+                ORDER BY totalComments DESC
+                LIMIT $view";
+        
+        $data = mysqli_query($this->conn->connect(),$sql);
+
+        if($data){
+            return $data;
+        }
+    }
 }
-// <!-- \
-// SELECT COUNT(*) AS TotalUsers
-// FROM users
-// WHERE status = TRUE;
-
-// SELECT COUNT(*) AS TotalBlogs
-// FROM blog
-// WHERE status = TRUE;
-
-
-// SELECT COUNT(*) AS TotalComments
-// FROM userComment
-// WHERE status = TRUE;
-
-
-// SELECT COUNT(*) AS TotalDestinations
-// FROM destination;
-
-
-// SELECT YEAR(blogCreateDate) AS Year, MONTH(blogCreateDate) AS Month, COUNT(*) AS TotalFollowers
-// FROM blog
-// WHERE status = TRUE
-// AND YEAR(blogCreateDate) = 2023
-// GROUP BY YEAR(blogCreateDate), MONTH(blogCreateDate)
-// ORDER BY Year, Month;
-
-// SELECT b.blogTitle, COUNT(c.commentID) AS TotalInteractions
-// FROM blog b
-// LEFT JOIN userComment c ON b.blogID = c.blogID
-// WHERE b.status = TRUE
-// GROUP BY b.blogTitle
-// ORDER BY TotalInteractions DESC
-// LIMIT 20;
-//  -->
 ?>

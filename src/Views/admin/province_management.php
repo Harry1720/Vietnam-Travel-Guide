@@ -138,9 +138,14 @@
                                                                         <button class="edit-btn" onclick="editDestination(<?php echo $destination['destinationID'] ?>)">
                                                                             <ion-icon name="create-outline"></ion-icon> 
                                                                         </button>
-                                                                        <button class="delete-btn">
-                                                                            <ion-icon name="trash-outline"></ion-icon> 
+                                                                        <button 
+                                                                            class="action-btn delete delete-destination" 
+                                                                            id="delete-destination-<?php echo $destination['destinationID']; ?>"
+                                                                            data-destination-id="<?php echo $destination['destinationID']; ?>"
+                                                                        >
+                                                                            <ion-icon name="trash"></ion-icon>
                                                                         </button>
+
                                                                     </td>
                                                                 </tr>
                                                                 <?php
@@ -177,13 +182,6 @@
                 ?>
             </div>
 
-        </div>
-        <div id="popup" class="popup-overlay">
-            <div class="popup-content">
-                <p>Bạn có muốn xóa địa điểm này?</p>
-                <button id="yes-btn" class="popup-btn">Có</button>
-                <button id="no-btn" class="popup-btn">Không</button>
-            </div>
         </div>
     </div>
 </div>
@@ -253,6 +251,14 @@
                 </div>
             </form>
         </div>
+    </div>
+</div>
+
+<div id="popup" class="popup-overlay">
+    <div class="popup-content">
+        <p>Bạn có chắc chắn xóa điểm đến này?</p>
+        <button id="yes-btn" class="popup-btn">Có</button>
+        <button id="no-btn" class="popup-btn">Không</button>
     </div>
 </div>
 </body>

@@ -358,17 +358,46 @@ LỊCH TRÌNH MỘT BUỔI SÁNG MÙA THU CHO NGƯỜI U MÊ HÀ NỘI  ĐÂY NH
 📌 11h - 12h: Ghé thăm nhà sách Mão, bưu điện thành phố và ngắm hồ Gươm
 Nếu không phải là con người “ngủ nướng” thì hãy mau ra đường và tận hưởng không khí Hà Nội những ngày thu đi thôi 🍃🍃
 📷  Cảm ơn chia sẻ của Nguyễn Minh Đức', '2024-11-01', TRUE, 'Đã Duyệt'),
-(2, 2,'title', 'Nội dung bài viết 2', '2024-11-02', TRUE, 'Đã Duyệt'),
-(3, 3, 'title','Nội dung bài viết 3', '2024-11-03', TRUE, 'Chờ Duyệt'),
-(1, 4, 'title','Nội dung bài viết 4', '2024-11-04', TRUE, 'Không Được Duyệt'),
-(2, 5, 'title','Nội dung bài viết 5', '2024-11-05', TRUE, 'Chờ Duyệt'),
-(3, 6,'title', 'Nội dung bài viết 6', '2024-11-06', TRUE, 'Đã Duyệt'),
-(1, 7,'title', 'Nội dung bài viết 7', '2024-11-07', TRUE, 'Chờ Duyệt'),
-(2, 8, 'title','Nội dung bài viết 8', '2024-11-08', TRUE, 'Không Được Duyệt'),
-(3, 9,'title', 'Nội dung bài viết 9', '2024-11-09', TRUE, 'Chờ Duyệt'),
-(1, 10,'title', 'Nội dung bài viết 10', '2024-11-10', TRUE, 'Đã Duyệt'),
-(2, 11,'title', 'Nội dung bài viết 11', '2024-11-11', TRUE, 'Chờ Duyệt'),
-(3, 12, 'title','Nội dung bài viết 12', '2024-11-12', TRUE, 'Không Được Duyệt');
+(1, 1, 'Blog Title 1', 'Blog Content 1', '2022-01-15', TRUE, 'Chờ Duyệt'),
+(2, 2, 'Blog Title 2', 'Blog Content 2', '2022-02-18', TRUE, 'Đã Duyệt'),
+(3, 3, 'Blog Title 3', 'Blog Content 3', '2022-03-21', TRUE, 'Không Được Duyệt'),
+(4, 4, 'Blog Title 4', 'Blog Content 4', '2022-04-10', TRUE, 'Chờ Duyệt'),
+(5, 5, 'Blog Title 5', 'Blog Content 5', '2022-05-14', TRUE, 'Đã Duyệt'),
+(6, 6, 'Blog Title 6', 'Blog Content 6', '2022-06-12', TRUE, 'Chờ Duyệt'),
+(7, 7, 'Blog Title 7', 'Blog Content 7', '2022-07-19', TRUE, 'Đã Duyệt'),
+(8, 8, 'Blog Title 8', 'Blog Content 8', '2022-08-22', TRUE, 'Không Được Duyệt'),
+(9, 9, 'Blog Title 9', 'Blog Content 9', '2022-09-25', TRUE, 'Chờ Duyệt'),
+(10, 10, 'Blog Title 10', 'Blog Content 10', '2022-10-30', TRUE, 'Đã Duyệt'),
+(11, 11, 'Blog Title 11', 'Blog Content 11', '2022-11-05', TRUE, 'Chờ Duyệt'),
+(12, 12, 'Blog Title 12', 'Blog Content 12', '2022-12-09', TRUE, 'Không Được Duyệt'),
+
+-- Dữ liệu cho năm 2023
+(13, 13, 'Blog Title 13', 'Blog Content 13', '2023-01-15', TRUE, 'Đã Duyệt'),
+(14, 14, 'Blog Title 14', 'Blog Content 14', '2023-02-18', TRUE, 'Chờ Duyệt'),
+(15, 15, 'Blog Title 15', 'Blog Content 15', '2023-03-21', TRUE, 'Không Được Duyệt'),
+(16, 16, 'Blog Title 16', 'Blog Content 16', '2023-04-10', TRUE, 'Đã Duyệt'),
+(17, 17, 'Blog Title 17', 'Blog Content 17', '2023-05-14', TRUE, 'Chờ Duyệt'),
+(18, 18, 'Blog Title 18', 'Blog Content 18', '2023-06-12', TRUE, 'Không Được Duyệt'),
+(19, 19, 'Blog Title 19', 'Blog Content 19', '2023-07-19', TRUE, 'Đã Duyệt'),
+(20, 20, 'Blog Title 20', 'Blog Content 20', '2023-08-22', TRUE, 'Chờ Duyệt'),
+(1, 1, 'Blog Title 21', 'Blog Content 21', '2023-09-25', TRUE, 'Đã Duyệt'),
+(2, 2, 'Blog Title 22', 'Blog Content 22', '2023-10-30', TRUE, 'Chờ Duyệt'),
+(3, 3, 'Blog Title 23', 'Blog Content 23', '2023-11-05', TRUE, 'Không Được Duyệt'),
+(4, 4, 'Blog Title 24', 'Blog Content 24', '2023-12-09', TRUE, 'Đã Duyệt'),
+
+-- Dữ liệu cho năm 2024
+(5, 5, 'Blog Title 25', 'Blog Content 25', '2024-01-15', TRUE, 'Chờ Duyệt'),
+(6, 6, 'Blog Title 26', 'Blog Content 26', '2024-02-18', TRUE, 'Đã Duyệt'),
+(7, 7, 'Blog Title 27', 'Blog Content 27', '2024-03-21', TRUE, 'Không Được Duyệt'),
+(8, 8, 'Blog Title 28', 'Blog Content 28', '2024-04-10', TRUE, 'Chờ Duyệt'),
+(9, 9, 'Blog Title 29', 'Blog Content 29', '2024-05-14', TRUE, 'Đã Duyệt'),
+(10, 10, 'Blog Title 30', 'Blog Content 30', '2024-06-12', TRUE, 'Không Được Duyệt'),
+(11, 11, 'Blog Title 31', 'Blog Content 31', '2024-07-19', TRUE, 'Chờ Duyệt'),
+(12, 12, 'Blog Title 32', 'Blog Content 32', '2024-08-22', TRUE, 'Đã Duyệt'),
+(13, 13, 'Blog Title 33', 'Blog Content 33', '2024-09-25', TRUE, 'Không Được Duyệt'),
+(14, 14, 'Blog Title 34', 'Blog Content 34', '2024-10-30', TRUE, 'Đã Duyệt'),
+(15, 15, 'Blog Title 35', 'Blog Content 35', '2024-11-05', TRUE, 'Chờ Duyệt'),
+(16, 16, 'Blog Title 36', 'Blog Content 36', '2024-12-09', TRUE, 'Không Được Duyệt');
 
 -- Dữ liệu cho bảng imgBlog
 INSERT INTO imgBlog (blogID, imgBlogURL)

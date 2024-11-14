@@ -165,10 +165,18 @@
                 <?php
                     for ($i = 1; $i <= $countPage; $i++) {
                         $activeClass = ($i == $page) ? 'active' : '';
-                        echo "<a class='page-btn $activeClass' href='?page=$i'>$i</a>";
+                        
+                        // Nếu có filter, thêm filter vào link phân trang
+                        $url = "?page=$i";
+                        if ($filter) {
+                            $url .= "&filter=$filter";
+                        }
+                        
+                        echo "<a class='page-btn $activeClass' href='$url'>$i</a>";
                     }
                 ?>
             </div>
+
         </div>
         <div id="popup" class="popup-overlay">
             <div class="popup-content">

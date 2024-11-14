@@ -505,5 +505,63 @@ class AdminController{
 
         echo "Update Thành Công";
     }
+
+    //dashboard
+
+    public function getTotalBlogInYear($year){
+        
+        $sql = "SELECT YEAR(blogCreateDate) AS Year, MONTH(blogCreateDate) AS Month, COUNT(*) AS TotalBlog
+        FROM blog
+        WHERE status = TRUE
+        AND YEAR(blogCreateDate) = '$year'
+        GROUP BY YEAR(blogCreateDate), MONTH(blogCreateDate)
+        ORDER BY Year, Month";
+
+        $blogInYear = mysqli_query($this->conn->connect(),$sql);
+
+        $dataInYear = [];
+        if (mysqli_num_rows($blogInYear) > 0 ) {
+            // Lặp qua kết quả và thêm vào mảng
+            while($row = mysqli_fetch_array($blogInYear)) {
+                $dataInYear[] = $row['TotalBlog']; 
+            }
+        }
+        
+        return $dataInYear;
+    }
 }
+// <!-- \
+// SELECT COUNT(*) AS TotalUsers
+// FROM users
+// WHERE status = TRUE;
+
+// SELECT COUNT(*) AS TotalBlogs
+// FROM blog
+// WHERE status = TRUE;
+
+
+// SELECT COUNT(*) AS TotalComments
+// FROM userComment
+// WHERE status = TRUE;
+
+
+// SELECT COUNT(*) AS TotalDestinations
+// FROM destination;
+
+
+// SELECT YEAR(blogCreateDate) AS Year, MONTH(blogCreateDate) AS Month, COUNT(*) AS TotalFollowers
+// FROM blog
+// WHERE status = TRUE
+// AND YEAR(blogCreateDate) = 2023
+// GROUP BY YEAR(blogCreateDate), MONTH(blogCreateDate)
+// ORDER BY Year, Month;
+
+// SELECT b.blogTitle, COUNT(c.commentID) AS TotalInteractions
+// FROM blog b
+// LEFT JOIN userComment c ON b.blogID = c.blogID
+// WHERE b.status = TRUE
+// GROUP BY b.blogTitle
+// ORDER BY TotalInteractions DESC
+// LIMIT 20;
+//  -->
 ?>

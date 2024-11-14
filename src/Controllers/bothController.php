@@ -55,31 +55,46 @@ class bothController{
         return $data;
     }
 
-    public function getProvincesByRegion($provinceRegion) {
+    public function TotalProvincesByRegion($provinceRegion){
+        if($provinceRegion){
+            $sql = "SELECT COUNT(*) AS TotalProvincesByRegion
+                FROM province
+                WHERE status = TRUE AND provinceRegion = '$provinceRegion'";
+        }
+        else{
+            $sql = "SELECT COUNT(*) AS TotalProvincesByRegion
+                    FROM province
+                    WHERE status = TRUE";
+        }
+        $CountUser = mysqli_query($this->conn->connect(),$sql);
 
-        $sql = "SELECT * FROM province WHERE provinceRegion = '$provinceRegion'";
-        $get_query = mysqli_query($this->conn->connect(),$sql);
-    
-        return $get_query;
+        return $CountUser->fetch_assoc();
     }
 
     public function getAllProvinces() {
     
-        $sql = "SELECT * FROM province";
+        $sql = "SELECT provinceID ,provinceName, provinceRegion FROM province";
         $get_query = mysqli_query($this->conn->connect(),$sql);
     
         return $get_query;
     }
 
     public function getProvinceOfPage($Start, $limit){
-        $sql = "SELECT * FROM province  LIMIT $Start, $limit";
+        $sql = "SELECT provinceID ,provinceName, provinceRegion FROM province  LIMIT $Start, $limit";
         $get_query = mysqli_query($this->conn->connect(),$sql);
 
         return $get_query;
     }
 
     public function getProvinceByRegionAndPage($filter, $Start, $limit){
-        $sql = "SELECT * FROM province WHERE provinceRegion = '$filter'  LIMIT $Start, $limit";
+        if($filter){
+            $sql = "SELECT provinceID ,provinceName, provinceRegion FROM province 
+                WHERE provinceRegion = '$filter'  LIMIT $Start, $limit";
+        }
+        else{
+            $sql = "SELECT provinceID ,provinceName, provinceRegion FROM province 
+                    LIMIT $Start, $limit";
+        }
         $get_query = mysqli_query($this->conn->connect(),$sql);
 
         return $get_query;
@@ -87,7 +102,7 @@ class bothController{
 
     public function getAllDestinationByProvinceID($provinceID) {
         
-        $sql = "SELECT * FROM destination WHERE provinceID = $provinceID";
+        $sql = "SELECT destinationName, destinationContent,destinationID ,imgDesURL FROM destination WHERE provinceID = $provinceID";
         $get_query = mysqli_query($this->conn->connect(),$sql);
     
         return $get_query;

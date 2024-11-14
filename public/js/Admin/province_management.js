@@ -1,8 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const destinationForm = document.getElementById("destination-form");
-    const popup1Overlay = document.getElementById('popup1Overlay');
     const searchInput = document.querySelector('.search-bar');
-    const popup = document.getElementById('popup');
 
     if (!popup) {
         console.error('Popup element not found');
@@ -80,14 +78,6 @@ document.addEventListener('DOMContentLoaded', () => {
             popup.style.display = 'flex';
         });
     });
-    
-
-    // Đóng popup xóa điểm đến
-    document.getElementById('no-btn').addEventListener('click', () => {
-        if (confirm("Xác nhận hủy?")) {
-            popup.style.display = 'none';
-        }
-    });
 
     function resetFormState() {
         isEditing = false;
@@ -95,7 +85,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-
+function deleteID(id){
+    console.log(id);
+    document.getElementById('deleteID').value=id;
+}
 
 function toggleDestinations(id) {
     // Lấy tất cả các hàng điểm đến

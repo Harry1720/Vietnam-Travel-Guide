@@ -8,8 +8,8 @@ include_once "../../Controllers/authController.php";
 $controller = new AdminController();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $postID = $_POST['deleteID'];
-    $controller->deletePost($postID);
+    $destinationID = $_POST['deleteID'];
+    $controller->deleteDestination($destinationID);
 }
 else{
     echo "fail";

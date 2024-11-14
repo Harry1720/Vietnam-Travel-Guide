@@ -15,37 +15,25 @@
 
     <?php
         include_once "../../Controllers/adminController.php";
+        include_once "../../Controllers/bothController.php";
 
         $adcontroller = new AdminController();
+        $bothcontroller = new bothController();
+        
+        $provinces = $bothcontroller->getAllProvinces();
 
         $filter = isset($_GET['filter']) ? $_GET['filter'] : 'Chờ Duyệt';
+        $blogs = $adcontroller->TotalBlogsStatus($filter);
 
-        $blogs = $adcontroller->getAllBlogByBlogStatus($filter);
-
-        //Phan Trang
         $limit= 10;
         $stt = 1;
-        $CountData = mysqli_num_rows($blogs);
-
-        $countPage = ceil($CountData/$limit);
-
-        if (isset($_GET['page'])) {
-            $page = $_GET['page'];
-        } else {
-            $page = 1;
-        }
-
+        $countPage = ceil($blogs['TotalBlogs']/$limit);
+        if (isset($_GET['page'])) { $page = $_GET['page'];} 
+        else { $page = 1; }
         $Start = ($page - 1) * $limit;
         $stt1 = $Start+1;
 
         $blogOfPage = $adcontroller->getBlogOfPage($Start,$limit,$filter);
-    ?>
-
-    <?php
-        include_once "../../Controllers/bothController.php";
-        
-            $bothcontroller = new bothController();
-            $provinces = $bothcontroller->getAllProvinces();
     ?>
 </head>
 <body>
@@ -122,7 +110,14 @@
                     <?php
                         for ($i = 1; $i <= $countPage; $i++) {
                             $activeClass = ($i == $page) ? 'active' : '';
-                            echo "<a class='page-btn $activeClass' href='?page=$i'>$i</a>";
+                            
+                            // Nếu có filter, thêm filter vào link phân trang
+                            $url = "?page=$i";
+                            if ($filter) {
+                                $url .= "&filter=$filter";
+                            }
+                            
+                            echo "<a class='page-btn $activeClass' href='$url'>$i</a>";
                         }
                     ?>
                 </div>

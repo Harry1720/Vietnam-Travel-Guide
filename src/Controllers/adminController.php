@@ -62,31 +62,28 @@ class AdminController{
     }
 
     public function deletePost($postId) {
-        // Xóa các chi tiết của bài viết trước
-        $sqlDetailDelete = "DELETE FROM post_details WHERE postID = $postId";
+        $sqlDetailDelete = "UPDATE post SET status = False WHERE postID = $postId";
         $delete_query = mysqli_query($this->conn->connect(),$sqlDetailDelete);
     
-        // Xóa bài viết
-        $sqlPostDelete = "DELETE FROM posts WHERE postID = $postId";
-        $delete_post_query = mysqli_query($this->conn->connect(),$sqlPostDelete);
-    
-        if ($this->conn->getAffectedRows() > 0) {
+        if ($delete_query) {
             echo "Bài viết đã được xóa thành công!";
         } else {
             echo "Không tìm thấy bài viết để xóa!";
         }
     }
 
-    public function getAllPost() {
+    public function TotalPost(){
+        $sql = "SELECT COUNT(*) AS TotalPost
+                FROM post
+                WHERE status = TRUE";
 
-        $sql = "SELECT * FROM post";
-        $get_query = mysqli_query($this->conn->connect(),$sql);
-    
-        return $get_query;
+        $CountUser = mysqli_query($this->conn->connect(),$sql);
+
+        return $CountUser->fetch_assoc();
     }
 
     public function getPostbyID($postID){
-        $sql = "SELECT * FROM post  WHERE postID = $postID";
+        $sql = "SELECT provinceID, postID, postCreateDate, imgPostURL FROM post  WHERE postID = $postID AND status = 1";
         $get_query = mysqli_query($this->conn->connect(),$sql);
 
         return $get_query->fetch_assoc();
@@ -125,15 +122,14 @@ class AdminController{
 
     //cac Ham PostDetail
     public function getAllPostDetailByPostID($postID){
-        //WHERE status_ = 'active'
-        $sql = "SELECT * FROM postDetail WHERE postID = $postID";
+        $sql = "SELECT postDetailID, sectionTitle, sectionContent,imgPostDetURL FROM postDetail WHERE postID = $postID";
         $get_query = mysqli_query($this->conn->connect(),$sql);
 
         return $get_query;
     }
 
     public function getPostDetailByID($postDetailID){
-        $sql = "SELECT * FROM postdetail  WHERE postDetailID = $postDetailID";
+        $sql = "SELECT postDetailID, sectionTitle, sectionContent,imgPostDetURL FROM postdetail  WHERE postDetailID = $postDetailID";
         $get_query = mysqli_query($this->conn->connect(),$sql);
 
         return $get_query->fetch_assoc();
@@ -160,6 +156,19 @@ class AdminController{
                 SET sectionTitle = '$sectionTitle',sectionContent = '$sectionContent', imgPostDetURL = '$imgPostDetURL'
                 WHERE postDetailID = $postDetailID";
         $get_query = mysqli_query($this->conn->connect(),$sql);
+    }
+
+    public function deletePostDetail($postDetailID){
+        $sql = "DELETE FROM postdetail WHERE postDetailID = $postDetailID";
+
+        $delete_query = mysqli_query($this->conn->connect(),$sql);
+
+        if ($this->conn->getAffectedRows() > 0) {
+            echo "Xóa chi tiết bài viết thành công!";
+        } else {
+            echo "Xóa chi tiết bài viết thất bại!";
+        }
+        
     }
 
     //các hàm User của
@@ -228,10 +237,21 @@ class AdminController{
             echo "Có lỗi xảy ra khi cập nhật người dùng!";
         }
     }
+
+    public function deleteUser($userID) {
+        $sql = "UPDATE users SET status = False WHERE userID = '$userID'";
+        $update_query = mysqli_query($this->conn->connect(), $sql);
+    
+        if ($update_query) {
+            echo "Người dùng đã được xóa thành công!";
+        } else {
+            echo "Có lỗi xảy ra khi xóa người dùng!";
+        }
+    }
     
     public function getAllUsers(){
 
-        $sql = "SELECT * FROM users";
+        $sql = "SELECT userID, userName, pass_word, address_,role_,email, gender FROM users WHERE status = 1";
         $get_query = mysqli_query($this->conn->connect(),$sql);
 
         return $get_query;
@@ -239,10 +259,11 @@ class AdminController{
 
     public function getUserOfPage($Start, $limit){
         //WHERE status_ = 'active'
-        $sql = "SELECT users.*, province.provinceName, province.provinceID
+        $sql = "SELECT userID, userName, pass_word, address_,role_,email,gender, province.provinceName, province.provinceID
                 FROM users
                 JOIN province ON users.address_ = province.provinceID
-                WHERE users.status = 1";
+                WHERE users.status = 1
+                LIMIT $Start,$limit";
         $get_query = mysqli_query($this->conn->connect(),$sql);
 
         return $get_query;
@@ -250,7 +271,7 @@ class AdminController{
 
     public function getUserbyId($userID){
         //WHERE status_ = 'active'
-        $sql = "SELECT * FROM users  WHERE userId = $userID";
+        $sql = "SELECT userID, userName, pass_word, address_,role_,email,gender FROM users  WHERE userId = $userID";
         $get_query = mysqli_query($this->conn->connect(),$sql);
 
         return $get_query->fetch_assoc();
@@ -267,7 +288,7 @@ class AdminController{
 
         $admin = 2;
         // Truy vấn thông tin người dùng từ cơ sở dữ liệu
-        $sql = "SELECT * FROM users WHERE userID = '$admin'";
+        $sql = "SELECT userID, userName, pass_word, address_,role_,email,gender FROM users WHERE userID = '$admin'";
         $user = mysqli_query($this->conn->connect(), $sql);
 
         if($user){
@@ -396,13 +417,14 @@ class AdminController{
         return $destination->fetch_assoc();
     }
 
+    public function TotalBlogsStatus($approvalStatus){
+        $sql = "SELECT COUNT(*) AS TotalBlogs
+                FROM blog
+                WHERE approvalStatus = '$approvalStatus' AND status = 1";
 
-    public function getAllBlogByBlogStatus($approvalStatus) {
-        
-        $sql = "SELECT * FROM blog WHERE approvalStatus = '$approvalStatus' AND status = 1";
-        $get_query = mysqli_query($this->conn->connect(),$sql);
+        $CountUser = mysqli_query($this->conn->connect(),$sql);
 
-        return $get_query;
+        return $CountUser->fetch_assoc();
     }
 
     public function getBlogOfPage($Start, $limit,$filter){
@@ -417,6 +439,7 @@ class AdminController{
     
         return $get_query;
     }
+
     public function updateStatusBlog(){
         $blogID = $_POST['blogID'];
         $approvalStatus = $_POST['update'];
@@ -427,6 +450,18 @@ class AdminController{
         $update_query = mysqli_query($this->conn->connect(),$sql);
 
         echo "Update Thành Công";
+    }
+
+    public function deleteDestination($destinationID) {
+        $sql = "DELETE FROM destination WHERE destinationID = $destinationID";
+    
+        $delete_query = mysqli_query($this->conn->connect(),$sql);
+        
+        if ($this->conn->getAffectedRows() > 0) {
+            echo "Xóa điểm đến thành công!";
+        } else {
+            echo "Xóa điểm đến thất bại!";
+        }
     }
 
     //dashboard
@@ -508,8 +543,7 @@ class AdminController{
 
     public function TotalDestination(){
         $sql = "SELECT COUNT(*) AS TotalDestination
-                FROM usercomment
-                WHERE status = TRUE";
+                FROM destination";
 
         $CountUser = mysqli_query($this->conn->connect(),$sql);
 

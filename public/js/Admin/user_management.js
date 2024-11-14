@@ -1,8 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const customerForm = document.getElementById("user-form");
     const searchInput = document.querySelector('.search-bar');
-    const popup1Overlay = document.getElementById('popup1Overlay');
-    const popup = document.getElementById('popup');
 
     searchInput.addEventListener('input', () => {
         const searchText = searchInput.value.trim().toLowerCase();
@@ -18,79 +16,6 @@ document.addEventListener('DOMContentLoaded', () => {
         customerForm.reset();
     };
 
-    document.getElementById('openpopup1').addEventListener('click', () => {
-        resetFormState();
-        popup1Overlay.style.display = 'flex';
-        
-    });
-
-    document.querySelectorAll('.edit').forEach(button => { //để kích hoạt mọi nút edit-btn mỗi dòng
-        button.addEventListener('click', () => {
-            popup2Overlay.style.display = 'flex';
-        });
-    });
-
-    document.getElementById('closepopup2').addEventListener('click', () => {
-        if (confirm("Xác nhận hủy?")) {
-            popup2Overlay.style.display = 'none';
-            removeAdminOption();
-        }
-    });
-
-    document.getElementById('closepopup1').addEventListener('click', () => {
-        if (confirm("Xác nhận hủy?")) {
-            popup1Overlay.style.display = 'none';
-            removeAdminOption();
-        }
-    });
-
-    document.getElementById('cancelButton').addEventListener('click', () => {
-        if (confirm("Xác nhận hủy?")) {
-            popup1Overlay.style.display = 'none';
-            removeAdminOption();
-        }
-    });
-    document.getElementById('cancelButton2').addEventListener('click', () => {
-        if (confirm("Xác nhận hủy?")) {
-            popup2Overlay.style.display = 'none';
-            removeAdminOption();
-        }
-    });
-
-    window.addEventListener('click', (event) => {
-        if (event.target === popup1Overlay && confirm("Xác nhận hủy?")) {
-            popup1Overlay.style.display = 'none';
-            removeAdminOption();
-        }
-    });
-
-    window.addEventListener('click', (event) => {
-        if (event.target === popup2Overlay && confirm("Xác nhận hủy?")) {
-            popup2Overlay.style.display = 'none';
-            removeAdminOption();
-        }
-    });
-
-    //Cho form thùng rác
-    document.querySelectorAll('.delete').forEach(button => {
-        button.addEventListener('click', () => {
-            popup.style.display = 'flex';
-        });
-    });
-    window.addEventListener('click', (event) => {
-        if (event.target === popup && confirm("Xác nhận hủy?")) {
-            popup.style.display = 'none';
-            removeAdminOption();
-        }
-    });
-
-    document.getElementById('no-btn').addEventListener('click', () => {
-        if (confirm("Xác nhận hủy?")) {
-            popup.style.display = 'none';
-            removeAdminOption();
-        }
-    });
-
 
     document.getElementById('togglePassword').addEventListener('click', function () {
         const passwordField = document.getElementById('password');
@@ -99,6 +24,11 @@ document.addEventListener('DOMContentLoaded', () => {
         eyeIcon.name = passwordField.type === 'password' ? 'eye-off-outline' : 'eye-outline';
     });
 });
+
+function deleteID(id){
+    console.log(id);
+    document.getElementById('deleteID').value=id;
+}
 
 async function editUser(userId) {
     try {

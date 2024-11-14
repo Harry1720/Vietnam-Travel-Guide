@@ -12,7 +12,7 @@ body {
     gap: 10px;
     margin-bottom: 20px;
 }
-/* Định dạng cho bộ lọc thời gian */
+
 .filter {
     display: flex;
     align-items: center;
@@ -22,7 +22,7 @@ body {
     margin-bottom: 10px;
 }
 
-/* Định dạng cho nút Filter */
+
 #filter-btn {
     padding: 8px 25px;
     background-color: #35679C;
@@ -75,7 +75,6 @@ body {
     width: 70%;
     padding: 20px;
     min-height: calc(100vh - 10px);
-    /* overflow-y: auto; */
 }
 
 
@@ -85,7 +84,6 @@ body {
     align-items:flex-start;
     position: absolute;
     gap: 20px;
-    /* width: 100%; */
     padding: 20px;
     margin-top: 200px;
     margin-right: 80%;

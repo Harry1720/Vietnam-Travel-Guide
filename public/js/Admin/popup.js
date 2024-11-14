@@ -3,13 +3,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const popup2Overlay = document.getElementById('popup2Overlay');
     const popup3Overlay = document.getElementById('popup3Overlay');
     const popup = document.getElementById('popup');
-    const popup1 = document.getElementById('popup1');
 
-    // Popup 1 (Form mở)
-    document.getElementById('openpopup1')?.addEventListener('click', () => {
-        popup1Overlay.style.display = 'flex';
-        resetFormState();
-    });
+    // Lấy các nút đóng popup
+    const noBtn = document.getElementById('no-btn');
 
     document.getElementById('closepopup1')?.addEventListener('click', () => {
         if(confirm("Xác Nhận Hủy?")){
@@ -60,34 +56,12 @@ document.addEventListener('DOMContentLoaded', () => {
             popup.style.display = 'flex';
         });
     });
-
-    // Mở popup xóa bài viết
-    document.querySelectorAll('.delete-post').forEach(button => {
-        button.addEventListener('click', () => {
-            popup.style.display = 'flex';
-        });
+    
+    
+    // Đóng popup xóa bài viết
+    noBtn.addEventListener('click', (event) => {
+        event.preventDefault();
+        popup.style.display = 'none';
     });
-
-    // Mở popup xóa chi tiết bài viết
-    document.querySelectorAll('.delete-post-detail').forEach(button => {
-        button.addEventListener('click', () => {
-            popup1.style.display = 'flex';
-        });
-    });
-
-    document.getElementById("no-btn").addEventListener("click", function(event) {
-        if(confirm("Hủy bỏ thao tác xóa.")){
-            // chặn submit form
-            event.preventDefault();
-            popup.style.display = 'none';
-        }
-    });
-
-    document.getElementById("no-btn1").addEventListener("click", function(event) {
-        if(confirm("Hủy bỏ thao tác xóa.")){
-            // chặn submit form
-            event.preventDefault();
-            popup1.style.display = 'none';
-        }
-    });
+    
 });

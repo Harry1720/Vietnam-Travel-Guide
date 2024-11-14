@@ -1,6 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const postForm = document.getElementById("post-form");
-    const searchInput = document.querySelector('.search-bar');
+    const postForm = document.getElementById("post-create-form");
+    const searchInput = document.querySelector('.search-bar-post');
+    const popup1 = document.getElementById('popup1');
+    const noBtn1 = document.getElementById('no-btn1');
+    const popup1Overlay = document.getElementById('popup1Overlay');
 
     // Search functionality
     searchInput.addEventListener('input', () => {
@@ -17,12 +20,31 @@ document.addEventListener('DOMContentLoaded', () => {
         postForm.reset();
     };
 
+    document.getElementById('openpopup1')?.addEventListener('click', () => {
+        popup1Overlay.style.display = 'flex';
+        resetFormState();
+    });
+
     // Popup 3 (Chỉnh sửa chi tiết bài viết)
     document.querySelectorAll('.edit-post-detail').forEach(button => {
         button.addEventListener('click', () => {
             resetFormState();
             popup3Overlay.style.display = 'flex';
         });
+    });
+
+    // Mở popup xóa chi tiết bài viết
+    document.querySelectorAll('.delete-post-detail').forEach(button => {
+        button.addEventListener('click', (event) => {
+            event.stopPropagation();
+            popup1.style.display = 'flex';
+        });
+    });
+
+    // Đóng popup xóa chi tiết bài viết
+    noBtn1.addEventListener('click', (event) => {
+        event.preventDefault();
+        popup1.style.display = 'none';
     });
 });
 

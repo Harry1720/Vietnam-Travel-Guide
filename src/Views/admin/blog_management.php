@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quản lý blog</title>
     <link rel="stylesheet" href="../../../public/css/Admin/blog_management.css">
+    <link rel="stylesheet" href="../../../public/css/Admin/layout.css">
     <link rel="stylesheet" href="../../../public/css/navbar.css">
     <link rel="stylesheet" href="../../../public/css/sidebar.css">
 
@@ -88,8 +89,8 @@
                             <td><?php echo $blog['blogCreateDate'] ?? 'Lỗi Hiển Thị' ?></td>
                             <td>
                             <form action="../../FunctionOfActor/admin/updateapprovalStatus.php" method="POST" name="updateBlog_<?php echo $blog['blogID'] ?>" id="updateBlog_<?php echo $blog['blogID'] ?>">
-                                <input type="hidden" id="blogID" name="blogID" value="<?php echo $blog['blogID'] ?>">
-                                <select name="update" id="update" onchange="document.getElementById('updateBlog_<?php echo $blog['blogID'] ?>').submit()">
+                                <input type="hidden" id="blogID_<?php echo $blog['blogID'] ?>" name="blogID" value="<?php echo $blog['blogID'] ?>">
+                                <select name="update" id="update_<?php echo $blog['blogID'] ?>" onchange="document.getElementById('updateBlog_<?php echo $blog['blogID'] ?>').submit()">
                                     <option style="padding: 10px; border-radius: 3px;" value="Chờ Duyệt" <?php if($blog['approvalStatus'] == 'Chờ Duyệt')  echo 'selected="selected"';?>>Chờ Duyệt</option>
                                     <option value="Không Được Duyệt" <?php if($blog['approvalStatus'] == 'Không Được Duyệt')  echo 'selected="selected"';?>>Không Được Duyệt</option>
                                     <option value="Đã Duyệt" <?php if($blog['approvalStatus'] == 'Đã Duyệt') echo 'selected="selected"';?>>Đã Duyệt</option>

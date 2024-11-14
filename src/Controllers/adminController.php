@@ -210,7 +210,7 @@ class AdminController{
         
         if ($insert_query) {
             echo "Người dùng đã được thêm thành công!";
-            header("location: ../../../Views/admin/user_management.php");
+            header("location: ../../Views/admin/user_management.php");
         } else {
             echo "Có lỗi xảy ra khi thêm người dùng!";
         }

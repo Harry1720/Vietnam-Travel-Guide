@@ -162,7 +162,7 @@
         <div class="popup1-content">
             <span class="popup1-close" id="closepopup2">&times;</span>
             <div class="wrapper" id = "updateUser">
-                <form id="user-form" name="update" method="POST" enctype="multipart/form-data" action="../../FunctionOfActor/admin/updateUser.php">
+                <form id="user-update-form" name="update" method="POST" enctype="multipart/form-data" action="../../FunctionOfActor/admin/updateUser.php">
                     <input type="hidden" name="userID" id="userID" value="">
                         <div class="field input">
                             <label for="userName1">Họ và Tên</label>

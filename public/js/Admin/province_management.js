@@ -4,6 +4,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const searchInput = document.querySelector('.search-bar');
     const popup = document.getElementById('popup');
 
+    if (!popup) {
+        console.error('Popup element not found');
+    }
+    
 
     searchInput.addEventListener('input', () => {
         const searchText = searchInput.value.trim().toLowerCase();
@@ -55,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    document.getElementById('cancelButton2').addEventListener('click', () => {
+    document.getElementById('cancelButton1').addEventListener('click', () => {
         if (confirm("Xác Nhận Hủy?")) {
             popup2Overlay.style.display = 'none';
         }
@@ -69,28 +73,21 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    //Cho form thùng rác
-    document.querySelectorAll('.delete-btn').forEach(button => { //để kích hoạt mọi nút edit-btn mỗi dòng
-        button.addEventListener('click', () => {
-            resetFormState();
+    document.querySelectorAll('.delete-destination').forEach(button => {
+        button.addEventListener('click', (event) => {
+            const destinationID = event.currentTarget.getAttribute('data-destination-id');
+            console.log('Xóa điểm đến với ID:', destinationID); // Kiểm tra ID
             popup.style.display = 'flex';
         });
     });
+    
 
+    // Đóng popup xóa điểm đến
     document.getElementById('no-btn').addEventListener('click', () => {
-        if (confirm("Xác Nhận Hủy?")) {
+        if (confirm("Xác nhận hủy?")) {
             popup.style.display = 'none';
         }
     });
-
-    window.addEventListener('click', (event) => {
-        if (event.target === popup) {
-            if (confirm("Xác Nhận Hủy?")) {
-                popup.style.display = 'none';
-            }
-        }
-    });
-    
 
     function resetFormState() {
         isEditing = false;

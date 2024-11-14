@@ -78,18 +78,18 @@
                 if (mysqli_num_rows($PostOfPage) > 0) {
                     while ($post = mysqli_fetch_array($PostOfPage)) {
                         ?>
-                        <tr onclick="toggleDestinations(<?php echo $stt ?>)">
-                            <td><?php echo $stt1++; $stt++ ?></td>
-                            <td><?php echo $post['provinceName'] ?? 'Lỗi Hiển Thị' ?></td>
-                            <td><?php echo $post['postCreateDate'] ?? 'Lỗi Hiển Thị' ?></td>
-                            <td><?php echo $post['imgPostURL'] ?? 'Lỗi Hiển Thị' ?></td>
+                        <tr>
+                            <td onclick="toggleDestinations(<?php echo $stt ?>)"><?php echo $stt1++; $stt++ ?></td>
+                            <td onclick="toggleDestinations(<?php echo $stt-1 ?>)"><?php echo $post['provinceName'] ?? 'Lỗi Hiển Thị' ?></td>
+                            <td onclick="toggleDestinations(<?php echo $stt-1 ?>)"><?php echo $post['postCreateDate'] ?? 'Lỗi Hiển Thị' ?></td>
+                            <td onclick="toggleDestinations(<?php echo $stt-1 ?>)"><?php echo $post['imgPostURL'] ?? 'Lỗi Hiển Thị' ?></td>
                             <td class="action-btn-frame">
                             <button onclick="editpost(<?php echo $post['postID'] ?>)" class="action-btn edit">
-                                    <ion-icon name="create"></ion-icon>
-                                </button>
-                                <button class="action-btn delete" id="delete-btn-<?php echo $post['postID']; ?>">
-                                    <ion-icon name="trash"></ion-icon>
-                                </button>
+                                <ion-icon name="create"></ion-icon>
+                            </button>
+                            <button class="action-btn delete delete-post" id="delete-post-<?php echo $post['postID']; ?>">
+                                <ion-icon name="trash"></ion-icon>
+                            </button>
                             </td>
                         </tr>
                             <?php
@@ -123,7 +123,7 @@
                                                             <button class="action-btn edit-post-detail" id="edit-post-detail-btn> " onclick="editpostdetail(<?php echo $postDetail['postDetailID']; ?>)">
                                                                 <ion-icon name="create"></ion-icon>
                                                             </button>
-                                                            <button class="action-btn delete">
+                                                            <button class="action-btn delete delete-post-detail" id="delete-post-detail-<?php echo $postDetail['postDetailID']; ?>">
                                                                 <ion-icon name="trash"></ion-icon>
                                                             </button>
                                                         </td>
@@ -145,25 +145,15 @@
                 }
                 ?>
             </tbody>
-        </table>
-        <div class="pagination">
-            <?php
-                for ($i = 1; $i <= $countPage; $i++) {
-                    $activeClass = ($i == $page) ? 'active' : '';
-                    echo "<a class='page-btn $activeClass' href='?page=$i'>$i</a>";
-                }
-            ?>
-        </div>
-
-                
-                <div id="popup" class="popup-overlay">
-                    <div class="popup-content">
-                        <p>Bạn có chắc chắn xóa?</p>
-                        <button id="yes-btn" class="popup-btn">Có</button>
-                        <button id="no-btn" class="popup-btn">Không</button>
-                    </div>
-                </div>
-            </div>
+            </table>
+            <div class="pagination">
+                <?php
+                    for ($i = 1; $i <= $countPage; $i++) {
+                        $activeClass = ($i == $page) ? 'active' : '';
+                        echo "<a class='page-btn $activeClass' href='?page=$i'>$i</a>";
+                    }
+                ?>
+            </div>    
         </div>
     </div>
     
@@ -276,6 +266,21 @@
     
             </form>
             </div>
+        </div>
+    </div>
+
+    <div id="popup" class="popup-overlay">
+        <div class="popup-content">
+            <p>Bạn có chắc chắn xóa bài viết này?</p>
+            <button id="yes-btn" class="popup-btn">Có</button>
+            <button id="no-btn" class="popup-btn">Không</button>
+        </div>
+    </div>
+    <div id="popup1" class="popup-overlay">
+        <div class="popup-content">
+            <p>Bạn có chắc chắn xóa chi tiết bài viết này?</p>
+            <button id="yes-btn1" class="popup-btn">Có</button>
+            <button id="no-btn1" class="popup-btn">Không</button>
         </div>
     </div>
 </body>

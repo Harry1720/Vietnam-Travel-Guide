@@ -139,11 +139,9 @@ async function editDestination(destinationID) {
         
         let destinationData;
         try {
-            destinationData = JSON.parse(rawData); // Thử parse JSON
-            console.log('Parsed user data:', destinationData);
+            destinationData = JSON.parse(rawData); 
         } catch (parseError) {
             console.error('JSON parse error:', parseError);
-            console.log('Failed to parse response:', rawData);
             throw new Error('Invalid JSON response');
         }
     
@@ -157,6 +155,5 @@ async function editDestination(destinationID) {
         
     } catch (error) {
         console.error('Error in editUser function:', error);
-        alert('Error loading user data. Please check console for details.');
     }
 }

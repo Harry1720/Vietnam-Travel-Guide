@@ -82,10 +82,8 @@ document.addEventListener('DOMContentLoaded', () => {
             let userData;
             try {
                 userData = JSON.parse(rawData);
-                console.log('Parsed user data:', userData);
             } catch (parseError) {
                 console.error('JSON parse error:', parseError);
-                console.log('Failed to parse response:', rawData);
                 throw new Error('Invalid JSON response');
             }
 
@@ -102,7 +100,6 @@ document.addEventListener('DOMContentLoaded', () => {
             popup2Overlay.style.display = 'flex';
         } catch (error) {
             console.error('Error in editUser function:', error);
-            alert('Error loading user data. Please check console for details.');
         }
     };
 });

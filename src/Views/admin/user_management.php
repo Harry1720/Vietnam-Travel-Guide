@@ -7,15 +7,13 @@
     <link rel="stylesheet" href="../../../public/css/Admin/user_management.css">
     <link rel="stylesheet" href="../../../public/css/sidebar.css">
     <link rel="stylesheet" href="../../../public/css/navbar.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
-        <!--JS-->
+    <!--JS-->
     <script src="../../../include/sidebar.js"></script>
     <script src="../../../include/navbar.js"></script>
     <script src="../../../public/js/Admin/Notifications.js"></script>
     <script src="../../../public/js/Admin/popup.js"></script>
-
-
     <script src="../../../public/js/Admin/user_management.js"></script>
+    
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bcryptjs/2.4.3/bcrypt.min.js"></script>

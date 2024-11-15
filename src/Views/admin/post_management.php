@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="../../../public/css/sidebar.css">
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
@@ -19,6 +18,8 @@
     <script src="../../../include/sidebar.js"></script>
     <script src="../../../public/js/Admin/Notifications.js"></script>
     <script src="../../../public/js/Admin/popup.js"></script>
+</head>
+<body>
 
     <?php
         include_once "../../Controllers/adminController.php";
@@ -40,8 +41,7 @@
         $stt1 = $Start+1;
         $PostOfPage = $adcontroller->getPostOfPage($Start,$limit);
     ?>
-</head>
-<body>
+
     <div class="main-content">
         <div class="post-management">
             <button class="add-post-btn" id="openpopup1">
@@ -111,7 +111,7 @@
                                                         onclick="editpostdetail(<?php echo $postDetail['postDetailID']; ?>)">
                                                             <ion-icon name="create"></ion-icon>
                                                         </button>
-                                                        <button class="action-btn delete delete-post-detail" id="delete-post-detail" onclick="deleteDetailID(<?php echo $postDetail['postDetailID']; ?>)">
+                                                        <button class="action-btn delete-post-detail" id="delete-post-detail" onclick="deleteDetailID(<?php echo $postDetail['postDetailID']; ?>)">
                                                             <ion-icon name="trash"></ion-icon>
                                                         </button>
                                                     </td>

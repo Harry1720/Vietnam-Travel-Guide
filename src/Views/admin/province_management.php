@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../../../public/css/Admin/province_management.css">
     <link rel="stylesheet" href="../../../public/css/navbar.css">
     <link rel="stylesheet" href="../../../public/css/sidebar.css">
+    
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 
@@ -14,7 +15,9 @@
     <script src="../../../include/navbar.js"></script>
     <script src="../../../include/sidebar.js"></script>
     <script src="../../../public/js/Admin/Notifications.js"></script>
-    
+</head>
+<body>
+
     <?php
         include_once "../../Controllers/bothController.php";
 
@@ -36,8 +39,6 @@
 
         $countPage = ceil($provinces['TotalProvincesByRegion']/$limit);
     ?>
-</head>
-<body>
     <div class="main-content">
         <div class="province-management">
             <button class="add-destination-btn" id="open">

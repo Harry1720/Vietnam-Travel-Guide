@@ -10,11 +10,18 @@
     <link rel="stylesheet" href="../../../public/css/sidebar.css">
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
-    <?php
+    <script src="../../../public/js/Admin/blog_management.js"></script>
+    <script src="../../../include/navbar.js"></script>
+    <script src="../../../include/sidebar.js"></script>
+    <script src="../../../public/js/Admin/Notifications.js"></script>
+
+</head>
+<body>
+
+    <?php   
         include_once "../../Controllers/adminController.php";
         include_once "../../Controllers/bothController.php";
 
@@ -36,13 +43,7 @@
 
         $blogOfPage = $adcontroller->getBlogOfPage($Start,$limit,$filter);
     ?>
-</head>
-<body>
-    <script src="../../../public/js/Admin/blog_management.js"></script>
-    <script src="../../../include/navbar.js"></script>
-    <script src="../../../include/sidebar.js"></script>
-    <script src="../../../public/js/Admin/Notifications.js"></script>
-
+   
     <div class="main-content">
         <div class="blog-management">
         <div class="filter-search-container">

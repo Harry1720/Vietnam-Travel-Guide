@@ -75,7 +75,6 @@ function toggleIcon() {
 
 async function editpost(postID) {
     try {
-        console.log('Fetching user data for ID:', postID);
         const response = await fetch(`../../FunctionOfActor/admin/getPost.php?editPostID=${postID}`);
         
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
@@ -96,7 +95,6 @@ async function editpost(postID) {
 
 async function editpostdetail(postDetailID) {
     try {
-        console.log('Fetching post detail for ID:', postDetailID);
         const response = await fetch(`../../FunctionOfActor/admin/getPostDetail.php?editPostDetailID=${postDetailID}`);
         
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);

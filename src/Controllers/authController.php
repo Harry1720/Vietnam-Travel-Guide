@@ -207,7 +207,7 @@ class AuthController{
         }
     
         // 2. Unset all session variables
-        session_unset();
+       //session_unset();
     
         // 3. Destroy the session
         session_destroy();

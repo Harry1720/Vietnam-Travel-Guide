@@ -122,7 +122,7 @@ class bothController{
         return $get_query ? mysqli_fetch_all($get_query, MYSQLI_ASSOC) : [];
     }
     
-    //Lấy thông tin Province để hiển thị bài bằng cho trang Province
+    //Lấy thông tin Province để hiển thị bài bằng cho trang Province.php
     public function getPostProvince($postID){
         $sql = "SELECT p.provinceName, po.imgPostURL, po.postCreateDate
         FROM post po
@@ -186,7 +186,7 @@ class bothController{
         return $picBlog;
     }
 
-    //hàm lấy trang blog cho trang home.php và storieslist
+    //hàm lấy trang blog cho trang home.php và storieslist.php - tức hàm này sẽ lấy ảnh đầu tiên trong bảng img để hiển thị
     public function getBlogByPage($limit, $offset) {
         $sql = 
         "SELECT bl.blogID, ib.imgBlogURL, bl.blogTitle, bl.blogCreateDate 
@@ -215,5 +215,55 @@ class bothController{
         return $row['total'];
     }
     
+    
+    
+    //Các hàm gọi comments,...
+    //hàm để comment - giữa 2 bên 
+    
+    
+
+    //hàm để Lấy các comment lên View.blog.php. 
+    function getCommentsAndReplies($blogID) {
+
+        //lấy các comment của blog đó - context: lấy blogId = 1
+        $sql = "SELECT userComment.*, users.userName 
+        FROM userComment 
+        JOIN users ON userComment.userID = users.userID 
+        WHERE userComment.blogID = $blogID 
+            AND userComment.status = TRUE AND users.status = TRUE
+        ORDER BY userComment.commentID ASC;";
+
+        $result = mysqli_query($this->conn->connect(), $sql);
+        $UserComment = [];
+
+
+        // Fetch comments - vì 1 comment có thể có nhiều rep -> nên khởi tạo 1 mảng chứa reply  
+        while ($row = $result->fetch_assoc()) {
+            //store comment ID of current moment -> dùng dể fetch cho reply ở trong đó
+            $commentID = $row['commentID'];
+            //dòng này khi fetch từ usercomment -> nó sẽ khởi tạo 1 mảng rỗng
+            // nó là 1 cái mảng để lưu reply của từng comment id 
+            $row['replies'] = [];
+            
+            // SQL query to get replies for the current comment
+            $replySQL = "SELECT repComment.*, users.userName 
+            FROM repComment 
+            JOIN users ON repComment.userID = users.userID 
+            WHERE repComment.commentID = $commentID 
+                AND repComment.status = TRUE  AND users.status = TRUE
+            ORDER BY repComment.repCommentID ASC";
+
+            $resultRep = mysqli_query($this->conn->connect(), $replySQL);
+            
+            while ($replyRow = $resultRep->fetch_assoc()) {
+                $row['replies'][] = $replyRow;
+            }
+            
+            $UserComment[] = $row;
+        }
+        return $UserComment;
+    }
 }
+
+
 ?>

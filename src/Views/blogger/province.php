@@ -41,7 +41,7 @@
                         if (!empty($post['imgPostURL'])):
                 ?>
                     <!--Khong can JS cho nay vi Anchor sang post voi ID-->
-                    <a href="../post.php?postID=<?php echo $post['postID']; ?> " class="card-common ">
+                    <a href="post.php?postID=<?php echo $post['postID']; ?> " class="card-common ">
                         <img src="<?php echo htmlspecialchars($post['imgPostURL']); ?>" alt="province">
                         <div class="location_time">
                             <h4 style="text-align: center; "><?php echo htmlspecialchars($post['provinceName']); ?></h4>
@@ -73,4 +73,4 @@
             </div>
         </section>
     </body>
-    </html>
+    </html> 

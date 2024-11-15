@@ -361,6 +361,30 @@ LỊCH TRÌNH MỘT BUỔI SÁNG MÙA THU CHO NGƯỜI U MÊ HÀ NỘI  ĐÂY NH
 📌 11h - 12h: Ghé thăm nhà sách Mão, bưu điện thành phố và ngắm hồ Gươm
 Nếu không phải là con người “ngủ nướng” thì hãy mau ra đường và tận hưởng không khí Hà Nội những ngày thu đi thôi 🍃🍃
 📷  Cảm ơn chia sẻ của Nguyễn Minh Đức', '2024-11-01', TRUE, 'Đã Duyệt'),
+
+(2, 2,'Bạn đã đến Hội An - Đà Nẵng chưa?', '
+Một thành phố có biển siêu đẹp và sạch sẽ 
+Một thành phố có những cây cầu quá đặc sắc 
+Một thành phố có quá nhiều đặc sản ngon bổ rẻ
+Một thành phố có núi trong lòng phố 
+Và một thành phố, có thêm một phố cổ cực cổ kính. Nơi mà biết bao du khách gần xa trong và ngoài nước đều muốn về nơi đây
+Một chuyến đi quá tuyệt vời mn ạ ❤️ 
+📸Hoàng Rin 
+#vietnamoi
+#hoian #danang', '2024-11-02', TRUE, 'Đã Duyệt'),
+(1, 10,'KHÁM PHÁ MŨI NGHÊ, SƠN TRÀ ĐÀ NẴNG🌊🌿', 'Sở dĩ có tên Mũi Nghê vì ở đó có 1 tảng đá khổng lồ, được thiên nhiên trạm trổ thành hình con nghê có mặt hướng vào núi và lưng hướng ra biển.
+Vị trí cách thành phố khoảng 10km, nằm ở phía Đông Sơn Trà. Nơi này còn khá hoang sơ, được mệnh danh là điểm đón bình minh đẹp nhất Đà Nẵng.
+Nếu đến đây để chụp hình check-in thì các bạn nên đi vào buổi sáng, thời tiết, ánh sáng sẽ dễ chịu hơn.
+Ngoài ra cũng có thể trải nghiệm các hoạt động bơi lội xung quành hồ nước xanh ngắt chill xĩu ở đây. Đặc biệt cũng có nhiều bãi đá và đất trống có thể cắm trại qua đêm, dã ngoại cùng bạn bè nữa nha!',
+'2024-11-10', TRUE, 'Đã Duyệt'),
+(3, 6,'Dinh Độc Lập - Điểm đến không thể bỏ qua tại TPHCM', 
+'Gọi em là Sài Gòn năm 1975
+Vì nụ cười em đẹp như ngày Giải Phóng
+_________
+📍 Dinh Độc Lập - Tphcm 
+40k/ng tham quan bên ngoài mình vẫn có hình sống ảo luôn mn ạ. Hihi 😝', '2024-11-06', TRUE, 'Đã Duyệt'),
+
+
 (1, 1, 'Blog Title 1', 'Blog Content 1', '2022-01-15', TRUE, 'Chờ Duyệt'),
 (2, 2, 'Blog Title 2', 'Blog Content 2', '2022-02-18', TRUE, 'Đã Duyệt'),
 (3, 3, 'Blog Title 3', 'Blog Content 3', '2022-03-21', TRUE, 'Không Được Duyệt'),
@@ -429,9 +453,13 @@ VALUES
 INSERT INTO userComment (blogID, userID, cmtContent, createDate, status)
 VALUES
 (1, 1, 'Very insightful blog about Hanoi!', '2023-11-01', TRUE),
-(2, 2, 'I loved the information about HCM, so vibrant!', '2023-11-02', TRUE),
+(1, 2, 'Food is extremely marvelous!', '2023-11-01', TRUE),
+(2, 2, 'I loved the information about Hoi An, so vibrant!', '2023-11-02', TRUE),
 (3, 3, 'Da Nang is really a great vacation destination.', '2023-11-03', TRUE),
-(4, 4, 'Interesting post about Hai Phong, I must visit soon.', '2023-11-04', TRUE),
+(4, 4, 'Thành phố Hồ Chí Minh đẹp thật hhhhh.', '2023-11-04', TRUE),
+
+
+
 (5, 5, 'Hue is so full of history, definitely on my list.', '2023-11-05', TRUE),
 (6, 6, 'Great post, Can Tho is beautiful!', '2023-11-06', TRUE),
 (7, 7, 'Ha Long Bay is one of the most beautiful places I have seen.', '2023-11-07', TRUE),
@@ -453,9 +481,22 @@ VALUES
 INSERT INTO repComment (commentID, userID, repContent, createDateRep, status)
 VALUES
 (1, 2, 'I agree, Hanoi is amazing!', '2023-11-01', TRUE),
-(2, 3, 'Definitely, HCM has a unique vibe.', '2023-11-02', TRUE),
+(1, 2, 'For sure!', '2023-11-01', TRUE),
+(1, 3, 'Yes, I should go there!', '2023-11-01', TRUE),
+
+(2, 4, 'For sure!', '2023-11-01', TRUE),
+(2, 5, 'Pho is always beautiful!', '2023-11-01', TRUE),
+
+(3, 2, 'Đi Hội An thích thật!', '2023-11-02', TRUE),
+(3, 10, 'Sẽ cố gắng có dịp ra thăm!', '2023-11-02', TRUE),
+
+(4, 15, 'Tôi đã đi Đà Năng và nới đó rất đẹp', '2023-11-03', TRUE),
+(5, 13, 'Sài Gòn dạo này xinh thật ', '2023-11-03', TRUE),
+
+
+(2, 3, 'Definitely, Hoi An has a unique vibe.', '2023-11-02', TRUE),
 (3, 4, 'Absolutely, Da Nang is a must-see.', '2023-11-03', TRUE),
-(4, 5, 'Yes, Hai Phong is a beautiful place.', '2023-11-04', TRUE),
+(4, 5, 'Yes, đợt này thành phố xinh quá', '2023-11-04', TRUE),
 (5, 6, 'Hue is great for history lovers.', '2023-11-05', TRUE),
 (6, 7, 'Yes, Can Tho is quite a sight!', '2023-11-06', TRUE),
 (7, 8, 'Indeed, Ha Long Bay is magical.', '2023-11-07', TRUE),

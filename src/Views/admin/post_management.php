@@ -111,7 +111,7 @@
                                                         onclick="editpostdetail(<?php echo $postDetail['postDetailID']; ?>)">
                                                             <ion-icon name="create"></ion-icon>
                                                         </button>
-                                                        <button class="action-btn delete delete-post-detail" id="delete-post-detail" onclick="deleteDetailID(<?php echo $postDetail['postDetailID']; ?>)">
+                                                        <button class="action-btn delete-post-detail" id="delete-post-detail" onclick="deleteDetailID(<?php echo $postDetail['postDetailID']; ?>)">
                                                             <ion-icon name="trash"></ion-icon>
                                                         </button>
                                                     </td>

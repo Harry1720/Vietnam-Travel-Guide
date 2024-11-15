@@ -86,6 +86,9 @@ CREATE TABLE repComment (
   FOREIGN KEY (userID) REFERENCES users(userID)
 );
 
+
+--NOTE CẤM XÓA: PASS ĐÃ HASH CỦA ADMIN TƯƠNG ỨNG 
+-- password1 = $argon2i$v=19$m=65536,t=4,p=1$TEtDT0hOLlU1OFVYYU0uUA$xhyfIQrxUkgUUC+nw+Q14eF5Fb/VYdITPwPwCgPoO/E
 INSERT INTO users (userName, pass_word, address_, role_, email, gender, status)
 VALUES
 ('Nguyen An', 'password1', 1, 'Admin', 'nguyenan@example.com', 'Male', TRUE),

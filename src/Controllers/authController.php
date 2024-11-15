@@ -14,6 +14,7 @@ class AuthController{
             $this->conn = new Config();
         }
 
+    //check cho phiên đăng nhập là của blogger đúng hay không
     public function checkAuth()
     {
         // Kiểm tra người dùng đã đăng nhập hay chưa
@@ -56,7 +57,7 @@ class AuthController{
             exit;
         }
     }
-
+    
 
     // check Email tồn tại chưa
     public function checkIssetEmail($email)
@@ -148,8 +149,18 @@ class AuthController{
         VALUES ('$username','$email','$hashedPassword','Blogger')";
         $insert_query = mysqli_query($this->conn->connect(),$sql);
 
+        
+        //sql này mục đích là lấy userID - để check cho Session và các trang -> do userID autoincrement
+        $sql1 = "SELECT * FROM users WHERE email = '$email'";
+        $get_query = mysqli_query($this->conn->connect(), $sql1);        
+        $user = mysqli_fetch_array($get_query);
+
         //add session: để kiểm tra login - mặc định User signup là blogger
-        $_SESSION['role_'] = 'Blogger';
+        $_SESSION['role'] = 'Blogger';
+        $_SESSION['blogger_id'] = $user['userID'];
+        $_SESSION['loggedIn'] = TRUE;
+
+
         if($insert_query){
             header("location: /Vietnam-Travel-Guide/src/Views/blogger/home.php");
         }
@@ -159,7 +170,7 @@ class AuthController{
     {
         $email = $_POST['email'] ?? null;
         $password = $_POST['password'] ?? null;
-
+        
 
         if (!$email || !$password) {
             echo "Vui lòng điền đầy đủ thông tin!";
@@ -180,45 +191,58 @@ class AuthController{
         }
 
         $user = mysqli_fetch_array($get_query);
+
+        $password = (string) $password;
+        $user['pass_word'] = (string) $user['pass_word'];
+
+        //trường hợp do admin cấp sắn mật khẩu kh hashed
         
+
+        if ($password == $user['pass_word'] && $email == $user['email']) {
+            if ($user['role_'] == 'Admin' && $user['status'] == 1) {
+                $_SESSION['blogger_id'] = $user['userID'];
+                $_SESSION['role'] = $user['role_'];
+                $_SESSION['loggedIn'] = TRUE;
+                header("location: /Vietnam-Travel-Guide/src/Views/admin/admin.php");
+                exit;
+            }
+        }
+      
+       
+
         //if (md5($password) === $user['pass_word']) {
         //hash - PASSWORD_ARGON2 
-        if(password_verify($password, $user['pass_word'])) {
+        if(password_verify($password, $user['pass_word']) && $user['status'] == 1) {
             $_SESSION['blogger_id'] = $user['userID'];
             $_SESSION['role'] = $user['role_'];
             
-            if($user['role_'] == "Admin"){
-                header("location: /Vietnam-Travel-Guide/src/Views/admin/admin.php");
-            }
-            else{
-                header( "location: /Vietnam-Travel-Guide/src/Views/blogger/home.php");
-            }
+            //cái này là gán cho session -> để biết nên dùng cho header nào - nếu login hay sign up thì session này dùng để xác định    
+            $_SESSION['loggedIn'] = TRUE;
+            header( "location: /Vietnam-Travel-Guide/src/Views/blogger/home.php");
             exit;
-        } else {
-            echo "Email hoặc mật khẩu không đúng!";
-        }
-
+        } 
+      
+        //header( "location: /Vietnam-Travel-Guide/src/Views/login.html");
     }
 
     public function logout() {
-        // 1. Start the session if it hasn't already been started
-        if (session_status() === PHP_SESSION_NONE) {
-            session_start();
-        }
+        
+        if (isset($_GET['action']) && $_GET['action'] == 'logout') {
+
+        // 1. Unset all session variables
+        session_unset();
     
-        // 2. Unset all session variables
-       //session_unset();
-    
-        // 3. Destroy the session
+        // 2. Destroy the session
         session_destroy();
     
-        // 4. Prevent caching 
+        // 3. Prevent caching 
         header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
         header("Cache-Control: post-check=0, pre-check=0", false);
         header("Pragma: no-cache");
     
-        // 5. Redirect to the login page
-        header("Location: login.php"); 
+        // 4. Redirect to the login page
+        header("Location: /Vietnam-Travel-Guide/src/Views/blogger/home.php");
         exit;
+        }
     }
 }?>

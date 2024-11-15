@@ -32,6 +32,8 @@
         $firstBlog = 0; //lấy post số 1 cho đến 4 blogs
         $blogs = $controller->getBlogByPage($limitBlog,  $firstBlog);
     ?>
+  
+
 
     <section class="provinces section-common">
         <h2>Tỉnh thành</h2>
@@ -39,7 +41,7 @@
         <a href="province.php" class="btn-page">Xem tất cả</a>
         <div class="grid-common">    
             <?php foreach ($posts as $post): ?>
-                <a href="../post.php?postID=<?php echo $post['postID']; ?> " class="card-common">
+                <a href="post.php?postID=<?php echo $post['postID']; ?> " class="card-common">
                     <img src="<?php echo htmlspecialchars($post['imgPostURL']); ?>" alt="province">
                     <div class="card-common">
                         <h4 style="color: #333"><?php echo htmlspecialchars($post['provinceName']); ?></h4>

@@ -89,7 +89,7 @@
 
     <div class="comment-frame">
     <?php if (!empty($comments)) { ?>
-
+        
         <?php foreach ($comments as $comment) { ?>
             <div class="comment-box">
                 <p><strong><?php echo htmlspecialchars($comment['userName']); ?></strong> 

@@ -21,6 +21,18 @@
 <body>
 
     <?php   
+        //cái này để check, nếu session đã có thì hiển thị thông báo 
+        //admin có thể thể vừa chạy admin.php và home.php
+        //nhưng blogger chỉ được chạy home.php
+        // include_once "../../FunctionOfActor/blogger/checkAuth.php";
+
+        session_start();
+        if (!isset($_SESSION['blogger_id']) || $_SESSION['role'] !== 'Admin') {
+            header("Location: ../login.html");
+            exit();
+        }    
+                       
+        
         include_once "../../Controllers/adminController.php";
         include_once "../../Controllers/authController.php";
         include_once "../../Controllers/bothController.php";

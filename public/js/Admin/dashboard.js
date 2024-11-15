@@ -37,30 +37,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // cancelBtn.addEventListener('click', () => {
-    //     popup.classList.remove('show');
-    // });
-
-    // applyBtn.addEventListener('click', () => {
-    //     const startDate = formatDate(startDateInput.value);
-    //     const endDate = formatDate(endDateInput.value);
-    //     dateRangeText.textContent = `${startDate} - ${endDate}`;
-
-    //     // Lấy năm từ startDate và gọi lại hàm cập nhật dữ liệu cho biểu đồ
-    //     const startYear = new Date(startDateInput.value).getFullYear();
-    //     const endYear = new Date(endDateInput.value).getFullYear();
-
-    //     // Kiểm tra năm được chọn
-    //     if (startYear === endYear) {
-    //         fetchBlogData(startYear);
-    //     } else {
-    //         alert('Vui lòng chọn cùng một năm cho cả khoảng thời gian.');
-    //     }
-
-    //     popup.classList.remove('show');
-    // });
-
-
     // Graph Logic
     const ctx = document.getElementById('growthChart').getContext('2d');
     const growthChart = new Chart(ctx, {
@@ -103,7 +79,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 label: '',
                 data: [],
                 backgroundColor: [
-                    'rgba(75,192,192,0.8)', // Màu sắc cho các phân đoạn
+                    'rgba(75,192,192,0.8)',
                     'rgba(54, 162, 235, 0.8)',
                     'rgba(255, 206, 86, 0.8)',
                     'rgba(231, 74, 59, 0.8)',
@@ -111,7 +87,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     'rgba(255, 159, 64, 0.8)'
                 ],
                 borderColor: [
-                    'rgba(75, 192, 192, 1)', // Đường viền của các phân đoạn
+                    'rgba(75, 192, 192, 1)',
                     'rgba(54, 162, 235, 1)',
                     'rgba(255, 206, 86, 1)',
                     'rgba(231, 74, 59, 1)',

@@ -93,7 +93,8 @@ class AdminController{
         $sql = "SELECT post.postID, post.postCreateDate, post.imgPostURL, province.provinceName, province.provinceID
                 FROM post
                 JOIN province ON post.provinceID = province.provinceID
-                WHERE post.status = 1";
+                WHERE post.status = 1
+                LIMIT $Start, $limit";
         $get_query = mysqli_query($this->conn->connect(),$sql);
 
         return $get_query;

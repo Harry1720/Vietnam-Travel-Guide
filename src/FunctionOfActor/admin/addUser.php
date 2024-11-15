@@ -8,8 +8,11 @@
     // Kiểm tra nếu form "Thêm Người Dùng" được submit
     if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["userName"])) {
         $adController->addUser();
+        header("Location: ../../../../Views/admin/user_management.php");
     }
     else{
         echo "Không có sự kiện thêm người dùng nào";
+        header("Location: ../../../../Views/admin/user_management.php");
+        exit(); // Kết thúc script
     }
 ?>

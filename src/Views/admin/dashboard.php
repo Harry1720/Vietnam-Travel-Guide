@@ -21,6 +21,12 @@
 
     <?php
         include_once "../../Controllers/adminController.php";
+        session_start();
+        if (!isset($_SESSION['blogger_id']) || $_SESSION['role'] !== 'Admin') {
+            header("Location: ../login.html");
+            exit();
+        }    
+            
 
         $adController = new AdminController();
 

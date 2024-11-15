@@ -15,161 +15,194 @@ class AdminController{
     }
 
     //hàm up ảnh
-    private function uploadImage($fileTmpPath,$folder) {
+    private function uploadImage($fileTmpPath, $folder) {
         $uploader = new CloudinaryUploader();
-        return $uploader->upload($fileTmpPath,$folder);
+        $result = $uploader->upload($fileTmpPath, $folder);
+        
+        if ($result) {
+            echo "Upload ảnh thành công!\n";
+        } else {
+            echo "Lỗi khi upload ảnh!\n";
+        }
+        
+        return $result;
     }
 
+    // ALL ADD
     private function savePost($provinceID, $postCreateDate, $imageUrl) {
         $sql = "INSERT INTO post (provinceID, postCreateDate, imgPostURL) 
                 VALUES ('$provinceID', '$postCreateDate', '$imageUrl')";
-        $insert_query = mysqli_query($this->conn->connect(),$sql);
-        $postID = $this->conn->getInsertId();
-        return $postID;
+        $insert_query = mysqli_query($this->conn->connect(), $sql);
+
+        if ($insert_query) {
+            echo "Lưu bài viết thành công!\n";
+            return $this->conn->getInsertId();
+        } else {
+            echo "Lỗi khi lưu bài viết!\n";
+            return false;
+        }
     }
 
     private function addPostDetail($postId, $sectionTitle, $sectionContent, $imageDetailUrl) {
-        $sql = "INSERT INTO postdetail (postID, sectionTitle, sectionContent, imgPostDetURL	) 
+        $sql = "INSERT INTO postdetail (postID, sectionTitle, sectionContent, imgPostDetURL) 
                 VALUES ($postId, '$sectionTitle', '$sectionContent', '$imageDetailUrl')";
-        $insert_query = mysqli_query($this->conn->connect(),$sql);
+        $insert_query = mysqli_query($this->conn->connect(), $sql);
+
+        if ($insert_query) {
+            echo "Thêm chi tiết bài viết thành công!\n";
+        } else {
+            echo "Lỗi khi thêm chi tiết bài viết!\n";
+        }
     }
 
-    // các hàm post của admin
     public function addPost($formPost, $formPostDetail) {
-
         $provinceID = $formPost['province'];
         $postCreateDate = $formPost['postCreateDate'];
         $fileTmpPath = $formPost['image_post'];
 
-        $imageUrl = $this->uploadImage($fileTmpPath,'post');
+        $imageUrl = $this->uploadImage($fileTmpPath, 'post');
 
         if ($imageUrl !== false) {
             $postId = $this->savePost($provinceID, $postCreateDate, $imageUrl);
-            echo "Bài viết đã được thêm thành công!";
 
-            foreach ($formPostDetail as $postDetail) {
-                $sectionTitle = $postDetail['sectionTitle'];
-                $sectionContent = $postDetail['sectionContent'];
-                $fileTmpPathDetail = $postDetail['image'];
-        
-                $imageDetailUrl = $this->uploadImage($fileTmpPathDetail, 'postDetail');
-        
-                $this->addPostDetail($postId, $sectionTitle, $sectionContent, $imageDetailUrl);
+            if ($postId) {
+                echo "Bài viết đã được thêm thành công!\n";
+                foreach ($formPostDetail as $postDetail) {
+                    $sectionTitle = $postDetail['sectionTitle'];
+                    $sectionContent = $postDetail['sectionContent'];
+                    $fileTmpPathDetail = $postDetail['image'];
+
+                    $imageDetailUrl = $this->uploadImage($fileTmpPathDetail, 'postDetail');
+                    $this->addPostDetail($postId, $sectionTitle, $sectionContent, $imageDetailUrl);
+                }
+
+                header("Location: ../../Views/admin/post_management.php");
+            } else {
+                echo "Lỗi khi lưu bài viết!\n";
             }
         } else {
-            echo "Lỗi khi upload ảnh.";
+            echo "Lỗi khi upload ảnh bài viết!\n";
+            header("Location: ../../Views/admin/post_management.php");
         }
     }
 
-    public function deletePost($postId) {
-        $sqlDetailDelete = "UPDATE post SET status = False WHERE postID = $postId";
-        $delete_query = mysqli_query($this->conn->connect(),$sqlDetailDelete);
-    
-        if ($delete_query) {
-            echo "Bài viết đã được xóa thành công!";
+
+    //All GET
+    public function getPostbyID($postID) {
+        $sql = "SELECT provinceID, postID, postCreateDate, imgPostURL 
+                FROM post 
+                WHERE postID = $postID AND status = 1";
+        $get_query = mysqli_query($this->conn->connect(), $sql);
+        $post = $get_query->fetch_assoc();
+
+        if ($post) {
+            echo "Lấy bài viết thành công!\n";
         } else {
-            echo "Không tìm thấy bài viết để xóa!";
+            echo "Lỗi khi lấy bài viết!\n";
         }
+
+        return $post;
     }
 
-    public function TotalPost(){
-        $sql = "SELECT COUNT(*) AS TotalPost
-                FROM post
-                WHERE status = TRUE";
-
-        $CountUser = mysqli_query($this->conn->connect(),$sql);
-
-        return $CountUser->fetch_assoc();
-    }
-
-    public function getPostbyID($postID){
-        $sql = "SELECT provinceID, postID, postCreateDate, imgPostURL FROM post  WHERE postID = $postID AND status = 1";
-        $get_query = mysqli_query($this->conn->connect(),$sql);
-
-        return $get_query->fetch_assoc();
-    }
-
-    public function getPostOfPage($Start, $limit){
+    public function getPostOfPage($Start, $limit) {
         $sql = "SELECT post.postID, post.postCreateDate, post.imgPostURL, province.provinceName, province.provinceID
                 FROM post
                 JOIN province ON post.provinceID = province.provinceID
                 WHERE post.status = 1
                 LIMIT $Start, $limit";
-        $get_query = mysqli_query($this->conn->connect(),$sql);
+        $get_query = mysqli_query($this->conn->connect(), $sql);
+
+        if ($get_query) {
+            echo "Lấy danh sách bài viết thành công!\n";
+        } else {
+            echo "Lỗi khi lấy danh sách bài viết!\n";
+        }
+
+        return $get_query;
+    }
+
+    public function getAllPostDetailByPostID($postID) {
+        $sql = "SELECT postDetailID, sectionTitle, sectionContent, imgPostDetURL 
+                FROM postdetail 
+                WHERE postID = $postID";
+        $get_query = mysqli_query($this->conn->connect(), $sql);
+
+        if ($get_query) {
+            echo "Lấy chi tiết bài viết thành công!\n";
+        } else {
+            echo "Lỗi khi lấy chi tiết bài viết!\n";
+        }
 
         return $get_query;
     }
     
-    public function updatePost(){
+    public function getPostDetailByID($postDetailID) {
+        $sql = "SELECT postDetailID, sectionTitle, sectionContent, imgPostDetURL 
+                FROM postdetail  
+                WHERE postDetailID = $postDetailID";
+        $get_query = mysqli_query($this->conn->connect(), $sql);
+        $postDetail = $get_query->fetch_assoc();
 
+        if ($postDetail) {
+            echo "Lấy chi tiết bài viết thành công!\n";
+        } else {
+            echo "Lỗi khi lấy chi tiết bài viết!\n";
+        }
+
+        return $postDetail;
+    }
+
+    //ALL UPDATE
+    public function updatePost() {
         $postID = $_POST['postID'];
         $provinceID = $_POST['province'];
 
-        if (isset($_FILES['image-post']) && $_FILES['image-post']['error'] == 0){
+        if (isset($_FILES['image-post']) && $_FILES['image-post']['error'] == 0) {
             $fileTmpPath = $_FILES['image-post']['tmp_name'];
-            $imgPostURL = $this->uploadImage($fileTmpPath,'post');
-            echo "Ảnh thêm thành công";
-        }
-        else{
+            $imgPostURL = $this->uploadImage($fileTmpPath, 'post');
+            echo "Ảnh bài viết được cập nhật thành công!\n";
+        } else {
             $imgPostURL = $_POST['imageposted'];
-            echo "Ảnh cũ";
+            echo "Sử dụng ảnh cũ của bài viết.\n";
         }
 
-        $sql = "UPDATE post
-                SET provinceID = '$provinceID',imgPostURL = '$imgPostURL'
+        $sql = "UPDATE post 
+                SET provinceID = '$provinceID', imgPostURL = '$imgPostURL' 
                 WHERE postID = $postID";
-        $get_query = mysqli_query($this->conn->connect(),$sql);
+        $get_query = mysqli_query($this->conn->connect(), $sql);
+
+        if ($get_query) {
+            echo "Cập nhật bài viết thành công!\n";
+        } else {
+            echo "Lỗi khi cập nhật bài viết!\n";
+        }
     }
 
     //cac Ham PostDetail
-    public function getAllPostDetailByPostID($postID){
-        $sql = "SELECT postDetailID, sectionTitle, sectionContent,imgPostDetURL FROM postDetail WHERE postID = $postID";
-        $get_query = mysqli_query($this->conn->connect(),$sql);
-
-        return $get_query;
-    }
-
-    public function getPostDetailByID($postDetailID){
-        $sql = "SELECT postDetailID, sectionTitle, sectionContent,imgPostDetURL FROM postdetail  WHERE postDetailID = $postDetailID";
-        $get_query = mysqli_query($this->conn->connect(),$sql);
-
-        return $get_query->fetch_assoc();
-    }
-
-    public function updatePostDetal(){
-
+    public function updatePostDetal() {
         $postDetailID = $_POST['postDetailID'];
         $sectionTitle = $_POST['title'];
         $sectionContent = $_POST['content'];
-        
 
-        if (isset($_FILES['imagenew']) && $_FILES['imagenew']['error'] == 0){
+        if (isset($_FILES['imagenew']) && $_FILES['imagenew']['error'] == 0) {
             $fileTmpPath = $_FILES['imagenew']['tmp_name'];
-            $imgPostDetURL = $this->uploadImage($fileTmpPath,'postDetaill');
-            echo "Ảnh thêm thành công";
-        }
-        else{
-            $imgPostDetURL = $_POST['imgposted'];
-            echo "Ảnh cũ";
-        }
-
-        $sql = "UPDATE postdetail
-                SET sectionTitle = '$sectionTitle',sectionContent = '$sectionContent', imgPostDetURL = '$imgPostDetURL'
-                WHERE postDetailID = $postDetailID";
-        $get_query = mysqli_query($this->conn->connect(),$sql);
-    }
-
-    public function deletePostDetail($postDetailID){
-        $sql = "DELETE FROM postdetail WHERE postDetailID = $postDetailID";
-
-        $delete_query = mysqli_query($this->conn->connect(),$sql);
-
-        if ($this->conn->getAffectedRows() > 0) {
-            echo "Xóa chi tiết bài viết thành công!";
+            $imgPostDetURL = $this->uploadImage($fileTmpPath, 'postDetail');
+            echo "Ảnh chi tiết bài viết được cập nhật thành công!\n";
         } else {
-            echo "Xóa chi tiết bài viết thất bại!";
+            $imgPostDetURL = $_POST['imgposted'];
+            echo "Sử dụng ảnh cũ của chi tiết bài viết.\n";
         }
-        
+
+        $sql = "UPDATE postdetail 
+                SET sectionTitle = '$sectionTitle', sectionContent = '$sectionContent', imgPostDetURL = '$imgPostDetURL' 
+                WHERE postDetailID = $postDetailID";
+        $get_query = mysqli_query($this->conn->connect(), $sql);
+
+        if ($get_query) {
+            echo "Cập nhật chi tiết bài viết thành công!\n";
+        } else {
+            echo "Lỗi khi cập nhật chi tiết bài viết!\n";
+        }
     }
 
     //các hàm User của
@@ -465,7 +498,21 @@ class AdminController{
         }
     }
 
-    //dashboard
+    //dashboard and total
+    public function TotalPost() {
+        $sql = "SELECT COUNT(*) AS TotalPost FROM post WHERE status = TRUE";
+        $CountUser = mysqli_query($this->conn->connect(), $sql);
+        $result = $CountUser->fetch_assoc();
+
+        if ($result) {
+            echo "Tổng số bài viết: " . $result['TotalPost'] . "\n";
+        } else {
+            echo "Không thể lấy tổng số bài viết!\n";
+        }
+
+        return $result;
+    }
+
     public function getTotalBlogInYear($year){
         
         $sql = "SELECT YEAR(blogCreateDate) AS Year, MONTH(blogCreateDate) AS Month, COUNT(*) AS TotalBlog
@@ -568,6 +615,29 @@ class AdminController{
 
         if($data){
             return $data;
+        }
+    }
+
+    //delete
+    public function deletePost($postId) {
+        $sql = "UPDATE post SET status = False WHERE postID = $postId";
+        $delete_query = mysqli_query($this->conn->connect(), $sql);
+
+        if ($delete_query && mysqli_affected_rows($this->conn->connect()) > 0) {
+            echo "Bài viết đã được xóa thành công!\n";
+        } else {
+            echo "Lỗi khi xóa bài viết hoặc bài viết không tồn tại!\n";
+        }
+    }
+
+    public function deletePostDetailByPostID($postID) {
+        $sql = "DELETE FROM postdetail WHERE postID = $postID";
+        $delete_query = mysqli_query($this->conn->connect(), $sql);
+
+        if ($delete_query && $this->conn->getAffectedRows() > 0) {
+            echo "Các chi tiết bài viết đã được xóa thành công!\n";
+        } else {
+            echo "Không có chi tiết bài viết nào cần xóa!\n";
         }
     }
 }

@@ -5,12 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View Blog</title>
     <link rel="stylesheet" href="../../../public/css/Blogger/ViewBlog.css">
+    <!-- <link rel="stylesheet" href="../../../public/css/Blogger/province.css"> -->
+    <link rel="stylesheet" href="../../../public/css/Blogger/header2.css">
+    <link rel="stylesheet" href="../../../public/css/Blogger/footer.css">
+    <link rel="stylesheet" href="../../../public/css/Blogger/paging.css">
 </head>
 
 <body>
-    <!-- Header (được import từ file khác) -->
-    <div id="header"></div>
-
+    
+    <script src = "../../../include/header2.js"></script>
+    <script src = "../../../include/footer.js"></script>
     <!-- Lấy DL từ BE -->
     <?php 
         include_once("../../Controllers/bothController.php");
@@ -67,7 +71,7 @@
     </script>
 
     <!-- Footer (được import từ file khác) -->
-    <div id="footer"></div>
+    
 
     <script src="../../../public/js/blogger/ViewBlog.js"></script>
 </body>

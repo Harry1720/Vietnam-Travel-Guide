@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đăng ký</title>
     <link rel="stylesheet" href="../../public/css/createAccount.css">
+    <script src="/public/js/createAccount.js"></script>
 </head>
 <body>
     <!--  on -->
@@ -44,12 +45,64 @@
                 </span>
             </div>
             <div>
-                <input type="submit" id="submit" value="Đăng Ký">
+                <!-- <input type="submit" id="submit" value="Đăng Ký"> -->
+                <button class="add-user-btn" id="openpopup1">
+                    Đăng Ký <ion-icon style="margin-left: 5px;" name="add-circle-outline"></ion-icon>
+                </button>
             </div>
             <div class="login-account">
                 Đã có tài khoản? <a href="login.html"><b>Đăng nhập</b></a>
             </div>
         </form>
+    </div>
+    
+    <div class="popup1-overlay" id="popup1Overlay">
+        <div class="popup1-content">
+            <span class="popup1-close" id="closepopup1">&times;</span>
+            <div class="wrapper" id = "addUser">
+                <form id="user-form" name="add" method="POST"  enctype="multipart/form-data" action = "../../FunctionOfActor/admin/addUser.php">
+                        <div class="field input">
+                            <label for="userName">Họ và Tên</label>
+                            <input type="text" id="userName" name="userName" placeholder="Nguyễn Văn A" required>
+                        </div>
+    
+                    <div class="field input">
+                        <label for="email">Email</label>
+                        <input type="tel" id="email" name="email" placeholder="nguyenvana@gmail.com" required>
+                    </div>
+    
+                    <div class="field input">
+                        <label for="address">Tỉnh/Thành Phố</label>
+                        <select id="address" name="address">
+                            
+                        </select>
+                    </div>
+    
+                    <div class="field input">
+                        <label for="password">Mật khẩu</label>
+                        <div style="position: relative;">
+                            <input type="password" id="password" name="password" required>
+                            <span id="togglePassword" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;">
+                                <ion-icon style = "color: #35679C" name="eye-outline"></ion-icon>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="field input" style="margin-bottom: 20px; display: flex; padding-top: 10px">
+                        
+                        </select>
+                        <label id="label-gender" for="gender">Giới Tính</label>
+                        <select id="gender" name="gender">
+                            <option value="Male">Nam</option>
+                            <option value="FeMale">Nữ</option>
+                        </select>
+                    </div>
+                    <div class="button">
+                        <input type="submit" value="Tạo" class="save" id="saveButton">
+                        <input type="button" value="Hủy" class="cancel" id="cancelButton">
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 </body>
 </html>

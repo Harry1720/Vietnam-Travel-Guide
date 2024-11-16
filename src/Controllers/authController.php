@@ -178,14 +178,17 @@ class AuthController{
         }
 
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            echo "Email không hợp lệ!";
+            echo "<script>alert('Email Không Hợp Lệ!');</script>";
+            echo "<script>window.location.href =  '../../Views/login.html';</script>";
             return;
         }
 
-        $sql = "SELECT * FROM users WHERE email = '$email'";
+        $sql = "SELECT * FROM users WHERE email = '$email' AND status = 1";
         $get_query = mysqli_query($this->conn->connect(), $sql);
 
         if (mysqli_num_rows($get_query) === 0) {
+            echo "<script>alert('Email Chưa Đăng Ký!');</script>";
+            echo "<script>window.location.href =  '../../Views/login.html';</script>";
             echo "Email Chưa Đăng Ký!";
             return;
         }
@@ -193,13 +196,13 @@ class AuthController{
         $user = mysqli_fetch_array($get_query);
 
         $password = (string) $password;
-        $user['pass_word'] = (string) $user['pass_word'];
+        $passwordU = (string) $user['pass_word'];
+        $emailU = (string) $user['email'];
 
         //trường hợp do admin cấp sắn mật khẩu kh hashed
-        
-
-        if ($password == $user['pass_word'] && $email == $user['email']) {
-            if ($user['role_'] == 'Admin' && $user['status'] == 1) {
+        if ($password == $passwordU && $email == $emailU) {
+            echo "ok";
+            if ($user['role_'] == 'Admin') {
                 $_SESSION['blogger_id'] = $user['userID'];
                 $_SESSION['role'] = $user['role_'];
                 $_SESSION['loggedIn'] = TRUE;
@@ -212,15 +215,19 @@ class AuthController{
 
         //if (md5($password) === $user['pass_word']) {
         //hash - PASSWORD_ARGON2 
-        if(password_verify($password, $user['pass_word']) && $user['status'] == 1) {
+        if(password_verify($password, $passwordU)) {
             $_SESSION['blogger_id'] = $user['userID'];
             $_SESSION['role'] = $user['role_'];
             
             //cái này là gán cho session -> để biết nên dùng cho header nào - nếu login hay sign up thì session này dùng để xác định    
             $_SESSION['loggedIn'] = TRUE;
-            header( "location: ../../Views/blogger/home.php");
+            echo "<script>window.location.href =  '../../Views/blogger/home.php';</script>";
             exit;
         } 
+        else{
+            echo "<script>alert('Đăng Nhập Thất Bại!');</script>";
+            echo "<script>window.location.href =  '../../Views/login.html';</script>";
+        }
       
         //header( "location: /Vietnam-Travel-Guide/src/Views/login.html");
     }

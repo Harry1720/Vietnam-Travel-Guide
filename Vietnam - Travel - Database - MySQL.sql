@@ -1,3 +1,6 @@
+CREATE DATABASE IF NOT EXISTS vietnamtravel;
+USE vietnamtravel;
+
 CREATE TABLE users (
   userID INT AUTO_INCREMENT PRIMARY KEY,
   userName VARCHAR(50) NOT NULL,
@@ -86,31 +89,28 @@ CREATE TABLE repComment (
   FOREIGN KEY (userID) REFERENCES users(userID)
 );
 
-
---NOTE CẤM XÓA: PASS ĐÃ HASH CỦA ADMIN TƯƠNG ỨNG 
--- password1 = $argon2i$v=19$m=65536,t=4,p=1$TEtDT0hOLlU1OFVYYU0uUA$xhyfIQrxUkgUUC+nw+Q14eF5Fb/VYdITPwPwCgPoO/E
 INSERT INTO users (userName, pass_word, address_, role_, email, gender, status)
 VALUES
-('Nguyen An', 'password1', 1, 'Admin', 'nguyenan@example.com', 'Male', TRUE),
-('Tran Mai', 'password2', 1, 'Admin', 'tranmai@example.com', 'FeMale', TRUE),
-('Le Minh', 'password3', 3, 'Admin', 'leminh@example.com', 'Male', TRUE),
-('Pham Lan', 'password4', 2, 'Blogger', 'phamlan@example.com', 'FeMale', TRUE),
-('Nguyen Son', 'password5', 1, 'Blogger', 'nguyenson@example.com', 'Male', TRUE),
-('Hoang Minh', 'password6', 5, 'Blogger', 'hoangminh@example.com', 'Male', TRUE),
-('Nguyen Tuyet', 'password7', 3, 'Blogger', 'nguyentuyet@example.com', 'FeMale', TRUE),
-('Luu Mai', 'password8', 2, 'Blogger', 'luumai@example.com', 'FeMale', TRUE),
-('Vu Tam', 'password9', 4, 'Blogger', 'vutam@example.com', 'Male', TRUE),
-('Nguyen Le', 'password10', 1, 'Blogger', 'nguyenle@example.com', 'FeMale', TRUE),
-('Trinh Bao', 'password11', 2, 'Blogger', 'trinhbao@example.com', 'Male', TRUE),
-('Mai Mai', 'password12', 5, 'Blogger', 'maimai@example.com', 'FeMale', TRUE),
-('Doan Linh', 'password13', 1, 'Blogger', 'doanlinh@example.com', 'FeMale', TRUE),
-('Le Duong', 'password14', 3, 'Blogger', 'leduong@example.com', 'Male', TRUE),
-('Tran Son', 'password15', 2, 'Blogger', 'transon@example.com', 'Male', TRUE),
-('Nguyen Hien', 'password16', 4, 'Blogger', 'nguyenhien@example.com', 'FeMale', TRUE),
-('Hoang Nam', 'password17', 5, 'Blogger', 'hoangnam@example.com', 'Male', TRUE),
-('Bui Quyen', 'password18', 3, 'Blogger', 'buiquyen@example.com', 'FeMale', TRUE),
-('Lai Lan', 'password19', 1, 'Blogger', 'lailan@example.com', 'FeMale', TRUE),
-('Pham Minh', 'password20', 2, 'Blogger', 'phamminh@example.com', 'Male', TRUE);
+('Phạm Thanh Trúc', 'admin338', '1', 'Admin', 'admin@gmail.com', 'Male', TRUE),
+('Tran Thi B', 'password2', '2', 'Blogger', 'tranthib@example.com', 'Female', TRUE),
+('Le Van C', 'password3', '3', 'Blogger', 'levanc@example.com', 'Male', TRUE),
+('Pham Thi D', 'password4', '4', 'Blogger', 'phamthid@example.com', 'Female', TRUE),
+('Hoang Van E', 'password5', '5', 'Blogger', 'hoangvane@example.com', 'Male', TRUE),
+('Vu Thi F', 'password6', '6', 'Blogger', 'vuthif@example.com', 'Female', TRUE),
+('Nguyen Hoang G', 'password7', '7', 'Blogger', 'nguyenhoangg@example.com', 'Male', TRUE),
+('Pham Van H', 'password8', '8', 'Blogger', 'phamvanh@example.com', 'Male', TRUE),
+('Tran Thi I', 'password9', '9', 'Blogger', 'tranthii@example.com', 'Female', TRUE),
+('Nguyen Van J', 'password10', '10', 'Blogger', 'nguyenvanj@example.com', 'Male', TRUE),
+('Le Thi K', 'password11', '11', 'Blogger', 'lethik@example.com', 'Female', TRUE),
+('Pham Hoang L', 'password12', '12', 'Blogger', 'phamhoangl@example.com', 'Male', TRUE),
+('Nguyen Thi M', 'password13', '13', 'Blogger', 'nguyenthim@example.com', 'Female', TRUE),
+('Hoang Van N', 'password14', '14', 'Blogger', 'hoangvann@example.com', 'Male', TRUE),
+('Tran Thi O', 'password15', '15', 'Blogger', 'tranthio@example.com', 'Female', TRUE),
+('Nguyen Van P', 'password16', '16', 'Blogger', 'nguyenvanp@example.com', 'Male', TRUE),
+('Pham Thi Q', 'password17', '17', 'Blogger', 'phamthiq@example.com', 'Female', TRUE),
+('Vu Van R', 'password18', '18', 'Blogger', 'vuvanr@example.com', 'Male', TRUE),
+('Nguyen Thi S', 'password19', '19', 'Blogger', 'nguyenthis@example.com', 'Female', TRUE),
+('Hoang Van T', 'password20', '20', 'Blogger', 'hoangvant@example.com', 'Male', TRUE);
 
 
 -- Dữ liệu cho bảng province
@@ -126,7 +126,6 @@ VALUES
 ('Quảng Nam', 'Central', TRUE),
 ('Thừa Thiên Huế', 'Central', TRUE),
 ('Ninh Bình', 'North', TRUE),
-
 ('Thanh Hóa', 'Central', TRUE),
 ('Bắc Ninh', 'North', TRUE),
 ('Nghệ An', 'Central', TRUE),

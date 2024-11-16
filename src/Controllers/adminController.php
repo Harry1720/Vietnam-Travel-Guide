@@ -322,20 +322,7 @@ class AdminController{
         $sql = "SELECT userID, userName, pass_word, address_,role_,email,gender FROM users WHERE userID = '$admin'";
         $user = mysqli_query($this->conn->connect(), $sql);
 
-        if($user){
-            if($user['role_'] == 'Admin'){
-                echo "Hợp Lệ";
-                return $user->fetch_assoc();
-            }
-            else{
-                echo "Bạn Không Có Quyền Truy Cập Trang Web Này";
-                return null;
-            }
-        }
-        else{
-            echo "Ngươi Dùng Không Tồn Tại";
-            return null;
-        }
+        return $user->fetch_assoc();
     }
 
     public function updateAdmin(){

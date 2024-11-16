@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../public/css/post.css">
-    <link rel="stylesheet" href="../../public/css/Blogger/headerPost.css">
-    <link rel="stylesheet" href="../../public/css/Blogger/footer.css">
+    <link rel="stylesheet" href="../../../public/css/post.css">
+    <link rel="stylesheet" href="../../../public/css/Blogger/headerPost.css">
+    <link rel="stylesheet" href="../../../public/css/Blogger/footer.css">
 
     <title>Posts</title>
     <style>
@@ -15,7 +15,7 @@
 
 <!--ĐANG HARD CODE POST ID = 1-->
 <?php
-    include_once "../../src/Controllers/bothController.php";
+    include_once "../../../src/Controllers/bothController.php";
     $controller = new bothController();
 
     //$_GET['postID']: Lay tu story sang day postID (e.g., post.php?postID=1).
@@ -26,7 +26,7 @@
     $data = $controller->getAllPostDetail($postID); //Lầy hình hiển thị nội dung cho trang 
 ?>
 
-    <script src = "../../include/footer.js"></script>
+    <script src = "../../../include/footer.js"></script>
     <!-- <script src = "../../include/header2.js"></script> -->
     <!--Get picture for each post, header-->
     <script>
@@ -39,13 +39,13 @@
             const header2 = `
             <header class="header">
                 <div class="logo">
-                    <img src="../../public/image/logo.png" alt="Logo">
+                    <img src="../../../public/image/logo.png" alt="Logo">
                 </div>
                 <nav class="nav">
-                    <a href = "blogger/home.php" ">Trang chủ</a>
-                    <a href="admin/province.php" ">Tỉnh Thành</a>
-                    <a href="blogger/storiesList.html" ">Blogs</a>
-                    <a href="blogger/WriteReview.php" ">Viết Blog</a>
+                    <a href = "home.php" ">Trang chủ</a>
+                    <a href="province.php" ">Tỉnh Thành</a>
+                    <a href="storiesList.html" ">Blogs</a>
+                    <a href="WriteReview.php" ">Viết Blog</a>
                 </nav>
                 <nav class="sub_nav">
                     <a href="createAccount.html"  class="btn-login"">Đăng ký</a>

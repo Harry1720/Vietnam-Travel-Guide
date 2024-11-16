@@ -35,6 +35,15 @@
         
         $bothcontroller = new bothController();
         $provinces = $bothcontroller->getAllProvinces();
+
+
+        // Kiểm tra xem người dùng đã đăng nhập chưa  -> nếu chưa thì vào login
+        if (!isset($_SESSION['blogger_id'])) {
+            // Nếu chưa đăng nhập, chuyển hướng tới login.php
+                header("Location: ../login.html");
+                exit();
+        }
+
     ?>
 
 

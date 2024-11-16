@@ -3,4 +3,5 @@
 
     $auth = new AuthController();
     $auth->login();
+
 ?>

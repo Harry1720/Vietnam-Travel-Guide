@@ -1,7 +1,8 @@
 document.addEventListener('DOMContentLoaded', async function () {
     try {
+        //chổ này để kiểm tra session 
         const response = await fetch('../../FunctionOfActor/blogger/checkAuth.php');
-
+        
         if (!response.ok) {
             throw new Error('Failed to fetch session data. Status: ' + response.status);
         }
@@ -17,12 +18,14 @@ document.addEventListener('DOMContentLoaded', async function () {
             <nav class="nav">
                 <a href="home.php">Trang chủ</a>
                 <a href="province.php">Tỉnh Thành</a>
-                <a href="storiesList.html">Blogs</a>
+                <a href="storiesList.php">Blogs</a>
                 <a href="WriteReview.php">Viết Blog</a>
-            </nav>
+                ${data.role_ === 'Admin' && data.loggedIn  ? `<a href="../admin/admin.php">Admin</a>` : '`<a href="profile.php">Hồ sơ</a>` '}
+                </nav>
+            
             <nav class="sub_nav">
                 ${data.loggedIn ? 
-                    `<a href="../../FunctionOfActor/both/logout.php" class="btn-logout">Đăng xuất</a>` : 
+                    `<a href="../../FunctionOfActor/both/logout.php?action=logout" class="btn-login">Đăng xuất</a>` : 
                     `<a href="../createAccount.html" class="btn-signup">Đăng ký</a>
                     <a href="../login.html" class="btn-login">Đăng nhập</a>`}
             </nav>

@@ -1,5 +1,9 @@
 <?php
     include_once "../../Controllers/adminController.php";
+    include_once "../../Controllers/authController.php";
+    
+    $auth = new AuthController();
+    $auth->checkAdmin();
     
     header('Content-Type: application/json; charset=utf-8');  // Thêm dòng này
 
@@ -20,6 +24,7 @@
                     'blogByMonth' => $dataBlog,
                     'blogByProvince' => $dataProvince
                 ];
+                
                 echo json_encode($result, JSON_UNESCAPED_UNICODE);
             } else {
                 http_response_code(404);

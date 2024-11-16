@@ -5,8 +5,8 @@ document.addEventListener('DOMContentLoaded', async function () {
         if (!response.ok) {
             throw new Error('Failed to fetch session data. Status: ' + response.status);
         }
-
         const data = await response.json();
+        console.log (data);
 
     const header2 = `
     <header class="header">
@@ -18,10 +18,14 @@ document.addEventListener('DOMContentLoaded', async function () {
             <a href="../blogger/province.php">Tỉnh Thành</a>
             <a href="../blogger/storiesList.php">Blogs</a>
             <a href="../blogger/WriteReview.php">Viết Blog</a>
+
+            ${data.role_ === 'Admin' && data.loggedIn  ? `<a href="../admin/admin.php">Admin</a>` : '`<a href="profile.php">Hồ sơ</a>` '}
+           
+
         </nav>
         <nav class="sub_nav">
             ${data.loggedIn ? 
-                `<a href="../src/FunctionOfActor/logout.php" class="btn-logout">Đăng xuất</a>` : 
+                `<a href="../../FunctionOfActor/both/logout.php?action=logout" class="btn-login">Đăng xuất</a>` : 
                 `<a href="../createAccount.html" class="btn-register">Đăng ký</a>
                 <a href="../login.html" class="btn-login">Đăng nhập</a>`}
         </nav>

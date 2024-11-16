@@ -51,7 +51,10 @@
             foreach ($blogs as $blog):
                 if (!empty($blog['imgBlogURL'])):
         ?>
-            <!--Khong can JS cho nay vi Anchor sang post voi ID-->
+
+
+
+            <!--Khong can JS cho nay vi blogid truyền sang bên trang viewblog-->
             <a href="ViewBlog.php?blogID=<?php echo $blog['blogID']; ?> " class="card-common ">
                 <img src="<?php echo htmlspecialchars($blog['imgBlogURL']); ?>" alt="blog picture">
                 <div class="location_time">
@@ -62,8 +65,7 @@
             <?php                 
                 endif; // End check for imgPostURL
             endforeach; ?>
-        
-
+    
         <!-- Pagination -->
         <div class="pagination">
             <?php if ($page > 1): ?>

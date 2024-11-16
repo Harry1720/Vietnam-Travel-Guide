@@ -10,7 +10,7 @@ class CloudinaryUploader
      * Upload file to Cloudinary
      *
      * @param string $fileTmpPath Temporary file path from the form
-     * @param string $folder The folder to upload the file to
+     * @param string $folder The folder để up hình lên tùy thuộc vào yêu cầu 
      * @return bool|string Returns URL if successful, or false if failed
      */
     public function upload($fileTmpPath, $folder)

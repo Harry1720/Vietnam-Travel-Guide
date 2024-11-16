@@ -5,55 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quản lý blog</title>
     <link rel="stylesheet" href="../../../public/css/Admin/blog_management.css">
+    <link rel="stylesheet" href="../../../public/css/Admin/layout.css">
     <link rel="stylesheet" href="../../../public/css/navbar.css">
     <link rel="stylesheet" href="../../../public/css/sidebar.css">
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    
 
-    <?php
-        include_once "../../Controllers/adminController.php";
-
-        $adcontroller = new AdminController();
-
-        $filter = isset($_GET['filter']) ? $_GET['filter'] : 'Chờ Duyệt';
-
-        $blogs = $adcontroller->getAllBlogByBlogStatus($filter);
-
-        //Phan Trang
-        $limit= 10;
-        $stt = 1;
-        $CountData = mysqli_num_rows($blogs);
-
-        $countPage = ceil($CountData/$limit);
-
-        if (isset($_GET['page'])) {
-            $page = $_GET['page'];
-        } else {
-            $page = 1;
-        }
-
-        $Start = ($page - 1) * $limit;
-        $stt1 = $Start+1;
-
-        $blogOfPage = $adcontroller->getBlogOfPage($Start,$limit,$filter);
-    ?>
-
-    <?php
-        include_once "../../Controllers/bothController.php";
-        
-            $bothcontroller = new bothController();
-            $provinces = $bothcontroller->getAllProvinces();
-    ?>
-</head>
-<body>
     <script src="../../../public/js/Admin/blog_management.js"></script>
     <script src="../../../include/navbar.js"></script>
     <script src="../../../include/sidebar.js"></script>
     <script src="../../../public/js/Admin/Notifications.js"></script>
 
+</head>
+<body>
+
+    <?php   
+        include_once "../../Controllers/adminController.php";
+        include_once "../../Controllers/bothController.php";
+        include_once "../../Controllers/authController.php";
+        
+        $auth = new AuthController();
+        $auth->checkAdmin(); 
+            
+
+
+        $adcontroller = new AdminController();
+        $bothcontroller = new bothController();
+        
+        $provinces = $bothcontroller->getAllProvinces();
+
+        $filter = isset($_GET['filter']) ? $_GET['filter'] : 'Chờ Duyệt';
+        $blogs = $adcontroller->TotalBlogsStatus($filter);
+
+        $limit= 10;
+        $stt = 1;
+        $countPage = ceil($blogs['TotalBlogs']/$limit);
+        if (isset($_GET['page'])) { $page = $_GET['page'];} 
+        else { $page = 1; }
+        $Start = ($page - 1) * $limit;
+        $stt1 = $Start+1;
+
+        $blogOfPage = $adcontroller->getBlogOfPage($Start,$limit,$filter);
+    ?>
+   
     <div class="main-content">
         <div class="blog-management">
         <div class="filter-search-container">
@@ -100,8 +97,8 @@
                             <td><?php echo $blog['blogCreateDate'] ?? 'Lỗi Hiển Thị' ?></td>
                             <td>
                             <form action="../../FunctionOfActor/admin/updateapprovalStatus.php" method="POST" name="updateBlog_<?php echo $blog['blogID'] ?>" id="updateBlog_<?php echo $blog['blogID'] ?>">
-                                <input type="hidden" id="blogID" name="blogID" value="<?php echo $blog['blogID'] ?>">
-                                <select name="update" id="update" onchange="document.getElementById('updateBlog_<?php echo $blog['blogID'] ?>').submit()">
+                                <input type="hidden" id="blogID_<?php echo $blog['blogID'] ?>" name="blogID" value="<?php echo $blog['blogID'] ?>">
+                                <select name="update" id="update_<?php echo $blog['blogID'] ?>" onchange="document.getElementById('updateBlog_<?php echo $blog['blogID'] ?>').submit()">
                                     <option style="padding: 10px; border-radius: 3px;" value="Chờ Duyệt" <?php if($blog['approvalStatus'] == 'Chờ Duyệt')  echo 'selected="selected"';?>>Chờ Duyệt</option>
                                     <option value="Không Được Duyệt" <?php if($blog['approvalStatus'] == 'Không Được Duyệt')  echo 'selected="selected"';?>>Không Được Duyệt</option>
                                     <option value="Đã Duyệt" <?php if($blog['approvalStatus'] == 'Đã Duyệt') echo 'selected="selected"';?>>Đã Duyệt</option>
@@ -122,7 +119,14 @@
                     <?php
                         for ($i = 1; $i <= $countPage; $i++) {
                             $activeClass = ($i == $page) ? 'active' : '';
-                            echo "<a class='page-btn $activeClass' href='?page=$i'>$i</a>";
+                            
+                            // Nếu có filter, thêm filter vào link phân trang
+                            $url = "?page=$i";
+                            if ($filter) {
+                                $url .= "&filter=$filter";
+                            }
+                            
+                            echo "<a class='page-btn $activeClass' href='$url'>$i</a>";
                         }
                     ?>
                 </div>

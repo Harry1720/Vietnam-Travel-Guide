@@ -2,17 +2,17 @@
     include_once "../../Controllers/adminController.php";
     include_once "../../Controllers/authController.php";
 
-    // $auth = new AuthController();
-    // $auth->checkAdmin();
+    $auth = new AuthController();
+    $auth->checkAdmin();
 
     try {
         $controller = new AdminController();
         
-            $blogs = $controller->getAllBlogByBlogStatus('Chờ Duyệt');
+            $blogs = $controller->TotalBlogsStatus('Chờ Duyệt');
 
             if ($blogs) {
                 $count = [
-                    'Count' => mysqli_num_rows($blogs) ?? 0,
+                    'Count' => $blogs['TotalBlogs'] ?? 0,
                 ];
                 echo json_encode($count, JSON_UNESCAPED_UNICODE);
             } else {

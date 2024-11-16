@@ -5,7 +5,6 @@ include_once __DIR__ . "/../config/config.php";
 
 class bloggerController{
     private Config $conn;
-
     // hàm tạo
     public function __construct()
     {
@@ -15,11 +14,14 @@ class bloggerController{
         $this->conn = new Config();
     }
 
-    private function uploadImage($fileTmpPath) {
+
+    //hàm load ảnh - mặc định sẽ được lưu vào folder - blog trong cloud
+    private function uploadImage($fileTmpPath,$folder) {
         $uploader = new CloudinaryUploader();
-        return $uploader->upload($fileTmpPath);
+        return $uploader->upload($fileTmpPath,$folder);
     }
 
+    
     public function saveBlog($provinceID, $userID, $blogContent, $blogCreateDate){
         $sql = "INSERT INTO blog (provinceID, userID, blogContent, blogCreateDate) 
                 VALUES ($provinceID, '$userID', '$blogContent', '$blogCreateDate')";
@@ -40,8 +42,6 @@ class bloggerController{
             return null;
         }
     }
-    
-    
 
     private function saveBlogImage($blogId, $imgBlogURL) {
         if ($blogId !== null) {
@@ -59,10 +59,11 @@ class bloggerController{
     
 
     //các hàm của blogger
+    //hàm add từ trang blog.php - 
     public function addblog(){
         $provinceID = $_POST['location'];
         $blogContent = $_POST['review'];
-        $userID = $_SESSION['blogger_id'];
+        $userID = $_SESSION['1'];
         $blogCreateDate = date('Y-m-d H:i:s');
 
         // Gọi hàm saveBlog để lưu bài viết
@@ -74,7 +75,8 @@ class bloggerController{
             // Tiến hành upload ảnh
             foreach ($_FILES['photos']['tmp_name'] as $index => $tmpName) {
                 if (!empty($tmpName)) {
-                    $imageUrl = $this->uploadImage($tmpName);
+                    $imageUrl = $this->uploadImage($tmpName, 'blog');
+
                     echo "Ảnh đã upload: $imageUrl <br>";
                     $this->saveBlogImage($blogid, $imageUrl);
                 } else {
@@ -241,7 +243,7 @@ class bloggerController{
             echo "Vui lòng điền đầy đủ thông tin.";
         }
     }
-
+    
 
 
 }

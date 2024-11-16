@@ -1,3 +1,6 @@
+CREATE DATABASE IF NOT EXISTS vietnamtravel;
+USE vietnamtravel;
+
 CREATE TABLE users (
   userID INT AUTO_INCREMENT PRIMARY KEY,
   userName VARCHAR(50) NOT NULL,
@@ -88,26 +91,26 @@ CREATE TABLE repComment (
 
 INSERT INTO users (userName, pass_word, address_, role_, email, gender, status)
 VALUES
-('Nguyen An', 'password1', 1, 'Admin', 'nguyenan@example.com', 'Male', TRUE),
-('Tran Mai', 'password2', 1, 'Admin', 'tranmai@example.com', 'FeMale', TRUE),
-('Le Minh', 'password3', 3, 'Admin', 'leminh@example.com', 'Male', TRUE),
-('Pham Lan', 'password4', 2, 'Blogger', 'phamlan@example.com', 'FeMale', TRUE),
-('Nguyen Son', 'password5', 1, 'Blogger', 'nguyenson@example.com', 'Male', TRUE),
-('Hoang Minh', 'password6', 5, 'Blogger', 'hoangminh@example.com', 'Male', TRUE),
-('Nguyen Tuyet', 'password7', 3, 'Blogger', 'nguyentuyet@example.com', 'FeMale', TRUE),
-('Luu Mai', 'password8', 2, 'Blogger', 'luumai@example.com', 'FeMale', TRUE),
-('Vu Tam', 'password9', 4, 'Blogger', 'vutam@example.com', 'Male', TRUE),
-('Nguyen Le', 'password10', 1, 'Blogger', 'nguyenle@example.com', 'FeMale', TRUE),
-('Trinh Bao', 'password11', 2, 'Blogger', 'trinhbao@example.com', 'Male', TRUE),
-('Mai Mai', 'password12', 5, 'Blogger', 'maimai@example.com', 'FeMale', TRUE),
-('Doan Linh', 'password13', 1, 'Blogger', 'doanlinh@example.com', 'FeMale', TRUE),
-('Le Duong', 'password14', 3, 'Blogger', 'leduong@example.com', 'Male', TRUE),
-('Tran Son', 'password15', 2, 'Blogger', 'transon@example.com', 'Male', TRUE),
-('Nguyen Hien', 'password16', 4, 'Blogger', 'nguyenhien@example.com', 'FeMale', TRUE),
-('Hoang Nam', 'password17', 5, 'Blogger', 'hoangnam@example.com', 'Male', TRUE),
-('Bui Quyen', 'password18', 3, 'Blogger', 'buiquyen@example.com', 'FeMale', TRUE),
-('Lai Lan', 'password19', 1, 'Blogger', 'lailan@example.com', 'FeMale', TRUE),
-('Pham Minh', 'password20', 2, 'Blogger', 'phamminh@example.com', 'Male', TRUE);
+('Phạm Thanh Trúc', 'admin338', '1', 'Admin', 'admin@gmail.com', 'Male', TRUE),
+('Tran Thi B', 'password2', '2', 'Blogger', 'tranthib@example.com', 'Female', TRUE),
+('Le Van C', 'password3', '3', 'Blogger', 'levanc@example.com', 'Male', TRUE),
+('Pham Thi D', 'password4', '4', 'Blogger', 'phamthid@example.com', 'Female', TRUE),
+('Hoang Van E', 'password5', '5', 'Blogger', 'hoangvane@example.com', 'Male', TRUE),
+('Vu Thi F', 'password6', '6', 'Blogger', 'vuthif@example.com', 'Female', TRUE),
+('Nguyen Hoang G', 'password7', '7', 'Blogger', 'nguyenhoangg@example.com', 'Male', TRUE),
+('Pham Van H', 'password8', '8', 'Blogger', 'phamvanh@example.com', 'Male', TRUE),
+('Tran Thi I', 'password9', '9', 'Blogger', 'tranthii@example.com', 'Female', TRUE),
+('Nguyen Van J', 'password10', '10', 'Blogger', 'nguyenvanj@example.com', 'Male', TRUE),
+('Le Thi K', 'password11', '11', 'Blogger', 'lethik@example.com', 'Female', TRUE),
+('Pham Hoang L', 'password12', '12', 'Blogger', 'phamhoangl@example.com', 'Male', TRUE),
+('Nguyen Thi M', 'password13', '13', 'Blogger', 'nguyenthim@example.com', 'Female', TRUE),
+('Hoang Van N', 'password14', '14', 'Blogger', 'hoangvann@example.com', 'Male', TRUE),
+('Tran Thi O', 'password15', '15', 'Blogger', 'tranthio@example.com', 'Female', TRUE),
+('Nguyen Van P', 'password16', '16', 'Blogger', 'nguyenvanp@example.com', 'Male', TRUE),
+('Pham Thi Q', 'password17', '17', 'Blogger', 'phamthiq@example.com', 'Female', TRUE),
+('Vu Van R', 'password18', '18', 'Blogger', 'vuvanr@example.com', 'Male', TRUE),
+('Nguyen Thi S', 'password19', '19', 'Blogger', 'nguyenthis@example.com', 'Female', TRUE),
+('Hoang Van T', 'password20', '20', 'Blogger', 'hoangvant@example.com', 'Male', TRUE);
 
 
 -- Dữ liệu cho bảng province
@@ -123,7 +126,6 @@ VALUES
 ('Quảng Nam', 'Central', TRUE),
 ('Thừa Thiên Huế', 'Central', TRUE),
 ('Ninh Bình', 'North', TRUE),
-
 ('Thanh Hóa', 'Central', TRUE),
 ('Bắc Ninh', 'North', TRUE),
 ('Nghệ An', 'Central', TRUE),
@@ -361,6 +363,30 @@ LỊCH TRÌNH MỘT BUỔI SÁNG MÙA THU CHO NGƯỜI U MÊ HÀ NỘI  ĐÂY NH
 📌 11h - 12h: Ghé thăm nhà sách Mão, bưu điện thành phố và ngắm hồ Gươm
 Nếu không phải là con người “ngủ nướng” thì hãy mau ra đường và tận hưởng không khí Hà Nội những ngày thu đi thôi 🍃🍃
 📷  Cảm ơn chia sẻ của Nguyễn Minh Đức', '2024-11-01', TRUE, 'Đã Duyệt'),
+
+(2, 2,'Bạn đã đến Hội An - Đà Nẵng chưa?', '
+Một thành phố có biển siêu đẹp và sạch sẽ 
+Một thành phố có những cây cầu quá đặc sắc 
+Một thành phố có quá nhiều đặc sản ngon bổ rẻ
+Một thành phố có núi trong lòng phố 
+Và một thành phố, có thêm một phố cổ cực cổ kính. Nơi mà biết bao du khách gần xa trong và ngoài nước đều muốn về nơi đây
+Một chuyến đi quá tuyệt vời mn ạ ❤️ 
+📸Hoàng Rin 
+#vietnamoi
+#hoian #danang', '2024-11-02', TRUE, 'Đã Duyệt'),
+(1, 10,'KHÁM PHÁ MŨI NGHÊ, SƠN TRÀ ĐÀ NẴNG🌊🌿', 'Sở dĩ có tên Mũi Nghê vì ở đó có 1 tảng đá khổng lồ, được thiên nhiên trạm trổ thành hình con nghê có mặt hướng vào núi và lưng hướng ra biển.
+Vị trí cách thành phố khoảng 10km, nằm ở phía Đông Sơn Trà. Nơi này còn khá hoang sơ, được mệnh danh là điểm đón bình minh đẹp nhất Đà Nẵng.
+Nếu đến đây để chụp hình check-in thì các bạn nên đi vào buổi sáng, thời tiết, ánh sáng sẽ dễ chịu hơn.
+Ngoài ra cũng có thể trải nghiệm các hoạt động bơi lội xung quành hồ nước xanh ngắt chill xĩu ở đây. Đặc biệt cũng có nhiều bãi đá và đất trống có thể cắm trại qua đêm, dã ngoại cùng bạn bè nữa nha!',
+'2024-11-10', TRUE, 'Đã Duyệt'),
+(3, 6,'Dinh Độc Lập - Điểm đến không thể bỏ qua tại TPHCM', 
+'Gọi em là Sài Gòn năm 1975
+Vì nụ cười em đẹp như ngày Giải Phóng
+_________
+📍 Dinh Độc Lập - Tphcm 
+40k/ng tham quan bên ngoài mình vẫn có hình sống ảo luôn mn ạ. Hihi 😝', '2024-11-06', TRUE, 'Đã Duyệt'),
+
+
 (1, 1, 'Blog Title 1', 'Blog Content 1', '2022-01-15', TRUE, 'Chờ Duyệt'),
 (2, 2, 'Blog Title 2', 'Blog Content 2', '2022-02-18', TRUE, 'Đã Duyệt'),
 (3, 3, 'Blog Title 3', 'Blog Content 3', '2022-03-21', TRUE, 'Không Được Duyệt'),
@@ -429,9 +455,13 @@ VALUES
 INSERT INTO userComment (blogID, userID, cmtContent, createDate, status)
 VALUES
 (1, 1, 'Very insightful blog about Hanoi!', '2023-11-01', TRUE),
-(2, 2, 'I loved the information about HCM, so vibrant!', '2023-11-02', TRUE),
+(1, 2, 'Food is extremely marvelous!', '2023-11-01', TRUE),
+(2, 2, 'I loved the information about Hoi An, so vibrant!', '2023-11-02', TRUE),
 (3, 3, 'Da Nang is really a great vacation destination.', '2023-11-03', TRUE),
-(4, 4, 'Interesting post about Hai Phong, I must visit soon.', '2023-11-04', TRUE),
+(4, 4, 'Thành phố Hồ Chí Minh đẹp thật hhhhh.', '2023-11-04', TRUE),
+
+
+
 (5, 5, 'Hue is so full of history, definitely on my list.', '2023-11-05', TRUE),
 (6, 6, 'Great post, Can Tho is beautiful!', '2023-11-06', TRUE),
 (7, 7, 'Ha Long Bay is one of the most beautiful places I have seen.', '2023-11-07', TRUE),
@@ -453,9 +483,22 @@ VALUES
 INSERT INTO repComment (commentID, userID, repContent, createDateRep, status)
 VALUES
 (1, 2, 'I agree, Hanoi is amazing!', '2023-11-01', TRUE),
-(2, 3, 'Definitely, HCM has a unique vibe.', '2023-11-02', TRUE),
+(1, 2, 'For sure!', '2023-11-01', TRUE),
+(1, 3, 'Yes, I should go there!', '2023-11-01', TRUE),
+
+(2, 4, 'For sure!', '2023-11-01', TRUE),
+(2, 5, 'Pho is always beautiful!', '2023-11-01', TRUE),
+
+(3, 2, 'Đi Hội An thích thật!', '2023-11-02', TRUE),
+(3, 10, 'Sẽ cố gắng có dịp ra thăm!', '2023-11-02', TRUE),
+
+(4, 15, 'Tôi đã đi Đà Năng và nới đó rất đẹp', '2023-11-03', TRUE),
+(5, 13, 'Sài Gòn dạo này xinh thật ', '2023-11-03', TRUE),
+
+
+(2, 3, 'Definitely, Hoi An has a unique vibe.', '2023-11-02', TRUE),
 (3, 4, 'Absolutely, Da Nang is a must-see.', '2023-11-03', TRUE),
-(4, 5, 'Yes, Hai Phong is a beautiful place.', '2023-11-04', TRUE),
+(4, 5, 'Yes, đợt này thành phố xinh quá', '2023-11-04', TRUE),
 (5, 6, 'Hue is great for history lovers.', '2023-11-05', TRUE),
 (6, 7, 'Yes, Can Tho is quite a sight!', '2023-11-06', TRUE),
 (7, 8, 'Indeed, Ha Long Bay is magical.', '2023-11-07', TRUE),

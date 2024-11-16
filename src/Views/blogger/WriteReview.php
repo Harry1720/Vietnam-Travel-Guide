@@ -20,9 +20,16 @@
         $controller = new bothController();
         $provinces = $controller->getAllProvinces();
         
-        // $auth = new AuthController();
-        // $auth->checkAuth();
-    ?>
+        
+        // Kiểm tra xem người dùng đã đăng nhập chưa  -> nếu chưa thì vào login
+        if (!isset($_SESSION['blogger_id'])) {
+        // Nếu chưa đăng nhập, chuyển hướng tới login.php
+            header("Location: ../login.html");
+            exit();
+        }
+?>
+
+
     <section class="main-section">            
             <div class="flex-container">
                 <form action="../../FunctionOfActor/blogger/addBlog.php" method="POST" name = "" enctype="multipart/form-data">

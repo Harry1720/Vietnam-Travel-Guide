@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="../../../public/css/sidebar.css">
     <link rel="stylesheet" href="../../../public/css/navbar.css">
 
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
@@ -21,13 +22,11 @@
 
     <?php
         include_once "../../Controllers/adminController.php";
-        session_start();
-        if (!isset($_SESSION['blogger_id']) || $_SESSION['role'] !== 'Admin') {
-            header("Location: ../login.html");
-            exit();
-        }    
+        include_once "../../Controllers/authController.php";
+        
+        $auth = new AuthController();
+        $auth->checkAdmin();
             
-
         $adController = new AdminController();
 
         $view = isset($_GET['view']) ? $_GET['view'] : '5';

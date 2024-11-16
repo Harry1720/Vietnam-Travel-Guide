@@ -20,12 +20,10 @@
 
     <?php
         include_once "../../Controllers/bothController.php";
+        include_once "../../Controllers/authController.php";
         
-        session_start();
-        if (!isset($_SESSION['blogger_id']) || $_SESSION['role'] !== 'Admin') {
-            header("Location: ../login.html");
-            exit();
-        }    
+        $auth = new AuthController();
+        $auth->checkAdmin();   
             
 
         $bothcontroller = new bothController();

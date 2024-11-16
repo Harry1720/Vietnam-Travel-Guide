@@ -26,16 +26,12 @@
         //nhưng blogger chỉ được chạy home.php
         // include_once "../../FunctionOfActor/blogger/checkAuth.php";
 
-        session_start();
-        if (!isset($_SESSION['blogger_id']) || $_SESSION['role'] !== 'Admin') {
-            header("Location: ../login.html");
-            exit();
-        }    
-                       
-        
         include_once "../../Controllers/adminController.php";
-        include_once "../../Controllers/authController.php";
         include_once "../../Controllers/bothController.php";
+        include_once "../../Controllers/authController.php";
+        
+        $auth = new AuthController();
+        $auth->checkAdmin();
         
         // $auth = new AuthController();
         // $auth->checkAuth();
@@ -65,17 +61,17 @@
                 <form action = "../../FunctionOfActor/admin/updateAdmin.php" name = "update_admin" method="POST">
                     <div class = "form_user">
                         <label for="name"><i class="fa fa-user"></i> Họ và Tên</label>
-                        <input type="text" id="name" name="name" value="<?php echo $name?>" disabled>
+                        <input type="text" id="name" name="name" value="<?php echo $name?>" disabled require>
                     </div>
 
                     <div>
                         <label for="email1"><i class="fa fa-envelope"></i> Email</label>
-                        <input type="email" id="email1" name="email1" value="<?php echo $email?>" disabled>
+                        <input type="email" id="email1" name="email1" value="<?php echo $email?>" disabled require>
                     </div>
 
                     <div>
                         <label for="address"><i class="fa fa-address-book"></i> Địa chỉ</label>
-                        <select id="address" name="address" disabled>
+                        <select id="address" name="address" disabled require>
                             <?php
                                 foreach ($provinces as $province) {
                                     $selected = ($province['provinceID'] == $user['address_']) ? 'selected' : '';
@@ -87,12 +83,12 @@
 
                     <div>
                         <label for="role"><i class="fa fa-building"></i> Chức vụ</label>
-                        <input type="text" id="role" name="role" value="<?php echo $role?>" disabled>
+                        <input type="text" id="role" name="role" value="<?php echo $role?>" disabled require>
                     </div>
 
                     <div>
                         <label> <ion-icon name="transgender-outline"></ion-icon> Giới tính</label>
-                        <select name="gender" id="genderSelect" disabled>
+                        <select name="gender" id="genderSelect" disabled require>
                             <option value="Male" <?php if($gender == 'Male') echo 'selected'; else echo "nooooo"?>>Male</option>
                             <option value="Female" <?php if($gender == 'FeMale') echo 'selected'?>>Female</option>
                         </select>

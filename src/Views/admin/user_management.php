@@ -24,13 +24,10 @@
         include_once "../../Controllers/adminController.php";
         include_once "../../Controllers/authController.php";
         include_once "../../Controllers/bothController.php";
-        session_start();
-        if (!isset($_SESSION['blogger_id']) || $_SESSION['role'] !== 'Admin') {
-            header("Location: ../login.html");
-            exit();
-        }    
-            
+        
         $auth = new AuthController();
+        $auth->checkAdmin();  
+            
         $adController = new AdminController();
         $bothcontroller = new bothController();
 

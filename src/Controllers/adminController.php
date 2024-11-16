@@ -76,13 +76,15 @@ class AdminController{
                     $this->addPostDetail($postId, $sectionTitle, $sectionContent, $imageDetailUrl);
                 }
 
-                header("Location: ../../Views/admin/post_management.php");
+                echo "<script>alert('Thêm Thành Công Post Nhưng Lỗi Thêm PostDetail!');</script>";
+                echo "<script>window.location.href = '../../Views/admin/post_management.php';</script>";
             } else {
-                echo "Lỗi khi lưu bài viết!\n";
+                echo "<script>alert('Thêm Post Thất Bại!');</script>";
+                echo "<script>window.location.href = '../../Views/admin/post_management.php';</script>";
             }
         } else {
-            echo "Lỗi khi upload ảnh bài viết!\n";
-            header("Location: ../../Views/admin/post_management.php");
+            echo "<script>alert('Ảnh Không Hợp Lệ!');</script>";
+            echo "<script>window.location.href = '../../Views/admin/post_management.php';</script>";
         }
     }
 
@@ -96,12 +98,8 @@ class AdminController{
         $post = $get_query->fetch_assoc();
 
         if ($post) {
-            echo "Lấy bài viết thành công!\n";
-        } else {
-            echo "Lỗi khi lấy bài viết!\n";
+            return $post;
         }
-
-        return $post;
     }
 
     public function getPostOfPage($Start, $limit) {
@@ -113,12 +111,8 @@ class AdminController{
         $get_query = mysqli_query($this->conn->connect(), $sql);
 
         if ($get_query) {
-            echo "Lấy danh sách bài viết thành công!\n";
-        } else {
-            echo "Lỗi khi lấy danh sách bài viết!\n";
+            return $get_query;
         }
-
-        return $get_query;
     }
 
     public function getAllPostDetailByPostID($postID) {
@@ -128,12 +122,8 @@ class AdminController{
         $get_query = mysqli_query($this->conn->connect(), $sql);
 
         if ($get_query) {
-            echo "Lấy chi tiết bài viết thành công!\n";
-        } else {
-            echo "Lỗi khi lấy chi tiết bài viết!\n";
-        }
-
-        return $get_query;
+            return $get_query;
+        } 
     }
     
     public function getPostDetailByID($postDetailID) {
@@ -144,13 +134,10 @@ class AdminController{
         $postDetail = $get_query->fetch_assoc();
 
         if ($postDetail) {
-            echo "Lấy chi tiết bài viết thành công!\n";
-        } else {
-            echo "Lỗi khi lấy chi tiết bài viết!\n";
+            return $postDetail;
         }
-
-        return $postDetail;
     }
+        
 
     //ALL UPDATE
     public function updatePost() {
@@ -169,12 +156,15 @@ class AdminController{
         $sql = "UPDATE post 
                 SET provinceID = '$provinceID', imgPostURL = '$imgPostURL' 
                 WHERE postID = $postID";
-        $get_query = mysqli_query($this->conn->connect(), $sql);
+        $update_query = mysqli_query($this->conn->connect(), $sql);
 
-        if ($get_query) {
-            echo "Cập nhật bài viết thành công!\n";
-        } else {
-            echo "Lỗi khi cập nhật bài viết!\n";
+        if($update_query){
+            echo "<script>alert('Cập Nhật Thành Công!');</script>";
+            echo "<script>window.location.href = '../../Views/admin/post_management.php';</script>";
+        }
+        else{
+            echo "<script>alert('Cập Nhật Thất Bại!');</script>";
+            echo "<script>window.location.href = '../../Views/admin/post_management.php';</script>";
         }
     }
 
@@ -196,12 +186,15 @@ class AdminController{
         $sql = "UPDATE postdetail 
                 SET sectionTitle = '$sectionTitle', sectionContent = '$sectionContent', imgPostDetURL = '$imgPostDetURL' 
                 WHERE postDetailID = $postDetailID";
-        $get_query = mysqli_query($this->conn->connect(), $sql);
+        $update_query = mysqli_query($this->conn->connect(), $sql);
 
-        if ($get_query) {
-            echo "Cập nhật chi tiết bài viết thành công!\n";
-        } else {
-            echo "Lỗi khi cập nhật chi tiết bài viết!\n";
+        if($update_query){
+            echo "<script>alert('Cập Nhật Thành Công!');</script>";
+            echo "<script>window.location.href = '../../Views/admin/post_management.php';</script>";
+        }
+        else{
+            echo "<script>alert('Cập Nhật Thất Bại!');</script>";
+            echo "<script>window.location.href = '../../Views/admin/post_management.php';</script>";
         }
     }
 
@@ -243,10 +236,11 @@ class AdminController{
         $insert_query = mysqli_query($this->conn->connect(),$sql);
         
         if ($insert_query) {
-            echo "Người dùng đã được thêm thành công!";
-            header("location: ../../Views/admin/user_management.php");
+            echo "<script>alert('Thêm Người Dùng Thành Công!');</script>";
+            echo "<script>window.location.href = '../../Views/admin/user_management.php';</script>";
         } else {
-            echo "Có lỗi xảy ra khi thêm người dùng!";
+            echo "<script>alert('Thêm Người Dùng Thất Bại!');</script>";
+            echo "<script>window.location.href = '../../Views/admin/user_management.php';</script>";
         }
     }
 
@@ -265,10 +259,13 @@ class AdminController{
         $sql = "UPDATE users SET userName = '$userName', address_ = '$address', gender = '$gender' WHERE userID = '$userID'";
         $update_query = mysqli_query($this->conn->connect(), $sql);
     
-        if ($update_query) {
-            echo "Người dùng đã được cập nhật thành công!";
-        } else {
-            echo "Có lỗi xảy ra khi cập nhật người dùng!";
+        if($update_query){
+            echo "<script>alert('Cập Nhật Thành Công!');</script>";
+            echo "<script>window.location.href = '../../Views/admin/user_management.php';</script>";
+        }
+        else{
+            echo "<script>alert('Cập Nhật Thất Bại!');</script>";
+            echo "<script>window.location.href = '../../Views/admin/user_management.php';</script>";
         }
     }
 
@@ -277,9 +274,11 @@ class AdminController{
         $update_query = mysqli_query($this->conn->connect(), $sql);
     
         if ($update_query) {
-            echo "Người dùng đã được xóa thành công!";
+            echo "<script>alert('Update Người Dùng Thành Công!');</script>";
+            echo "<script>window.location.href = '../../Views/admin/user_management.php';</script>";
         } else {
-            echo "Có lỗi xảy ra khi xóa người dùng!";
+            echo "<script>alert('Update Người Dùng Thất Bại!');</script>";
+            echo "<script>window.location.href = '../../Views/admin/user_management.php';</script>";
         }
     }
     
@@ -312,29 +311,26 @@ class AdminController{
     }
 
     public function getAdminById(){
-        // Lấy ID của người dùng từ session
-        // if($_SESSION['blogger_id']){
-        //     $admin = $_SESSION['blogger_id'];
-        // }
-        // else{
-        //      $admin = 0;
-        // }
-
-        $admin = 2;
+        //Lấy ID của người dùng từ session
+        if($_SESSION['blogger_id']){
+            $admin = $_SESSION['blogger_id'];
+        }
+        else{
+             $admin = 0;
+        }
         // Truy vấn thông tin người dùng từ cơ sở dữ liệu
         $sql = "SELECT userID, userName, pass_word, address_,role_,email,gender FROM users WHERE userID = '$admin'";
         $user = mysqli_query($this->conn->connect(), $sql);
 
         if($user){
-            // if($user['role_'] == 'Admin'){
-            //     echo "Hợp Lệ";
-            //     return $user;
-            // }
-            // else{
-            //     echo "Bạn Không Có Quyền Truy Cập Trang Web Này";
-            //     return null;
-            // }
-            return $user->fetch_assoc();
+            if($user['role_'] == 'Admin'){
+                echo "Hợp Lệ";
+                return $user->fetch_assoc();
+            }
+            else{
+                echo "Bạn Không Có Quyền Truy Cập Trang Web Này";
+                return null;
+            }
         }
         else{
             echo "Ngươi Dùng Không Tồn Tại";
@@ -344,7 +340,12 @@ class AdminController{
 
     public function updateAdmin(){
         // $admin = $_SESSION['blogger_id'];
-        $admin = 2;
+        if($_SESSION['blogger_id']){
+            $admin = $_SESSION['blogger_id'];
+        }
+        else{
+             $admin = 0;
+        }
         $name = $_POST['name'];
         $email = $_POST['email1'];
         $address = $_POST['address'];
@@ -364,15 +365,16 @@ class AdminController{
             $update_query = mysqli_query($this->conn->connect(),$sql);
             
             if($update_query){
-                header("Location: ../../views/admin/admin.php");
-                exit();
+                echo "<script>alert('Cập Nhật Thành Công!');</script>";
+                echo "<script>window.location.href = '../../Views/admin/admin.php';</script>";
             }
             else {
-                // Cập nhật thất bại
-                echo "Cập nhật thông tin thất bại. Vui lòng thử lại.";
+                echo "<script>alert('Cập Nhật Thất Bại!');</script>";
+                echo "<script>window.location.href = '../../Views/admin/admin.php';</script>";
             }
         } else {
-            echo "Vui lòng điền đầy đủ thông tin.";
+            echo "<script>alert('Vui Lòng Điền Đủ Thông Tin!');</script>";
+            echo "<script>window.location.href = '../../Views/admin/admin.php';</script>";
         }
     }
 
@@ -418,7 +420,15 @@ class AdminController{
                 WHERE destinationID = $destinationID";
     
         $update_query = mysqli_query($this->conn->connect(),$sql);
-        echo "Cập nhật điểm đến thành công!";
+        
+        if($update_query){
+            echo "<script>alert('Cập Nhật Thành Công!');</script>";
+            echo "<script>window.location.href = '../../Views/admin/province_management.php';</script>";
+        }
+        else{
+            echo "<script>alert('Cập Nhật Thất Bại!');</script>";
+            echo "<script>window.location.href = '../../Views/admin/province_management.php';</script>";
+        }
     }
 
     public function addDestination() {
@@ -440,7 +450,15 @@ class AdminController{
                 VALUES ('$provinceID', '$destinationName','$description','$result')";
     
         $update_query = mysqli_query($this->conn->connect(),$sql);
-        echo "Thêm địa danh thành công!";
+
+        if($update_query){
+            echo "<script>alert('Thêm Thành Công Địa Danh!');</script>";
+            echo "<script>window.location.href = '../../Views/admin/province_management.php';</script>";
+        }
+        else{
+            echo "<script>alert('Thêm Địa Danh Không Thành Công!');</script>";
+            echo "<script>window.location.href = '../../Views/admin/province_management.php';</script>";
+        }
     }
 
     public function getDestination($destinationID){
@@ -483,7 +501,14 @@ class AdminController{
                 WHERE blogID = $blogID";
         $update_query = mysqli_query($this->conn->connect(),$sql);
 
-        echo "Update Thành Công";
+        if($update_query){
+            echo "<script>alert('Cập Nhật Thành Công!');</script>";
+            echo "<script>window.location.href = '../../Views/admin/blog_management.php';</script>";
+        }
+        else{
+            echo "<script>alert('Cập Nhật Thất Bại!');</script>";
+            echo "<script>window.location.href = '../../Views/admin/blog_management.php';</script>";
+        }
     }
 
     public function deleteDestination($destinationID) {
@@ -492,9 +517,11 @@ class AdminController{
         $delete_query = mysqli_query($this->conn->connect(),$sql);
         
         if ($this->conn->getAffectedRows() > 0) {
-            echo "Xóa điểm đến thành công!";
+            echo "<script>alert('Xóa Điểm Đến Thành Công!');</script>";
+            echo "<script>window.location.href = '../../Views/admin/province_management.php';</script>";
         } else {
-            echo "Xóa điểm đến thất bại!";
+            echo "<script>alert('Xóa Điểm Đến Thất Bại!');</script>";
+            echo "<script>window.location.href = '../../Views/admin/province_management.php';</script>";
         }
     }
 
@@ -503,12 +530,6 @@ class AdminController{
         $sql = "SELECT COUNT(*) AS TotalPost FROM post WHERE status = TRUE";
         $CountUser = mysqli_query($this->conn->connect(), $sql);
         $result = $CountUser->fetch_assoc();
-
-        if ($result) {
-            echo "Tổng số bài viết: " . $result['TotalPost'] . "\n";
-        } else {
-            echo "Không thể lấy tổng số bài viết!\n";
-        }
 
         return $result;
     }
@@ -624,20 +645,24 @@ class AdminController{
         $delete_query = mysqli_query($this->conn->connect(), $sql);
 
         if ($delete_query && mysqli_affected_rows($this->conn->connect()) > 0) {
-            echo "Bài viết đã được xóa thành công!\n";
+            echo "<script>alert('Xóa Post Thành Công!');</script>";
+            echo "<script>window.location.href = '../../Views/admin/province_management.php';</script>";
         } else {
-            echo "Lỗi khi xóa bài viết hoặc bài viết không tồn tại!\n";
+            echo "<script>alert('Xóa Post Thất Bại!');</script>";
+            echo "<script>window.location.href = '../../Views/admin/province_management.php';</script>";
         }
     }
 
-    public function deletePostDetailByPostID($postID) {
-        $sql = "DELETE FROM postdetail WHERE postID = $postID";
+    public function deletePostDetail($postDetailID) {
+        $sql = "DELETE FROM postdetail WHERE postDetailID = $postDetailID";
         $delete_query = mysqli_query($this->conn->connect(), $sql);
 
         if ($delete_query && $this->conn->getAffectedRows() > 0) {
-            echo "Các chi tiết bài viết đã được xóa thành công!\n";
+            echo "<script>alert('Xóa PostDetail Thành Công!');</script>";
+            echo "<script>window.location.href = '../../Views/admin/province_management.php';</script>";
         } else {
-            echo "Không có chi tiết bài viết nào cần xóa!\n";
+            echo "<script>alert('Xóa PostDetail Thất Bại!');</script>";
+            echo "<script>window.location.href = '../../Views/admin/province_management.php';</script>";
         }
     }
 }

@@ -2,8 +2,8 @@
     include_once "../../Controllers/adminController.php";
     include_once "../../Controllers/authController.php";
 
-    // $auth = new AuthController();
-    // $auth->checkAdmin();
+    $auth = new AuthController();
+    $auth->checkAdmin();
 
     try {
         $controller = new AdminController();

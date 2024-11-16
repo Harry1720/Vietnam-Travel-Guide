@@ -19,8 +19,8 @@ class AuthController{
     {
         // Kiểm tra người dùng đã đăng nhập hay chưa
         if (!isset($_SESSION['blogger_id'])) {
-            header("location: login.php");
-            exit;
+            echo "<script>alert('Bạn Chưa Đăng Nhập!');</script>";
+            echo "<script>window.location.href =  '../../Views/blogger/home.php';</script>";
         }
     }
 
@@ -29,15 +29,14 @@ class AuthController{
     {
         // Kiểm tra người dùng đã đăng nhập hay chưa
         if (!isset($_SESSION['blogger_id'])) {
-            header("location: login.php");
-            exit;
+            echo "<script>alert('Bạn Chưa Đăng Nhập!');</script>";
+            echo "<script>window.location.href =  '../../Views/blogger/home.php';</script>";
         }
     
         // Kiểm tra vai trò của người dùng có phải là "admin" hay không
-        if ($_SESSION['role'] !== 'admin') {
-            echo "Bạn không có quyền truy cập vào trang này!";
-            header("location: forbidden.php");
-            exit;
+        if ($_SESSION['role'] !== 'Admin') {
+            echo "<script>alert('Bạn Không Có Quyền Vào Trang Quản Lý!');</script>";
+            echo "<script>window.location.href =  '../../Views/blogger/home.php';</script>";
         }
     }
 
@@ -46,14 +45,15 @@ class AuthController{
     {
         // Kiểm tra người dùng đã đăng nhập hay chưa
         if (!isset($_SESSION['blogger_id'])) {
-            header("location: login.php");
+            echo "<script>alert('Bạn Chưa Đăng Nhập!');</script>";
+            echo "<script>window.location.href =  '../../Views/blogger/home.php';</script>";
             exit;
         }
 
         // Kiểm tra vai trò của người dùng có phải là "blogger" hay không
         if ($_SESSION['role'] !== 'blogger') {
-            echo "Bạn không có quyền truy cập vào trang này!";
-            header("location: forbidden.php"); // hoặc trang báo lỗi
+            echo "<script>alert('Bạn Không Có Quyền Vào Trang Này Vui Lòng Đăng Nhập!');</script>";
+            echo "<script>window.location.href =  '../../Views/blogger/home.php';</script>";
             exit;
         }
     }
@@ -162,7 +162,7 @@ class AuthController{
 
 
         if($insert_query){
-            header("location: /Vietnam-Travel-Guide/src/Views/blogger/home.php");
+            header("location: ../../Views/login.html");
         }
     }
 
@@ -203,7 +203,7 @@ class AuthController{
                 $_SESSION['blogger_id'] = $user['userID'];
                 $_SESSION['role'] = $user['role_'];
                 $_SESSION['loggedIn'] = TRUE;
-                header("location: /Vietnam-Travel-Guide/src/Views/admin/admin.php");
+                header("location: ../../Views/admin/admin.php");
                 exit;
             }
         }
@@ -218,7 +218,7 @@ class AuthController{
             
             //cái này là gán cho session -> để biết nên dùng cho header nào - nếu login hay sign up thì session này dùng để xác định    
             $_SESSION['loggedIn'] = TRUE;
-            header( "location: /Vietnam-Travel-Guide/src/Views/blogger/home.php");
+            header( "location: ../../Views/blogger/home.php");
             exit;
         } 
       

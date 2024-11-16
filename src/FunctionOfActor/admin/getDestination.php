@@ -1,6 +1,10 @@
 <?php
 
     include_once "../../Controllers/adminController.php";
+    include_once "../../Controllers/authController.php";
+    
+    $auth = new AuthController();
+    $auth->checkAdmin();
 
     try {
         // Instantiate the controller

@@ -24,12 +24,10 @@
     <?php
         include_once "../../Controllers/adminController.php";
         include_once "../../Controllers/bothController.php";
+        include_once "../../Controllers/authController.php";
         
-        session_start();
-        if (!isset($_SESSION['blogger_id']) || $_SESSION['role'] !== 'Admin') {
-            header("Location: ../login.html");
-            exit();
-        }    
+        $auth = new AuthController();
+        $auth->checkAdmin();
             
 
         $adcontroller = new AdminController();
@@ -152,7 +150,7 @@
     
                 <div class="field">
                     <label style="float: left; margin-top: 10px;" for="province">Tỉnh/Thành phố</label>
-                    <select name="province" id="province">
+                    <select name="province" id="province" require>
                             <?php foreach ($provinces as $province) { ?>
                                 <option value="<?php echo $province['provinceID']; ?>"><?php echo $province['provinceName']; ?></option>
                             <?php }?>
@@ -205,7 +203,7 @@
                         <input type="hidden" id="postID" name="postID">
                         <input type="hidden" id="imageposted" name="imageposted">
                         <label style="float: left; margin-top: 10px;" for="province">Tỉnh/Thành phố</label>
-                        <select name="province" id="province-edit">
+                        <select name="province" id="province-edit" require>
                             <?php foreach ($provinces as $province) { ?>
                                 <option value="<?php echo $province['provinceID']; ?>"><?php echo $province['provinceName']; ?></option>
                             <?php }?>

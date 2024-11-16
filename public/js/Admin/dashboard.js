@@ -123,6 +123,7 @@ document.addEventListener('DOMContentLoaded', function() {
         fetch(`../../../src/FunctionOfActor/admin/dataInYear.php?year=${selectedYear}`)
             .then(response => response.json())
             .then(data => {
+                console.log(data);
                 if (data.error) {
                     console.error(data.error);
                     return;

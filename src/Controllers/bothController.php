@@ -217,7 +217,7 @@ class bothController{
     }
     
     
-    // hàm để Lấy các comment lên View.blog.php. 
+    // hàm để Lấy các comment lên View.blog.php  
     function getCommentsAndReplies($blogID) {
 
         //lấy các comment của blog đó - context: lấy blogId = 1
@@ -275,7 +275,5 @@ class bothController{
         return $destination;
     }
 
-}
 
-
-?>
+}?>

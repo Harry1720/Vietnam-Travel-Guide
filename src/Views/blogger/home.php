@@ -13,8 +13,12 @@
 </head>
 <body>
     <!-- <iframe class="header" src="../../../include/header2.html"></iframe> -->
-<script src = "../../../include/header.js"></script>
-<script src = "../../../include/footer.js"></script>
+    <script src = "../../../include/header.js"></script>
+    <script src = "../../../include/footer.js"></script>
+    
+    <!-- JS của nút click hình trong section-common -->
+    <script src="../../../public/js/destination.js"></script>
+
     <?php
         include_once "../../Controllers/bothController.php";
         $controller = new bothController();
@@ -26,6 +30,8 @@
         // Get posts for the current page - status = 1, có nghĩa là post đó vẫn còn trong DB
         $posts = $controller->getPostsByPage($limitPost, $firstPost);
         
+    
+        $destinations = $controller->getDestinationPage();
 
         // Get dữ liệu cho các ô blog tại trang home
         $limitBlog = 4;
@@ -56,21 +62,14 @@
         <p>Những địa danh nổi tiếng của Việt Nam</p>
         <a href="destination.php" class="btn-page">Xem các địa danh</a>
         <div class="grid-common">
-            <div class="card-common">
-                <img src="../../../public/image/NinhBinh.jpeg" alt="province">
-                <p>Ninh Bình</p>
-                <h4>Tràng An</h4>
-            </div>
-            <div class="card-common">
-                <img src="../../../public/image/Hue.jpeg" alt="province">
-                <p>Huế</p>
-                <h4>Lăng Khải Định</h4>
-            </div>
-            <div class="card-common">
-                <img src="../../../public/image/QB.jpg" alt="province">
-                <p>Quảng Bình</p>
-                <h4>Hang Sơn Đoòng</h4>
-            </div>
+            <?php foreach ($destinations as $destination): ?>
+                <a href="destination.php" class="card-common">
+                    <img src="<?php echo htmlspecialchars($destination['imgDesURL']); ?>">
+                    <div class="card-common">
+                        <h4 style="color: #333"><?php echo htmlspecialchars($destination['destinationName']); ?></h4>
+                    </div>
+                </a>
+            <?php endforeach; ?>
         </div>
     </section>
 

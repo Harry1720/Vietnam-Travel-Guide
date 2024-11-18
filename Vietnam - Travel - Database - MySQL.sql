@@ -91,27 +91,8 @@ CREATE TABLE repComment (
 
 INSERT INTO users (userName, pass_word, address_, role_, email, gender, status)
 VALUES
-('Phạm Thanh Trúc', 'admin338', '1', 'Admin', 'admin@gmail.com', 'Male', TRUE),
-('Tran Thi B', 'password2', '2', 'Blogger', 'tranthib@example.com', 'Female', TRUE),
-('Le Van C', 'password3', '3', 'Blogger', 'levanc@example.com', 'Male', TRUE),
-('Pham Thi D', 'password4', '4', 'Blogger', 'phamthid@example.com', 'Female', TRUE),
-('Hoang Van E', 'password5', '5', 'Blogger', 'hoangvane@example.com', 'Male', TRUE),
-('Vu Thi F', 'password6', '6', 'Blogger', 'vuthif@example.com', 'Female', TRUE),
-('Nguyen Hoang G', 'password7', '7', 'Blogger', 'nguyenhoangg@example.com', 'Male', TRUE),
-('Pham Van H', 'password8', '8', 'Blogger', 'phamvanh@example.com', 'Male', TRUE),
-('Tran Thi I', 'password9', '9', 'Blogger', 'tranthii@example.com', 'Female', TRUE),
-('Nguyen Van J', 'password10', '10', 'Blogger', 'nguyenvanj@example.com', 'Male', TRUE),
-('Le Thi K', 'password11', '11', 'Blogger', 'lethik@example.com', 'Female', TRUE),
-('Pham Hoang L', 'password12', '12', 'Blogger', 'phamhoangl@example.com', 'Male', TRUE),
-('Nguyen Thi M', 'password13', '13', 'Blogger', 'nguyenthim@example.com', 'Female', TRUE),
-('Hoang Van N', 'password14', '14', 'Blogger', 'hoangvann@example.com', 'Male', TRUE),
-('Tran Thi O', 'password15', '15', 'Blogger', 'tranthio@example.com', 'Female', TRUE),
-('Nguyen Van P', 'password16', '16', 'Blogger', 'nguyenvanp@example.com', 'Male', TRUE),
-('Pham Thi Q', 'password17', '17', 'Blogger', 'phamthiq@example.com', 'Female', TRUE),
-('Vu Van R', 'password18', '18', 'Blogger', 'vuvanr@example.com', 'Male', TRUE),
-('Nguyen Thi S', 'password19', '19', 'Blogger', 'nguyenthis@example.com', 'Female', TRUE),
-('Hoang Van T', 'password20', '20', 'Blogger', 'hoangvant@example.com', 'Male', TRUE);
-
+('Trần Anh Quân', 'admin1', 'TP Hồ Chí Minh', 'Admin', 'admin@gmail.com', 'Male', TRUE),
+('Trần Ngọc Anh', 'password9', 'Hà Nội', 'admin', 'ngocanh@example.com', 'Female', TRUE);
 
 -- Dữ liệu cho bảng province
 INSERT INTO province (provinceName, provinceRegion, status)
@@ -126,6 +107,7 @@ VALUES
 ('Quảng Nam', 'Central', TRUE),
 ('Thừa Thiên Huế', 'Central', TRUE),
 ('Ninh Bình', 'North', TRUE),
+
 ('Thanh Hóa', 'Central', TRUE),
 ('Bắc Ninh', 'North', TRUE),
 ('Nghệ An', 'Central', TRUE),
@@ -136,6 +118,7 @@ VALUES
 ('Lâm Đồng', 'Central', TRUE),
 ('Hải Phòng', 'North', TRUE),	
 ('Hà Giang', 'North', TRUE),
+
 ('Cao Bằng', 'North', TRUE),
 ('Bà Rịa - Vũng Tàu', 'South', TRUE),
 ('Phú Yên', 'Central', TRUE),
@@ -146,6 +129,7 @@ VALUES
 ('Long An', 'South', TRUE),
 ('Tiền Giang', 'South', TRUE),
 ('Cà Mau', 'South', TRUE),
+
 ('Bắc Kạn', 'North', TRUE),
 ('Tuyên Quang', 'North', TRUE),
 ('Lào Cai', 'North', TRUE),
@@ -156,6 +140,7 @@ VALUES
 ('Hòa Bình', 'North', TRUE),
 ('Thái Nguyên', 'North', TRUE),
 ('Lạng Sơn', 'North', TRUE),
+
 ('Bắc Giang', 'North', TRUE),
 ('Phú Thọ', 'North', TRUE),
 ('Vĩnh Phúc', 'North', TRUE),
@@ -166,6 +151,7 @@ VALUES
 ('Nam Định', 'North', TRUE),
 ('Hà Tĩnh', 'Central', TRUE),
 ('Kon Tum', 'Central', TRUE),
+
 ('Đắk Nông', 'Central', TRUE),
 ('Bình Phước', 'South', TRUE),
 ('Tây Ninh', 'South', TRUE),
@@ -176,9 +162,25 @@ VALUES
 ('Đồng Tháp', 'South', TRUE),
 ('An Giang', 'South', TRUE),
 ('Kiên Giang', 'South', TRUE),
+
 ('Hậu Giang', 'South', TRUE),
 ('Sóc Trăng', 'South', TRUE),
 ('Bạc Liêu', 'South', TRUE);
+
+-- Dữ liệu cho bảng destination
+INSERT INTO destination (provinceID, destinationName, destinationContent, imgDesURL)
+VALUES
+(1, 'Hồ Hoàn Kiếm', 'Biểu tượng Thủ đô Việt Nam', 'https://res.cloudinary.com/dt5xizv10/image/upload/destination/hoankiem'),
+(1, 'Lăng Chủ tịch Hồ Chí Minh', 'Di tích Quốc gia', 'https://res.cloudinary.com/dt5xizv10/image/upload/destination/hn'),
+(2, 'TP Hồ Chí Minh', 'Thành phố đáng sống', 'https://res.cloudinary.com/dt5xizv10/image/upload/destination/hcm'),
+(3, 'Biển Mỹ Khê', 'Bãi biển nối tiếng thế giới', 'https://res.cloudinary.com/dt5xizv10/image/upload/destination/mykhe'),
+(15, 'Đảo Lý Sơn', 'Thiên đường biển đảo tại Quảng Ngãi','https://res.cloudinary.com/dt5xizv10/image/upload/destination/lyson'),
+(17, 'Thác Đray Nur', 'Thác nước nổi tiếng tại Đắk Lắk', 'https://res.cloudinary.com/dt5xizv10/image/upload/destination/draynu'),
+(21, 'Thác Bản Giốc', 'Thác nước đẹp như tranh vẽ ở biên giới Việt - Trung.', 'https://res.cloudinary.com/dt5xizv10/image/upload/destination/bgioc'),
+(26, 'Biển Hồ', 'Hồ nước đẹp tại Gia Lai', 'https://res.cloudinary.com/dt5xizv10/image/upload/destination/pleiku'),
+(33, 'Đỉnh Fansipan', 'Nóc nhà Đông Dương', 'https://res.cloudinary.com/dt5xizv10/image/upload/destination/fansi'),
+(60, 'Đảo Phú Quốc', 'Khu nghỉ dưỡng nổi tiếng tại Kiên Giang', 'https://res.cloudinary.com/dt5xizv10/image/upload/destination/pquoc');
+
 
 -- Dữ liệu cho bảng post
 INSERT INTO post (provinceID, postCreateDate, imgPostURL, status)
@@ -238,8 +240,6 @@ VALUES
 (5,'Điểm tham quan và vui chơi','Vườn quốc gia Phong Nha - Kẻ Bàng Vườn Quốc gia Phong Nha - Kẻ Bàng được UNESCO công nhận là Di sản thiên nhiên thế giới. Nơi đây có hơn 400 hang động có tổng chiều dài 220 km, ba sông chính là sông Chày, sông Son và sông Troóc. Vườn quốc gia thuộc huyện Bố Trạch và Minh Hóa, cách TP Đồng Hới khoảng 50 km. Hang Sơn Đoòng hiện là hang động tự nhiên lớn nhất thế giới, được hình thành khoảng 2-5 triệu năm trước, có chiều rộng 150 m, cao hơn 200 m, chiều dài gần 9 km. Ước tính dung tích của Hang Sơn Đoòng là 38,5 triệu m3. Các cột nhũ đá của hang cao 14 m. Trong hang còn có dòng sông ngầm dài 2,5 km. Hang có những quần thể san hô và di tích thú hóa thạch. Sơn Đoòng còn có hai "giếng trời", là hai nơi có ánh nắng chiếu, tạo điều kiện cho cây cối phát triển như một khu rừng nhiệt đới, một trong đó được gọi là "vườn Edam".','https://res.cloudinary.com/dt5xizv10/image/upload/postDetail/sondoong'),
 (5,'Ẩm thực','Bún chả cá thác lác có nước dùng nấu từ xương cá hoặc xương lợn, ăn kèm hành tím ngâm, ớt xắt lát. Rau sống ăn kèm là xà lách và hoa chuối. Mỗi tô được bán với giá khoảng 30.000 đồng, thích hợp ăn sáng.','https://res.cloudinary.com/dt5xizv10/image/upload/postDetail/bunqb'),
 
-
-
 (6, 'Quảng Ninh','Là một tỉnh ở địa đầu phía đông bắc Việt Nam, Quảng Ninh được ví như một Việt Nam thu nhỏ. Phía tây tựa lưng vào núi, phía đông nghiêng xuống nửa phần đầu vịnh Bắc Bộ với bờ biển dài khoảng 250 km, nhiều cửa sông. Quảng Ninh có biên giới trên đất liền và hải phận giáp với Trung Quốc. Trên đất liền, phía bắc của tỉnh giáp với Quảng Tây, Trung Quốc; phía đông là vịnh Bắc Bộ; phía tây giáp các tỉnh Lạng Sơn, Bắc Giang, Hải Dương; phía nam giáp Hải Phòng. Quảng Ninh là tỉnh có nhiều thành phố nhất cả nước, với bốn thành phố: Hạ Long, Uông Bí, Cẩm Phả và Móng Cái. Bên cạnh đó là hai thị xã Đông Triều và Quảng Yên, hai huyện đảo là Vân Đồn và Cô Tô.',''), 
 (6,'Di chuyển','Giao thông đến Quảng Ninh dễ dàng và thuận tiện dù bạn đi máy bay, ôtô, xe máy, xe khách... Quảng Ninh có sân bay quốc tế Vân Đồn, kết nối một số tỉnh thành trong nước như TP HCM, Đà Nẵng, Phú Quốc... và có các đường bay tới Trung Quốc, Nhật Bản, Hàn Quốc...',''),	
 (6,'Nghỉ dưỡng, lưu trú','Khách sạn, khu nghỉ dưỡng ở Hạ Long rất đa dạng về cả phân khúc lẫn giá cả. Bạn có thể thoải mái lựa chọn tùy theo nhu cầu, tài chính và lịch trình. Một trải nghiệm nên thử là ngủ đêm trên vịnh Hạ Long hoặc Bái Tử Long, với những hãng du thuyền được đánh giá cao như Paradise, Indochine, Scarlet Pearl, Stellar of the Seas, Dragon Legend, Bhaya, Emeraude... Giá từ khoảng 2.000.000 đồng một người cho tour 2 ngày 1 đêm.',''),	
@@ -269,84 +269,6 @@ VALUES
 (10,'Lưu trú','Du khách đến Ninh Bình theo cặp đôi, theo nhóm bạn hoặc một mình có thể chọn ở tại các homestay gần các điểm tham quan với không gian xanh mát, bình yên, dịch vụ thân thiện. Một số địa chỉ được yêu thích và có vị trí thuận tiện là: Ninh Binh Friendly Homestay, Hang Múa Ecolodge, Dieps House, Ninh Binh Palm Homestay, ChezBeo Homestay... Với chi phí dao động khoảng 200.000 đồng/ người/ đêm.',''),
 (10,'Điểm tham quan','Tràng An Nơi đây thu hút du khách với phong cảnh núi non hùng vĩ cùng những dòng sông nhỏ quanh co, các thung lũng hoang sơ... Giá vé tham quan Tràng An là 250.000 đồng với người lớn, trẻ em dưới 1,4 m là 100.000 đồng. Hướng dẫn viên đi cùng sẽ mất phí 300.000 đồng một tour.',''),
 (10,'Tâm linh','Chùa Bái Đính - Quần thể chùa Bái Đính được xây dựng từ năm 2003, có diện tích hơn 500 ha, được bao bọc bởi những vòng cung núi đá vôi kỳ vĩ. Chùa được chia thành 2 khu: Tân tự và Cổ tự. Tại đây, du khách có thể đi bộ tham quan hoặc di chuyển bằng xe điện (giá 30.000 đồng/ người/ lượt). Một số điện mà du khách thường ghé thăm khi tới là chùa Pháp Chủ (gồm có 5 gian, gian giữa đặt tượng Phật Thích Ca cao 10m, nặng 100 tấn), điện Tam Thế... hoặc có thể lên tháp chuông để chiêm ngưỡng Đại hồng chung nặng 36 tấn.','');
-
-
-
--- Dữ liệu cho bảng destination
-INSERT INTO destination (provinceID, destinationName, destinationContent, imgDesURL)
-VALUES
-(1, 'Hồ Hoàn Kiếm', 'Biểu tượng Thủ đô Việt Nam', 'https://cloudinary.com/'),
-(1, 'Lăng Chủ tịch Hồ Chí Minh', 'Di tích Quốc gia, nơi Bác Hồ nghỉ ngơi', 'https://cloudinary.com/'),
-(2, 'Đồng Văn', 'Thị trấn đá cổ đẹp nhất Việt Nam', 'https://cloudinary.com/'),
-(2, 'Mèo Vạc', 'Cổng trời Hà Giang', 'https://cloudinary.com/'),
-(2, 'Cột cờ Lũng Cú', 'Biểu tượng thiêng liêng của Hà Giang, cột cờ Lũng Cú đánh dấu địa đầu tổ quốc.', 'https://cloudinary.com/ha-giang-lung-cu'),
-(3, 'Thác Bản Giốc', 'Thác nước đẹp như tranh vẽ ở biên giới Việt - Trung.', 'https://cloudinary.com/cao-bang-ban-gioc'),
-(4, 'Hồ Ba Bể', 'Hồ nước ngọt lớn nhất miền Bắc', 'https://cloudinary.com/image4'),
-(5, 'Núi Pắc Tạ', 'Điểm cao nhất tại Tuyên Quang', 'https://cloudinary.com/image5'),
-(6, 'Đỉnh Fansipan', 'Nóc nhà Đông Dương', 'https://cloudinary.com/image6'),
-(7, 'Mường Phăng', 'Căn cứ địa lịch sử Điện Biên', 'https://cloudinary.com/image7'),
-(8, 'Đèo Ô Quy Hồ', 'Một trong tứ đại đỉnh đèo Tây Bắc', 'https://cloudinary.com/image8'),
-(9, 'Rừng thông Bản Áng', 'Rừng thông đẹp tại Sơn La', 'https://cloudinary.com/image9'),
-(10, 'Ruộng bậc thang Mù Cang Chải', 'Ruộng bậc thang nổi tiếng của Yên Bái', 'https://cloudinary.com/image10'),
-
-(11, 'Thung Nai', 'Điểm đến nổi tiếng tại Hòa Bình', 'https://cloudinary.com/image11'),
-(12, 'Hồ Núi Cốc', 'Hồ nhân tạo và khu du lịch nổi tiếng Thái Nguyên', 'https://cloudinary.com/image12'),
-(13, 'Động Tam Thanh', 'Hang động đẹp tại Lạng Sơn', 'https://cloudinary.com/image13'),
-(14, 'Vịnh Hạ Long', 'Di sản thiên nhiên thế giới tại Quảng Ninh', 'https://cloudinary.com/image14'),
-(15, 'Tây Yên Tử', 'Di tích văn hóa lịch sử tại Bắc Giang', 'https://cloudinary.com/image15'),
-(16, 'Đền Hùng', 'Nơi thờ các vua Hùng ở Phú Thọ', 'https://cloudinary.com/image16'),
-(17, 'Tam Đảo', 'Khu nghỉ dưỡng nổi tiếng tại Vĩnh Phúc', 'https://cloudinary.com/image17'),
-(18, 'Chùa Dâu', 'Ngôi chùa cổ nhất tại Bắc Ninh', 'https://cloudinary.com/image18'),
-(19, 'Đảo Cò Chi Lăng Nam', 'Điểm du lịch sinh thái tại Hải Dương', 'https://cloudinary.com/image19'),
-(20, 'Đồ Sơn', 'Bãi biển nổi tiếng ở Hải Phòng', 'https://cloudinary.com/image20'),
-(21, 'Phố Hiến', 'Khu phố cổ nổi tiếng ở Hưng Yên', 'https://cloudinary.com/image21'),
-(22, 'Chùa Keo', 'Ngôi chùa cổ nổi tiếng tại Thái Bình', 'https://cloudinary.com/image22'),
-(23, 'Chùa Bà Đanh', 'Chùa nổi tiếng tại Hà Nam', 'https://cloudinary.com/image23'),
-(24, 'Phủ Dầy', 'Di tích văn hóa tâm linh tại Nam Định', 'https://cloudinary.com/image24'),
-(25, 'Tràng An', 'Danh thắng và di sản thế giới tại Ninh Bình', 'https://cloudinary.com/image25'),
-(26, 'Biển Sầm Sơn', 'Bãi biển nổi tiếng tại Thanh Hóa', 'https://cloudinary.com/image26'),
-(27, 'Làng Sen', 'Quê hương Chủ tịch Hồ Chí Minh tại Nghệ An', 'https://cloudinary.com/image27'),
-(28, 'Biển Thiên Cầm', 'Bãi biển đẹp tại Hà Tĩnh', 'https://cloudinary.com/image28'),
-
-(29, 'Hang Sơn Đoòng', 'Hang động lớn nhất thế giới tại Quảng Bình', 'https://cloudinary.com/image29'),
-(30, 'Thành cổ Quảng Trị', 'Di tích lịch sử thời chiến tại Quảng Trị', 'https://cloudinary.com/image30'),
-(31, 'Đại Nội Huế', 'Di sản văn hóa thế giới tại Thừa Thiên Huế', 'https://cloudinary.com/image31'),
-(32, 'Bà Nà Hills', 'Khu du lịch nổi tiếng tại Đà Nẵng', 'https://cloudinary.com/image32'),
-(33, 'Phố cổ Hội An', 'Di sản văn hóa thế giới tại Quảng Nam', 'https://cloudinary.com/image33'),
-(34, 'Đảo Lý Sơn', 'Thiên đường biển đảo tại Quảng Ngãi', 'https://cloudinary.com/image34'),
-(35, 'Tháp Đôi', 'Di tích văn hóa Chăm tại Bình Định', 'https://cloudinary.com/image35'),
-(36, 'Gành Đá Đĩa', 'Danh thắng nổi tiếng tại Phú Yên', 'https://cloudinary.com/image36'),
-(37, 'Vinpearl Nha Trang', 'Khu du lịch nổi tiếng tại Khánh Hòa', 'https://cloudinary.com/image37'),
-(38, 'Vịnh Vĩnh Hy', 'Vịnh biển đẹp tại Ninh Thuận', 'https://cloudinary.com/image38'),
-(39, 'Mũi Né', 'Bãi biển và đồi cát nổi tiếng tại Bình Thuận', 'https://cloudinary.com/image39'),
-(40, 'Ngã ba Đông Dương', 'Giao điểm giữa Việt Nam, Lào và Campuchia tại Kon Tum', 'https://cloudinary.com/image40'),
-(41, 'Biển Hồ', 'Hồ nước đẹp tại Gia Lai', 'https://cloudinary.com/image41'),
-(42, 'Buôn Đôn', 'Làng văn hóa nổi tiếng của người Ê Đê tại Đắk Lắk', 'https://cloudinary.com/image42'),
-(43, 'Thác Đray Nur', 'Thác nước nổi tiếng tại Đắk Nông', 'https://cloudinary.com/image43'),
-(44, 'Thung lũng Tình Yêu', 'Danh thắng nổi tiếng tại Lâm Đồng', 'https://cloudinary.com/image44'),
-
-(45, 'Khu du lịch sinh thái Hồ Dầu Tiếng', 'Hồ lớn tại Bình Phước', 'https://cloudinary.com/image45'),
-(46, 'Núi Bà Đen', 'Nóc nhà Nam Bộ tại Tây Ninh', 'https://cloudinary.com/image46'),
-(47, 'Khu du lịch Đại Nam', 'Khu du lịch nổi tiếng tại Bình Dương', 'https://cloudinary.com/image47'),
-(48, 'Vườn Quốc gia Cát Tiên', 'Vườn quốc gia lớn tại Đồng Nai', 'https://cloudinary.com/image48'),
-(49, 'Bãi Sau Vũng Tàu', 'Bãi biển nổi tiếng tại Bà Rịa - Vũng Tàu', 'https://cloudinary.com/image49'),
-(50, 'Chợ Bến Thành', 'Biểu tượng thương mại tại Hồ Chí Minh', 'https://cloudinary.com/image50'),
-(51, 'Khu du lịch Cần Giuộc', 'Khu du lịch sinh thái tại Long An', 'https://cloudinary.com/image51'),
-(52, 'Chùa Vĩnh Tràng', 'Ngôi chùa nổi tiếng tại Tiền Giang', 'https://cloudinary.com/image52'),
-(53, 'Vườn dừa Bến Tre', 'Vườn dừa nổi tiếng tại Bến Tre', 'https://cloudinary.com/image53'),
-(54, 'Chùa Bà Chúa Xứ', 'Chùa nổi tiếng tại Trà Vinh', 'https://cloudinary.com/image54'),
-(55, 'Chợ Vĩnh Long', 'Chợ nổi tiếng tại Vĩnh Long', 'https://cloudinary.com/image55'),
-(56, 'Vườn Quốc gia Tràm Chim', 'Vườn quốc gia tại Đồng Tháp', 'https://cloudinary.com/image56'),
-(57, 'Chùa Nam Bộ', 'Chùa lớn tại An Giang', 'https://cloudinary.com/image57'),
-(58, 'Đảo Phú Quốc', 'Khu nghỉ dưỡng nổi tiếng tại Kiên Giang', 'https://cloudinary.com/image58'),
-(59, 'Bến Ninh Kiều', 'Điểm du lịch nổi tiếng tại Cần Thơ', 'https://cloudinary.com/image59'),
-(60, 'Cồn Sơn', 'Đảo du lịch nổi tiếng tại Hậu Giang', 'https://cloudinary.com/image60'),
-(61, 'Chùa Dơi', 'Chùa cổ tại Sóc Trăng', 'https://cloudinary.com/image61'),
-(62, 'Công viên Hồ Nam', 'Công viên lớn tại Bạc Liêu', 'https://cloudinary.com/image62'),
-(63, 'Rừng U Minh Hạ', 'Khu rừng nguyên sinh tại Cà Mau', 'https://cloudinary.com/image63');
-
-
-
 
 
 -- Dữ liệu cho bảng blog
@@ -428,7 +350,7 @@ _________
 (15, 15, 'Blog Title 35', 'Blog Content 35', '2024-11-05', TRUE, 'Chờ Duyệt'),
 (16, 16, 'Blog Title 36', 'Blog Content 36', '2024-12-09', TRUE, 'Không Được Duyệt');
 
--- Dữ liệu cho bảng imgBlog
+-- Dữ liệu cho bảng imgBlog - mặc định cho 4 blog
 INSERT INTO imgBlog (blogID, imgBlogURL)
 VALUES
 (1, 'https://res.cloudinary.com/dt5xizv10/image/upload/blog/blog1a'),

@@ -194,10 +194,10 @@ class bloggerController{
         }
     }
 
-    public function getBloggerById(){
+    public function getBloggerById($blogger){
         
         //set default - hard code --> admin 4  
-        $blogger = 9;
+        //$blogger = 9;
         // Truy vấn thông tin người dùng từ cơ sở dữ liệu
         $sql = "SELECT * FROM users WHERE userID = '$blogger'";
         $user = mysqli_query($this->conn->connect(), $sql);
@@ -210,41 +210,34 @@ class bloggerController{
             return null;
         }
     }
-    public function updateBlogger(){
-        // $admin = $_SESSION['blogger_id'];
-        $blogger = 9;
+    public function updateBlogger($blogger){
         $name = $_POST['name'];
         $email = $_POST['email'];
         $address = $_POST['address'];
-        $gender = $_POST['gender'];
-
-        echo $blogger;
-        echo $name;
-        echo $email;
-        echo $address;
+        $gender =  $_POST['gender'] ;
 
         if (!empty($blogger) && !empty($name) && !empty($email)) {
 
             $sql = "UPDATE users
-                    SET userName = '$name', email = '$email', gender = '$gender', address_ = '$address'
-                    WHERE userid = '$blogger'";
+            SET userName = '$name', email = '$email', gender = '$gender', address_ = '$address'
+            WHERE userid = '$blogger' AND status = 1";
 
             $update_query = mysqli_query($this->conn->connect(),$sql);
             
             if($update_query){
+                echo "<script>alert('Cập Nhật Thành Công!');</script>";
                 header("Location: ../../views/blogger/profile.php");
                 exit();
             }
             else {
-                // Cập nhật thất bại
-                echo "Cập nhật thông tin thất bại. Vui lòng thử lại.";
+                echo "<script>alert('Cập Nhật Thất Bại!');</script>";
+                header("Location: ../../views/blogger/profile.php");
             }
         } else {
-            echo "Vui lòng điền đầy đủ thông tin.";
+            echo "<script>alert('Vui Lòng Điền Đủ Thông Tin!');</script>";
+            header("Location: ../../views/blogger/profile.php");
         }
     }
-    
-
 
 }
 ?>

@@ -8,6 +8,6 @@ $blogger = new bloggerController();
 // $auth->checkAdmin();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $blogger->updateBlogger();
+    $blogger->updateBlogger($_SESSION['blogger_id']);
 }
 ?>

@@ -161,8 +161,9 @@ class bothController{
 
     //Lấy 1 content của Blog bằng BlogID -> hiển thị bài đăng 
     public function getBlogbyID($blogID){
-        $sql = "SELECT bl.blogID, bl.provinceID, bl.userID, bl.blogTitle, bl.blogContent, bl.blogCreateDate 
+        $sql = "SELECT bl.blogID, bl.provinceID, bl.userID, bl.blogTitle, bl.blogContent, bl.blogCreateDate, users.userName
         FROM blog bl 
+        JOIN  users ON users.userID = bl.userID
         WHERE bl.blogID = $blogID AND bl.status = 1 AND bl.approvalStatus = 'Đã Duyệt';";
         $get_query = mysqli_query($this->conn->connect(),$sql);
 
@@ -216,13 +217,7 @@ class bothController{
     }
     
     
-    
-    //Các hàm gọi comments,...
-    //hàm để comment - giữa 2 bên 
-    
-    
-
-    //hàm để Lấy các comment lên View.blog.php. 
+    // hàm để Lấy các comment lên View.blog.php. 
     function getCommentsAndReplies($blogID) {
 
         //lấy các comment của blog đó - context: lấy blogId = 1
@@ -263,6 +258,23 @@ class bothController{
         }
         return $UserComment;
     }
+
+    // hàm lấy dữ liệu cho destination.php 
+    public function getDestinationPage() {
+        $sql = 
+        "SELECT *, pr.provinceName 
+        FROM destination des 
+        JOIN province pr ON pr.provinceID = des.provinceID
+        WHERE status = 1";
+        $get_query = mysqli_query($this->conn->connect(), $sql);
+        
+        $destination = [];
+        while ($row = $get_query->fetch_assoc()) {
+            $destination[] = $row;
+        }
+        return $destination;
+    }
+
 }
 
 

@@ -1,19 +1,7 @@
-
-// fetch("../../../include/footer.js")
-//     .then(response => response.text())
-//     .then(data => {
-//         document.getElementById("footer").innerHTML = data;
-//     });
-
-// fetch("../../../include/header2.js")
-//     .then(response => response.text())
-//     .then(data => {
-//         document.getElementById("header").innerHTML = data;
-//     });
-
-// Use the images array passed from PHP
+let images = [];  // Initialize the images array globally
 let currentImageIndex = 0;
 
+//hiển thị lên main container
 function showImage(index) {
     if (images.length > 0) {
         const blogImg = document.getElementById("blog-img");
@@ -36,6 +24,15 @@ function prevImage() {
     }
 }
 
+// hiện hình của list thumbnail lên main container  
+function displayBlog(index) {
+    currentImageIndex = index;
+    showImage(currentImageIndex);  // Update the main image to the clicked thumbnail
+    zoomOut(); // Zoom out effect when thumbnail is clicked
+}
+
+
+
 // Hàm zoom để khi bấm vào hình, hình sẽ zoom lên  
 function zoomImage() {
     const zoomContainer = document.getElementById("zoomContainer");
@@ -44,9 +41,27 @@ function zoomImage() {
     zoomContainer.style.display = "flex";
 }
 
+//tắt zoom  
 function closeZoom() {
     const zoomContainer = document.getElementById("zoomContainer");
     zoomContainer.style.display = "none";
+}
+
+//zoom out hình ở list thumbnai;
+function zoomOut() {
+    const blogImg = document.getElementById("blog-img");
+    blogImg.classList.add('zoom-out'); 
+    setTimeout(() => {
+        blogImg.classList.remove('zoom-out'); 
+    }, 300);  
+}
+
+// hàm này khơi tạo mảng hình được nhận từ php
+function initializeImages(imgArray) {
+    images = imgArray;
+    if (images.length > 0) {
+        showImage(0);
+    }
 }
 
 
@@ -62,12 +77,13 @@ function toggleReplies(button) {
     //nếu reply none thì -> rep hiện và có nút hide 
     if (currentDisplay === 'none') {
         repliesSection.style.display = 'block';
-        button.textContent = 'Hide Replies';
+        button.textContent = 'Ẩn trả lời';
     } else {
         repliesSection.style.display = 'none';
-        button.textContent = 'Show Replies';
+        button.textContent = 'Trả lời';
     }
 }
+
 
 
 // Initial display on page load
@@ -75,4 +91,9 @@ window.onload = () => {
     if (images.length > 0) {
         showImage(0);
     }
-};
+}; 
+
+
+
+
+

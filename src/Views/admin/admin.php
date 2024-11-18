@@ -90,7 +90,7 @@
                         <label> <ion-icon name="transgender-outline"></ion-icon> Giới tính</label>
                         <select name="gender" id="genderSelect" disabled require>
                             <option value="Male" <?php if($gender == 'Male') echo 'selected'; else echo "nooooo"?>>Male</option>
-                            <option value="Female" <?php if($gender == 'FeMale') echo 'selected'?>>Female</option>
+                            <option value="Female" <?php if($gender == 'Female') echo 'selected'?>>Female</option>
                         </select>
                     </div>
 

@@ -1,16 +1,5 @@
-const slidesData = [
-    { img: "/public/image/Chiu-chiu.jpg", name: "Tỉnh 1" },
-    { img: "/public/image/diengio.jpg", name: "Tỉnh 2" },
-    { img: "/public/image/Hue.jpeg", name: "Huế" },
-    { img: "/public/image/lung-cu-ha-giang.jpg", name: "Tỉnh 4" },
-    { img: "/public/image/VN1.jpg", name: "Tỉnh 5" },
-    { img: "/public/image/VietNam.jpg", name: "Tỉnh 6" },
-    { img: "/public/image/test1.jpg", name: "Tỉnh 7" },
-    { img: "/public/image/QB.jpg", name: "Tỉnh 8" },
-    { img: "/public/image/NinhBinh.jpeg", name: "Tỉnh 9" },
-    { img: "/public/image/Mui-Ne.jpg", name: "Tỉnh 10" }
-];
 
+//truyền list ảnh 
 const totalSlides = slidesData.length;
 let currentIndex = 2; // Chỉ số tỉnh thành ở giữa (tỉnh 3)
 const slides = document.querySelectorAll('.slide');
@@ -33,7 +22,7 @@ function updateSlides() {
     ];
 
     slides.forEach((slide, i) => {
-        const { img, name } = slidesData[indices[i]];
+        const { imgDesURL: img, destinationName: name } = slidesData[indices[i]]; // Use the dynamic JSON data
         slide.querySelector('img').src = img;
         slide.querySelector('p').textContent = name;
 

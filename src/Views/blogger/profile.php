@@ -20,7 +20,7 @@
     <?php   
         include_once "../../Controllers/bloggerController.php";
         $blogger =  new bloggerController();
-        $user = $blogger->getBloggerById();
+        $user = $blogger->getBloggerById($_SESSION['blogger_id']);
 
         $name = isset($user['userName']) ? $user['userName'] : 'Lỗi Hiển Thị';
         $email = isset($user['email']) ? $user['email'] : 'Lỗi Hiển Thị';
@@ -76,13 +76,14 @@
                     <input type="text" id="email" name="email" class="form-input" placeholder="Email" value="<?php echo $email?>" disabled>
                 </div>
 
+                <!-- trong database -->
                 <div class="form-group">
                     <label for="address"> Địa chỉ</label>
                     <select id="address" name="address"  class="form-select"  disabled>
                         <?php
                             foreach ($provinces as $province) {
-                                $selected = ($province['provinceID'] == $user['address_']) ? 'selected' : '';
-                                echo '<option value="' . $province['provinceID'] . '" ' . $selected . '>' . $province['provinceName'] . '</option>';
+                                $selected = ($province['provinceName'] == $user['address_']) ? 'selected' : '';
+                                echo '<option value="' . $province['provinceName'] . '" ' . $selected . '>' . $province['provinceName'] . '</option>';
                             }
                         ?>
                     </select>
@@ -95,29 +96,12 @@
 
                 <div class="form-group">     
                     <label for="gender" class="form-label">Giới tính</label>
-                    <select name="gender" id="gender"  class="form-select" disabled>
-                        <option value="Male" <?php if($gender == 'Male') echo 'selected'; else echo "nooooo"?>>Male</option>
-                        <option value="Female" <?php if($gender == 'FeMale') echo 'selected'?>>Female</option>
+                    <select name= "gender" id="gender" class="form-select" disabled>                        
+                        <option value="Male" <?php if($gender == 'Male') echo 'selected'; ?>>Male</option>
+                        <option value="Female" <?php if($gender == 'Female') echo 'selected'; ?>>Female</option>
                     </select>
                 </div>
-
-                <div class="form-group">
-                    <label for="birthdate" class="form-label">Ngày tháng năm sinh</label>
-                    <input type="date" name="txtDate"  class="form-select" id="txtDate" min="1930-01-01" >
-                </div>
-                
-            </div>
-
-            <div class="email-section">
-                <h2>Emails của tôi</h2>
-                <div class="email-item">
-                    <div class="email-icon">@</div>
-                    <div class="email-details">
-                        <div class="email-address"><?php echo $email?></div>
-                        <div class="email-date">Tháng trước</div>
-                    </div>
-                </div>
-                <a href="#" class="add-email">+ Thêm Email</a>
+            
             </div>
 
             <button type="submit" class="submit-btn" id="Update_user">Lưu thay đổi</button>

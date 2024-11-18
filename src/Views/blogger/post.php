@@ -6,63 +6,76 @@
     <link rel="stylesheet" href="../../../public/css/post.css">
     <link rel="stylesheet" href="../../../public/css/Blogger/headerPost.css">
     <link rel="stylesheet" href="../../../public/css/Blogger/footer.css">
-
+    <script src = "../../../include/footer.js"></script>
     <title>Posts</title>
     <style>
     </style>
 </head>
 <body>
 
-<!--ĐANG HARD CODE POST ID = 1-->
-<?php
-    include_once "../../../src/Controllers/bothController.php";
-    $controller = new bothController();
 
-    //$_GET['postID']: Lay tu story sang day postID (e.g., post.php?postID=1).
-    //intval(): dam bao la int value tu ben kia lay sang : 1 (co nghia la, mac dinh se lay trang Hanoi )
-    $postID = isset($_GET['postID']) ? intval($_GET['postID']) : 1;
+    <?php
+        include_once "../../../src/Controllers/bothController.php";
+        $controller = new bothController();
 
-    $header = $controller->getPostProvince($postID);  //get đầu mục cho header
-    $data = $controller->getAllPostDetail($postID); //Lầy hình hiển thị nội dung cho trang 
-?>
+        //$_GET['postID']: Lay tu story sang day postID (e.g., post.php?postID=1).
+        //intval(): dam bao la int value tu ben kia lay sang : 1 (co nghia la, mac dinh se lay trang Hanoi )
+        $postID = isset($_GET['postID']) ? intval($_GET['postID']) : 1;
 
-    <script src = "../../../include/footer.js"></script>
-    <!-- <script src = "../../include/header2.js"></script> -->
-    <!--Get picture for each post, header-->
+        $header = $controller->getPostProvince($postID);  //get đầu mục cho header
+        $data = $controller->getAllPostDetail($postID); //Lầy hình hiển thị nội dung cho trang 
+    ?>
+
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // Data passed from PHP to JavaScript
-            const provinceName = <?php echo json_encode($header['provinceName']); ?>;
-            const imgPostURL = <?php echo json_encode($header['imgPostURL']); ?>;
-
+        // data để hiện thị lên từng trang 
+        const provinceName = <?php echo json_encode($header['provinceName']); ?>;
+        const imgPostURL = <?php echo json_encode($header['imgPostURL']); ?>;
+        
+        document.addEventListener('DOMContentLoaded', async function() {
+            try {
+                //check sesion
+                const response = await fetch('../../FunctionOfActor/blogger/checkAuth.php');
+                if (!response.ok) {
+                    throw new Error('Failed to fetch session data. Status: ' + response.status);
+                }
+                const data = await response.json();
             
-            const header2 = `
-            <header class="header">
-                <div class="logo">
-                    <img src="../../../public/image/logo.png" alt="Logo">
-                </div>
-                <nav class="nav">
-                    <a href = "home.php" ">Trang chủ</a>
-                    <a href="province.php" ">Tỉnh Thành</a>
-                    <a href="storiesList.html" ">Blogs</a>
-                    <a href="WriteReview.php" ">Viết Blog</a>
-                </nav>
-                <nav class="sub_nav">
-                    <a href="createAccount.html"  class="btn-login"">Đăng ký</a>
-                    <a href="login.html" class="btn-login"">Đăng nhập</a>
-                </nav>
-            </header>
-            <section class="hero">
-                <h1 style="font-size: 100px; color: #F5F5DC;text-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);">${provinceName}</h1>
-                <section class="destinations">
-                    <a href="#" class="article">
-                        <img src="${imgPostURL}" alt="provinces">
-                    </a>
-                </section>
-            </section>
-            `;
-            document.body.insertAdjacentHTML('afterbegin', header2);
-    });
+                const header = `
+                    <header class="header">
+                        <div class="logo">
+                            <img src="../../../public/image/logo_colored.png" alt="Logo">
+                        </div>
+                        <nav class="nav">
+                            <a href="home.php">Trang chủ</a>
+                            <a href="province.php">Tỉnh Thành</a>
+                            <a href="storiesList.php">Blogs</a>
+                            <a href="WriteReview.php">Viết Blog</a>
+                            ${data.role_ === 'Admin' && data.loggedIn  ? `<a href="../admin/admin.php">Admin</a>` : '`<a href="profile.php">Hồ sơ</a>` '}
+                        </nav>    
+                        <nav class="sub_nav">
+                            ${data.loggedIn ? 
+                                `<a href="../../FunctionOfActor/both/logout.php?action=logout" class="btn-login">Đăng xuất</a>` : 
+                                `<a href="../createAccount.html" class="btn-signup">Đăng ký</a>
+                                <a href="../login.html" class="btn-login">Đăng nhập</a>`}
+                        </nav>
+                    </header>
+                    
+                    <section class="hero">
+                        <h1 style="font-size: 100px; color: #F5F5DC;text-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);">${provinceName}</h1>
+                        <section class="destinations">
+                            <a href="#" class="article">
+                                <img src="${imgPostURL}" alt="provinces">
+                            </a>
+                        </section>
+                    </section>`;
+                    document.body.insertAdjacentHTML('afterbegin', header);
+                }
+            catch (error) {
+                console.error('Error fetching session data:', error);
+            alert('Không thể tải trạng thái đăng nhập. Vui lòng thử lại sau.');
+            }   
+            document.body.insertAdjacentHTML('afterbegin', header);
+        }); 
     </script>
 
     <div class="content">

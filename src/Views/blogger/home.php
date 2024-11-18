@@ -54,7 +54,7 @@
     <section class="location section-common">
         <h2>Địa danh</h2>
         <p>Những địa danh nổi tiếng của Việt Nam</p>
-        <a href="#" class="btn-page">Xem tất cả</a>
+        <a href="destination.php" class="btn-page">Xem các địa danh</a>
         <div class="grid-common">
             <div class="card-common">
                 <img src="../../../public/image/NinhBinh.jpeg" alt="province">

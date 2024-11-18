@@ -10,7 +10,7 @@ body {
     justify-content: center;
     align-items: center;
     background-color: #f0f0f0;
-    background: url('/public/image/VN3.jpg') no-repeat center center fixed;
+    background: url('../image/VN3.jpg') no-repeat center center fixed;
     width: 100%;
     height: 100vh;
     background-size: cover;

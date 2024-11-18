@@ -3,10 +3,10 @@ document.addEventListener('DOMContentLoaded', function() {
         event.preventDefault();
 
         // Bỏ khóa các trường để chỉnh sửa
+        //default - ô vai trò không được sửa -> auto false
         document.getElementById('name').disabled = false;
         document.getElementById('address').disabled = false;
         document.getElementById('email').disabled = false;
         document.getElementById('gender').disabled = false;
     });
 });
-

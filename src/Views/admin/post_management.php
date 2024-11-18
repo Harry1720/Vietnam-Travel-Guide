@@ -53,10 +53,10 @@
                 Thêm Bài Viết <ion-icon style="margin-left: 5px;" name="add-circle-outline"></ion-icon>
             </button>
     
-            <div class="search-contain">
+            <!-- <div class="search-contain">
                 <input type="text" placeholder="Tìm kiếm bài viết" class="search-bar-post" oninput="toggleIcon()">
                 <ion-icon name="search-outline" class="search-icon-post"></ion-icon>
-            </div>
+            </div> -->
     
             <div class="table-wrapper" >
             <table style="width: 100%; border-collapse: collapse;">

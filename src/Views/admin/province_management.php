@@ -63,10 +63,10 @@
                     </form>
                 </div>
 
-                <div class="search-container">
+                <!-- <div class="search-container">
                     <input type="text" placeholder="Tìm kiếm tỉnh thành" class="search-bar" oninput="toggleIcon()">
                     <ion-icon name="search-outline" class="search-icon"></ion-icon>
-                </div>
+                </div> -->
             </div>
 
             <!-- List Province Table -->

@@ -47,10 +47,10 @@
                 Thêm Người Dùng <ion-icon style="margin-left: 5px;" name="add-circle-outline"></ion-icon>
             </button>
 
-            <div class="search-container">
+            <!-- <div class="search-container">
                 <input type="text" placeholder="Nhập họ tên để tìm kiếm..." class="search-bar" oninput="toggleIcon()">
                 <ion-icon name="search-outline" class="search-icon"></ion-icon>
-            </div>
+            </div> -->
 
             <div class="table-wrapper">
                 <table>

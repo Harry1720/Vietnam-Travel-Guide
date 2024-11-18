@@ -52,7 +52,9 @@
 
             <div class="profile-header">
                 <div class="profile-info">
-                    <img src="https://via.placeholder.com/80" alt="Profile" class="profile-image">
+                    <!-- <img src="https://via.placeholder.com/80" alt="Profile" class="profile-image"> -->
+                    <img src="https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-portrait-176256935.jpg" alt="Avatar" class="profile-image">
+                     
                     <div>
                         <div class="profile-name"><?php echo $name?></div>
                         <div class="profile-email"><?php echo $email?></div>

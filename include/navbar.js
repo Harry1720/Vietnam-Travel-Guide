@@ -28,18 +28,18 @@ document.addEventListener('DOMContentLoaded', function () {
             <div class="popup1content">
                 <ion-icon name="close-outline" class="popup1close" id="closepopup-1"></ion-icon>
                 <div class="wrapper1">
-                    <form id="pass-form" enctype="multipart/form-data">
+                    <form action="../../FunctionOfActor/admin/changPassword.php" id="pass-form" enctype="multipart/form-data" method="POST">
                         <div class="field1">
                             <label for="current-password">Mật khẩu hiện tại</label>
-                            <input type="password" id="current-password" placeholder="Nhập mật khẩu hiện tại">
+                            <input type="password" id="current-password" name="current-password" placeholder="Nhập mật khẩu hiện tại">
                         </div>
                         <div class="field1">
                             <label for="new-password">Mật khẩu mới</label>
-                            <input type="password" id="new-password" placeholder="Nhập mật khẩu mới">
+                            <input type="password" id="new-password" name="new-password" placeholder="Nhập mật khẩu mới">
                         </div>
                         <div class="field1">
                             <label for="confirm-password">Xác nhận mật khẩu mới</label>
-                            <input type="password" id="confirm-password" placeholder="Xác nhận mật khẩu mới">
+                            <input type="password" id="confirm-password" name="confirm-password" placeholder="Xác nhận mật khẩu mới">
                         </div>
                         <div class="button">
                             <input id="save_Button" type="submit" class="save" onclick="submitChangePassword()" value="Lưu"></input>

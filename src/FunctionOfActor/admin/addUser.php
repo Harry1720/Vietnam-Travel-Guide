@@ -1,5 +1,4 @@
 <?php
-    // Include các controller cần thiết
     include_once "../../Controllers/adminController.php";
     include_once "../../Controllers/authController.php";
     
@@ -8,7 +7,7 @@
     $auth->checkAdmin();
     
     // Kiểm tra nếu form "Thêm Người Dùng" được submit
-    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["userName"])) {
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (isset($_POST['userName']) && isset($_POST['email']) && isset($_POST['address']) 
         && isset($_POST['password']) && isset($_POST['role']) && isset($_POST['gender'])) {
             $adController->addUser();

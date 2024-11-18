@@ -252,4 +252,49 @@ class AuthController{
         exit;
         }
     }
+    
+    public function changPasswordAdmin(){
+        $currentPassword = $_POST['current-password'];
+        $newPassword = $_POST['new-password'];
+        $confirmPassword = $_POST['confirm-password'];
+        $adminID = $_SESSION['blogger_id'];
+        $getSQL = "SELECT * FROM users WHERE userID = '$adminID'";
+
+        if ($newPassword !== $confirmPassword) {
+            echo "<script>alert('Mật khẩu xác nhận không khớp!');</script>";
+            echo "<script>window.location.href = '../../Views/admin/admin.php';</script>";
+            return;
+        }
+
+        $adminInfo = mysqli_query($this->conn->connect(),$getSQL);
+        $info = $adminInfo->fetch_assoc();
+        $indexPassword = $info['pass_word'];
+
+        if ($adminInfo) {
+            $info = $adminInfo->fetch_assoc();
+        }
+        else{
+            echo "<script>alert('Không Khớp Với Mật Khẩu Hiện Tại!');</script>";
+            echo "<script>window.location.href = '../../Views/admin/admin.php';</script>";
+            exit;
+        }
+
+        if($indexPassword !== $currentPassword){
+            echo "<script>alert('Không Khớp Với Mật Khẩu Hiện Tại!');</script>";
+            echo "<script>window.location.href =  '../../Views/admin/admin.php';</script>";
+            return;
+        }
+
+        $sql = "UPDATE users SET pass_word = '$newPassword' WHERE userID = '$adminID'";
+        $updatePassword = mysqli_query($this->conn->connect(),$sql);
+
+        if($updatePassword){
+            echo "<script>alert('Đổi Mật Khẩu Thành Công!');</script>";
+            echo "<script>window.location.href =  '../../Views/admin/admin.php';</script>";
+        }
+        else{
+            echo "<script>alert('Đổi Mật Khẩu Thất Bại!');</script>";
+            echo "<script>window.location.href =  '../../Views/admin/admin.php';</script>";
+        }
+    }
 }?>

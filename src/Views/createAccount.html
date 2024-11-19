@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng ký</title>
+    <link rel="stylesheet" href="../../public/css/createAccount.css">
+    <script src="/public/js/createAccount.js"></script>
+</head>
+<body>
+    <!--  on -->
+    <img src="../../public/image/test1.jpg" alt="Không Hiển Thị" id="left-img">
+
+    <div class="create-container">
+        <h1>Xin chào! Hãy bắt đầu nào!<img src="https://user-images.githubusercontent.com/1303154/88677602-1635ba80-d120-11ea-84d8-d263ba5fc3c0.gif" width="32px" alt="hi"></h1>
+        
+
+        <form class="login-form" method="post" action="../FunctionOfActor/both/createAccount.php">
+            <input type="text" id="name" name="username" placeholder="Tên đăng nhập" required>
+            <input type="email" id="email" name="email" placeholder="Địa chỉ email" required>        
+            <div class="password-container">
+                <input type="password" id="password" name="password" placeholder="Mật khẩu " required>
+                <span class="eye-icon" onclick="this.previousElementSibling.type = this.previousElementSibling.type === 'password' ? 'text' : 'password'">
+                    👁️‍🗨️ 
+                </span>
+            </div>            
+            <div class="password-container">
+                <input type="password" id="confirm-password" name="confirm-password" placeholder="Xác nhận mật khẩu" required>
+                <span class="eye-icon" onclick="this.previousElementSibling.type = this.previousElementSibling.type === 'password' ? 'text' : 'password'">
+                    👁️‍🗨️
+                </span>
+            </div>
+            
+            <div>
+                <button class="add-user-btn" id="openpopup1">
+                    Đăng Ký <ion-icon style="margin-left: 5px;" name="add-circle-outline"></ion-icon>
+                </button>
+            </div>
+            <div class="login-account">
+                Đã có tài khoản? <a href="login.html"><b>Đăng nhập</b></a>
+            </div>
+        </form>
+    </div>
+    
+</body>
+</html>

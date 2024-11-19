@@ -16,24 +16,31 @@
         
 
         <form class="login-form" method="post" action="../FunctionOfActor/both/createAccount.php">
-            <input type="text" id="name" name="username" placeholder="Tên đăng nhập" required>
-            <input type="email" id="email" name="email" placeholder="Địa chỉ email" required>        
-            <div class="password-container">
-                <input type="password" id="password" name="password" placeholder="Mật khẩu " required>
+            <div class = "input-form">
+                <label for="username">Tên đăng nhập</label>
+                <input type="text" id="name" name="username" placeholder="nguyenvana" required>
+            </div>
+            <div class = "input-form">
+                <label for="email">Địa chỉ email</label>
+                <input type="email" id="email" name="email" placeholder="nguyena@gmail.com" required>        
+            </div>
+            <div class="input-form password-container">
+                <label for="password">Mật khẩu</label>
+                <input type="password" id="password" name="password" placeholder="Nên bao gồm số và ký tự" required>
                 <span class="eye-icon" onclick="this.previousElementSibling.type = this.previousElementSibling.type === 'password' ? 'text' : 'password'">
                     👁️‍🗨️ 
                 </span>
             </div>            
-            <div class="password-container">
-                <input type="password" id="confirm-password" name="confirm-password" placeholder="Xác nhận mật khẩu" required>
+            <div class="input-form password-container">
+                <label for="confirm-password">Xác nhận mật khẩu</label>
+                <input type="password" id="confirm-password" name="confirm-password" placeholder="Vui lòng nhập lại mật khẩu" required>
                 <span class="eye-icon" onclick="this.previousElementSibling.type = this.previousElementSibling.type === 'password' ? 'text' : 'password'">
                     👁️‍🗨️
                 </span>
             </div>
             
             <div class="field input"">
-                        <label for="address" style="width: 120px; ">Tỉnh/
-                            Thành Phố</label>
+                        <label for="address" style="width: 120px; ">Tỉnh/Thành Phố</label>
                         <select id="address" name="address">
                             <?php foreach ($provinces as $province) { ?>
                                 <option value="<?php echo $province['provinceID']; ?>"><?php echo $province['provinceName']; ?></option>
@@ -49,7 +56,7 @@
                     </select>
             </div>
             <div>
-                <button class="add-user-btn" id="openpopup1">
+                <button class="add-user-btn" id="submit">
                     Đăng Ký <ion-icon style="margin-left: 5px;" name="add-circle-outline"></ion-icon>
                 </button>
             </div>

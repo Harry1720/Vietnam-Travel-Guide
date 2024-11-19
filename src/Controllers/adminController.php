@@ -273,13 +273,8 @@ class AdminController{
         $sql = "UPDATE users SET status = False WHERE userID = '$userID'";
         $update_query = mysqli_query($this->conn->connect(), $sql);
     
-        if ($update_query) {
-            echo "<script>alert('Update Người Dùng Thành Công!');</script>";
-            echo "<script>window.location.href = '../../Views/admin/user_management.php';</script>";
-        } else {
-            echo "<script>alert('Update Người Dùng Thất Bại!');</script>";
-            echo "<script>window.location.href = '../../Views/admin/user_management.php';</script>";
-        }
+        echo "<script>alert('Xóa Người Dùng Thành Công!');</script>";
+        echo "<script>window.location.href = '../../Views/admin/user_management.php';</script>";
     }
     
     public function getAllUsers(){
@@ -295,7 +290,7 @@ class AdminController{
         $sql = "SELECT userID, userName, pass_word, address_,role_,email,gender, province.provinceName, province.provinceID
                 FROM users
                 JOIN province ON users.address_ = province.provinceID
-                WHERE users.status = 1
+                WHERE users.status = True
                 LIMIT $Start,$limit";
         $get_query = mysqli_query($this->conn->connect(),$sql);
 
@@ -631,13 +626,8 @@ class AdminController{
         $sql = "UPDATE post SET status = False WHERE postID = $postId";
         $delete_query = mysqli_query($this->conn->connect(), $sql);
 
-        if ($delete_query && mysqli_affected_rows($this->conn->connect()) > 0) {
-            echo "<script>alert('Xóa Post Thành Công!');</script>";
-            echo "<script>window.location.href = '../../Views/admin/province_management.php';</script>";
-        } else {
-            echo "<script>alert('Xóa Post Thất Bại!');</script>";
-            echo "<script>window.location.href = '../../Views/admin/province_management.php';</script>";
-        }
+        echo "<script>alert('Xóa Post Thành Công!');</script>";
+        echo "<script>window.location.href = '../../Views/admin/post_management.php';</script>";
     }
 
     public function deletePostDetail($postDetailID) {
@@ -646,10 +636,10 @@ class AdminController{
 
         if ($delete_query && $this->conn->getAffectedRows() > 0) {
             echo "<script>alert('Xóa PostDetail Thành Công!');</script>";
-            echo "<script>window.location.href = '../../Views/admin/province_management.php';</script>";
+            echo "<script>window.location.href = '../../Views/admin/post_management.php';</script>";
         } else {
             echo "<script>alert('Xóa PostDetail Thất Bại!');</script>";
-            echo "<script>window.location.href = '../../Views/admin/province_management.php';</script>";
+            echo "<script>window.location.href = '../../Views/admin/post_management.php';</script>";
         }
     }
 }

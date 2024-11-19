@@ -26,6 +26,14 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    document.getElementById('openpopup1')?.addEventListener('click', () => {
+        popup1Overlay.style.display = 'flex';
+    });
+
+    document.getElementById('edit-post-detail-btn')?.addEventListener('click', () => {
+        popup2Overlay.style.display = 'flex';
+    });
+
     document.getElementById('closepopup2')?.addEventListener('click', () => {
         if(confirm("Xác Nhận Hủy?")){
             popup2Overlay.style.display = 'none';

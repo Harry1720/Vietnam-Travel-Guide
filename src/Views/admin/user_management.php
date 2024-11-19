@@ -81,7 +81,7 @@
                                         <button class="action-btn edit" id="edit-btn" onclick="editUser(<?php echo $user['userID']?>)">
                                             <ion-icon name="create"></ion-icon>
                                         </button>
-                                        <button class="action-btn delete" id="delete-btn" onclick="deleteID(<?php echo $user['userID']?>)">
+                                        <button class="action-btn delete" id="delete-btn" onclick="deleteUser(<?php echo $user['userID']?>)">
                                             <ion-icon name="trash"></ion-icon>
                                         </button>
                                     </td>
@@ -146,7 +146,7 @@
                         <label id="label-gender" for="gender">Giới Tính</label>
                         <select id="gender" name="gender">
                             <option value="Male">Nam</option>
-                            <option value="FeMale">Nữ</option>
+                            <option value="Female">Nữ</option>
                         </select>
                     </div>
                     <div class="button">
@@ -198,7 +198,7 @@
                         <label for="gender1">Giới Tính</label>
                         <select id="gender1" name="gender1">
                             <option value="Male">Nam</option>
-                            <option value="FeMale">Nữ</option>
+                            <option value="Female">Nữ</option>
                         </select>
                     </div>
                     <div class="button">
@@ -216,7 +216,6 @@
                 <p>Bạn có chắc chắn xóa người dùng đến này?</p>
                 <input type="hidden" id="deleteID" name="deleteID">
                 <input type="submit" id="yes-btn" class="popup-btn" value="Có">
-                <!-- <button id="yes-btn" class="popup-btn">Có</button> -->
                 <button id="no-btn" class="popup-btn">Không</button>                
             </form>
         </div>

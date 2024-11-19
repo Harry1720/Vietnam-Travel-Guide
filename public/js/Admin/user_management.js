@@ -62,44 +62,44 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const isEditMode = window.location.href.includes('edit');
     setFormMode(isEditMode);
-
-    // Function for deleting by ID
-    window.deleteID = function (id) {
-        console.log(id);
-        document.getElementById('deleteID').value = id;
-    }
-
-    // Function for editing user data
-    window.editUser = async function (userId) {
-        try {
-            console.log('Fetching user data for ID:', userId);
-            const response = await fetch(`../../FunctionOfActor/admin/getUser.php?editId=${userId}`);
-            console.log('Raw response:', response);
-
-            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-            const rawData = await response.text();
-
-            let userData;
-            try {
-                userData = JSON.parse(rawData);
-            } catch (parseError) {
-                console.error('JSON parse error:', parseError);
-                throw new Error('Invalid JSON response');
-            }
-
-            // Update form fields
-            document.getElementById('userName1').value = userData.userName;
-            document.getElementById('email1').value = userData.email;
-            document.getElementById('password1').value = userData.password;
-            document.getElementById('address1').value = userData.address;
-            document.getElementById('role1').value = userData.role;
-            document.getElementById('gender1').value = userData.gender;
-            document.getElementById('userID').value = userData.userID;
-
-            // Show edit popup
-            popup2Overlay.style.display = 'flex';
-        } catch (error) {
-            console.error('Error in editUser function:', error);
-        }
-    };
 });
+// editUser function
+async function editUser(userId) {
+    try {
+        console.log('Fetching user data for ID:', userId);
+        const response = await fetch(`../../FunctionOfActor/admin/getUser.php?editId=${userId}`);
+        console.log('Raw response:', response);
+
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        const rawData = await response.text();
+
+        let userData;
+        try {
+            userData = JSON.parse(rawData);
+        } catch (parseError) {
+            console.error('JSON parse error:', parseError);
+            throw new Error('Invalid JSON response');
+        }
+
+        // Update form fields
+        document.getElementById('userName1').value = userData.userName;
+        document.getElementById('email1').value = userData.email;
+        document.getElementById('password1').value = userData.password;
+        document.getElementById('address1').value = userData.address;
+        document.getElementById('role1').value = userData.role;
+        document.getElementById('gender1').value = userData.gender;
+        document.getElementById('userID').value = userData.userID;
+
+        // Show edit popup
+        const popup2Overlay = document.getElementById('popup2Overlay');
+        popup2Overlay.style.display = 'flex';
+    } catch (error) {
+        console.error('Error in editUser function:', error);
+    }
+}
+
+// deleteUser function
+function deleteUser(id) {
+    console.log(id);
+    document.getElementById('deleteID').value = id;
+}

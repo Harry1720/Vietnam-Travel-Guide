@@ -15,6 +15,7 @@
     <script src="../../../include/navbar.js"></script>
     <script src="../../../include/sidebar.js"></script>
     <script src="../../../public/js/Admin/Notifications.js"></script>
+    <script src="../../../public/js/Admin/popup.js"></script>
 </head>
 <body>
 
@@ -46,7 +47,7 @@
     ?>
     <div class="main-content">
         <div class="province-management">
-            <button class="add-destination-btn" id="open">
+            <button class="add-destination-btn" id="openpopup1">
                 Thêm Địa Điểm <ion-icon style="margin-left: 5px;" name="add-circle-outline"></ion-icon>
             </button>
 
@@ -111,7 +112,7 @@
                                                     <td><?php echo $destination['destinationContent'] ?? 'Lỗi Hiển Thị'?></td>
                                                     <td><?php echo $destination['imgDesURL'] ?? 'Lỗi Hiển Thị'?></td>
                                                     <td>
-                                                        <button class="edit-btn" onclick="editDestination(<?php echo $destination['destinationID'] ?>)">
+                                                        <button class="edit-btn edit" onclick="editDestination(<?php echo $destination['destinationID'] ?>)">
                                                             <ion-icon name="create-outline"></ion-icon> 
                                                         </button>
                                                         <button 
@@ -151,7 +152,7 @@
     </div>
     <div class="popup1-overlay" id="popup1Overlay">
         <div class="popup1-content">
-            <span class="popup1-close" id="close">&times;</span>
+            <ion-icon name="close-outline" class="popup1-close" id="closepopup1"></ion-icon>
             <div class="wrapper" id = "">
                 <form id="destination-form" enctype="multipart/form-data" name = "add" method = "POST" action="../../FunctionOfActor/admin/addDestination.php">
                     <div class="field input">
@@ -187,7 +188,7 @@
 
     <div class="popup1-overlay" id="popup2Overlay">
         <div class="popup1-content">
-            <span class="popup1-close" id="close2">&times;</span>
+            <ion-icon name="close-outline" class="popup1-close" id="closepopup2"></ion-icon>
             <div class="wrapper" id = "">
                 <form id="destination-form2" enctype="multipart/form-data" method="POST" action="../../FunctionOfActor/admin/updateDestination.php">
                     <input type="hidden" name="destinationID" id="destinationID" value="">

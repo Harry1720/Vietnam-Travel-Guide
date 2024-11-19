@@ -197,7 +197,7 @@ class bothController{
         AND ib.imgID = (SELECT MIN(imgID) 
                         FROM imgBlog 
                         WHERE blogID = bl.blogID) 
-        LIMIT 4 OFFSET 0";
+        LIMIT $limit OFFSET $offset";
         $get_query = mysqli_query($this->conn->connect(), $sql);
         $posts = [];
         while ($row = $get_query->fetch_assoc()) {

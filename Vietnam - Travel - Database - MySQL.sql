@@ -91,8 +91,8 @@ CREATE TABLE repComment (
 
 INSERT INTO users (userName, pass_word, address_, role_, email, gender, status)
 VALUES
-('Trần Anh Quân', 'admin1', 'TP Hồ Chí Minh', 'Admin', 'admin@gmail.com', 'Male', TRUE),
-('Trần Ngọc Anh', 'password9', 'Hà Nội', 'admin', 'ngocanh@example.com', 'Female', TRUE),
+('Trần Anh Quân', 'admin1', '2', 'Admin', 'admin@gmail.com', 'Male', TRUE),
+('Trần Ngọc Anh', 'password9', '1', 'admin', 'ngocanh@example.com', 'Female', TRUE),
 ('Tran Thi B', 'password2', '2', 'Blogger', 'tranthib@example.com', 'Female', TRUE),
 ('Le Van C', 'password3', '3', 'Blogger', 'levanc@example.com', 'Male', TRUE),
 ('Pham Thi D', 'password4', '4', 'Blogger', 'phamthid@example.com', 'Female', TRUE),

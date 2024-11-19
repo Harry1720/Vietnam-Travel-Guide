@@ -214,14 +214,19 @@ class AuthController{
        
 
         //if (md5($password) === $user['pass_word']) {
-        //hash - PASSWORD_ARGON2 
+        //hash - PASSWORD_ARGON2  - dùng cho cả trường hợp mật khẩu admin hashed
         if(password_verify($password, $passwordU)) {
             $_SESSION['blogger_id'] = $user['userID'];
             $_SESSION['role'] = $user['role_'];
             
             //cái này là gán cho session -> để biết nên dùng cho header nào - nếu login hay sign up thì session này dùng để xác định    
             $_SESSION['loggedIn'] = TRUE;
-            echo "<script>window.location.href =  '../../Views/blogger/home.php';</script>";
+            if(isset($_SESSION['role']) == 'Admin'){
+                echo "<script>window.location.href =  '../../Views/admin/admin.php';</script>";
+            }
+            else {
+                echo "<script>window.location.href =  '../../Views/blogger/home.php';</script>";
+            }
             exit;
         } 
         else{

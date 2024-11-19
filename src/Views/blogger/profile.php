@@ -83,7 +83,7 @@
                         <?php
                             foreach ($provinces as $province) {
                                 $selected = ($province['provinceName'] == $user['address_']) ? 'selected' : '';
-                                echo '<option value="' . $province['provinceName'] . '" ' . $selected . '>' . $province['provinceName'] . '</option>';
+                                echo '<option value="' . $province['provinceID'] . '" ' . $selected . '>' . $province['provinceName'] . '</option>';
                             }
                         ?>
                     </select>

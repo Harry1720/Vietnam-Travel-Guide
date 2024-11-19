@@ -54,18 +54,18 @@
 
 
 
-            <!--Khong can JS cho nay vi blogid truyền sang bên trang viewblog-->
-            <a href="ViewBlog.php?blogID=<?php echo $blog['blogID']; ?> " class="card-common ">
-                <img src="<?php echo htmlspecialchars($blog['imgBlogURL']); ?>" alt="blog picture">
-                <div class="location_time">
-                    <h4 style="text-align: center; "><?php echo htmlspecialchars($blog['blogTitle']); ?></h4>
-                    <p><?php echo date('d/m/Y', strtotime($blog['blogCreateDate'])); ?></p>
-                </div>
-            </a>
-            <?php                 
-                endif; // End check for imgPostURL
-            endforeach; ?>
-    
+        <!--Khong can JS cho nay vi blogid truyền sang bên trang viewblog-->
+        <a href="ViewBlog.php?blogID=<?php echo $blog['blogID']; ?> " class="card-common ">
+            <img src="<?php echo htmlspecialchars($blog['imgBlogURL']); ?>" alt="blog picture">
+            <div class="location_time">
+                <h4 style="text-align: center; "><?php echo htmlspecialchars($blog['blogTitle']); ?></h4>
+                <p><?php echo date('d/m/Y', strtotime($blog['blogCreateDate'])); ?></p>
+            </div>
+        </a>
+        <?php                 
+            endif; // End check for imgPostURL
+        endforeach; ?>
+
         
     </section>
     <!-- Pagination -->

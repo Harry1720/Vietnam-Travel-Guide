@@ -36,21 +36,21 @@
                     <div class="top-places">
                         <h2>Đăng tải hình ảnh</h2>
                         
-                        <p>Hãy chia sẽ những khoảng khắc tuyệt vời trong chuyến đi của bạn.</p>
+                        <p>Hãy chia sẽ những khoảnh khắc tuyệt vời trong chuyến đi của bạn.</p>
                         
                         <div class="review-placeholder">
                             <label for="upload-photos">Đăng tải</label>
-                            <input type="file" id="upload-photos" name="photos[]" accept="image/*" multiple onchange="previewImages()">
+                            <input type="file" id="upload-photos" name="photos[]" accept="image/*" multiple onchange="previewImages()" required>
                         </div>
                         
                         <div id="photo-preview" class="photo-preview">
                         </div>
                     </div>
                     <label for="title">Tiêu đề</label>
-                    <input type="text" id="title" name="title" placeholder="Tiêu đề">
+                    <input type="text" id="title" name="title" placeholder="Tiêu đề" required>
                     
                     <label for="review">Trải nghiệm của bạn</label>
-                    <textarea id="review" name="review" placeholder="Đó là một hành trình đáng nhớ tại..."></textarea>
+                    <textarea id="review" name="review" placeholder="Đó là một hành trình đáng nhớ tại..." required></textarea>
 
                     <label for="location">Địa điểm</label>
                     <select id="location" name="location" required>
@@ -62,8 +62,8 @@
                         ?>
                     </select>
                     <!-- viết theo format để lưu 2023-11-23 -->
-                    <label for="travel-date">Bạn đã đi từ khi nào?</label>
-                    <input type="text" id="date" name="date" oninput="validateDateFormat(this)" placeholder="Ngày tháng - (YYYY-MM-DD)">
+                    <!-- <label for="travel-date">Bạn đã đi từ khi nào?</label>
+                    <input type="text" id="date" name="date" oninput="validateDateFormat(this)" placeholder="Ngày tháng - (YYYY-MM-DD)"> -->
 
                     
                     <button type="submit" class="submit-btn">Gửi đi</button>

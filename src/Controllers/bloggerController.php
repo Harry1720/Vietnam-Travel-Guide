@@ -71,7 +71,7 @@ class bloggerController{
         $userID = $_SESSION['blogger_id'];
         $blogTitle = $_POST['title'];
         $blogContent = $_POST['review'];
-        $blogCreateDate = $_POST['date'];//date('Y-m-d H:i:s');
+        $blogCreateDate = date('Y-m-d');//date('Y-m-d H:i:s');
 
         // Gọi hàm saveBlog để lưu bài viết - sau đó trả về ID blog - fetch_assoc
         $blogid = $this->saveBlog($provinceID, $userID, $blogTitle, $blogContent, $blogCreateDate);

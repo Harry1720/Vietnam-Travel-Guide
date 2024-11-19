@@ -97,7 +97,7 @@
         <?php foreach ($comments as $comment) { ?>
             <div class="comment-box">
                 <p><strong><?php echo htmlspecialchars($comment['userName']); ?></strong> 
-                <?php echo htmlspecialchars($comment['createDate']); ?> : <?php echo htmlspecialchars($comment['cmtContent']); ?></p>
+                <?php echo htmlspecialchars($comment['createDate']); ?>: <?php echo htmlspecialchars($comment['cmtContent']); ?></p>
                 
                 <!-- ô hiển thị chổ để điền comment, chưa phát triển -->
                 <form class="reply" action="../../Controllers/commentController.php" method="post">

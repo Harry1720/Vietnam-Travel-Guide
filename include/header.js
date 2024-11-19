@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', async function () {
                 <a href="province.php">Tỉnh Thành</a>
                 <a href="storiesList.php">Blogs</a>
                 <a href="WriteReview.php">Viết Blog</a>
-                ${data.role_ === 'Admin' && data.loggedIn  ? `<a href="../admin/admin.php">Admin</a>` : '`<a href="profile.php">Hồ sơ</a>` '}
+                ${data.role_ === 'Admin' && data.loggedIn  ? `<a href="../admin/admin.php">Admin</a>` : '<a href="profile.php">Hồ sơ</a> '}
                 </nav>
             
             <nav class="sub_nav">

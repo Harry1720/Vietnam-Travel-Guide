@@ -50,7 +50,7 @@
 }
 
 #province{
-    width: 39%;
+    width: 100%;
 }
 #province-edit{
     margin-left: 10px;
@@ -81,28 +81,6 @@
     margin-bottom: 5px;
 }
 
-/* General Input, Select, and Textarea Styling */
-.field input,
-.field select,
-.field textarea {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    font-size: 15px;
-    background-color: #fff;
-    transition: all 0.3s ease;
-    box-sizing: border-box;
-}
-
-/* Dropdown Customization */
-.field select {
-    appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%2335679C' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: calc(100% - 12px) center;
-    padding-right: 10px;
-}
 
 /* Focus Effects for Input Fields */
 .field input:focus,
@@ -122,13 +100,6 @@
 }
 
 /* File Input Styling */
-.field input[type="file"] {
-    margin-top: 8px;
-    padding: 4px;
-    background-color: #f8f9fa;
-    cursor: pointer;
-    margin-left: 10px;
-}
 
 .field input[type="file"]::file-selector-button {
     padding: 8px 16px;
@@ -152,14 +123,6 @@
     margin: 10px auto;
     border-radius: 10px;
     display: block;
-}
-
-/* Responsive Grid for Field Rows */
-.field-row {
-    display: grid;
-    gap: 20px;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    align-items: start;
 }
 
 /* Title Styling */

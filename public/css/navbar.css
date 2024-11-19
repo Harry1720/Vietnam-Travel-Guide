@@ -43,8 +43,7 @@
     margin-left: 280px;
     height: 4px;
     background-color: #35679C;
-    z-index: 1000;
-    position: fixed; 
+    position: absolute;
     top: 58px;
 }
 
@@ -56,6 +55,7 @@
 }
 .near-img{
     cursor: pointer;
+    margin-right: 10px;
 }
 .dropdown-menu {
     display: none;
@@ -72,10 +72,10 @@
     display: block;
     padding: 10px 20px;
     color: #35679C;
-    background: none;
     border: none;
     cursor: pointer;
     font-size: 16px;
+    border-radius: 5px;
 }
 
 .dropdown-menu button:hover {

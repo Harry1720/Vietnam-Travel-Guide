@@ -171,7 +171,7 @@
                             <input type="file" id="image-festival" name="image-festival">
                         </div>
                         <div class="field">
-                            <label style="margin-bottom: 15px; margin-top: 5px" for="factory_tour">Tham Quan</label>
+                            <label for="factory_tour">Tham Quan</label>
                             <textarea wrap="soft" id="factory_tour" name="factory_tour" placeholder="Điểm tham quan,..." required></textarea>
                             <input type="file" id="image-factory_tour" name="image-factory_tour">
                         </div>
@@ -225,7 +225,7 @@
         <div class="popup1-content">
             <ion-icon name="close-outline" class="close-btn" id="closepopup3"></ion-icon>
             <form style="margin-left: 40px;"id="post-updateDetail-form" enctype="multipart/form-data" name="editPostDetail" method="POST" action="../../FunctionOfActor/admin/updatePostDetail.php">
-                <div class="field-row"> 
+                <div class="field-row" style="margin-left: -30px;"> 
                     <div class="field"> 
                         <span id="displayTitle"></span>
                         <input type="hidden" id ="imgposted" name = "imgposted"> 

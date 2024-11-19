@@ -190,12 +190,12 @@
                         </div>
                     </div>
                     <div class="field input" style="margin-bottom: 20px; display: flex; padding-top: 10px">
-                        <label for="role1" >Chức Vụ</label>
+                        <label style="margin-top:10px" for="role1" >Chức Vụ</label>
                         <select id="role1" name="role1" disabled>
                             <option value="Admin">Admin</option>
                             <option value="Blogger">Blogger</option>
                         </select>
-                        <label for="gender1">Giới Tính</label>
+                        <label style="margin-top:10px" for="gender1">Giới Tính</label>
                         <select id="gender1" name="gender1">
                             <option value="Male">Nam</option>
                             <option value="Female">Nữ</option>

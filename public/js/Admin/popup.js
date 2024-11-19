@@ -18,8 +18,22 @@ document.addEventListener('DOMContentLoaded', () => {
             popup1Overlay.style.display = 'none';
         }
     });
+    window.addEventListener('click', (event) => {
+        if (event.target === popup1Overlay) {
+            if (confirm("Xác Nhận Hủy?")) {
+                popup1Overlay.style.display = 'none';
+            }
+        }
+    });
 
     // Popup 2 (Chỉnh sửa bài viết)
+    window.addEventListener('click', (event) => {
+        if (event.target === popup2Overlay) {
+            if (confirm("Xác Nhận Hủy?")) {
+                popup2Overlay.style.display = 'none';
+            }
+        }
+    });
     document.querySelectorAll('.edit').forEach(button => {
         button.addEventListener('click', () => {
             popup2Overlay.style.display = 'flex';
@@ -45,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
             popup2Overlay.style.display = 'none';
         }
     });
-
+     //Popup 3
     document.getElementById('closepopup3')?.addEventListener('click', () => {
         if(confirm("Xác Nhận Hủy?")){
             popup3Overlay.style.display = 'none';
@@ -56,6 +70,14 @@ document.addEventListener('DOMContentLoaded', () => {
         event.preventDefault();
         if(confirm("Xác Nhận Hủy?")){
             popup3Overlay.style.display = 'none';
+        }
+    });
+    
+    window.addEventListener('click', (event) => {
+        if (event.target === popup3Overlay) {
+            if (confirm("Xác Nhận Hủy?")) {
+                popup3Overlay.style.display = 'none';
+            }
         }
     });
     

@@ -345,11 +345,10 @@ td:last-child {
 
 /* File Input Styling */
 .field input[type="file"] {
-    margin-top: 8px;
+    margin-top: 2px;
     padding: 4px;
     background-color: #f8f9fa;
     cursor: pointer;
-    margin-left: 10px;
 }
 
 .field input[type="file"]::file-selector-button {

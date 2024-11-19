@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Analytics Dashboard</title>
+    <title>Thống kê</title>
     <link rel="stylesheet" href="../../../public/css/Admin/dashboard.css">
     <link rel="stylesheet" href="../../../public/css/sidebar.css">
     <link rel="stylesheet" href="../../../public/css/navbar.css">
@@ -47,19 +47,19 @@
         <!-- Stats Cards -->
         <div class="stats-container">
             <div class="stat-card card-1">
-                <div class="stat-title">Total users</div>
+                <div class="stat-title">Tổng số người dùng</div>
                 <div class="stat-value"><?php echo $TotalUsers['TotalUsers']; ?></div>
             </div>
             <div class="stat-card card-2">
-                <div class="stat-title">Total blogs</div>
+                <div class="stat-title">Tổng số blog</div>
                 <div class="stat-value"><?php echo $TotalBlogs['TotalBlogs']; ?></div>
             </div>
             <div class="stat-card card-3">
-                <div class="stat-title">Total comments</div>
+                <div class="stat-title">Tổng số comment</div>
                 <div class="stat-value"><?php echo $TotalComment['TotalComment']; ?></div>
             </div>
             <div class="stat-card card-4">
-                <div class="stat-title">Total destinations</div>
+                <div class="stat-title">Tổng số địa điểm</div>
                 <div class="stat-value"><?php echo $TotalDestination['TotalDestination']; ?></div>
             </div>
         </div>
@@ -67,16 +67,16 @@
         <!-- Graph Section -->
         <div class="graph-section">
             <div class="graph-card">
-                <div class="graph-title">Follower growth</div>
-                <div class="graph-subtitle">Follower growth compared to last years</div>
+                <div class="graph-title">Số lượng blog được đăng mỗi tháng trong năm</div>
+                <div class="graph-subtitle">Sự tương tác của người dùng với trang web</div>
                 <div class="graph-container">
                     <canvas id="growthChart"></canvas>
                 </div>
             </div>
 
             <div class="graph-card">
-                <div class="graph-title">Engagement Growth</div>
-                <div class="graph-subtitle">Engagement compared to last years</div>
+                <div class="graph-title">Top các thành phố được chọn nhiều nhất để viết blog</div>
+                <div class="graph-subtitle">Xu hướng du lịch của người dùng</div>
                 <div class="graph-container">
                     <canvas id="engagementChart"></canvas>
                 </div>
@@ -88,12 +88,12 @@
         <div class="followers-card">
             <div class="followers-header">
                 <div>
-                    <h2 class="graph-title">Top-User with high interactions</h2>
-                    <p class="graph-subtitle">Top-Blog with high interactions</p>
+                    <h2 class="graph-title">Top các bài Blog nhận được tương tác nhiều nhất</h2>
+                    <p class="graph-subtitle">Top người dùng viết Blog hay & thu hút nhất</p>
                 </div>
                 <div class="search-container">
-                    <button class="view-all-btn"><a href="?view=20">View Top 20</a></button>
-                    <button class="view-all-btn"><a href="?view=5">View Top 5</a></button>
+                    <button class="view-all-btn"><a href="?view=20">Xem Top 20</a></button>
+                    <button class="view-all-btn"><a href="?view=5">Xem Top 5</a></button>
                 </div>
             </div>
 

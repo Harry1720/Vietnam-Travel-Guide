@@ -292,6 +292,9 @@ td:last-child {
 #yes-btn:hover ,  #no-btn:hover{
     background-color: #797d97;
 }
+#role1, #gender1{
+    width: 200px;
+}
 
 /* Popup Buttons */
 #no-btn {

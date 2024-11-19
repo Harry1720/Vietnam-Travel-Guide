@@ -20,20 +20,26 @@ class bloggerController{
         $uploader = new CloudinaryUploader();
         return $uploader->upload($fileTmpPath,$folder);
     }
-
     
-    public function saveBlog($provinceID, $userID, $blogContent, $blogCreateDate){
-        $sql = "INSERT INTO blog (provinceID, userID, blogContent, blogCreateDate) 
-                VALUES ($provinceID, '$userID', '$blogContent', '$blogCreateDate')";
-        
+    public function saveBlog($provinceID, $userID, $blogTitle, $blogContent, $blogCreateDate){
+        //mặc định để chờ duyệt cho admin
+        $sql = "INSERT INTO blog (provinceID, userID, blogTitle ,blogContent, blogCreateDate, status, approvalStatus) 
+                VALUES ($provinceID, $userID ,'$blogTitle', '$blogContent', '$blogCreateDate', TRUE, 'Chờ Duyệt')";
+
         $insert_query = mysqli_query($this->conn->connect(), $sql);
         
         if ($insert_query) {
-            // Kiểm tra ID của bản ghi mới chèn vào
-            $blogID = $this->conn->getInsertId();
-            if ($blogID > 0) {
-                return $blogID;
-            } else {
+            // Kiểm tra ID của bản ghi mới chèn vào - có cách sử lý - option: thêm 1 thuộc tính time - lấy thời gian thực để check (chưa thực hiện, mới dùng ppcheck bằng date)
+            $sqlBlogID = "SELECT blogID FROM blog
+            WHERE provinceID = $provinceID  AND userID = $userID
+            AND blogTitle = '$blogTitle'
+            AND blogCreateDate = '$blogCreateDate'";
+
+            $blogID = mysqli_query($this->conn->connect(), $sqlBlogID);
+            if ($blogID && $row = mysqli_fetch_assoc($blogID)) {
+                return $row['blogID']; // Return only the blogID - để dùng cho insert vào imgBlog table
+            } 
+            else {
                 echo "Không thể lấy ID của blog mới!";
                 return null;
             }
@@ -43,47 +49,51 @@ class bloggerController{
         }
     }
 
-    private function saveBlogImage($blogId, $imgBlogURL) {
-        if ($blogId !== null) {
-            $sql = "INSERT INTO imgblog (blogID, imgBlogURL) VALUES ($blogId, '$imgBlogURL')";
+    private function uploadBlogImage($blogId, $imgBlogURL) {
+        if ($blogId != null) {
+            $sql = "INSERT INTO imgblog (blogID, imgBlogURL) 
+                    VALUES ($blogId, '$imgBlogURL')";
             $insert_query = mysqli_query($this->conn->connect(), $sql);
             
             if (!$insert_query) {
-                // In thông báo lỗi nếu có
                 echo "Lỗi khi lưu ảnh: " . mysqli_error($this->conn->connect());
             }
         } else {
-            echo "Blog ID không hợp lệ!";
+            echo "Lỗi lưu ảnh";
         }
     }
-    
 
     //các hàm của blogger
-    //hàm add từ trang blog.php - 
+    //hàm add từ trang blog.php - SESSION là phiên đăng nhập của người dùng đã login - form này nhận được bởi name attributes, sau khi click
     public function addblog(){
+
         $provinceID = $_POST['location'];
+        $userID = $_SESSION['blogger_id'];
+        $blogTitle = $_POST['title'];
         $blogContent = $_POST['review'];
-        $userID = $_SESSION['1'];
-        $blogCreateDate = date('Y-m-d H:i:s');
+        $blogCreateDate = $_POST['date'];//date('Y-m-d H:i:s');
 
-        // Gọi hàm saveBlog để lưu bài viết
-        $blogid = $this->saveBlog($provinceID, $userID, $blogContent, $blogCreateDate);
-
+        // Gọi hàm saveBlog để lưu bài viết - sau đó trả về ID blog - fetch_assoc
+        $blogid = $this->saveBlog($provinceID, $userID, $blogTitle, $blogContent, $blogCreateDate);
         if ($blogid !== null) {
-            echo "Blog đã được tạo với ID: $blogid <br>";
+            //vòng lặp up ảnh - $file chưa tập ảnh kiểu post 
+            foreach ($_FILES['photos']['tmp_name'] as $tmpName) {
 
-            // Tiến hành upload ảnh
-            foreach ($_FILES['photos']['tmp_name'] as $index => $tmpName) {
                 if (!empty($tmpName)) {
+                    //đường dẫn này để upload lên cloud - vào folder blog
                     $imageUrl = $this->uploadImage($tmpName, 'blog');
-
-                    echo "Ảnh đã upload: $imageUrl <br>";
-                    $this->saveBlogImage($blogid, $imageUrl);
+                    
+                    //dường dẫn này để upload lên database
+                    $this->uploadBlogImage($blogid, $imageUrl);
                 } else {
                     echo "Ảnh không hợp lệ hoặc không có ảnh được chọn. <br>";
                 }
             }
+            
+            echo "<script>alert('Viết blog thành công!');</script>";
+            echo "<script>window.location.href = '../../Views/blogger/WriteReview.php';</script>"; 
         }
+        
     }
     
 
@@ -196,9 +206,7 @@ class bloggerController{
 
     public function getBloggerById($blogger){
         
-        //set default - hard code --> admin 4  
-        //$blogger = 9;
-        // Truy vấn thông tin người dùng từ cơ sở dữ liệu
+
         $sql = "SELECT * FROM users WHERE userID = '$blogger'";
         $user = mysqli_query($this->conn->connect(), $sql);
 

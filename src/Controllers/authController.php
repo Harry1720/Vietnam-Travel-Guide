@@ -162,7 +162,7 @@ class AuthController{
 
 
         if($insert_query){
-            header("location: ../../Views/login.html");
+            header("location: ../../Views/blogger/home.php");
         }
     }
 

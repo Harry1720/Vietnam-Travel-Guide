@@ -259,7 +259,7 @@ class bothController{
         return $UserComment;
     }
 
-    // hàm lấy dữ liệu cho destination.php 
+    // hàm lấy tất cả các destination cho trang destination.php 
     public function getDestinationPage() {
         $sql = 
         "SELECT *, pr.provinceName 
@@ -274,6 +274,27 @@ class bothController{
         }
         return $destination;
     }
-
+    
+    //do trang home.php, mục destination chưa kịp, nên hard code cho lấy 3 phần trang des only - chứ kh có nút bấm trái phải chuyển hình
+    public function getDestinationHome() {
+        //hard code lấy 3 des hiển thị 
+        $limitDes= 3;
+        $firstDes = 3; //cho đi từ địa danh 3 
+        
+        
+        $sql = 
+        "SELECT *, pr.provinceName 
+        FROM destination des 
+        JOIN province pr ON pr.provinceID = des.provinceID
+        WHERE status = 1
+        LIMIT  $limitDes OFFSET $firstDes";
+        $get_query = mysqli_query($this->conn->connect(), $sql);
+        
+        $destination = [];
+        while ($row = $get_query->fetch_assoc()) {
+            $destination[] = $row;
+        }
+        return $destination;
+    }
 
 }?>

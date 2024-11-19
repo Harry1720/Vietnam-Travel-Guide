@@ -30,8 +30,8 @@
         // Get posts for the current page - status = 1, có nghĩa là post đó vẫn còn trong DB
         $posts = $controller->getPostsByPage($limitPost, $firstPost);
         
-    
-        $destinations = $controller->getDestinationPage();
+        // Get dữ liệu các destination cho home - default lấy 3 cái
+        $destinations = $controller->getDestinationHome();
 
         // Get dữ liệu cho các ô blog tại trang home
         $limitBlog = 4;

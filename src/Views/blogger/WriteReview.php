@@ -11,7 +11,7 @@
 <body>
     <script src = "../../../include/header2.js"></script>
     <script src = "../../../include/footer.js"></script>
-
+    <script src = "../../../public/js/blogger/WriteReview.js"></script>
 
     <?php   
         include_once "../../Controllers/bothController.php";
@@ -27,7 +27,7 @@
             header("Location: ../login.html");
             exit();
         }
-?>
+    ?>
 
 
     <section class="main-section">            
@@ -40,9 +40,11 @@
                         
                         <div class="review-placeholder">
                             <label for="upload-photos">Đăng tải</label>
-                            <input type="file" id="upload-photos" name="photos[]" accept="image/*" multiple>
+                            <input type="file" id="upload-photos" name="photos[]" accept="image/*" multiple onchange="previewImages()">
                         </div>
-                        <div id="photo-preview" class="photo-preview"></div>
+                        
+                        <div id="photo-preview" class="photo-preview">
+                        </div>
                     </div>
                     <label for="title">Tiêu đề</label>
                     <input type="text" id="title" name="title" placeholder="Tiêu đề">
@@ -59,23 +61,10 @@
                             }
                         ?>
                     </select>
-                    
-                    <label for="travel-date">Bạn đi trải nghiệm khi nào?</label>
-                    <select id="travel-date" name="travel-date">
-                        <option>Chọn một tháng</option>
-                        <option>Tháng 1</option>
-                        <option>Tháng 2</option>
-                        <option>Tháng 3</option>
-                        <option>Tháng 4</option>
-                        <option>Tháng 5</option>
-                        <option>Tháng 6</option>
-                        <option>Tháng 7</option>
-                        <option>Tháng 8</option>
-                        <option>Tháng 9</option>
-                        <option>Tháng 10</option>
-                        <option>Tháng 11</option>
-                        <option>Tháng 12</option>
-                    </select>
+                    <!-- viết theo format để lưu 2023-11-23 -->
+                    <label for="travel-date">Bạn đã đi từ khi nào?</label>
+                    <input type="text" id="date" name="date" oninput="validateDateFormat(this)" placeholder="Ngày tháng - (YYYY-MM-DD)">
+
                     
                     <button type="submit" class="submit-btn">Gửi đi</button>
                 </form>
@@ -83,6 +72,6 @@
         </div>
     </section>
 
-    <script src="/public/js/WriteReview.js"></script>
+    <script src="../../../public/js/blogger/WriteReview.js"></script>
 </body>
 </html>

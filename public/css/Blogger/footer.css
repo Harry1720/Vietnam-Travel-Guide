@@ -4,8 +4,8 @@ body{
 }
 footer {
     display: block;
-    background: hsl(223, 80%, 52%);
-    padding-bottom: 20px;
+    background: #35679C;
+    padding-bottom: 10px;
     padding: 10px;
     width: 100%;
     text-align: center;
@@ -16,12 +16,13 @@ footer {
     text-align: center;
     font-family: helvetica;
     color: white;
-    padding-bottom: 20px;
+    padding-bottom: 10px;
+    margin-top: 5px;
 }
 
 .footer_logo {
     text-align: center;
-    padding: 20px 0px 10px;
+    
 }
 
 .footer_logo_img {
@@ -41,7 +42,7 @@ footer {
 }
 
 .nav_footer_menu ul li {
-    padding: 10px 30px 30px;
+    padding: 10px;
 }
 
 .nav_footer_menu ul li a {

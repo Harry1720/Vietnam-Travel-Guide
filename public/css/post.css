@@ -120,6 +120,6 @@ p {
     width: 800px;
     margin: 20px auto;
     display: block;
-    text-align: center; 
+    text-align:justify; 
     line-height: 1.6;  /* Improves readability  line height */
 }

@@ -11,53 +11,6 @@ body {
     color: #333;
     height: 100vh;
 }
-
-nav ul {
-    list-style: none;
-    display: flex;
-}
-
-nav ul li {
-    margin: 0 15px;
-}
-
-nav ul li a {
-    text-decoration: none;
-    color: #333;
-    font-weight: 500;
-}
-
-.auth {
-    display: flex;
-    align-items: center;
-}
-
-.auth .sign-up {
-    color: #007bff; /* Màu xanh cho chữ Sign Up */
-    text-decoration: none;
-    font-weight: 500;
-    margin-right: 15px;
-    transition: color 0.3s;
-}
-
-.auth .sign-up:hover {
-    color: #0056b3; /* Màu xanh đậm hơn khi hover */
-}
-
-.auth .login-btn {
-    background-color: #007bff; /* Màu nền xanh */
-    color: white; /* Màu chữ trắng */
-    text-decoration: none;
-    padding: 5px 20px;
-    border-radius: 20px; /* Góc bo tròn */
-    font-weight: 500;
-    transition: background-color 0.3s;
-}
-
-.auth .login-btn:hover {
-    background-color: #0056b3; /* Đổi màu nền xanh đậm khi hover */
-}
-
 .main-section {
     width: 100%;
     max-width: 800px;
@@ -127,6 +80,10 @@ input[type="file"] {
     cursor: pointer;
     border-radius: 5px;
 }
+.review-placeholder label {
+    display: block;
+    cursor: pointer;
+}
 
 .photo-preview {
     margin-top: 10px;
@@ -150,14 +107,16 @@ input[type="file"] {
     font-size: 16px;
     font-weight: bold;
     text-align: center;
-    border: none;
+    border: 1px solid #35679C;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
 .submit-btn:hover {
-    background-color: #2a507a;
+    background-color: #ffffff;
+    color: #35679C;
+    border: 1px solid #35679C;
 }
 
 /* Display các hình khi upload*/

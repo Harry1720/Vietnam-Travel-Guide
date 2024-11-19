@@ -39,8 +39,9 @@
                         <p>Hãy chia sẽ những khoảnh khắc tuyệt vời trong chuyến đi của bạn.</p>
                         
                         <div class="review-placeholder">
-                            <label for="upload-photos">Đăng tải</label>
-                            <input type="file" id="upload-photos" name="photos[]" accept="image/*" multiple onchange="previewImages()" required>
+                            <label for="upload-photos">Đăng tải
+                                <input type="file" id="upload-photos" name="photos[]" accept="image/*" multiple onchange="previewImages()" required>
+                            </label>
                         </div>
                         
                         <div id="photo-preview" class="photo-preview">

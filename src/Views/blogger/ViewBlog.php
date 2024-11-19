@@ -68,6 +68,7 @@
         <img id="zoomedImage" src="" alt="Zoomed Image">
     </div>
 
+    </div>
     <!-- Blog Content -->
     <div class="blog-content" id="blog-content">
         <h2 id="blog-title"><?php echo $content['blogTitle'] ?></h2>
@@ -89,7 +90,6 @@
             initializeImages(imgArray);
         });
     </script>
-
     <!-- Khu vực comment  -->
     <div class="comment-frame">
     <?php if (!empty($comments)) { ?>
@@ -110,7 +110,7 @@
                 <!-- khúc này hiển thi reply -->
                 <?php if (!empty($comment['replies'])) { ?>
                     <!-- nút ẩn hiện, khi onclick thì sẽ ẩn rep  . Do onchange buộc phải đổi data, dùng phương án bài thầy cho-->
-                    <button class="show-replies-button" onclick="toggleReplies(this)">Trả lời</button>
+                    <button class="show-replies-button" onclick="toggleReplies(this)">Xem trả lời</button>
                     <div class="replies-section">
                         <?php foreach ($comment['replies'] as $reply) { ?>
                             <div class="reply-box">

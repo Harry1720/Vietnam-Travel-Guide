@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="../../../public/css/destination.css">
     <script src="https://cdn.jsdelivr.net/npm/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script src="../../../public/js/destination.js" defer></script>
+    
+    
     <?php
         include_once "../../Controllers/bothController.php";
         $controller = new bothController();
@@ -15,11 +17,11 @@
 </head>
 
 <body>
-    <!-- mục này header -->
+    
     <script>  
         document.addEventListener('DOMContentLoaded', async function() {
             try {
-                //check sesion
+                
                 const response = await fetch('../../FunctionOfActor/blogger/checkAuth.php');
                 if (!response.ok) {
                     throw new Error('Failed to fetch session data. Status: ' + response.status);
@@ -36,11 +38,11 @@
                             <a href="province.php">Tỉnh Thành</a>
                             <a href="storiesList.php">Blogs</a>
                             <a href="WriteReview.php">Viết Blog</a>
-                            ${data.role_ === 'Admin' && data.loggedIn  ? `<a href="../admin/admin.php">Admin</a>` : '`<a href="profile.php">Hồ sơ</a>` '}
+                            ${data.role_ === 'Admin' && data.loggedIn  ? `<a href="../admin/admin.php">Admin</a>` : '<a href="profile.php">Hồ sơ</a> '}
                         </nav>    
                         <nav class="sub_nav">
                             ${data.loggedIn ? 
-                                `<a href="../../FunctionOfActor/both/logout.php?action=logout" class="btn-login">Đăng xuất</a>` : 
+                                `<a href="../../FunctionOfActor/both/logout.php?action=logout" class="btn-login" style="text-decoration: none; ">Đăng xuất</a>` : 
                                 `<a href="../createAccount.html" class="btn-signup">Đăng ký</a>
                                 <a href="../login.html" class="btn-login">Đăng nhập</a>`}
                         </nav>

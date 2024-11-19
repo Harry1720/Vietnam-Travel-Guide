@@ -59,29 +59,30 @@
                 <img src="<?php echo htmlspecialchars($blog['imgBlogURL']); ?>" alt="blog picture">
                 <div class="location_time">
                     <h4 style="text-align: center; "><?php echo htmlspecialchars($blog['blogTitle']); ?></h4>
-                    <p><?php echo date('M d, Y', strtotime($blog['blogCreateDate'])); ?></p>
+                    <p><?php echo date('d/m/Y', strtotime($blog['blogCreateDate'])); ?></p>
                 </div>
             </a>
             <?php                 
                 endif; // End check for imgPostURL
             endforeach; ?>
     
-        <!-- Pagination -->
-        <div class="pagination">
-            <?php if ($page > 1): ?>
-                <a href="?page=<?php echo $page - 1; ?>">Previous</a>
-            <?php endif; ?>
-
-            <?php for ($i = 1; $i <= $totalPages; $i++):  ?>
-                <a href="?page=<?php echo $i; ?>" class="<?php if ($i == $page) echo 'active'; ?>">
-                    <?php echo $i; ?>
-                </a>
-            <?php endfor; ?>
-
-            <?php if ($page < $totalPages): ?>
-                <a href="?page=<?php echo $page + 1; ?>">Next</a>
-            <?php endif; ?>
-        </div>
+        
     </section>
+    <!-- Pagination -->
+    <div class="pagination">
+        <?php if ($page > 1): ?>
+            <a href="?page=<?php echo $page - 1; ?>">Previous</a>
+        <?php endif; ?>
+
+        <?php for ($i = 1; $i <= $totalPages; $i++):  ?>
+            <a href="?page=<?php echo $i; ?>" class="<?php if ($i == $page) echo 'active'; ?>">
+                <?php echo $i; ?>
+            </a>
+        <?php endfor; ?>
+
+        <?php if ($page < $totalPages): ?>
+            <a href="?page=<?php echo $page + 1; ?>">Next</a>
+        <?php endif; ?>
+    </div>
 </body>
 </html>

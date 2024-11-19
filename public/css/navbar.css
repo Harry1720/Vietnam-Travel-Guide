@@ -1,13 +1,16 @@
 /* Navbar */
 .navbar {
-    margin-left: 280px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 58px;
     color: #000000;
     background-color: #FEFCFB;
-    padding: 0 20px;
+    z-index: 1000;
+    position: fixed; 
+    top: 0; 
+    left: 280px;
+    width: calc(100% - 280px);
 }
 
 .navbar__info {
@@ -40,6 +43,9 @@
     margin-left: 280px;
     height: 4px;
     background-color: #35679C;
+    z-index: 1000;
+    position: fixed; 
+    top: 58px;
 }
 
 .image-user {

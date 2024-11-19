@@ -4,17 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const popup1 = document.getElementById('popup1');
     const noBtn1 = document.getElementById('no-btn1');
     const popup1Overlay = document.getElementById('popup1Overlay');
-
-    // Search functionality
-    searchInput.addEventListener('input', () => {
-        const searchText = searchInput.value.trim().toLowerCase();
-        const rows = document.querySelectorAll('#post-table-body tr');
-
-        rows.forEach(row => {
-            const postTitle = row.querySelector('td:nth-child(2)').textContent.toLowerCase();
-            row.style.display = postTitle.includes(searchText) ? 'table-row' : 'none';
-        });
-    });
+    const popup3Overlay = document.getElementById('popup3Overlay');
 
     const resetFormState = () => {
         postForm.reset();
@@ -34,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Mở popup xóa chi tiết bài viết
-    document.querySelectorAll('.delete-post-detail').forEach(button => {
+    document.querySelectorAll('.deletepostdetail').forEach(button => {
         button.addEventListener('click', (event) => {
             event.stopPropagation();
             popup1.style.display = 'flex';

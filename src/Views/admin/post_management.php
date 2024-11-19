@@ -116,7 +116,7 @@
                                                         onclick="editpostdetail(<?php echo $postDetail['postDetailID']; ?>)">
                                                             <ion-icon name="create"></ion-icon>
                                                         </button>
-                                                        <button class="action-btn delete-post-detail" id="delete-post-detail" onclick="deleteDetailID(<?php echo $postDetail['postDetailID']; ?>)">
+                                                        <button class="action-btn deletepostdetail" id="delete-post-detail+<?php echo $postDetail['postDetailID']; ?>" onclick="deleteDetailID(<?php echo $postDetail['postDetailID']; ?>)">
                                                             <ion-icon name="trash"></ion-icon>
                                                         </button>
                                                     </td>
@@ -141,13 +141,10 @@
         </div>
     </div>
     
-    <div class="popup1-overlay" id="popup1Overlay">
+    <div class="popup-form" id="popup1Overlay">
         <div class="popup1-content">
-            <ion-icon name="close-outline" class="popup1-close" id="closepopup1"></ion-icon>
-    
-            <div class="wrapper" >
+            <ion-icon name="close-outline" class="close-btn" id="closepopup1"></ion-icon>
                 <form id="post-create-form" enctype="multipart/form-data" name = "add" action="../../FunctionOfActor/admin/addPost.php" method="POST">
-    
                 <div class="field">
                     <label style="float: left; margin-top: 10px;" for="province">Tỉnh/Thành phố</label>
                     <select name="province" id="province" require>
@@ -190,51 +187,55 @@
                         <input type="button" value="Hủy" class="cancel" id="cancelButton">
                     </div>
                 </form>
-            </div>
         </div>
     </div>
     
-    <div class="popup1-overlay" id="popup2Overlay">
-        <div class="popup1-content">
-            <ion-icon name="close-outline" class="popup1-close" id="closepopup2"></ion-icon>
-            <div class="wrapper">
-                <form id="post-update-form" enctype="multipart/form-data" name="editPost" method="POST" action="../../FunctionOfActor/admin/updatePost.php">
-                    <div class="field">                           
-                        <input type="hidden" id="postID" name="postID">
-                        <input type="hidden" id="imageposted" name="imageposted">
-                        <label style="float: left; margin-top: 10px;" for="province">Tỉnh/Thành phố</label>
-                        <select name="province" id="province-edit" require>
+    <div class="popup-form" id="popup2Overlay">
+        <div class="popup-content">
+            <ion-icon name="close-outline" class="close-btn" id="closepopup2"></ion-icon>
+            <form id="post-update-form" enctype="multipart/form-data" method="POST" action="../../FunctionOfActor/admin/updatePost.php">
+                <input type="hidden" id="postID" name="postID">
+                <input type="hidden" id="imageposted" name="imageposted">
+                <div class="field-row"> 
+                    <div class="field">
+                        <label for="province">Tỉnh/Thành phố</label>
+                        <select name="province" id="province-edit" required>
                             <?php foreach ($provinces as $province) { ?>
-                                <option value="<?php echo $province['provinceID']; ?>"><?php echo $province['provinceName']; ?></option>
-                            <?php }?>
+                                <option value="<?php echo $province['provinceID']; ?>">
+                                    <?php echo $province['provinceName']; ?>
+                                </option>
+                            <?php } ?>
                         </select>
-                        <img src="" alt="Lỗi hiển thị ảnh" id = "image-posted">
-                        <input style="width: 40%; margin:0;" type="file" id="new-image-post" name="new-image-post">
+                        <input type="file" id="new-image-post" name="new-image-post">
                     </div>
-                    <div class="button">
-                        <input type="submit" value="Lưu" class="save" id="saveButton2">
-                        <input type="button" value="Hủy" class="cancel" id="cancelButton2">
+
+                    <div class="field">
+                        <img id="image-posted" src="" alt="Lỗi hiển thị ảnh">
                     </div>
-                </form>
-            </div>
+                </div>
+                <div class="button">
+                    <input type="submit" value="Lưu" class="btn save">
+                    <input type="button" value="Hủy" class="btn cancel" id="cancelButton2">
+                </div>
+            </form>
         </div>
     </div>
     
-    <div class="popup1-overlay" id="popup3Overlay">
+    <div class="popup-form" id="popup3Overlay">
         <div class="popup1-content">
-            <ion-icon name="close-outline" class="popup1-close" id="closepopup3"></ion-icon>
+            <ion-icon name="close-outline" class="close-btn" id="closepopup3"></ion-icon>
             <form style="margin-left: 40px;"id="post-updateDetail-form" enctype="multipart/form-data" name="editPostDetail" method="POST" action="../../FunctionOfActor/admin/updatePostDetail.php">
-                <div class="wrapper">
-                    <div class="field-row"> 
-                        <div class="field"> 
-                            <span id="displayTitle"></span>
-                            <input type="hidden" id ="imgposted" name = "imgposted"> 
-                            <input type="hidden" id="title" name="title"> 
-                            <input type="hidden" id="postDetailID" name="postDetailID"> 
-                            <textarea wrap="soft" id="content" name="content" required></textarea> 
-                            <img src="" alt="Lỗi Hiển Thị Ảnh" id = "data_img"> 
-                            <input type="file" id="imagenew" name="imagenew"> 
-                        </div> 
+                <div class="field-row"> 
+                    <div class="field"> 
+                        <span id="displayTitle"></span>
+                        <input type="hidden" id ="imgposted" name = "imgposted"> 
+                        <input type="hidden" id="title" name="title"> 
+                        <input type="hidden" id="postDetailID" name="postDetailID"> 
+                        <textarea wrap="soft" id="content" name="content" required></textarea> 
+                    </div> 
+                    <div class="field">
+                        <img src="" alt="Lỗi Hiển Thị Ảnh" id = "data_img"> 
+                        <input type="file" id="imagenew" name="imagenew"> 
                     </div>
                 </div>
                 <div class="button">
@@ -249,7 +250,7 @@
 
     <!-- Popup xóa bài viết -->
     <div id="popup" class="popup-overlay">
-        <div class="popup-content">
+        <div class="popup-content-yn">
             <form action="../../FunctionOfActor/admin/deletePost.php" method="POST" name="delete" id="delete">
                 <p>Bạn có chắc chắn xóa bài viết này?</p>
                 <input type="hidden" id="deleteID" name="deleteID">
@@ -261,7 +262,7 @@
 
     <!-- Popup xóa chi tiết bài viết -->
     <div id="popup1" class="popup-overlay">
-        <div class="popup-content">
+        <div class="popup-content-yn">
             <form action="../../FunctionOfActor/admin/deleteDetailPost.php" method="POST" name="deleteDetail" id="deleteDetail">
                 <p>Bạn có chắc chắn xóa chi tiết bài viết này?</p>
                 <input type="hidden" id="deleteDetailID" name="deleteDetailID">

@@ -58,8 +58,7 @@ body {
     align-items: center;
     width: 100%;
     max-width: 1000px;
-    margin: 0 0 20px 80px;
-    padding: 0 20px;
+    margin: 0 0 20px;
 }
 
 .filter-container select {
@@ -68,7 +67,7 @@ body {
     border-radius: 20px;
     font-size: 1rem;
     outline: none;
-    margin-left: -55%;
+    margin-right: 5%;
 }
 
 .filter-container select:focus {
@@ -155,20 +154,75 @@ td:last-child {
     margin-left: 50px;
 }
 
-/* Popup Overlay */
-.popup-overlay {
-    display: none;
+.popup-form {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.7);
+    display: none;
     justify-content: center;
     align-items: center;
+    z-index: 1000;
 }
 
 .popup-content {
+    background-color: #FEFCFB;
+    border-radius: 10px;
+    padding: 30px;
+    width: 90%;
+    max-width: 700px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+}
+
+.popup1-content {
+    background-color: #FEFCFB;
+    border-radius: 10px;
+    padding: 30px;
+    width: 90%;
+    max-width: 700px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 30px;
+    color: #35679C;
+    cursor: pointer;
+}
+
+.form-field {
+    margin-bottom: 20px;
+}
+
+.form-field img {
+    max-width: 400px;
+    max-height: 400px;
+    border-radius: 10px;
+    margin: 10px 0;
+}
+
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.popup-content-yn {
     background: #fff;
     padding: 20px;
     border-radius: 10px;
@@ -186,71 +240,19 @@ td:last-child {
     border-radius: 5px;
     cursor: pointer;
 }
-
-.popup1-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    display: none;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-}
-.popup1-close {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
-    font-size: 30px;
-    color: #35679C;
+/* Popup Buttons */
+#yes-btn, #yes-btn1 {
+    background-color: #0d4160;
+    color: #fff;
 }
 
-.popup1-content {
-    background-color: #FEFCFB;
-    border-radius: 10px;
-    max-width: 940px;
-    max-height: 90vh; 
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    position: relative;
-    padding: 20px;
-    width: 90%; 
-    overflow-y: auto;
-    overflow-x: hidden;
-
-}
-
-.popup1-content::-webkit-scrollbar {
-    width: 8px;
-    border-radius: 10px; 
-}
-
-.popup1-content::-webkit-scrollbar-thumb {
-    background-color: #c2c2c2;
-    border-radius: 10px; 
-}
-
-.popup1-content::-webkit-scrollbar-horizontal {
-    display: none;
+#no-btn, #no-btn1 {
+    background-color: #ddd;
 }
 
 /* Popup Buttons */
 #yes-btn:hover ,  #no-btn:hover{
     background-color: #797d97;
-}
-
-#no-btn, #no-btn1 {
-    background-color: #35679C;
-    color: #fff;
-    font-size: 16px;
-}
-
-#yes-btn, #yes-btn1 {
-    background-color: #c2c2c2;
-    font-size: 16px;
-    color: #fff;
 }
 
 /* Buttons */
@@ -284,55 +286,111 @@ td:last-child {
     background-color: #797d97;
 }
 
-/* Form and Fields */
-.wrapper {
-    width: 100%;
-    max-width: 700px;
-    min-height: 500px;
-    padding: 30px;
-    border: none;
-    border-radius: 10px;
-    background-color: #FEFCFB;
-    background-color: #FEFCFB;
-    box-shadow: none;
-    margin-bottom: 0;
+/* Field Container Styling */
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+    max-width: 800px;
 }
 
-.field {
-    flex: 1;
-    margin: 10px;
-    position: relative;
-}
+/* Label Styling */
 .field label {
+    font-size: 14px;
+    font-weight: bold;
+    color: #35679C;
+    margin-bottom: 5px;
+}
+
+/* General Input, Select, and Textarea Styling */
+.field input,
+.field select,
+.field textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 15px;
+    background-color: #fff;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+/* Dropdown Customization */
+.field select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%2335679C' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: calc(100% - 12px) center;
+    padding-right: 10px;
+}
+
+/* Focus Effects for Input Fields */
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+    outline: none;
+    border-color: #35679C;
+    box-shadow: 0 0 0 3px rgba(53, 103, 156, 0.2);
+}
+
+/* Textarea Specific Styling */
+.field textarea {
+    min-height: 220px;
+    resize: vertical;
+    font-family: inherit;
+    line-height: 1.5;
+}
+
+/* File Input Styling */
+.field input[type="file"] {
+    margin-top: 8px;
+    padding: 4px;
+    background-color: #f8f9fa;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.field input[type="file"]::file-selector-button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    background-color: #35679C;
+    color: white;
+    cursor: pointer;
+    margin-right: 12px;
+    transition: background-color 0.3s ease;
+}
+
+.field input[type="file"]::file-selector-button:hover {
+    background-color: #2a5280;
+}
+
+/* Image Styling */
+.field img {
+    max-width: 300px;
+    max-height: 400px;
+    margin: 10px auto;
+    border-radius: 10px;
     display: block;
-    margin: 0px 10px 10px 10px;
+}
+
+/* Responsive Grid for Field Rows */
+.field-row {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    align-items: start;
+}
+
+/* Title Styling */
+.field-row span#displayTitle {
+    display: block;
+    margin: 0 10px 10px 10px;
     font-weight: bold;
     color: #35679C;
     font-size: 17px;
-    color: #35679C;
-    font-size: 17px;
-}
-
-.field input {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    font-size: 15px;
-    border-radius: 10px;
-    font-size: 15px;
-    box-sizing: border-box;
-    transition: border-color 0.3s ease;
-}
-
-.field.input select {
-    width: 100%;
-    height: 45px;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    background-color: #fff;
-    font-size: 14px;
-    color: #333;
 }
 
 /* Kiểu dáng phân trang */

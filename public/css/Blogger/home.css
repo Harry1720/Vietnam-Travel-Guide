@@ -35,9 +35,12 @@
 }
 
 .grid-common {
-    display: flex;
+    display: grid;
+    align-items: center;
     justify-content: center;
     gap: 30px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 50px;
     margin: 50px 80px 0px;
 }
 

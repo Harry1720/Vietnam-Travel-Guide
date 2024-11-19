@@ -45,7 +45,7 @@
                         <img src="<?php echo htmlspecialchars($post['imgPostURL']); ?>" alt="province">
                         <div class="location_time">
                             <h4 style="text-align: center; "><?php echo htmlspecialchars($post['provinceName']); ?></h4>
-                            <p><?php echo date('M d, Y', strtotime($post['postCreateDate'])); ?></p>
+                            <p><?php echo date('d/m/Y', strtotime($post['postCreateDate'])); ?></p>
                         </div>
                     </a>
                     <?php                 

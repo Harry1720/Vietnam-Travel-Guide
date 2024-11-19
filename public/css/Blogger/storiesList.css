@@ -39,7 +39,7 @@
     margin: 0 0 5px 50px;
 }
 
-.section-common > p {
+.section-common  p {
     font-size: 16px;
     color: #666;
     margin: 10px 0 0 50px;
@@ -71,8 +71,9 @@
     margin: 50px 80px 0;
 }
 
-.card-common {
+.card-common a {
     text-align: center;
+
 }
 
 .card-common img {
@@ -106,4 +107,7 @@
 .card-content p {
     color: #999;
     font-size: 14px;
+}
+a {
+    text-decoration: none;
 }

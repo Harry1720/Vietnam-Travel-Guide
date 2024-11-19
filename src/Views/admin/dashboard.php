@@ -39,42 +39,9 @@
     ?>
     
     <div class="main-content">
-        <!-- Date Range Picker -->
-        <!-- <div class="date-picker">
-            <button class="date-picker-button" id="datePickerButton">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                    <line x1="16" y1="2" x2="16" y2="6"></line>
-                    <line x1="8" y1="2" x2="8" y2="6"></line>
-                    <line x1="3" y1="10" x2="21" y2="10"></line>
-                </svg>
-                <span id="dateRangeText">Jan 1, 2024 - Dec 31, 2024</span>
-            </button>
-
-            <div class="popup" id="popup">
-                <div class="date-inputs">
-                    <input type="date" class="date-input" id="startDate" value="2024-01-01" min="2024-01-01" max="2024-12-31">
-                    <input type="date" class="date-input" id="endDate" value="2024-12-31" min="2024-01-01" max="2024-12-31">
-                </div>
-                <div class="btn-group">
-                    <button class="btn btn-cancel" id="cancelBtn">Cancel</button>
-                    <button class="btn btn-apply" id="applyBtn">Apply</button>
-                </div>
-            </div>
-        </div> -->
         <div class="date-picker">
-            <button class="date-picker-button" id="datePickerButton">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                    <line x1="16" y1="2" x2="16" y2="6"></line>
-                    <line x1="8" y1="2" x2="8" y2="6"></line>
-                    <line x1="3" y1="10" x2="21" y2="10"></line>
-                </svg>
-                <div class="year" id="year">
-                    <select style="border: none;" name="yearSelect" id="yearSelect">
-                    </select>
-                </div>
-            </button>
+            <select name="yearSelect" id="yearSelect">
+            </select>
         </div>
 
         <!-- Stats Cards -->
@@ -126,6 +93,7 @@
                 </div>
                 <div class="search-container">
                     <button class="view-all-btn"><a href="?view=20">View Top 20</a></button>
+                    <button class="view-all-btn"><a href="?view=5">View Top 5</a></button>
                 </div>
             </div>
 

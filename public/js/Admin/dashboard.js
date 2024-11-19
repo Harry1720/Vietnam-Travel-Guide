@@ -1,8 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Date Picker Logic
-    const datePickerButton = document.getElementById('datePickerButton');
-    const popup = document.getElementById('popup');
-    const dateRangeText = document.getElementById('dateRangeText');
 
     // Lấy năm hiện tại
     const currentYear = new Date().getFullYear();
@@ -20,21 +16,6 @@ document.addEventListener('DOMContentLoaded', function() {
     yearSelect.addEventListener('change', () => {
         const selectedYear = parseInt(yearSelect.value, 10);
         fetchBlogData(selectedYear);
-    });
-
-    function formatDate(date) {
-        const options = { year: 'numeric', month: 'short', day: 'numeric' };
-        return new Date(date).toLocaleDateString('en-US', options);
-    }
-
-    datePickerButton.addEventListener('click', () => {
-        popup.classList.toggle('show');
-    });
-
-    document.addEventListener('click', (e) => {
-        if (!datePickerButton.contains(e.target) && !popup.contains(e.target)) {
-            popup.classList.remove('show');
-        }
     });
 
     // Graph Logic

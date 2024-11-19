@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quản lý tỉnh thành</title>
     <link rel="stylesheet" href="../../../public/css/Admin/province_management.css">
+    <link rel="stylesheet" href="../../../public/css/Admin/layout.css">
     <link rel="stylesheet" href="../../../public/css/navbar.css">
     <link rel="stylesheet" href="../../../public/css/sidebar.css">
     
@@ -52,9 +53,8 @@
             </button>
 
             <div class="filter-search-container">
-                <div class="field filter-container">
+                <div class="filter-container">
                     <form action="" id="form_loc" name="form_loc" method="get">
-                        <label for="filter">Chọn miền: </label>
                         <select name="filter" id="filter" onchange="form_loc.submit()">
                             <option value="">Tất Cả</option>
                             <option value="North" <?php if(isset($_GET['filter']) && $_GET['filter'] == 'North')  echo 'selected="selected"';?>>Bắc</option>
@@ -63,11 +63,6 @@
                         </select>
                     </form>
                 </div>
-
-                <!-- <div class="search-container">
-                    <input type="text" placeholder="Tìm kiếm tỉnh thành" class="search-bar" oninput="toggleIcon()">
-                    <ion-icon name="search-outline" class="search-icon"></ion-icon>
-                </div> -->
             </div>
 
             <!-- List Province Table -->
@@ -150,16 +145,16 @@
             </div>
         </div>
     </div>
-    <div class="popup1-overlay" id="popup1Overlay">
+    <div class="popup-form" id="popup1Overlay">
         <div class="popup1-content">
-            <ion-icon name="close-outline" class="popup1-close" id="closepopup1"></ion-icon>
+            <ion-icon name="close-outline" class="close-btn" id="closepopup1"></ion-icon>
             <div class="wrapper" id = "">
                 <form id="destination-form" enctype="multipart/form-data" name = "add" method = "POST" action="../../FunctionOfActor/admin/addDestination.php">
-                    <div class="field input">
+                    <div class="field">
                         <label for="destinationName">Tên điểm đến</label>
                         <input type="text" id="destinationName" name="destinationName" placeholder="Hội An" required>
                     </div>
-                    <div class="field input" style="margin-bottom: 20px;">
+                    <div class="field" style="margin-bottom: 20px;">
                         <label for="province" >Tỉnh/Thành Phố</label>
                         <select id="province" name="province">
                             <?php foreach ($AllProvine as $province) { ?>
@@ -168,12 +163,12 @@
                         </select>
                     </div>
 
-                    <div class="field input">
+                    <div class="field">
                         <label for="description">Mô tả điểm đến</label>
                         <textarea wrap="soft" id="description" name="description" required></textarea>
                     </div>                
 
-                    <div class="field input" style="margin-bottom: 20px;">
+                    <div class="field" style="margin-bottom: 20px;">
                         <label for="image" >Tải ảnh:</label>
                         <input type="file" id="image" name="image">
                     </div>
@@ -186,39 +181,37 @@
         </div>
     </div>
 
-    <div class="popup1-overlay" id="popup2Overlay">
+    <div class="popup-form" id="popup2Overlay">
         <div class="popup1-content">
-            <ion-icon name="close-outline" class="popup1-close" id="closepopup2"></ion-icon>
-            <div class="wrapper" id = "">
-                <form id="destination-form2" enctype="multipart/form-data" method="POST" action="../../FunctionOfActor/admin/updateDestination.php">
-                    <input type="hidden" name="destinationID" id="destinationID" value="">
-                    <div class="field input">
-                        <label for="destinationName1">Tên điểm đến</label>
-                        <input type="text" id="destinationName1" name="destinationName1" placeholder="Hội An" required>
-                    </div>
-                    <div class="field input">
-                        <label for="description1">Mô tả điểm đến</label>
-                        <textarea wrap="soft" id="description1" name="description1" required></textarea>
-                    </div>                
+            <ion-icon name="close-outline" class="close-btn" id="closepopup2"></ion-icon>
+            <form id="destination-form2" enctype="multipart/form-data" method="POST" action="../../FunctionOfActor/admin/updateDestination.php">
+                <input type="hidden" name="destinationID" id="destinationID" value="">
+                <div class="field input">
+                    <label for="destinationName1">Tên điểm đến</label>
+                    <input type="text" id="destinationName1" name="destinationName1" placeholder="Hội An" required>
+                </div>
+                <div class="field input">
+                    <label for="description1">Mô tả điểm đến</label>
+                    <textarea wrap="soft" id="description1" name="description1" required></textarea>
+                </div>                
 
-                    <div class="field input" style="margin-bottom: 20px;">
-                        <label for="image1">Tải ảnh:</label>
-                        <input type="file" id="image1" name="image1">
+                <div class="field input" style="margin-bottom: 20px;">
+                    <label for="image1">Tải ảnh:</label>
+                    <input type="file" id="image1" name="image1">
 
-                        <img src="" alt="Ảnh Không Khả Dụng" id = "imgdes" name = "imgdes">
-                        <input type="hidden"id = "imgdesURL" name = "imgdesURL">
-                    </div>
-                    <div class="button">
-                        <input type="submit" value="Lưu" class="save" id="saveButton1">
-                        <input type="button" value="Hủy" class="cancel" id="cancelButton1">
-                    </div>
-                </form>
-            </div>
+                    <img style="max-width: 300px; max-height: 300px; margin: 10px auto; border-radius: 10px; display: block;" src="" alt="Ảnh Không Khả Dụng" id = "imgdes" name = "imgdes">
+                    <input type="hidden"id = "imgdesURL" name = "imgdesURL">
+                </div>
+                <div class="button">
+                    <input type="submit" value="Lưu" class="save" id="saveButton1">
+                    <input type="button" value="Hủy" class="cancel" id="cancelButton2">
+                </div>
+            </form>
         </div>
     </div>
 
     <div id="popup" class="popup-overlay">
-        <div class="popup-content">
+        <div class="popup-content-yn">
             <form action="../../FunctionOfActor/admin/deleteDestination.php" method= "POST" name ="delete" id ="delete">
                 <p>Bạn có chắc chắn xóa điểm đến này?</p>
                 <input type="hidden" id="deleteID" name="deleteID">

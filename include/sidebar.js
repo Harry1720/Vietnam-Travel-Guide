@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 </li>
                 <li><a href="dashboard.php"><span class="icon"><ion-icon name="analytics"></ion-icon></span> Thống kê</a></li>               
                 <li class="submenu">
-\                    <a href="../../FunctionOfActor/both/logout.php?action=logout" name="log-out-outline"></ion-icon>Đăng xuất</a>
+\                    <a href="../../FunctionOfActor/both/logout.php?action=logout"><span class="icon"><ion-icon name="log-out-outline"></ion-icon>Đăng xuất</a>
                 </li>
             </ul>
         </div>

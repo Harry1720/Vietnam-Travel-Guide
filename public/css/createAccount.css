@@ -22,44 +22,6 @@ h1, h4 {
     font-size: auto;
 }
 
-.google-btn {
-    font-size: 20px;
-    padding: 15px;
-    border-radius: 25px;
-    width: 100%;
-    border: 1px solid #ddd;
-    background-color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: background-color 0.3s, box-shadow 0.3s;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-    text-align: center; /* Ensures text is centered */
-    color: #35679C;
-    font-weight: 500;
-}
-
-.google-btn:hover {
-    background-color: #f1f1f1;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.google-btn span {
-    display: flex;
-    align-items: center;
-}
-
-.google-btn svg {
-    margin-left: 10px; /* Space between text and icon */
-}
-
-.google-btn:hover {
-    background-color: #ffffff;
-    border: 1px solid #35679C;
-    cursor: pointer;
-}
 
 .login-account {
     margin-top: 15px;
@@ -68,11 +30,7 @@ h1, h4 {
 .login-account a{
     color: #35679C;
 }
-.divider {
-    font-size: 20px;
-    text-align: center;
-    margin: 10px;
-}
+
 
 #confirm-password,
 #name,
@@ -115,7 +73,6 @@ h1, h4 {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-
 #left-img {
     width: 50%;
 }
@@ -132,69 +89,7 @@ h1, h4 {
     cursor: pointer;
 }
 
-/* Popup Overlay */
 
-.popup-overlay {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    justify-content: center;
-    align-items: center;
-}
-
-.popup-content {
-    background: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center ;
-}
-
-.popup-content p{
-    font-size: 18px;
-}
-
-.popup-btn {
-    margin: 10px;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.popup1-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    display: none;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-}
-.popup1-close {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    cursor: pointer;
-    font-size: 30px;
-    color: #35679C;
-}
-
-.popup1-content {
-    background-color: #fff;
-    padding: 0;
-    border-radius: 10px;
-    width: 100%;
-    max-width: 600px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    position: relative;
-}
 
 /* Popup Buttons */
 #no-btn {
@@ -215,12 +110,10 @@ h1, h4 {
     border-radius: 20px;
     cursor: pointer;
     font-size: 16px;
-    display: flex;
-    align-items: center;
     background-color: #35679C;
     color: #fff;
-    margin-bottom: 10px;
-    margin-left: 150px;
+    margin-left: 100px;
+    width: 200px;
 }
 
 .add-user-btn:hover{
@@ -251,31 +144,31 @@ h1, h4 {
     height: 55vh;
 }
 .field {
-    flex: 1;
-    margin: 10px;
+    display: flex;
+    align-items: center; 
+    margin-bottom: 10px;
     position: relative;
 }
 .field label {
     display: block;
-    margin: 0px 10px 10px 10px;
+    margin-right: 10px; 
     font-weight: bold;
     color: #35679C;
     font-size: 17px;
-    color: #35679C;
-    font-size: 17px;
+    min-width: 90px; 
 }
 
+
 .field input {
+    
     width: 100%;
-    padding: 12px;
+    padding: 5px;
     border: 1px solid #ccc;
-    font-size: 15px;
+    font-size: 10px;
     border-radius: 10px;
-    font-size: 15px;
     box-sizing: border-box;
     transition: border-color 0.3s ease;
 }
-
 .field.input select {
     width: 100%;
     height: 45px;
@@ -286,45 +179,6 @@ h1, h4 {
     font-size: 14px;
     color: #333;
 }
-#role, #gender{
-    width: 200px;
-}
-#label-role, #label-gender{
-    margin-top: 10px;
-}
-.field input:focus {
-    border-color: #000;
-    outline: none;
-}
 
-/* Buttons */
-.button {
-    display: flex;
-    justify-content: center;
-    margin: 30px 10px;
-}
 
-.button input {
-    padding: 10px 30px;
-    border: none;
-    border-radius: 5px;
-    font-size: 14px;
-    cursor: pointer;
-    margin-right: 10px;
-}
 
-.button input.save  {
-    background-color: #35679C;
-    color: #fff;
-}
-
-.button input.cancel  {
-    background-color: #c2c2c2;
-    color: #fff;
-}
-
-.button input.save:hover,
-.button input.cancel:hover,
-#yes-btn:hover ,  #no-btn:hover{
-    background-color: #797d97;
-}

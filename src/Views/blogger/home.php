@@ -26,6 +26,7 @@
         // Get dữ liệu cho ba ô tỉnh thành tại trang home
         $page = isset($_GET['page']) && is_numeric($_GET['page']) ? (int)$_GET['page'] : 1;
         $limitPost= 3;
+
         $firstPost = 0; //lấy post 1 
         // Get posts for the current page - status = 1, có nghĩa là post đó vẫn còn trong DB
         $posts = $controller->getPostsByPage($limitPost, $firstPost);

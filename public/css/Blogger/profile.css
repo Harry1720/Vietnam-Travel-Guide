@@ -54,14 +54,20 @@ body {
 }
 
 .edit-button {
-    background: #4285f4;
+    background: #35679c;
     color: white;
-    border: none;
+    border: 2px solid #35679c;
     padding: 8px 20px;
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
 }
+.edit-button:hover{
+    color: #35679c;
+    background-color: #ffffff;
+    border: 2px solid #35679c;
+}
+
 
 .form-grid {
     display: grid;
@@ -162,12 +168,17 @@ body {
 }
 
 .submit-btn {
-    background: #4285f4;
+    background: #35679c;
     color: white;
-    border: none;
+    border: 2px solid #35679c;
     padding: 12px 24px;
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
-    margin-top: 20px;
+    margin-top: 20px;  
+}
+.submit-btn:hover{
+    color: #35679c;
+    background-color: #ffffff;
+    border: 2px solid #35679c;
 }

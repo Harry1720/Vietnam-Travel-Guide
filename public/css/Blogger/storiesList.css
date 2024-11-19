@@ -84,8 +84,9 @@
 }
 
 .card-common h4 {
-    margin-top: 20px;
+    margin-top: 8px;
     font-size: 20px;
+    color:#35679c;
 }
 
 .card-common p {

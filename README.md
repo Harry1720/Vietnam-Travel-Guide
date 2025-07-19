@@ -69,12 +69,12 @@ Vì thế cần có một nền tảng để giúp cho trải nghiệm của du 
 - **Architecture**: MVC pattern
 
 ## Một vài hình ảnh của dự án
-![](pics\Picture1.png)
-![](pics\Picture2.png)
-![](pics\Picture3.png)
-![](pics\Picture4.png)
-![](pics\Picture6.png)
-![](pics\Picture5.png)
+<img src="pics\Picture1.png"/>
+<img src="pics\Picture2.png"/>
+<img src="pics\Picture3.png"/>
+<img src="pics\Picture4.png"/>
+<img src="pics\Picture6.png"/>
+<img src="pics\Picture5.png"/>
 
 ## Cài đặt và chạy dự án
 

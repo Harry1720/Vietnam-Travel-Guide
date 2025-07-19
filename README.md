@@ -105,9 +105,9 @@ Chỉnh sửa file [`src/config/config.php`](src/config/config.php):
 class Config {
     public function connect() {
         $hostname = "localhost";
-        $username = "root";          // Username mặc định của XAMPP
-        $password = "";              // Password mặc định của XAMPP (để trống)
-        $dbname = "vietnamtravel";  //Thay bằng tên database vừa tạo tên XAMPP
+        $username = "root";            // Username mặc định của XAMPP
+        $password = "";                // Password mặc định của XAMPP (để trống)
+        $dbname = "vietnamtravel";    // Thay bằng tên database vừa tạo ở phpMyAdmin 
 
         $this->conn = mysqli_connect($hostname, $username, $password, $dbname) 
                      or die("Lỗi kết nối Database");
